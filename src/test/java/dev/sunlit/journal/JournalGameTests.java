@@ -170,6 +170,18 @@ public class JournalGameTests {
         h.assertTrue(task.getInt("progress")==1,"Placed iron ore advanced task");h.succeed();
     }
 
+    @GameTest(template="empty") public static void disabledCropTasksPreserveEarnedProgress(GameTestHelper h){
+        var p=player(h);var w=new JournalWorld();w.refreshTasks(p);
+        var tasks=w.player(p).getCompound("daily");
+        for(int i=0;i<3;i++){var t=tasks.getCompound(""+i);t.putInt("kind",0);t.putString("subject","minecraft:carrots");t.putInt("target",13);t.putInt("progress",i==1?2:0);t.putBoolean("claimed",i==2);}
+        w.refreshTasks(p);
+        h.assertFalse(tasks.getCompound("0").getString("subject").equals("minecraft:carrots"),"Disabled unstarted carrot task was not replaced");
+        h.assertTrue(tasks.getCompound("0").getInt("target")==13,"Migration changed goal");
+        h.assertTrue(tasks.getCompound("1").getString("subject").equals("minecraft:carrots")&&tasks.getCompound("1").getInt("progress")==2,"Migration changed earned progress");
+        h.assertTrue(tasks.getCompound("2").getBoolean("claimed"),"Migration reopened claimed task");
+        for(int i=0;i<20;i++)h.assertFalse(TaskTargets.choose(0).subject().equals("minecraft:carrots"),"Disabled crop was generated");h.succeed();
+    }
+
     @net.minecraft.gametest.framework.GameTestGenerator
     public static Collection<net.minecraft.gametest.framework.TestFunction> integrationChecks(){
         if(!Boolean.getBoolean("sunlit.integrationTests"))return List.of();

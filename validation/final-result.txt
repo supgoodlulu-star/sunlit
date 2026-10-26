@@ -1,8 +1,9 @@
-Sunlit Journal 0.4.2-dev validation: PASS
+Sunlit Journal 0.4.3-dev validation: PASS
 Server command: JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
-Forge GameTest: All 14 required tests passed, exit 0.
-New coverage: exact ore/food matching, progress cap and reload, duplicate claims, legacy task migration, placed-ore exclusion through break-event handler.
+Forge GameTest: All 15 required tests passed, exit 0.
+New coverage: disabled carrot target generation and zero-progress migration; earned progress, quantities and claimed rewards preserved.
 Client command: DISPLAY=:99 LIBGL_ALWAYS_SOFTWARE=1 JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --offline -I tools/visual-preview/preview.gradle runClient
-Client render: exit 0; 9 fixture screenshots, GUI scales 2 and 3, category filters and skill expansion.
-Fixture screenshots do not establish modpack integration, networking behavior, real Skills custom names, Serene Seasons or Numismatics runtime.
-Resource validation: 19 JSON documents, 17 PNG headers and book references passed.
+Client render: exit 0; 15 fixture screenshots, GUI scales 2 and 3, 1280x900 and 960x720; distinct exploration/life/books icons; daily/weekly/seasonal tabs; selection after snapshot update; no-festival placeholder; crop naming.
+Main text shadows disabled. Body/card colors have approximately 7.8:1 contrast. Minimum line spacing 14 logical pixels; badge widths measured using active font.
+Fixture screenshots use the default Korean font and do not establish compatibility with the user's full resource pack, shader, custom font or actual economic/seasonal integrations.
+Resource validation: 19 JSON documents, 21 PNG headers and book references passed.

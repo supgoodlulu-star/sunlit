@@ -11,6 +11,7 @@ PALETTES = {
     'cooking': '#FFE6D3', 'ranching': '#F8E7D9', 'wealth': '#FFF0C7',
     'spring': '#FBE0E8', 'summer': '#E0E9FB', 'autumn': '#F9E3CF',
     'winter': '#E1F1F5', 'fairy': '#EDE2F6', 'profile': '#FCE6DB',
+    'exploration': '#DFE9E8', 'life': '#E8E5CD', 'books': '#EBDEF0', 'skills': '#E0E5ED',
 }
 
 def badge(name):
@@ -89,6 +90,34 @@ def badge(name):
         d.polygon([(56, 30), (71, 57), (56, 91), (41, 57)], fill='#FFF0BC', outline=INK, width=3)
         d.ellipse((49, 47, 53, 52), fill=INK); d.ellipse((60, 47, 64, 52), fill=INK)
         d.line((84, 14, 84, 32), fill='#C799BB', width=3); d.line((75, 23, 93, 23), fill='#C799BB', width=3)
+    elif name == 'exploration':
+        d.ellipse((20, 20, 92, 92), fill='#FFF9EB', outline=INK, width=4)
+        d.ellipse((28, 28, 84, 84), outline='#B5C8C4', width=3)
+        d.polygon([(56, 29), (69, 66), (43, 66)], fill='#DE9E89', outline=INK, width=2)
+        d.polygon([(56, 83), (43, 47), (69, 47)], fill='#91B8AF', outline=INK, width=2)
+        d.ellipse((50, 50, 62, 62), fill='#FFE8A9', outline=INK, width=2)
+        d.line((56, 10, 56, 18), fill=INK, width=3)
+    elif name == 'life':
+        d.polygon([(17, 53), (56, 21), (95, 53)], fill='#CDA18C', outline=INK, width=3)
+        d.rounded_rectangle((28, 49, 84, 91), radius=5, fill='#FFF4D8', outline=INK, width=3)
+        d.rounded_rectangle((48, 63, 66, 91), radius=5, fill='#AAC6A1', outline=INK, width=2)
+        d.ellipse((33, 57, 43, 69), fill='#A9C9D2', outline=INK, width=2)
+        d.ellipse((14, 73, 32, 89), fill='#ACC788', outline=INK, width=2)
+        d.ellipse((80, 73, 99, 89), fill='#ACC788', outline=INK, width=2)
+    elif name == 'books':
+        d.polygon([(15, 27), (36, 22), (56, 32), (77, 22), (98, 27), (98, 84), (76, 80), (56, 90), (36, 80), (15, 84)], fill='#FFF8E6', outline=INK, width=3)
+        d.line((56, 33, 56, 88), fill='#B89C88', width=3)
+        for y in (40, 51, 62):
+            d.line((24, y, 46, y+3), fill='#B89C88', width=3)
+            d.line((66, y+3, 88, y), fill='#B89C88', width=3)
+        d.polygon([(72, 24), (81, 23), (81, 57), (77, 52), (72, 57)], fill='#C0A4CF')
+    elif name == 'skills':
+        for box, color in [((19, 19, 48, 48), '#B6D3BB'), ((64, 19, 93, 48), '#E8C396'), ((19, 64, 48, 93), '#D8B9CF'), ((64, 64, 93, 93), '#A9C9DB')]:
+            d.rounded_rectangle(box, radius=8, fill=color, outline=INK, width=2)
+        d.line((48, 34, 64, 34), fill=INK, width=3)
+        d.line((34, 48, 34, 64), fill=INK, width=3)
+        d.line((78, 48, 78, 64), fill=INK, width=3)
+        d.line((48, 78, 64, 78), fill=INK, width=3)
     elif name == 'profile':
         d.rounded_rectangle((25, 22, 88, 91), radius=9, fill='#FFF9EC', outline=INK, width=3)
         d.line((34, 23, 34, 90), fill='#D7BA9D', width=3)

@@ -24,12 +24,13 @@ final class JournalButton extends Button {
         }
     }
     @Override public void renderWidget(GuiGraphics g,int mx,int my,float delta) {
-        int border=active?0xFFD5B8AC:0xFFE2D9D1;
-        int color=!active?0xFFEDE7DF:selected?0xFFCFE9DC:isHoveredOrFocused()?0xFFFFE0D3:0xFFFFF1E7;
+        int border=active?0xFFB28D73:0xFFC3B4A1;
+        int color=!active?0xFFE0D5C6:selected?0xFFBDD8C4:isHoveredOrFocused()?0xFFE8C6B0:0xFFEEDCC8;
         rounded(g,getX(),getY()+1,width,height,7,border);
         rounded(g,getX()+1,getY(),width-2,height-1,6,color);
         var font=Minecraft.getInstance().font;
-        g.drawCenteredString(font,getMessage(),getX()+width/2,getY()+(height-8)/2,active?0xFF70544D:0xFFAAA096);
+        String label=font.plainSubstrByWidth(getMessage().getString(),Math.max(1,width-12));
+        g.drawString(font,label,getX()+(width-font.width(label))/2,getY()+(height-font.lineHeight)/2,active?0xFF3F3028:0xFF756354,false);
         if(isFocused())rounded(g,getX()+6,getY()+height-3,width-12,1,0,0xFF9EBCAF);
     }
 }

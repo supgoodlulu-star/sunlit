@@ -8,5 +8,12 @@
   "sunlit_journal_core.skill_category.society.foraging": "채집",
   "sunlit_journal_core.skill_category.society.woodcutting": "벌목",
   "sunlit_journal_core.skill_category.unknown": "생활 기술",
-  "sunlit_journal_core.skill.unknown": "이름 미등록 기술 %s"
+  "sunlit_journal_core.skill.unknown": "이름 미등록 기술 %s",
+  "sunlit_journal_core.task.crop.wheat": "밀",
+  "sunlit_journal_core.task.crop.carrots": "당근",
+  "sunlit_journal_core.task.crop.potatoes": "감자",
+  "sunlit_journal_core.task.crop.beetroots": "비트",
+  "sunlit_journal_core.skill_category.society.exploration": "탐험",
+  "sunlit_journal_core.skill_category.society.life": "생활 기술",
+  "sunlit_journal_core.skill_category.society.books": "서적"
 }

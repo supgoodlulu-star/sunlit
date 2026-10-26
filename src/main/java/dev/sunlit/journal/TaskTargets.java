@@ -9,7 +9,7 @@ import java.util.*;
 final class TaskTargets {
     record Target(int kind,String subject,int daily,int weekly) {}
     static final List<String> DEFAULTS=List.of(
-        "farming|minecraft:wheat|8|32", "farming|minecraft:carrots|8|32", "farming|minecraft:potatoes|8|32",
+        "farming|minecraft:wheat|8|32", "farming|minecraft:potatoes|8|32",
         "fishing|minecraft:cod|4|16", "fishing|minecraft:salmon|3|12",
         "mining|minecraft:coal_ore|8|32", "mining|minecraft:iron_ore|6|24", "mining|minecraft:copper_ore|8|32",
         "cooking|minecraft:bread|6|24", "cooking|minecraft:baked_potato|6|24", "cooking|minecraft:mushroom_stew|3|12",
@@ -27,7 +27,9 @@ final class TaskTargets {
         if(!(entry instanceof String text))return false;
         try{parse(text);return true;}catch(RuntimeException e){return false;}
     }
+    static boolean excluded(String id){return JournalConfig.EXCLUDED_TASK_TARGETS.get().contains(id);}
     private static boolean available(Target t) {
+        if(excluded(t.subject()))return false;
         ResourceLocation id=new ResourceLocation(t.subject());
         return switch(t.kind()) {
             case 0 -> BuiltInRegistries.BLOCK.containsKey(id) && BuiltInRegistries.BLOCK.get(id) instanceof net.minecraft.world.level.block.CropBlock;

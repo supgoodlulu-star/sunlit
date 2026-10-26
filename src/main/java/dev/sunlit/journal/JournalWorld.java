@@ -48,7 +48,7 @@ public final class JournalWorld extends SavedData {
             // Migrate only untouched legacy tasks; preserve earned progress and claimed rewards.
             for(int i=0;i<3;i++){
                 CompoundTag task=d.getCompound(key).getCompound(""+i);
-                if(!task.contains("subject")&&task.getInt("progress")==0&&!task.getBoolean("claimed")){
+                if((!task.contains("subject")||TaskTargets.excluded(task.getString("subject")))&&task.getInt("progress")==0&&!task.getBoolean("claimed")){
                     TaskTargets.assign(task,period,false);setDirty();
                 }
             }

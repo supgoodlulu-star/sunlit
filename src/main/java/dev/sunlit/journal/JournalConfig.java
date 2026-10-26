@@ -5,6 +5,7 @@ public final class JournalConfig {
     public static final ForgeConfigSpec.BooleanValue DEBUG;
     public static final ForgeConfigSpec.IntValue FESTIVAL_GOAL;
     public static final ForgeConfigSpec.ConfigValue<java.util.List<? extends String>> TASK_TARGETS;
+    public static final ForgeConfigSpec.ConfigValue<java.util.List<? extends String>> EXCLUDED_TASK_TARGETS;
     static {
         var b = new ForgeConfigSpec.Builder();
         DEBUG = b.comment("Log integration failures without player secrets").define("debug", false);
@@ -13,6 +14,8 @@ public final class JournalConfig {
             "Activities: farming (mature CropBlock), fishing (fish item), mining (natural ore block), cooking (edible output), ranching (baby entity).",
             "Modded blocks, items and animals may be added. Restart the server after editing. Existing tasks keep their targets.")
             .defineListAllowEmpty("taskTargets", TaskTargets.DEFAULTS, TaskTargets::valid);
+        EXCLUDED_TASK_TARGETS = b.comment("Targets disabled by this modpack. Zero-progress tasks for these IDs are safely reassigned; started/claimed tasks are preserved.")
+            .defineListAllowEmpty("excludedTaskTargets", java.util.List.of("minecraft:carrots"), x->x instanceof String s&&net.minecraft.resources.ResourceLocation.tryParse(s)!=null);
         SPEC = b.build();
     }
 }
