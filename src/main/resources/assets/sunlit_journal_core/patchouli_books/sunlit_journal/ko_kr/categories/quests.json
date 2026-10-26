@@ -1,0 +1,6 @@
+{
+  "name": "업무 일지",
+  "description": "일일 업무 3개와 주간 업무 3개가 서버 UTC 날짜로 갱신됩니다. 완료한 업무는 전용 화면에서 보상을 수령하세요. 공동 계절 축제는 기여자에게 자동 보상합니다.",
+  "icon": "sunlit_journal_core:textures/gui/icons/quests.png",
+  "sortnum": 2
+}

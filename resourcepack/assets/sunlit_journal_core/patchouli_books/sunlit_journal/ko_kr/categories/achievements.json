@@ -1,0 +1,6 @@
+{
+  "name": "업적 도감",
+  "description": "농사·낚시·채광·요리·목축 업적과 현재 개인 기본 계좌 자산을 확인합니다. 이미 획득한 칭호는 자산이 줄어도 유지됩니다. 계좌를 읽을 수 없으면 판정을 보류합니다.",
+  "icon": "sunlit_journal_core:textures/gui/icons/achievements.png",
+  "sortnum": 3
+}

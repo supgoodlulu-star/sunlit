@@ -1,0 +1,7 @@
+.gradle/
+build/
+run/
+*.log
+.idea/
+run-gametest/
+provided-mods/

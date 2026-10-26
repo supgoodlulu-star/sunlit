@@ -1,0 +1,48 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+version = '0.4.0-dev'
+group = 'dev.sunlit.journal'
+base { archivesName = 'sunlit-journal-core' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client { workingDirectory project.file('run'); mods { sunlit_journal_core { source sourceSets.main } } }
+        server { workingDirectory project.file('run'); mods { sunlit_journal_core { source sourceSets.main } } }
+    }
+}
+repositories { maven { url = 'https://maven.minecraftforge.net' } }
+dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.3.0' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+
+jar.finalizedBy('reobfJar')
+
+minecraft.runs {
+    gameTestServer {
+        workingDirectory project.file('run-gametest')
+        property 'forge.enabledGameTestNamespaces', 'sunlit_journal_core'
+        property 'forge.logging.console.level', 'info'
+        mods { sunlit_journal_core { source sourceSets.main; source sourceSets.test } }
+    }
+}
+
+// Optional user-provided mods, remapped by ForgeGradle for development only.
+// Normal source builds need no third-party mod JARs because integrations are isolated.
+if (providers.gradleProperty('integrationMods').getOrElse('false').toBoolean()) {
+    def modDirectory = providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+    repositories { flatDir { dirs modDirectory } }
+    dependencies {
+        runtimeOnly fg.deobf('sunlit.local:servernick:1.2.0')
+        runtimeOnly fg.deobf('sunlit.local:puffish_skills:0.16.1-1.20-forge')
+        runtimeOnly fg.deobf('sunlit.local:Patchouli:1.20.1-85-FORGE')
+    }
+    minecraft.runs.gameTestServer.property 'sunlit.integrationTests', 'true'
+    minecraft.runs.all {
+        property 'mixin.env.remapRefMap', 'true'
+        property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+    }
+    tasks.matching { it.name in ['runGameTestServer', 'runClient', 'runServer'] }.configureEach {
+        dependsOn 'createSrgToMcp'
+    }
+}

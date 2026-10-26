@@ -1,0 +1,6 @@
+{
+  "name": "생활 기술",
+  "description": "Pufferfish Skills의 실제 카테고리·레벨·경험치·해금 스킬을 조회합니다. 효과 설명은 공개 API에 없으므로 원본 스킬 트리에서 확인합니다.",
+  "icon": "sunlit_journal_core:textures/gui/icons/skills.png",
+  "sortnum": 1
+}

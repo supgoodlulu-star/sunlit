@@ -1,0 +1,13 @@
+{
+  "name": "생활 기술",
+  "category": "sunlit_journal_core:skills",
+  "icon": "sunlit_journal_core:textures/gui/icons/skills.png",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "생활 기술",
+      "text": "Pufferfish Skills의 실제 카테고리·레벨·경험치·해금 스킬을 조회합니다. 효과 설명은 공개 API에 없으므로 원본 스킬 트리에서 확인합니다.$(br2)$(c:/sunlit journal skills)$(#8E586A)▶ 생활 기술 화면 열기$(/c)$(br2)명령어: /sunlit journal skills"
+    }
+  ]
+}

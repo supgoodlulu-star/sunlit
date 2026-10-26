@@ -1,0 +1,13 @@
+{
+  "name": "업무 일지",
+  "category": "sunlit_journal_core:quests",
+  "icon": "sunlit_journal_core:textures/gui/icons/quests.png",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "업무 일지",
+      "text": "일일 업무 3개와 주간 업무 3개가 서버 UTC 날짜로 갱신됩니다. 완료한 업무는 전용 화면에서 보상을 수령하세요. 공동 계절 축제는 기여자에게 자동 보상합니다.$(br2)$(c:/sunlit journal quests)$(#8E586A)▶ 업무 일지 화면 열기$(/c)$(br2)명령어: /sunlit journal quests"
+    }
+  ]
+}

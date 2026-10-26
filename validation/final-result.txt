@@ -1,0 +1,8 @@
+Final source validation: PASS
+Command (from /workspace/sunlit): JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --no-daemon --max-workers=2 -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
+Forge 1.20.1-47.3.0 compilation and reobfJar: PASS
+GameTest: 11 required tests passed, 0 failed. Process exit 0.
+17 JSON documents, 5 PNG headers, icon/category targets and mods.toml: PASS
+Wrapper --version and repeatable installation script: PASS
+Ordinary Gradle test task: no JUnit tests; GameTest executed explicitly.
+No graphical client, Essential multiplayer, actual Serene Seasons runtime or actual Numismatics/Utils runtime verified. See VALIDATION.md.

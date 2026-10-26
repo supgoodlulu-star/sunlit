@@ -1,0 +1,15 @@
+{
+  "name": "모험가의 수첩",
+  "landing_text": "$(#60472F)일상의 작은 성취를 기록하는 모험가의 수첩.$(br2)$(l:sunlit_journal_core:profile_intro)프로필$(/l)$(br2)$(l:sunlit_journal_core:skills_intro)생활 기술$(/l)$(br2)$(l:sunlit_journal_core:quests_intro)업무 일지$(/l)$(br2)$(l:sunlit_journal_core:achievements_intro)업적 도감$(/l)$(br2)",
+  "version": 4,
+  "creative_tab": "minecraft:tools_and_utilities",
+  "model": "patchouli:book_blue",
+  "show_progress": false,
+  "use_resource_pack": true,
+  "i18n": false,
+  "use_blocky_font": true,
+  "subtitle": "Alpha.4 개발판",
+  "text_color": "60472F",
+  "header_color": "60472F",
+  "link_color": "8E586A"
+}

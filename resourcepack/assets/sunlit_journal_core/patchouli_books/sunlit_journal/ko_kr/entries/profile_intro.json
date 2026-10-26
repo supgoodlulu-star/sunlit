@@ -1,0 +1,13 @@
+{
+  "name": "프로필",
+  "category": "sunlit_journal_core:profile",
+  "icon": "sunlit_journal_core:textures/gui/icons/profile.png",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "title": "프로필",
+      "text": "사용자명, Server Nick 닉네임, 보유 칭호와 대표 칭호를 관리합니다. 변경은 서버에서 검증하며 횟수 제한이나 명찰 소모가 없습니다.$(br2)$(c:/sunlit journal profile)$(#8E586A)▶ 프로필 화면 열기$(/c)$(br2)명령어: /sunlit journal profile"
+    }
+  ]
+}
