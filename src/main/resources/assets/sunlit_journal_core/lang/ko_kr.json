@@ -1,0 +1,12 @@
+{
+  "sunlit_journal_core.skill_category.society.farming": "농사",
+  "sunlit_journal_core.skill_category.society.fishing": "낚시",
+  "sunlit_journal_core.skill_category.society.mining": "채광",
+  "sunlit_journal_core.skill_category.society.cooking": "요리",
+  "sunlit_journal_core.skill_category.society.husbandry": "목축",
+  "sunlit_journal_core.skill_category.society.combat": "전투",
+  "sunlit_journal_core.skill_category.society.foraging": "채집",
+  "sunlit_journal_core.skill_category.society.woodcutting": "벌목",
+  "sunlit_journal_core.skill_category.unknown": "생활 기술",
+  "sunlit_journal_core.skill.unknown": "이름 미등록 기술 %s"
+}

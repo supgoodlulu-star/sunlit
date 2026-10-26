@@ -1,0 +1,12 @@
+{
+  "sunlit_journal_core.skill_category.society.farming": "Farming",
+  "sunlit_journal_core.skill_category.society.fishing": "Fishing",
+  "sunlit_journal_core.skill_category.society.mining": "Mining",
+  "sunlit_journal_core.skill_category.society.cooking": "Cooking",
+  "sunlit_journal_core.skill_category.society.husbandry": "Animal Husbandry",
+  "sunlit_journal_core.skill_category.society.combat": "Combat",
+  "sunlit_journal_core.skill_category.society.foraging": "Foraging",
+  "sunlit_journal_core.skill_category.society.woodcutting": "Woodcutting",
+  "sunlit_journal_core.skill_category.unknown": "Life Skill",
+  "sunlit_journal_core.skill.unknown": "Unnamed skill %s"
+}

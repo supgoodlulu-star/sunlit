@@ -70,12 +70,12 @@ public final class JournalScreen extends Screen {
         var categories=s.getList("categories",Tag.TAG_COMPOUND);
         if(categories.isEmpty())line("서버에 설정된 생활 기술 카테고리가 없습니다.");
         for(int i=0;i<categories.size();i++){
-            var c=categories.getCompound(i);line(c.getString("id")+(c.getBoolean("unlocked")?"":" [잠김]"));
+            var c=categories.getCompound(i);line(SkillLabels.category(c.getString("id"))+(c.getBoolean("unlocked")?"":" [잠김]"));
             if(c.getBoolean("hasXp"))line("레벨 "+c.getInt("level")+" / 경험치 "+c.getInt("xp")+" / 다음 단계 요구 "+c.getInt("required"));
             var skills=c.getList("skills",Tag.TAG_STRING);
-            for(int j=0;j<skills.size();j++)line("  해금: "+skills.getString(j));
+            for(int j=0;j<skills.size();j++)line("  해금: "+SkillLabels.skill(c.getString("id"),skills.getString(j),j+1));
         }
-        line(s.getString("effectsNote"));
+        line("기술의 효과와 자세한 설명은 원본 스킬 트리에서 확인할 수 있습니다.");
         button("원본 스킬 트리",left+118,top+panelHeight-28,110,()->request("skillsTree",""));
     }
     private void quests(){

@@ -7,7 +7,7 @@
 - Minecraft 1.20.1, Forge 47.3.0, JDK 17, Gradle Wrapper 8.14.3, ForgeGradle 6.0.54.
 - Windows: `gradlew.bat build`
 - Linux/macOS: `chmod +x gradlew` 후 `./gradlew build`
-- 결과: `build/libs/sunlit-journal-core-0.4.0-dev.jar`
+- 결과: `build/libs/sunlit-journal-core-0.4.1-dev.jar`
 - 기존 Alpha.3.1 JAR은 별도로 보관하고 mods 폴더에서는 새 JAR로 교체합니다. 두 버전은 같은 modId이므로 동시에 설치하지 않습니다.
 - 호스트와 접속자 모두 새 모드를 설치합니다. Essential 설정이나 원본 외부 모드 설정을 변경하지 않습니다.
 - 기존 월드를 복사해 테스트합니다. 기존 플레이어 칭호 키 `SunlitJournalTitles` 및 `owned`, `equipped` 형식을 유지했습니다.
@@ -71,3 +71,10 @@ Patchouli 책 지급:
 ```
 
 ForgeGradle은 개발 환경용으로 위 JAR들을 remap하고 Mixin refmap도 개발 매핑에 연결합니다. 검사 월드는 `run-gametest/`에 생성됩니다. 실제 게임 월드를 해당 경로에 두지 마세요. 자세한 실제 결과와 남은 수동 검사는 `VALIDATION.md`를 참조하세요.
+
+## 0.4.1 화면 표시 수정
+
+- 생활 기술 카테고리와 해금 기술 이름은 Pufferfish Skills 0.16.1의 클라이언트 설정에 있는 원본 제목과 현재 리소스팩 번역을 사용합니다.
+- 원본 이름을 읽지 못한 Society 카테고리는 수첩의 번역 리소스를 사용합니다. 알 수 없는 기술은 내부 ID 대신 이름 미등록 안내를 표시합니다.
+- 번역 리소스가 없는 스킬의 실제 이름을 추측하지 않습니다.
+- 빌드와 리소스 검사 통과. 실제 게임 화면에서 원본 모드팩 번역 일치 여부는 추가 확인이 필요합니다.
