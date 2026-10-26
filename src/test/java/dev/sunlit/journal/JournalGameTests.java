@@ -205,9 +205,9 @@ public class JournalGameTests {
         h.runAfterDelay(700,()->{
             var level=a.getServer().getLevel(SkyGarden.DIMENSION);
             h.assertTrue(!level.getBlockState(SkyGarden.LANDING.below()).isAir(),"Landing not generated");
-            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(45,150,0)).isAir(),"Central island did not expand");
-            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(0,187,-100)).isAir(),"Watchtower missing");
-            h.assertTrue(level.getBlockState(new net.minecraft.core.BlockPos(-36,151,-19)).is(net.minecraft.world.level.block.Blocks.BOOKSHELF),"Library interior missing");
+            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(45,130,0)).isAir(),"Central island did not expand");
+            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(33,190,-24)).isAir(),"Watchtower missing");
+            h.assertTrue(level.getBlockState(new net.minecraft.core.BlockPos(-14,135,-1)).is(net.minecraft.world.level.block.Blocks.BOOKSHELF),"Library interior missing");
             for(int i=0;i<3;i++)h.assertTrue(level.getBlockState(SkyGarden.RECORDS[i]).is(SkyContent.RELICS[i].get()),"Record missing from real map");
             SkyGarden.enter(a);
             h.assertTrue(SkyGarden.inside(a),"Entry failed");
@@ -245,6 +245,15 @@ public class JournalGameTests {
         SkyGarden.interact(p,new net.minecraft.core.BlockPos(0,151,14),6);
         h.assertFalse(SkyGarden.inside(p),"Legacy return stone stranded player");
         h.assertTrue(SkyGarden.player(p).getBoolean("complete")&&SkyGarden.player(p).getInt("records")==7,"Upgrade reset personal rewards");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void grandSkyReturnAfterCitadelUpgrade(GameTestHelper h){
+        var p=player(h);var state=SkyGarden.player(p);state.putBoolean("complete",true);state.putInt("records",7);
+        var back=new CompoundTag();back.putString("dimension","minecraft:overworld");back.putDouble("x",p.getX());back.putDouble("y",p.getY());back.putDouble("z",p.getZ());state.put("return",back);
+        var key=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,new net.minecraft.resources.ResourceLocation(SunlitJournal.MODID,"sky_garden_grand"));
+        var old=p.getServer().getLevel(key);h.assertTrue(old!=null,"Grand garden dimension was removed");
+        p.teleportTo(old,.5,151,33.5,0,0);p.moveTo(.5,151,33.5,0,0);SkyGarden.interact(p,new net.minecraft.core.BlockPos(0,151,31),6);
+        h.assertFalse(SkyGarden.inside(p),"Grand garden return stopped working");h.assertTrue(SkyGarden.player(p).getBoolean("complete"),"Grand garden upgrade erased unlock");h.succeed();
     }
 
     @net.minecraft.gametest.framework.GameTestGenerator

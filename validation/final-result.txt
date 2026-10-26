@@ -1,12 +1,11 @@
-Sunlit Journal 0.5.1-dev validation: PASS
+Sunlit Journal 0.5.2-dev, white citadel architectural preview: PASS
 Server: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
-Forge GameTest: All 20 required tests passed, exit 0.
-Added assertions: expanded central island, actual library bookshelves, watchtower upper floor, legacy return stone, retained personal records/unlocks.
-Existing coverage: concrete tasks, nickname/title chat, sky records/puzzle/personal rewards/save/return, cosmetic NBT preservation and foreign-model protection.
+Forge GameTest: All 21 required tests passed, exit 0.
+Coverage includes actual citadel dimension/geometry, records/puzzle/personal reward isolation, NBT persistence, item cosmetic preservation, and both previous maps' return stones/unlock retention.
 Client: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods -I tools/visual-preview/sky-check.gradle runClient
-Actual integrated-server check: SKY_GARDEN_CHECK PASS. New map generation, entry, real architecture rendering, puzzle, both cosmetic models, journal and return.
-Photography uses render distance 20 and clouds off. Test harness teleports between locations; it is not an exhaustive on-foot route or full modpack/Essential multiplayer test.
-Expanded map is a separate dimension. Legacy dimension data and player progression are preserved. Only the disposable test copy resets its build/unlock flags.
-Production JAR excludes all test harnesses.
-Resource validation: 53 JSON documents and 31 PNG headers/references passed.
-Final production build: BUILD SUCCESSFUL, exit 0.
+Actual integrated-server check: SKY_GARDEN_CHECK PASS, process exit 0. Entry, generated architecture rendering, puzzle, both item models, journal and return.
+Photography uses default renderer, render distance 20 and clouds off. Reference shading/clouds are not reproduced. Camera travel is automated, not an exhaustive on-foot route test.
+This release is a central-building design preview. Some upper towers are exterior silhouettes without complete accessible interiors.
+Previous dimensions and player progression are preserved; only disposable test fixtures reset build/unlock flags.
+Resource validation: 55 JSON documents, 31 PNG headers/references passed.
+Production JAR excludes all test harnesses. Full modpack/shader/Essential compatibility remains outside these tests.

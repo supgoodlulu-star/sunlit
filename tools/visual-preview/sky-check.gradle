@@ -10,6 +10,6 @@ allprojects {
         minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.skyCheck
         minecraft.runs.client.property 'sunlit.skyCheck', 'true'
         minecraft.runs.client.property 'sunlit.previewOutput', new File(rootDir, 'validation').absolutePath
-        minecraft.runs.client.args '--width', '1280', '--height', '900', '--quickPlaySingleplayer', 'SunlitGrandTest'
+        minecraft.runs.client.args '--width', '1280', '--height', '900', '--quickPlaySingleplayer', 'SunlitCitadelTest'
     }
 }

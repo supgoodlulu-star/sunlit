@@ -1,0 +1,18 @@
+{
+  "type": "sunlit_journal_core:sky_citadel",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:the_void",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "height": 1,
+          "block": "minecraft:air"
+        }
+      ],
+      "structure_overrides": []
+    }
+  }
+}

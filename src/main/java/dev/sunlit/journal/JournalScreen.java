@@ -224,9 +224,9 @@ public final class JournalScreen extends Screen {
             card("구름 너머의 소문","자수정 조각 네 개와 깃털 네 개로 나침반을 감싸면 잊힌 별길을 가리킨대요. 별길 나침반을 손에 들고 우클릭해 보세요.",12,"미발견",0,0);
             return;
         }
-        card("잊힌 하늘 정원","세 섬의 빛나는 기록석을 읽고, 천문대의 문양을 기록에 나온 순서로 깨워 보세요. 기록과 퍼즐은 각자의 모험으로 저장됩니다.",12,sky.getBoolean("complete")?"완료":"탐험 중",Integer.bitCount(sky.getInt("records")&7),3);
+        card("잊힌 하늘 정원","성채와 바깥 회랑의 빛나는 기록석을 읽고, 본당의 문양을 기록에 나온 순서로 깨워 보세요. 기록과 퍼즐은 각자의 모험으로 저장됩니다.",12,sky.getBoolean("complete")?"완료":"탐험 중",Integer.bitCount(sky.getInt("records")&7),3);
         String[] names={"달의 기록","잎의 기록","별의 기록"};
-        for(int i=0;i<3;i++)card(names[i],(sky.getInt("records")&(1<<i))!=0?new String[]{"달이 먼저 길을 비춥니다.","달빛을 받은 새싹이 두 번째로 깨어납니다.","마지막 별빛이 모이면 정원의 문이 열립니다."}[i]:"아직 읽지 않은 기록이에요. 중앙 정원과 두 작은 섬을 살펴보세요.",i==0?9:i==1?0:7,(sky.getInt("records")&(1<<i))!=0?"발견":"미발견",0,0);
+        for(int i=0;i<3;i++)card(names[i],(sky.getInt("records")&(1<<i))!=0?new String[]{"달이 먼저 길을 비춥니다.","달빛을 받은 새싹이 두 번째로 깨어납니다.","마지막 별빛이 모이면 정원의 문이 열립니다."}[i]:"아직 읽지 않은 기록이에요. 성채 안과 푸른 물길 바깥 회랑을 살펴보세요.",i==0?9:i==1?0:7,(sky.getInt("records")&(1<<i))!=0?"발견":"미발견",0,0);
         if(sky.getBoolean("complete")){
             actionCard("별빛의 잔상","손에 든 바닐라 검에 별빛 외형을 입힙니다. 공격력·내구도·인챈트는 바뀌지 않아요.",7,"영구 해금",0,0,"검 스킨 적용",true,()->request("skin","sword"));
             actionCard("구름결","손에 든 바닐라 곡괭이에 구름빛 외형을 입힙니다. 채굴 성능은 그대로 유지됩니다.",2,"영구 해금",0,0,"곡괭이 적용",true,()->request("skin","pickaxe"));
