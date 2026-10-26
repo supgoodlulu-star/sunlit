@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/wooden_sword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "sunlit_journal_core:sky_skin": 1
+      },
+      "model": "sunlit_journal_core:item/starlight_sword"
+    }
+  ]
+}

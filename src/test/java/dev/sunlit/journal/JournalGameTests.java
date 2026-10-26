@@ -198,6 +198,41 @@ public class JournalGameTests {
         d.remove("equipped");h.assertTrue(JournalChat.format(p,body).isEmpty(),"Unequipped title still displayed");h.succeed();
     }
 
+    @GameTest(template="empty",timeoutTicks=200) public static void skyMapBuildPuzzleAndReturn(GameTestHelper h){
+        var a=player(h);var b=player(h);a.setGameMode(GameType.SURVIVAL);var home=a.position();
+        h.assertTrue(a.getServer().getLevel(SkyGarden.DIMENSION)!=null,"Sky dimension datapack not loaded");
+        SkyGarden.travel(a);
+        h.runAfterDelay(80,()->{
+            var level=a.getServer().getLevel(SkyGarden.DIMENSION);
+            h.assertTrue(!level.getBlockState(SkyGarden.LANDING.below()).isAir(),"Landing not generated");
+            for(int i=0;i<3;i++)h.assertTrue(level.getBlockState(SkyGarden.RECORDS[i]).is(SkyContent.RELICS[i].get()),"Record missing from real map");
+            SkyGarden.enter(a);
+            h.assertTrue(SkyGarden.inside(a),"Entry failed");
+            h.assertTrue(SunlitJournal.owned(a).contains("구름 위의 손님"),"Discovery title missing");
+            for(int i=0;i<3;i++){var pos=SkyGarden.RECORDS[i];a.moveTo(pos.getX()+.5,pos.getY(),pos.getZ()+2.5,0,0);SkyGarden.interact(a,pos,i);}
+            h.assertTrue(SkyGarden.player(a).getInt("records")==7,"Records not collected: "+SkyGarden.player(a));
+            var pos=SkyGarden.RUNES[1];a.moveTo(pos.getX()+.5,pos.getY(),pos.getZ()+2.5,0,0);SkyGarden.interact(a,pos,4);
+            h.assertFalse(SkyGarden.player(a).getBoolean("complete"),"Wrong order unlocked reward");
+            for(int i=0;i<3;i++){pos=SkyGarden.RUNES[i];a.moveTo(pos.getX()+.5,pos.getY(),pos.getZ()+2.5,0,0);SkyGarden.interact(a,pos,i+3);}
+            h.assertTrue(SkyGarden.player(a).getBoolean("complete"),"Puzzle reward missing");
+            h.assertTrue(SunlitJournal.owned(a).contains("하늘 정원의 수호자"),"Hidden title missing");
+            h.assertFalse(SkyGarden.player(b).getBoolean("complete"),"Reward leaked to another player");
+            var loaded=new JournalWorld(JournalWorld.get(a.getServer()).save(new CompoundTag()));
+            h.assertTrue(loaded.player(a).getCompound("skyGarden").getBoolean("complete"),"Unlock did not persist");
+            SkyGarden.leave(a);h.assertFalse(SkyGarden.inside(a),"Return failed");h.succeed();
+        });
+    }
+    @GameTest(template="empty") public static void skySkinsPreserveEquipment(GameTestHelper h){
+        var p=player(h);var sword=new net.minecraft.world.item.ItemStack(Items.DIAMOND_SWORD);sword.setDamageValue(37);
+        sword.enchant(net.minecraft.world.item.enchantment.Enchantments.SHARPNESS,3);sword.setHoverName(net.minecraft.network.chat.Component.literal("보관 중인 검"));
+        p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,sword);var before=sword.save(new CompoundTag());
+        h.assertFalse(SkySkins.apply(p,"sword"),"Locked skin applied");SkyGarden.player(p).putBoolean("complete",true);
+        h.assertFalse(SkySkins.apply(p,"pickaxe"),"Wrong tool accepted");h.assertTrue(SkySkins.apply(p,"sword"),"Unlocked skin rejected");
+        h.assertTrue(sword.getDamageValue()==37&&sword.getItem()==Items.DIAMOND_SWORD,"Skin changed equipment");
+        h.assertTrue(SkySkins.apply(p,"clear"),"Skin removal failed");h.assertTrue(before.equals(sword.save(new CompoundTag())),"Original NBT changed");
+        sword.getOrCreateTag().putInt("CustomModelData",87);h.assertFalse(SkySkins.apply(p,"sword"),"Existing external skin overwritten");h.succeed();
+    }
+
     @net.minecraft.gametest.framework.GameTestGenerator
     public static Collection<net.minecraft.gametest.framework.TestFunction> integrationChecks(){
         if(!Boolean.getBoolean("sunlit.integrationTests"))return List.of();

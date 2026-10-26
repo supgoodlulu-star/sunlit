@@ -19,3 +19,13 @@ JDK 17, 작동하는 X11/OpenGL 디스플레이와 ForgeGradle 환경에서 프�
 ```
 
 제공 모드 3개(Server Nick, Pufferfish Skills, Patchouli)가 필요합니다. 테스트는 웅크림/우클릭 입력 이벤트와 키 등록·재지정·키 입력을 실제 클라이언트에서 발생시키고 서버 프로필 응답을 확인합니다. 실제 채팅을 보내 수신 횟수와 칭호/닉네임/테마 색·변경/해제·선행 취소를 검사합니다. 테스트 중에만 키를 H로 지정합니다. 성공 시 `SUNLIT_INPUT_CHAT_CHECK PASS`를 로그에 기록하고 종료합니다. 실제 사람의 마우스 클릭이나 인터넷 멀티플레이 검사는 아닙니다.
+
+## 하늘 정원 검사
+
+`runGameTestServer`가 만든 테스트 월드를 `run/saves/SunlitSkyTestFinal`로 복사한 뒤 실행합니다. 실제 월드를 사용하지 마세요. 테스트는 그 월드의 플레이어 장비·게임 모드·해금 상태를 변경합니다.
+
+```sh
+./gradlew -PintegrationMods=true -PintegrationModDir=/path/to/provided-mods -I tools/visual-preview/sky-check.gradle runClient
+```
+
+Minecraft가 실험적 차원 안내를 표시하면 테스트 복사본에서 계속을 선택합니다. 나침반 use 입력 → 하늘 차원 → 실제 맵 촬영 → 기록/퍼즐 → 두 스킨 네트워크 적용과 실제 모델 검증 → 수첩 → 귀환을 검사합니다. 성공 표시는 `SKY_GARDEN_CHECK PASS`입니다. 해당 검사 클래스는 배포 JAR에 포함하지 않습니다.

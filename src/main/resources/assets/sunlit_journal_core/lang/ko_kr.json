@@ -17,5 +17,14 @@
   "sunlit_journal_core.skill_category.society.life": "생활 기술",
   "sunlit_journal_core.skill_category.society.books": "서적",
   "key.sunlit_journal_core.open_profile": "프로필 열기",
-  "key.categories.sunlit_journal_core": "모험가의 수첩"
+  "key.categories.sunlit_journal_core": "모험가의 수첩",
+  "item.sunlit_journal_core.star_compass": "별길 나침반",
+  "item.sunlit_journal_core.star_compass.hint": "우클릭: 하늘 정원으로 이동 / 정원에서는 귀환",
+  "block.sunlit_journal_core.moon_record": "달의 기록석",
+  "block.sunlit_journal_core.leaf_record": "잎의 기록석",
+  "block.sunlit_journal_core.star_record": "별의 기록석",
+  "block.sunlit_journal_core.moon_rune": "달의 문양",
+  "block.sunlit_journal_core.leaf_rune": "잎의 문양",
+  "block.sunlit_journal_core.star_rune": "별의 문양",
+  "block.sunlit_journal_core.return_stone": "별길 귀환석"
 }

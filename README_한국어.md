@@ -1,4 +1,4 @@
-# 모험가의 수첩 Alpha.4.4 통합 개발 소스
+# 모험가의 수첩 Alpha.5 통합 개발 소스
 
 제공된 Alpha.3.1 성공 소스를 출발점으로 작성한 Forge 프로젝트입니다. 최신 Alpha.4 소스는 제공 자료에 없었고, 사용자의 지시에 따라 확보된 자료만으로 통합했습니다. 검증되지 않은 모드팩 전체 동작을 완료로 표시하지 않기 위해 `Complete` 대신 `Integrated_Source`로 배포합니다.
 
@@ -7,7 +7,7 @@
 - Minecraft 1.20.1, Forge 47.3.0, JDK 17, Gradle Wrapper 8.14.3, ForgeGradle 6.0.54.
 - Windows: `gradlew.bat build`
 - Linux/macOS: `chmod +x gradlew` 후 `./gradlew build`
-- 결과: `build/libs/sunlit-journal-core-0.4.4-dev.jar`
+- 결과: `build/libs/sunlit-journal-core-0.5.0-dev.jar`
 - 기존 Alpha.3.1 JAR은 별도로 보관하고 mods 폴더에서는 새 JAR로 교체합니다. 두 버전은 같은 modId이므로 동시에 설치하지 않습니다.
 - 호스트와 접속자 모두 새 모드를 설치합니다. Essential 설정이나 원본 외부 모드 설정을 변경하지 않습니다.
 - 기존 월드를 복사해 테스트합니다. 기존 플레이어 칭호 키 `SunlitJournalTitles` 및 `owned`, `equipped` 형식을 유지했습니다.
@@ -128,3 +128,9 @@ taskTargets = [
 Server Nick의 기존 처리와 마찬가지로 칭호 채팅은 시스템 채팅으로 한 번 전송합니다. Server Nick의 일반 채팅 처리보다 먼저 대표 칭호 메시지를 처리하며, 앞선 이벤트에서 취소된 채팅을 다시 전송하지 않습니다. 다른 전체 채팅 포맷·필터 모드 조합은 별도 확인 대상입니다.
 
 검증: 실제 Forge 서버 GameTest 17개 통과. 제공된 Server Nick·Skills·Patchouli와 실제 클라이언트/통합 서버 사이에서 허공 제스처·블록/엔티티 제외·키 재지정·서버 프로필 응답·채팅 중복 방지·닉네임·칭호 변경/해제·색 전송·앞선 채팅 취소를 검사했습니다. 실제 Essential 친구 접속 전체 모드팩 검증은 아닙니다.
+
+## 0.5.0 첫 히든맵: 잊힌 하늘 정원
+
+별길 나침반 제작 → 우클릭 입장 → 세 섬의 기록 수집 → 천문대 문양 퍼즐 → 개인별 히든 칭호와 치장 영구 해금 → 수첩에서 외형 적용/해제까지 연결했습니다. 별도 차원에 생성하므로 기존 지상 지형을 덮어쓰지 않습니다. 상세 제작법·진행·보상·호환 범위는 [SKY_GARDEN.md](SKY_GARDEN.md)를 확인하세요.
+
+기존 프로필·업무·축제·칭호 채팅 기능은 유지합니다. 최초의 플레이 가능한 하늘섬 버전이며, 전체 모드팩의 리소스팩/셰이더·Essential 다인 접속 검증은 별도입니다.

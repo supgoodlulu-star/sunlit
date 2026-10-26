@@ -14,7 +14,7 @@ import java.util.*;
 public final class JournalNetwork {
     public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation(SunlitJournal.MODID,"journal"),()->"4", "4"::equals,"4"::equals);
     private static final Map<UUID,Long> WATCHING=new HashMap<>(), LAST=new HashMap<>();
-    private static final Set<String> PAGES=Set.of("profile","skills","quests","achievements");
+    private static final Set<String> PAGES=Set.of("profile","skills","quests","achievements","secrets");
     public record Request(String action,String value){
         public static void encode(Request m,FriendlyByteBuf b){b.writeUtf(m.action,32);b.writeUtf(m.value,256);}
         public static Request decode(FriendlyByteBuf b){return new Request(b.readUtf(32),b.readUtf(256));}
@@ -48,6 +48,8 @@ public final class JournalNetwork {
                             String[] args=m.value.split(":",-1);
                             if(args.length==2)w.claim(p,args[0],Integer.parseInt(args[1]));
                         }
+                        case "skyReturn" -> SkyGarden.leave(p);
+                        case "skin" -> {if(!SkySkins.apply(p,m.value))p.sendSystemMessage(Component.literal("[치장] 해금한 스킨과 손에 든 장비를 확인해 주세요. 다른 외형이 적용된 장비는 먼저 해제해 주세요."));}
                         case "skillsTree" -> {
                             var c=Class.forName("net.puffish.skillsmod.api.SkillsAPI");
                             Integrations.call(c,"openScreen",new Class<?>[]{ServerPlayer.class},p);return;

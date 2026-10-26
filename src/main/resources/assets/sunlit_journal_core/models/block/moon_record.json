@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "sunlit_journal_core:block/moon_record"
+  }
+}

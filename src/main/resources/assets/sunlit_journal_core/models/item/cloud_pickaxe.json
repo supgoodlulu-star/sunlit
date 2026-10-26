@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "sunlit_journal_core:item/cloud_pickaxe"
+  }
+}

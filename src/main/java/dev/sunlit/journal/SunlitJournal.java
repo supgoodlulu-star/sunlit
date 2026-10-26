@@ -28,7 +28,8 @@ public class SunlitJournal {
         "견습요리사", "마을요리사", "별빛셰프", "주방지기",
         "동물친구", "목장의일꾼", "초원의수호자", "초원목자",
         "동전수집가", "알뜰상인", "황금상단주", "억만장자",
-        "사계요정", "벚꽃요정", "별빛요정", "풍요요정", "눈꽃요정"
+        "사계요정", "벚꽃요정", "별빛요정", "풍요요정", "눈꽃요정",
+        "구름 위의 손님", "하늘 정원의 수호자"
     };
     private static final Set<String> ALLOWED = new LinkedHashSet<>(Arrays.asList(TITLES));
 
@@ -38,6 +39,8 @@ public class SunlitJournal {
         MinecraftForge.EVENT_BUS.register(new JournalChat());
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, JournalConfig.SPEC);
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, JournalClientConfig.SPEC);
+        SkyContent.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
+        MinecraftForge.EVENT_BUS.register(new SkyGarden());
         JournalNetwork.register();
     }
 
@@ -70,7 +73,7 @@ public class SunlitJournal {
                 JournalNetwork.send(ctx.getSource().getPlayerOrException(), true, "profile"); return 1;
             }).then(Commands.argument("page", StringArgumentType.word()).executes(ctx -> {
                 String page=StringArgumentType.getString(ctx,"page");
-                if(!Set.of("profile","skills","quests","achievements").contains(page))return 0;
+                if(!Set.of("profile","skills","quests","achievements","secrets").contains(page))return 0;
                 JournalNetwork.send(ctx.getSource().getPlayerOrException(),true,page);return 1;
             })))
             .then(Commands.literal("titles").executes(ctx -> {
