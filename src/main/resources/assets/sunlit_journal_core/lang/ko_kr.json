@@ -15,5 +15,7 @@
   "sunlit_journal_core.task.crop.beetroots": "비트",
   "sunlit_journal_core.skill_category.society.exploration": "탐험",
   "sunlit_journal_core.skill_category.society.life": "생활 기술",
-  "sunlit_journal_core.skill_category.society.books": "서적"
+  "sunlit_journal_core.skill_category.society.books": "서적",
+  "key.sunlit_journal_core.open_profile": "프로필 열기",
+  "key.categories.sunlit_journal_core": "모험가의 수첩"
 }

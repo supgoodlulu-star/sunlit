@@ -15,5 +15,7 @@
   "sunlit_journal_core.task.crop.beetroots": "Beetroot",
   "sunlit_journal_core.skill_category.society.exploration": "Exploration",
   "sunlit_journal_core.skill_category.society.life": "Life Skills",
-  "sunlit_journal_core.skill_category.society.books": "Books"
+  "sunlit_journal_core.skill_category.society.books": "Books",
+  "key.sunlit_journal_core.open_profile": "Open Profile",
+  "key.categories.sunlit_journal_core": "Sunlit Journal"
 }

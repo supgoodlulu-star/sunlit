@@ -139,7 +139,7 @@ public final class JournalWorld extends SavedData {
         Set<String> owned=SunlitJournal.owned(p);
         if(owned.add(title)){
             SunlitJournal.saveOwned(p,owned);
-            p.sendSystemMessage(net.minecraft.network.chat.Component.literal("[모험가의 수첩] 칭호 획득: ["+title+"]"));
+            p.sendSystemMessage(net.minecraft.network.chat.Component.literal("[모험가의 수첩] 칭호 획득: ").append(TitleThemes.badge(title)));
         }
     }
     public CompoundTag snapshot(ServerPlayer p){

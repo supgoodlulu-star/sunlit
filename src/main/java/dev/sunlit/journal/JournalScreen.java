@@ -254,7 +254,7 @@ public final class JournalScreen extends Screen {
                 continue;
             }
             int headingY=y+13;
-            for(var line:c.heading){g.drawString(font,line,x+47,headingY,TEXT,false);headingY+=lineStep;}
+            for(var line:c.heading){g.drawString(font,line,x+47,headingY,TitleThemes.known(c.title)?TitleThemes.color(c.title,false):TEXT,false);headingY+=lineStep;}
             if(!c.badge.isEmpty()){
                 boolean done=c.badge.equals("획득")||c.badge.equals("수령 완료")||c.badge.equals("장착 중");
                 rounded(g,x+cardWidth-c.badgeWidth-10,y+12,c.badgeWidth,18,7,done?0xFFD1E0C5:0xFFE7D1BB);

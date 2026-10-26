@@ -182,6 +182,22 @@ public class JournalGameTests {
         for(int i=0;i<20;i++)h.assertFalse(TaskTargets.choose(0).subject().equals("minecraft:carrots"),"Disabled crop was generated");h.succeed();
     }
 
+    @GameTest(template="empty") public static void titleChatOwnershipAndStyles(GameTestHelper h){
+        var p=player(h);var d=SunlitJournal.data(p);
+        d.putString("equipped","새싹농부");
+        h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("안녕")).isEmpty(),"Unowned title appeared in chat");
+        d.putString("owned","새싹농부|별빛셰프");
+        var body=net.minecraft.network.chat.Component.literal("안녕하세요").withStyle(net.minecraft.ChatFormatting.AQUA);
+        var line=JournalChat.format(p,body).orElseThrow();
+        h.assertTrue(line.getString().equals("[새싹농부] "+p.getDisplayName().getString()+": 안녕하세요"),"Title/name/body order incorrect");
+        h.assertTrue(line.getSiblings().get(0).getStyle().getColor().getValue()==TitleThemes.color("새싹농부",true),"Chat title color missing");
+        h.assertTrue(line.getSiblings().get(line.getSiblings().size()-1).getStyle().equals(body.getStyle()),"Title theme leaked into message body");
+        h.assertTrue(body.getString().equals("안녕하세요"),"Formatting mutated original message");
+        d.putString("equipped","별빛셰프");
+        h.assertTrue(JournalChat.format(p,body).orElseThrow().getString().startsWith("[별빛셰프]"),"New equipped title not used immediately");
+        d.remove("equipped");h.assertTrue(JournalChat.format(p,body).isEmpty(),"Unequipped title still displayed");h.succeed();
+    }
+
     @net.minecraft.gametest.framework.GameTestGenerator
     public static Collection<net.minecraft.gametest.framework.TestFunction> integrationChecks(){
         if(!Boolean.getBoolean("sunlit.integrationTests"))return List.of();
@@ -198,6 +214,17 @@ public class JournalGameTests {
                     h.assertTrue(rejected,"Nickname validation accepted an oversized input");
                     h.assertTrue("별빛".equals(Integrations.nick(p)),"Invalid input mutated nickname");
                     Integrations.nick(p,"",true);h.assertTrue(Integrations.nick(p).isEmpty(),"Reset did not clear nickname");
+                }catch(ReflectiveOperationException e){throw new RuntimeException(e);}h.succeed();
+            }),
+            integration("titlechatnicknameintegration",h->{
+                var p=player(h);var d=SunlitJournal.data(p);d.putString("owned","새싹농부");d.putString("equipped","새싹농부");
+                try{
+                    Integrations.nick(p,"햇살테스트",false);
+                    var formatted=JournalChat.format(p,net.minecraft.network.chat.Component.literal("안녕!")).orElseThrow();
+                    h.assertTrue(formatted.getString().equals("[새싹농부] 햇살테스트: 안녕!"),"Actual nickname not retained in themed chat");
+                    var event=new net.minecraftforge.event.ServerChatEvent(p,"안녕!",net.minecraft.network.chat.Component.literal("안녕!"));
+                    net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
+                    h.assertTrue(event.isCanceled(),"Titled chat fell through to duplicate nickname handler");
                 }catch(ReflectiveOperationException e){throw new RuntimeException(e);}h.succeed();
             }),
             integration("skillsapiintegration",h->{

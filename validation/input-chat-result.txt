@@ -1,0 +1,8 @@
+[08:11:44] [Server thread/INFO] [minecraft/MinecraftServer]: [새싹농부] 햇살테스트: SUNLIT_CHAT_CHECK_A
+[08:11:44] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] [새싹농부] 햇살테스트: SUNLIT_CHAT_CHECK_A
+[08:11:45] [Server thread/INFO] [minecraft/MinecraftServer]: [별빛셰프] 햇살테스트: SUNLIT_CHAT_CHECK_B
+[08:11:46] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] [별빛셰프] 햇살테스트: SUNLIT_CHAT_CHECK_B
+[08:11:47] [ForkJoinPool.commonPool-worker-1/INFO] [minecraft/MinecraftServer]: <햇살테스트> SUNLIT_CHAT_CHECK_C
+[08:11:47] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] <햇살테스트> SUNLIT_CHAT_CHECK_C
+[08:11:49] [Render thread/INFO] [de.su.jo.JournalInputChatCheck/]: SUNLIT_INPUT_CHAT_CHECK PASS: air gesture, block/entity exclusions, rebindable key, real profile snapshots, one chat delivery, nickname, title change/unequip, network colors and prior-cancellation handling
+BUILD SUCCESSFUL in 32s

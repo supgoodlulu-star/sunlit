@@ -9,3 +9,13 @@ JDK 17, 작동하는 X11/OpenGL 디스플레이와 ForgeGradle 환경에서 프�
 ```
 
 최초 실행의 Minecraft 접근성 안내가 나오면 계속 버튼을 누르세요. 언어를 한국어로 바꾼 뒤 프로필·기술·업무·업적·필터·기술 펼치기·업무 하위 탭·계절 업무 유무·농사 문구를 촬영하고 종료합니다. 실제 기술 설정이 없는 예시이므로 해금 기술은 `이름 미등록 기술`로 표시됩니다. 서버 요청 버튼은 이 검사에서 누르지 않습니다.
+
+## 실제 입력·채팅 왕복 검사
+
+기존 게임 월드가 아닌 서버 GameTest가 생성한 전용 월드를 `run/saves/SunlitInputTest`에 복사한 뒤 아래를 실행합니다. 테스트 월드의 테스트 플레이어 닉네임과 칭호를 변경하므로 실제 플레이 월드를 사용하지 마세요.
+
+```sh
+./gradlew -PintegrationMods=true -PintegrationModDir=/path/to/provided-mods -I tools/visual-preview/input-check.gradle runClient
+```
+
+제공 모드 3개(Server Nick, Pufferfish Skills, Patchouli)가 필요합니다. 테스트는 웅크림/우클릭 입력 이벤트와 키 등록·재지정·키 입력을 실제 클라이언트에서 발생시키고 서버 프로필 응답을 확인합니다. 실제 채팅을 보내 수신 횟수와 칭호/닉네임/테마 색·변경/해제·선행 취소를 검사합니다. 테스트 중에만 키를 H로 지정합니다. 성공 시 `SUNLIT_INPUT_CHAT_CHECK PASS`를 로그에 기록하고 종료합니다. 실제 사람의 마우스 클릭이나 인터넷 멀티플레이 검사는 아닙니다.

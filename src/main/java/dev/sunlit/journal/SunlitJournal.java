@@ -35,7 +35,9 @@ public class SunlitJournal {
     public SunlitJournal() {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new JournalEvents());
+        MinecraftForge.EVENT_BUS.register(new JournalChat());
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, JournalConfig.SPEC);
+        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, JournalClientConfig.SPEC);
         JournalNetwork.register();
     }
 
@@ -57,6 +59,10 @@ public class SunlitJournal {
         player.sendSystemMessage(Component.literal("[모험가의 수첩] " + message).withStyle(ChatFormatting.GOLD));
     }
 
+    private static void replyTitle(ServerPlayer player,String text,String title) {
+        player.sendSystemMessage(Component.literal("[모험가의 수첩] "+text).withStyle(ChatFormatting.GOLD).append(TitleThemes.badge(title)));
+    }
+
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
         event.getDispatcher().register(Commands.literal("sunlit")
@@ -70,8 +76,11 @@ public class SunlitJournal {
             .then(Commands.literal("titles").executes(ctx -> {
                 ServerPlayer p = ctx.getSource().getPlayerOrException();
                 String equipped = data(p).getString("equipped");
-                reply(p, "보유 칭호: " + (owned(p).isEmpty() ? "없음" : String.join(", ", owned(p))));
-                reply(p, "대표 칭호: " + (equipped.isEmpty() ? "없음" : equipped));
+                var line=Component.literal("[모험가의 수첩] 보유 칭호: ");
+                if(owned(p).isEmpty())line.append("없음");
+                else {boolean first=true;for(String name:owned(p)){if(!first)line.append(", ");line.append(TitleThemes.label(name,true));first=false;}}
+                p.sendSystemMessage(line);
+                if(equipped.isEmpty())reply(p,"대표 칭호: 없음");else replyTitle(p,"대표 칭호: ",equipped);
                 return 1;
             }))
             .then(Commands.literal("equip")
@@ -80,7 +89,7 @@ public class SunlitJournal {
                     String title = StringArgumentType.getString(ctx, "title");
                     if (!owned(p).contains(title)) { reply(p, "보유하지 않은 칭호야: " + title); return 0; }
                     data(p).putString("equipped", title);
-                    reply(p, "대표 칭호 장착: [" + title + "]");
+                    replyTitle(p, "대표 칭호 장착: ", title);
                     return 1;
                 })))
             .then(Commands.literal("unequip").executes(ctx -> {
@@ -96,7 +105,7 @@ public class SunlitJournal {
                         Set<String> titles = owned(target);
                         if (!titles.add(title)) { ctx.getSource().sendFailure(Component.literal("이미 보유한 칭호야.")); return 0; }
                         saveOwned(target, titles);
-                        reply(target, "새로운 칭호 획득: [" + title + "]");
+                        replyTitle(target, "새로운 칭호 획득: ", title);
                         return 1;
                     }))))
             .then(Commands.literal("revoke").requires(src -> src.hasPermission(2))
@@ -108,7 +117,7 @@ public class SunlitJournal {
                         if (!titles.remove(title)) return 0;
                         saveOwned(target, titles);
                         if (title.equals(data(target).getString("equipped"))) data(target).remove("equipped");
-                        reply(target, "칭호 회수: [" + title + "]");
+                        replyTitle(target, "칭호 회수: ", title);
                         return 1;
                     }))))
         );
