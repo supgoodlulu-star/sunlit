@@ -40,10 +40,17 @@ public final class JournalWorld extends SavedData {
                 List<Integer> pool=new ArrayList<>(List.of(0,1,2,3,4));Collections.shuffle(pool);
                 for(int i=0;i<3;i++){
                     CompoundTag task=new CompoundTag();task.putInt("kind",pool.get(i));
-                    task.putInt("target",(period==0?8:40)+java.util.concurrent.ThreadLocalRandom.current().nextInt(period==0?13:61));
+                    TaskTargets.assign(task,period,true);
                     task.putInt("reward",period==0?2:8);fresh.put(Integer.toString(i),task);
                 }
                 d.put(key,fresh);setDirty();
+            }
+            // Migrate only untouched legacy tasks; preserve earned progress and claimed rewards.
+            for(int i=0;i<3;i++){
+                CompoundTag task=d.getCompound(key).getCompound(""+i);
+                if(!task.contains("subject")&&task.getInt("progress")==0&&!task.getBoolean("claimed")){
+                    TaskTargets.assign(task,period,false);setDirty();
+                }
             }
         }
     }
@@ -60,14 +67,15 @@ public final class JournalWorld extends SavedData {
         if(!p.getInventory().add(stack))p.drop(stack,false);
         p.giveExperiencePoints(amount*10);
     }
-    public void activity(ServerPlayer p,int kind,int amount){
+    public void activity(ServerPlayer p,int kind,int amount){activity(p,kind,amount,"");}
+    public void activity(ServerPlayer p,int kind,int amount,String subject){
         if(kind<0||kind>=5||amount<=0||p.isCreative()||p.isSpectator())return;
         refreshTasks(p);CompoundTag d=player(p),counts=child(d,"counts");
         long old=counts.getLong(ACTIVITIES[kind]);
         counts.putLong(ACTIVITIES[kind],old>Long.MAX_VALUE-amount?Long.MAX_VALUE:old+amount);
         for(String period:List.of("daily","weekly"))for(int i=0;i<3;i++){
             CompoundTag t=d.getCompound(period).getCompound(""+i);
-            if(t.getInt("kind")==kind)t.putInt("progress",(int)Math.min((long)t.getInt("target"),(long)t.getInt("progress")+amount));
+            if(TaskTargets.matches(t,kind,subject))t.putInt("progress",(int)Math.min((long)t.getInt("target"),(long)t.getInt("progress")+amount));
         }
         updateFestival(p);
         contribute(p,amount);
@@ -126,7 +134,7 @@ public final class JournalWorld extends SavedData {
         if(rewards>0){d.putInt("festivalRewards",0);setDirty();for(int i=0;i<rewards;i++)reward(p,16);}
     }
     public static String seasonTitle(String s){return switch(s){case "SPRING"->"벚꽃요정";case "SUMMER"->"별빛요정";case "AUTUMN"->"풍요요정";case "WINTER"->"눈꽃요정";default->"";};}
-    public static String festivalName(String s){return switch(s){case "SPRING"->"벚꽃 축제";case "SUMMER"->"별빛 해변 축제";case "AUTUMN"->"풍요의 수확제";case "WINTER"->"눈꽃 축제";default->"계절 조회 불가";};}
+    public static String festivalName(String s){return switch(s){case "SPRING"->"벚꽃 축제";case "SUMMER"->"별빛 해변 축제";case "AUTUMN"->"풍요의 수확제";case "WINTER"->"눈꽃 축제";default->"계절 축제";};}
     public static void grant(ServerPlayer p,String title){
         Set<String> owned=SunlitJournal.owned(p);
         if(owned.add(title)){

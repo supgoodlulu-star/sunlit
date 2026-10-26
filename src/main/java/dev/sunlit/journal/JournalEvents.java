@@ -26,23 +26,23 @@ public final class JournalEvents {
     @SubscribeEvent(priority=EventPriority.LOWEST) public void harvest(BlockEvent.BreakEvent e){
         if(!(e.getPlayer() instanceof ServerPlayer p))return;
         var w=JournalWorld.get(p.getServer());
-        if(e.getState().getBlock() instanceof CropBlock c&&c.isMaxAge(e.getState()))w.activity(p,0,1);
-        if(e.getState().is(Tags.Blocks.ORES)&&!w.consumePlacedOre(p,e.getPos()))w.activity(p,2,1);
+        if(e.getState().getBlock() instanceof CropBlock c&&c.isMaxAge(e.getState()))w.activity(p,0,1,net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(e.getState().getBlock()).toString());
+        if(e.getState().is(Tags.Blocks.ORES)&&!w.consumePlacedOre(p,e.getPos()))w.activity(p,2,1,net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(e.getState().getBlock()).toString());
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public void fish(ItemFishedEvent e){
         if(e.getEntity() instanceof ServerPlayer p){
-            int n=e.getDrops().stream().filter(s->s.is(ItemTags.FISHES)).mapToInt(s->s.getCount()).sum();
-            JournalWorld.get(p.getServer()).activity(p,1,n);
+            for(var stack:e.getDrops())if(stack.is(ItemTags.FISHES))
+                JournalWorld.get(p.getServer()).activity(p,1,stack.getCount(),net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem()).toString());
         }
     }
     @SubscribeEvent public void smelt(PlayerEvent.ItemSmeltedEvent e){
-        if(e.getEntity() instanceof ServerPlayer p&&e.getSmelting().isEdible())JournalWorld.get(p.getServer()).activity(p,3,e.getSmelting().getCount());
+        if(e.getEntity() instanceof ServerPlayer p&&e.getSmelting().isEdible())JournalWorld.get(p.getServer()).activity(p,3,e.getSmelting().getCount(),net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(e.getSmelting().getItem()).toString());
     }
     @SubscribeEvent public void craft(PlayerEvent.ItemCraftedEvent e){
-        if(e.getEntity() instanceof ServerPlayer p&&e.getCrafting().isEdible())JournalWorld.get(p.getServer()).activity(p,3,e.getCrafting().getCount());
+        if(e.getEntity() instanceof ServerPlayer p&&e.getCrafting().isEdible())JournalWorld.get(p.getServer()).activity(p,3,e.getCrafting().getCount(),net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(e.getCrafting().getItem()).toString());
     }
     @SubscribeEvent(priority=EventPriority.LOWEST) public void breed(BabyEntitySpawnEvent e){
-        if(e.getCausedByPlayer() instanceof ServerPlayer p)JournalWorld.get(p.getServer()).activity(p,4,1);
+        if(e.getCausedByPlayer() instanceof ServerPlayer p&&e.getChild()!=null)JournalWorld.get(p.getServer()).activity(p,4,1,net.minecraft.core.registries.BuiltInRegistries.ENTITY_TYPE.getKey(e.getChild().getType()).toString());
     }
     @SubscribeEvent public void logout(PlayerEvent.PlayerLoggedOutEvent e){if(e.getEntity() instanceof ServerPlayer p)JournalNetwork.forget(p);}
 }

@@ -123,6 +123,53 @@ public class JournalGameTests {
             h.assertTrue(command.getChild(name)!=null,"Missing legacy command: "+name);
         h.succeed();
     }
+    @GameTest(template="empty") public static void concreteTaskMatchingAndReload(GameTestHelper h){
+        var p=player(h);p.setGameMode(GameType.SURVIVAL);var w=new JournalWorld();w.refreshTasks(p);
+        var task=w.player(p).getCompound("daily").getCompound("0");
+        task.putInt("kind",2);task.putString("subject","minecraft:iron_ore");task.putInt("target",6);task.putInt("progress",0);
+        w.activity(p,2,3,"minecraft:coal_ore");
+        h.assertTrue(task.getInt("progress")==0,"Unrelated ore advanced iron task");
+        w.activity(p,3,1,"minecraft:iron_ore");
+        h.assertTrue(task.getInt("progress")==0,"Wrong activity advanced ore task");
+        w.activity(p,2,2,"minecraft:iron_ore");
+        h.assertTrue(task.getInt("progress")==2,"Matching ore did not advance task");
+        var loaded=new JournalWorld(w.save(new CompoundTag()));
+        loaded.activity(p,2,100,"minecraft:iron_ore");
+        h.assertTrue(loaded.player(p).getCompound("daily").getCompound("0").getInt("progress")==6,"Reload lost target or exceeded cap");
+        h.assertTrue(loaded.claim(p,"daily",0),"Specific task reward rejected");
+        h.assertFalse(loaded.claim(p,"daily",0),"Specific task paid twice");h.succeed();
+    }
+    @GameTest(template="empty") public static void concreteCookingAndLegacyMigration(GameTestHelper h){
+        var p=player(h);p.setGameMode(GameType.SURVIVAL);var w=new JournalWorld();w.refreshTasks(p);
+        var tasks=w.player(p).getCompound("daily");
+        var untouched=tasks.getCompound("0");untouched.remove("subject");untouched.putInt("progress",0);
+        var started=tasks.getCompound("1");started.remove("subject");started.putInt("progress",2);
+        var claimed=tasks.getCompound("2");claimed.remove("subject");claimed.putBoolean("claimed",true);
+        w.refreshTasks(p);
+        h.assertTrue(untouched.contains("subject"),"Untouched task did not receive concrete target");
+        h.assertFalse(started.contains("subject"),"Migration changed a task with earned progress");
+        h.assertTrue(started.getInt("progress")==2,"Migration erased progress");
+        h.assertTrue(claimed.getBoolean("claimed"),"Migration reopened claimed reward");
+        untouched.putInt("kind",3);untouched.putString("subject","minecraft:bread");untouched.putInt("target",6);
+        w.activity(p,3,2,"minecraft:baked_potato");
+        h.assertTrue(untouched.getInt("progress")==0,"Different food advanced bread task");
+        w.activity(p,3,3,"minecraft:bread");
+        h.assertTrue(untouched.getInt("progress")==3,"Bread did not advance cooking task");h.succeed();
+    }
+    @GameTest(template="empty") public static void oreEventUsesConcreteSubject(GameTestHelper h){
+        var p=player(h);p.setGameMode(GameType.SURVIVAL);var w=JournalWorld.get(p.getServer());w.refreshTasks(p);
+        var task=w.player(p).getCompound("daily").getCompound("0");
+        task.putInt("kind",2);task.putString("subject","minecraft:iron_ore");task.putInt("target",6);task.putInt("progress",0);
+        var events=new JournalEvents();var pos=h.absolutePos(new net.minecraft.core.BlockPos(1,1,1));
+        events.harvest(new net.minecraftforge.event.level.BlockEvent.BreakEvent(h.getLevel(),pos,net.minecraft.world.level.block.Blocks.COAL_ORE.defaultBlockState(),p));
+        h.assertTrue(task.getInt("progress")==0,"Coal break event advanced iron task");
+        events.harvest(new net.minecraftforge.event.level.BlockEvent.BreakEvent(h.getLevel(),pos,net.minecraft.world.level.block.Blocks.IRON_ORE.defaultBlockState(),p));
+        h.assertTrue(task.getInt("progress")==1,"Iron break event missed task");
+        w.placedOre(p,pos);
+        events.harvest(new net.minecraftforge.event.level.BlockEvent.BreakEvent(h.getLevel(),pos,net.minecraft.world.level.block.Blocks.IRON_ORE.defaultBlockState(),p));
+        h.assertTrue(task.getInt("progress")==1,"Placed iron ore advanced task");h.succeed();
+    }
+
     @net.minecraft.gametest.framework.GameTestGenerator
     public static Collection<net.minecraft.gametest.framework.TestFunction> integrationChecks(){
         if(!Boolean.getBoolean("sunlit.integrationTests"))return List.of();

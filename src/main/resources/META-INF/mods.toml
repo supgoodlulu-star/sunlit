@@ -3,7 +3,7 @@ loaderVersion="[47,)"
 license="All Rights Reserved"
 [[mods]]
 modId="sunlit_journal_core"
-version="0.4.1-dev"
+version="0.4.2-dev"
 displayName="Sunlit Journal Core"
 description='''Server-authoritative profile, tasks, achievements and seasonal festival journal. Development build; see validation report.'''
 [[dependencies.sunlit_journal_core]]

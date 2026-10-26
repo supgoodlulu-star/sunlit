@@ -1,8 +1,8 @@
-Final source validation: PASS
-Command (from /workspace/sunlit): JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --no-daemon --max-workers=2 -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
-Forge 1.20.1-47.3.0 compilation and reobfJar: PASS
-GameTest: 11 required tests passed, 0 failed. Process exit 0.
-17 JSON documents, 5 PNG headers, icon/category targets and mods.toml: PASS
-Wrapper --version and repeatable installation script: PASS
-Ordinary Gradle test task: no JUnit tests; GameTest executed explicitly.
-No graphical client, Essential multiplayer, actual Serene Seasons runtime or actual Numismatics/Utils runtime verified. See VALIDATION.md.
+Sunlit Journal 0.4.2-dev validation: PASS
+Server command: JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
+Forge GameTest: All 14 required tests passed, exit 0.
+New coverage: exact ore/food matching, progress cap and reload, duplicate claims, legacy task migration, placed-ore exclusion through break-event handler.
+Client command: DISPLAY=:99 LIBGL_ALWAYS_SOFTWARE=1 JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --offline -I tools/visual-preview/preview.gradle runClient
+Client render: exit 0; 9 fixture screenshots, GUI scales 2 and 3, category filters and skill expansion.
+Fixture screenshots do not establish modpack integration, networking behavior, real Skills custom names, Serene Seasons or Numismatics runtime.
+Resource validation: 19 JSON documents, 17 PNG headers and book references passed.
