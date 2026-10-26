@@ -1,11 +1,10 @@
-Sunlit Journal 0.5.2-dev, white citadel architectural preview: PASS
-Server: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
-Forge GameTest: All 21 required tests passed, exit 0.
-Coverage includes actual citadel dimension/geometry, records/puzzle/personal reward isolation, NBT persistence, item cosmetic preservation, and both previous maps' return stones/unlock retention.
-Client: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods -I tools/visual-preview/sky-check.gradle runClient
-Actual integrated-server check: SKY_GARDEN_CHECK PASS, process exit 0. Entry, generated architecture rendering, puzzle, both item models, journal and return.
-Photography uses default renderer, render distance 20 and clouds off. Reference shading/clouds are not reproduced. Camera travel is automated, not an exhaustive on-foot route test.
-This release is a central-building design preview. Some upper towers are exterior silhouettes without complete accessible interiors.
-Previous dimensions and player progression are preserved; only disposable test fixtures reset build/unlock flags.
-Resource validation: 55 JSON documents, 31 PNG headers/references passed.
-Production JAR excludes all test harnesses. Full modpack/shader/Essential compatibility remains outside these tests.
+Sunlit Journal 0.5.3-dev celestial equipment models: PASS
+Change scope: model geometry, palette/icon textures, build version and test tooling. Production server Java/gameplay logic unchanged.
+Build: ./gradlew --offline build, exit 0.
+Model validation: ./tools/validate_skin_models.py via Python, valid vanilla element bounds, angles, UVs, textures, 7 display poses and all 12 item mappings.
+Resource validation: 55 JSON documents, 32 PNG headers/references passed.
+Client: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods -I tools/visual-preview/skin-check.gradle runClient
+Actual client/integrated-server check: SKY_GARDEN_CHECK PASS, process exit 0. Server-applied item tags, actual sword/pickaxe model resources, GUI comparison render, held-item photographs, journal and return.
+Original first-person centering issue was corrected and rephotographed. Final scale and GUI angle were also rechecked.
+Prior server regression result: 21 tests passed in 0.5.2; not rerun for this resource-only change.
+Production JAR excludes the comparison screen and test harnesses. Complete user resource packs/shaders remain outside these checks.

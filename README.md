@@ -1,11 +1,15 @@
 # Sunlit · 모험가의 수첩
 
-Minecraft 1.20.1 / Forge 47.3.0 · **0.5.2 중앙 성채 건축 시안**
+Minecraft 1.20.1 / Forge 47.3.0 · **0.5.3 · 입체 치장 모델 개선**
 
-- [시안 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.5.2-dev.jar)
-- [시안 소스 ZIP 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA5_2_Citadel_Preview_Source.zip)
+- [시안 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.5.3-dev.jar)
+- [시안 소스 ZIP 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA5_3_Celestial_Skins_Source.zip)
 - [현재 건축 시안·입장·범위](CITADEL_PREVIEW.md)
 - [수첩 전체 기능·설정](README_한국어.md) · [검증 범위](VALIDATION.md)
+
+[검·곡괭이 스킨 안내](SKINS.md)
+
+![실제 Minecraft 3D 치장 모델](validation/screenshots/celestial-skins-model-preview.png)
 
 ![실제 Minecraft 중앙 성채 시안](validation/screenshots/citadel-overview.png)
 

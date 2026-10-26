@@ -45,3 +45,7 @@ for lang in ['ko_kr','en_us']:
  for name,label in zip(['moon_record','leaf_record','star_record','moon_rune','leaf_rune','star_rune','return_stone'],['달의 기록석','잎의 기록석','별의 기록석','달의 문양','잎의 문양','별의 문양','별길 귀환석']):data['block.sunlit_journal_core.'+name]=label
  p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 print('Generated sky dimension, recipe, 16 original art/model assets and vanilla skin overrides.')
+
+# Keep the dedicated equipment design authoritative when rebuilding all sky assets.
+import runpy
+runpy.run_path(str(Path(__file__).with_name("generate_celestial_skins.py")), run_name="__main__")
