@@ -1,10 +1,12 @@
-Sunlit Journal 0.5.0-dev validation: PASS
-Server command: JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
-Forge GameTest: All 19 required tests passed, exit 0.
-Added: actual sky dimension load/build/landing/relics, discovery title, wrong-order rejection, personal puzzle reward isolation, world-data save/reload, return, locked/wrong-tool skin rejection, original equipment NBT preserved after removal, existing CustomModelData protection.
-Client command: DISPLAY=:99 LIBGL_ALWAYS_SOFTWARE=1 JAVA_HOME=/workspace/toolchains/jdk-17.0.17+10 GRADLE_USER_HOME=/workspace/gradle-cache ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods -I tools/visual-preview/sky-check.gradle runClient
-Actual client/integrated-server test: SKY_GARDEN_CHECK PASS, process exit 0. Item-use entry, map render/teleport, individual puzzle, network-applied skins, actual sword/pickaxe model resolution, journal and return.
-Recipe is a standard shaped crafting recipe with an inventory-triggered recipe unlock; test harness gives the entry item rather than manually crafting it.
-Resource validation: 52 JSON documents, 31 PNG headers and book references passed.
-Final build: BUILD SUCCESSFUL, exit 0.
-Production JAR excludes every visual/input/sky test harness. Full pack shaders/resource overrides/Essential multiplayer remain outside these checks.
+Sunlit Journal 0.5.1-dev validation: PASS
+Server: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods build runGameTestServer
+Forge GameTest: All 20 required tests passed, exit 0.
+Added assertions: expanded central island, actual library bookshelves, watchtower upper floor, legacy return stone, retained personal records/unlocks.
+Existing coverage: concrete tasks, nickname/title chat, sky records/puzzle/personal rewards/save/return, cosmetic NBT preservation and foreign-model protection.
+Client: ./gradlew --offline -PintegrationMods=true -PintegrationModDir=/workspace/reference/mods -I tools/visual-preview/sky-check.gradle runClient
+Actual integrated-server check: SKY_GARDEN_CHECK PASS. New map generation, entry, real architecture rendering, puzzle, both cosmetic models, journal and return.
+Photography uses render distance 20 and clouds off. Test harness teleports between locations; it is not an exhaustive on-foot route or full modpack/Essential multiplayer test.
+Expanded map is a separate dimension. Legacy dimension data and player progression are preserved. Only the disposable test copy resets its build/unlock flags.
+Production JAR excludes all test harnesses.
+Resource validation: 53 JSON documents and 31 PNG headers/references passed.
+Final production build: BUILD SUCCESSFUL, exit 0.

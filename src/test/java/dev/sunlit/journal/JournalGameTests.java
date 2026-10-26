@@ -198,13 +198,16 @@ public class JournalGameTests {
         d.remove("equipped");h.assertTrue(JournalChat.format(p,body).isEmpty(),"Unequipped title still displayed");h.succeed();
     }
 
-    @GameTest(template="empty",timeoutTicks=200) public static void skyMapBuildPuzzleAndReturn(GameTestHelper h){
+    @GameTest(template="empty",timeoutTicks=1200) public static void skyMapBuildPuzzleAndReturn(GameTestHelper h){
         var a=player(h);var b=player(h);a.setGameMode(GameType.SURVIVAL);var home=a.position();
         h.assertTrue(a.getServer().getLevel(SkyGarden.DIMENSION)!=null,"Sky dimension datapack not loaded");
         SkyGarden.travel(a);
-        h.runAfterDelay(80,()->{
+        h.runAfterDelay(700,()->{
             var level=a.getServer().getLevel(SkyGarden.DIMENSION);
             h.assertTrue(!level.getBlockState(SkyGarden.LANDING.below()).isAir(),"Landing not generated");
+            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(45,150,0)).isAir(),"Central island did not expand");
+            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(0,187,-100)).isAir(),"Watchtower missing");
+            h.assertTrue(level.getBlockState(new net.minecraft.core.BlockPos(-36,151,-19)).is(net.minecraft.world.level.block.Blocks.BOOKSHELF),"Library interior missing");
             for(int i=0;i<3;i++)h.assertTrue(level.getBlockState(SkyGarden.RECORDS[i]).is(SkyContent.RELICS[i].get()),"Record missing from real map");
             SkyGarden.enter(a);
             h.assertTrue(SkyGarden.inside(a),"Entry failed");
@@ -231,6 +234,17 @@ public class JournalGameTests {
         h.assertTrue(sword.getDamageValue()==37&&sword.getItem()==Items.DIAMOND_SWORD,"Skin changed equipment");
         h.assertTrue(SkySkins.apply(p,"clear"),"Skin removal failed");h.assertTrue(before.equals(sword.save(new CompoundTag())),"Original NBT changed");
         sword.getOrCreateTag().putInt("CustomModelData",87);h.assertFalse(SkySkins.apply(p,"sword"),"Existing external skin overwritten");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void legacySkyReturnPreservesUnlocks(GameTestHelper h){
+        var p=player(h);var state=SkyGarden.player(p);state.putBoolean("complete",true);state.putInt("records",7);
+        var back=new CompoundTag();back.putString("dimension","minecraft:overworld");back.putDouble("x",p.getX());back.putDouble("y",p.getY());back.putDouble("z",p.getZ());state.put("return",back);
+        var oldKey=net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION,new net.minecraft.resources.ResourceLocation(SunlitJournal.MODID,"sky_garden"));
+        var old=p.getServer().getLevel(oldKey);h.assertTrue(old!=null,"Legacy dimension removed");
+        p.teleportTo(old,.5,151,16.5,0,0);p.moveTo(.5,151,16.5,0,0);
+        SkyGarden.interact(p,new net.minecraft.core.BlockPos(0,151,14),6);
+        h.assertFalse(SkyGarden.inside(p),"Legacy return stone stranded player");
+        h.assertTrue(SkyGarden.player(p).getBoolean("complete")&&SkyGarden.player(p).getInt("records")==7,"Upgrade reset personal rewards");h.succeed();
     }
 
     @net.minecraft.gametest.framework.GameTestGenerator

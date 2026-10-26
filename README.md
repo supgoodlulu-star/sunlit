@@ -1,15 +1,15 @@
 # Sunlit · 모험가의 수첩
 
-Minecraft 1.20.1 / Forge 47.3.0용 **0.5.0 개발 버전**입니다.
+Minecraft 1.20.1 / Forge 47.3.0용 **0.5.1 개발 버전**입니다.
 
-- [설치용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.5.0-dev.jar)
-- [통합 소스 ZIP 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA5_SkyGarden_Source.zip)
+- [설치용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.5.1-dev.jar)
+- [통합 소스 ZIP 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA5_1_GrandSkyGarden_Source.zip)
 - [설치 방법·기능·업무 설정](README_한국어.md)
 - [검증 범위](VALIDATION.md)
 
 기존 Sunlit JAR을 제거한 뒤 새 JAR을 `mods` 폴더에 넣으세요. 호스트와 접속자 모두 교체합니다. 수첩은 `/sunlit journal` 또는 **웅크린 상태로 허공 우클릭**으로 엽니다. 설정 → 조작 → 모험가의 수첩 → 프로필 열기에서 전용 키도 지정할 수 있습니다(기본 미지정).
 
-이번 버전은 첫 히든맵 **잊힌 하늘 정원**을 추가합니다. 별길 나침반으로 들어가 세 섬의 기록과 천문대 퍼즐을 풀고, 개인별 히든 칭호 두 개와 검·곡괭이 스킨을 해금합니다. [입장·보상 안내](SKY_GARDEN.md)
+이번 버전은 **잊힌 하늘 정원 확장판**을 제공합니다. 중앙 섬 지름 약 110블록, 전체 폭 약 230블록의 네 섬에 2층 도서관·돔 천문대·온실·카페·전망탑을 배치했습니다. 별길 나침반으로 들어가 세 섬의 기록과 천문대 퍼즐을 풀고, 개인별 히든 칭호 두 개와 검·곡괭이 스킨을 해금합니다. [입장·보상 안내](SKY_GARDEN.md)
 
 대표 칭호는 채팅 닉네임 앞에 표시되며 수첩과 채팅에 테마 색을 적용합니다. 채팅 본문과 기존 닉네임 색은 유지합니다. 탐험·생활·서적에 서로 다른 아이콘을 사용하며, 업무 일지를 일일·주간·계절 특별 업무 탭으로 나눴습니다. 업무는 지정된 작물·물고기·광석·음식·동물만 집계합니다. 표시할 수 없는 연동 정보의 진단 문구는 화면에서 생략합니다.
 

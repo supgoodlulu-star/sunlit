@@ -22,10 +22,12 @@ JDK 17, 작동하는 X11/OpenGL 디스플레이와 ForgeGradle 환경에서 프�
 
 ## 하늘 정원 검사
 
-`runGameTestServer`가 만든 테스트 월드를 `run/saves/SunlitSkyTestFinal`로 복사한 뒤 실행합니다. 실제 월드를 사용하지 마세요. 테스트는 그 월드의 플레이어 장비·게임 모드·해금 상태를 변경합니다.
+`runGameTestServer`가 만든 테스트 월드를 `run/saves/SunlitGrandTest`로 복사한 뒤 실행합니다. 실제 월드를 사용하지 마세요. 테스트는 그 월드의 플레이어 장비·게임 모드·해금 상태를 변경합니다.
 
 ```sh
 ./gradlew -PintegrationMods=true -PintegrationModDir=/path/to/provided-mods -I tools/visual-preview/sky-check.gradle runClient
 ```
 
 Minecraft가 실험적 차원 안내를 표시하면 테스트 복사본에서 계속을 선택합니다. 나침반 use 입력 → 하늘 차원 → 실제 맵 촬영 → 기록/퍼즐 → 두 스킨 네트워크 적용과 실제 모델 검증 → 수첩 → 귀환을 검사합니다. 성공 표시는 `SKY_GARDEN_CHECK PASS`입니다. 해당 검사 클래스는 배포 JAR에 포함하지 않습니다.
+
+0.5.1 검사에서는 신규 건축을 확인하기 위해 테스트 복사본의 확장판 생성 플래그를 초기화합니다. 촬영은 렌더 거리 20, 구름 끄기로 진행합니다. 기존 개인 진행도를 보존하는 실제 업데이트와 달리 테스트 플레이어의 퍼즐 상태를 초기화하므로 반드시 버려도 되는 복사본에서만 실행하세요.
