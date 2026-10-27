@@ -42,7 +42,7 @@ def curve(m,points,r=.09,mat='metal'):
 def layered_blade(m,sections):
  for factor,depth,mat in [(1,1,'secondary'),(.94,1.045,'metal'),(.91,1.09,'main')]:
   first=len(m.faces)
-  sweep(m,[(x,y,z,w*factor,d*depth) for x,y,z,w,d in sections],mat,12,False)
+  sweep(m,[(x,y,z,w*factor,d*depth) for x,y,z,w,d in sections],mat,10,False)
   if mat=='main':
    for i in range(first,len(m.faces)):
     ids,role=m.faces[i]
@@ -50,10 +50,10 @@ def layered_blade(m,sections):
 
 def petal(m,c,size,a,mat='light'):
  x,y,z=c;points=[]
- for i in range(7):
-  t=i/6;l=t*size
+ for i in range(6):
+  t=i/5;l=t*size
   points.append((x+sin(a)*l,y+cos(a)*l,z+sin(pi*t)*size*.15,max(.035,sin(pi*t)**.65*size*.42),max(.055,sin(pi*t)*size*.21)))
- sweep(m,points,mat,8,False)
+ sweep(m,points,mat,6,False)
 
 def blossom(m,c,r=2):
  x,y,z=c
@@ -74,13 +74,13 @@ def tail(m,c,side=1,mat='main'):
  points=[]
  for i in range(10):
   t=i/9;points.append((x+side*(.5*sin(5*t)+1.4*t),y-3.7*t,z+.3*sin(4*t),max(.04,.46*(1-.3*t)*(1 if t<.85 else (1-t)/.15)),.07))
- sweep(m,points,mat,8,False)
+ sweep(m,points,mat,6,False)
 
 def bow(m,y):
  for side in [-1,1]:
-  path=[(side*(1.6+1.45*cos(a)),y+.75*sin(a),.15) for a in [i*2*pi/22 for i in range(23)]]
-  rod(m,path,.23,'metal',8)
-  rod(m,[(x,y,z+.12) for x,y,z in path],.15,'wrap',8)
+  path=[(side*(1.6+1.45*cos(a)),y+.75*sin(a),.15) for a in [i*2*pi/18 for i in range(19)]]
+  rod(m,path,.23,'metal',6)
+  rod(m,[(x,y,z+.12) for x,y,z in path],.15,'wrap',6)
   tail(m,(side*.8,y-.25,.25),side,'main' if side==1 else 'wrap')
 
 def handle(m,top):
@@ -119,18 +119,37 @@ def sculpt_reference(m,kind):
    curve(m,[(.1,10,side*.76),(.65,12,side*.78),(1.15,14,side*.80),(1.9,16.2,side*.80),(2.45,18.6,side*.78),(2.7,21,side*.74),(2.6,23.5,side*.66),(2.5,25.8,side*.43)],.055)
    curve(m,[(1.4,15.6,side*.78),(.9,16.6,side*.78),(1.2,17.4,side*.78)],.045)
   blossom(m,(1.65,16,.79),.55)
+  # Raised scalloped petal collar on the left, visibly outside the blade outline.
+  # The reference's asymmetric silhouette must survive the small GUI preview.
+  collar=[(-.65,10.0),(-1.65,11.3),(-1.25,12.2),(-1.15,12.7),(-1.30,13.7),(-.55,14.4),(-.45,15.5),(.25,16.1),(.52,17.0),(1.0,16.7),(.65,14.2),(.1,12.0)]
+  m.polygon(collar,0,1.5,'light','metal',.09)
+  for face in [-1,1]:
+   z=face*.82
+   curve(m,[(-.7,10.5,z),(-1.6,11.6,z),(-1.8,12.5,z),(-1.2,13.3,z),(-.35,13.7,z),(.15,14.6,z)],.09)
+   # Open gold scroll around the flower's left shoulder.
+   curl=[]
+   for i in range(29):
+    t=i/28;a=-pi*.6+t*pi*1.8;r=1.65*(1-.58*t)
+    curl.append((-2.0+r*cos(a),10.7+r*sin(a),z))
+   curve(m,curl,.15)
+  # A longer silk tail extends to the left rather than hiding behind the grip.
+  sweep(m,[(-.8,9.0,1.05,.40,.09),(-1.8,8.2,1.1,.52,.10),(-3.0,7.9,1.0,.54,.09),(-4.0,8.1,.9,.42,.08),(-4.6,8.5,.8,.025,.04)],'main',12,False)
  else:
-  # Curved, slender petal wings. No angular block head or large dark patches.
+  # Broad, shallow petal wings; tips stay near the crown instead of hooking down.
   for side in [-1,1]:
    sections=[]
-   for i in range(17):
-    t=i/16;x=side*(.7+7.7*t);y=18.8+2.4*sin(pi*t*.95)-5.2*t*t
-    w=.12+1.12*sin(pi*(.10+.90*t))**.7;d=.14+.55*sin(pi*(.06+.94*t))**.6
+   for i in range(25):
+    t=i/24;x=side*(.7+7.7*t);y=19.1+.65*sin(pi*t)-1.6*t*t
+    w=.035+1.85*sin(pi*(.12+.88*t))**.75;d=.07+.84*sin(pi*(.10+.90*t))**.65
     sections.append((x,y,0,w,d))
-   sections[-1]=(side*8.4,15.0,0,.035,.055)
+   sections[-1]=(side*8.4,17.5,0,.035,.055)
    layered_blade(m,sections)
    for face in [-1,1]:
-    curve(m,[(side*.7,18.8,face*.73),(side*2.2,19.8,face*.75),(side*4.2,19.8,face*.70),(side*6.1,18.5,face*.58),(side*7.8,16.2,face*.28)],.055)
+    line=[]
+    for i in range(21):
+     t=i/24
+     line.append((side*(.7+7.7*t),19.1+.65*sin(pi*t)-1.6*t*t,face*(.07+.84*sin(pi*(.10+.90*t))**.65)*1.10))
+    curve(m,line,.065)
   curve(m,[(0,16.8,0),(0,18.6,0)],.47,'metal')
  m.group='ornaments'
  bow(m,top+.8)

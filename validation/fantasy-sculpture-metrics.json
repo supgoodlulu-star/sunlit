@@ -3,25 +3,25 @@
     "sakura_sword": {
       "handle": [
         1.823,
-        10.472,
+        10.469,
         1.864
       ],
       "head": [
-        5.31,
-        19.277,
-        2.657
+        8.962,
+        21.046,
+        2.15
       ]
     },
     "sakura_pickaxe": {
       "handle": [
         1.823,
-        18.672,
+        18.669,
         1.864
       ],
       "head": [
-        16.806,
-        6.716,
-        1.595
+        16.839,
+        4.541,
+        2.113
       ]
     },
     "sakura_axe": {
@@ -732,10 +732,10 @@
     },
     {
       "kind": "pickaxe",
-      "similarity": 0.7598,
+      "similarity": 0.7694,
       "pair": [
-        "star_cloud_pickaxe",
-        "abyss_sovereign_pickaxe"
+        "sakura_pickaxe",
+        "star_cloud_pickaxe"
       ]
     },
     {

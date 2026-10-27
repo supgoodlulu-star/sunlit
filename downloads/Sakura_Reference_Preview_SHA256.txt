@@ -1,1 +1,1 @@
-992a22a355a249301371b7584c4de04d7ff032e8246202a1ac39133d14e1c372  sunlit-journal-core-0.7.1-sakura-preview.jar
+a260d436cdd13984a33a6a62d20f8fdb8fae7f7b1e0dd88999a60d7ada55a358  sunlit-journal-core-0.7.2-sakura-preview.jar

@@ -1,4 +1,4 @@
-Sakura reference preview, two items only
+Sakura reference preview revision 2 (0.7.2), two items only
 
 two actual baked models, new material bindings, both server-authorized skins and client inventory sync, comparison and held-item captures
 
@@ -7,3 +7,5 @@ Both preview items use their own material library. All OBJ/UV/texture resources 
 Comparison is an actual Minecraft render, not generated concept art.
 Aesthetic fidelity requires user review; numerical checks are not art approval.
 No full modpack/shader/Essential validation. Existing 0.7.0 reward rules retained.
+
+Revision 2: broader/thicker shallow pickaxe wings; left sword gold-rimmed petal collar, open scroll and side ribbon.

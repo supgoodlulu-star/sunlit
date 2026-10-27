@@ -2,13 +2,14 @@
 
 사용자가 올린 A/B/C 레퍼런스 중 B의 섬세한 파스텔 벚꽃 방향을 맞추기 위한 **2종 샘플**입니다. 나머지 58종을 완성하거나 같은 스타일로 바꾼 배포가 아닙니다. 기본 main 배포에 병합하지 않고 별도 preview 브랜치에서 검토합니다.
 
-![실제 Minecraft에서 렌더링한 두 샘플](validation/screenshots/sakura-reference-pair.png)
+![실제 Minecraft에서 렌더링한 두 샘플](validation/screenshots/sakura-reference-pair-v2.png)
 
 ## 바꾼 기준
 
 - 짙은 자주색·큰 픽셀 블록 대신 크림·연분홍·따뜻한 금색.
-- 가늘고 길게 휘어진 칼날, 꽃잎처럼 휘어진 두 곡괭이 날.
+- 가늘고 길게 휘어진 칼날. 곡괭이는 2차 피드백에 따라 날 폭과 앞뒤 두께를 늘리고, 양끝을 크게 내리던 곡선을 완만하게 폈습니다.
 - 크림색 외곽 안에 얇은 금선과 분홍 중심을 겹친 입체 날.
+- 검 왼쪽 윤곽에 꽃잎 모양의 금테 칼날 장식와 열린 금빛 소용돌이, 옆으로 흐르는 리본을 보강했습니다.
 - 큰 꽃 브로치, 분홍 다이아몬드 컷 보석, 고리형 리본과 흐르는 꼬리.
 - 크림색 그립의 가는 분홍 끈, 꽃봉오리 끝장식, 작은 진주·꽃잎 펜던트.
 - 앞뒤 모두 마감한 꽃 장식과 닫힌 단면을 가진 실제 3D 메시.
@@ -17,7 +18,7 @@
 
 ## 직접 보기
 
-[미리보기 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/preview/sakura-reference/downloads/sunlit-journal-core-0.7.1-sakura-preview.jar)
+[미리보기 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/preview/sakura-reference/downloads/sunlit-journal-core-0.7.2-sakura-preview.jar)
 
 기존 Sunlit JAR과 교체해서 사용하며 두 JAR을 동시에 설치하지 않습니다. `/sunlit gacha`에서 벚꽃 테마의 검·곡괭이를 선택하면 소유하지 않았어도 외형을 미리 볼 수 있습니다. 소유한 스킨은 기존 ID인 `sakura_sword`, `sakura_pickaxe`로 적용합니다. 모든 보유 기록·뽑기 확률·업무 보상 Java 로직은 0.7.0 그대로이며 다른 58개 모델도 원본과 동일합니다. 히든맵은 추가하지 않습니다.
 
