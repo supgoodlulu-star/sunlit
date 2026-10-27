@@ -1,0 +1,2 @@
+01d87908f2bd36e5e7c89f9015ea1388732cbb4c6c1088e7bda386511871ae79  sunlit-journal-core-0.6.2-dev.jar
+66069a7397fad90338492e1f40e32e914931e9e05b3ef697aa7a79bf34bcd2cb  Sunlit_Journal_ALPHA6_2_Pixel_Materials_Source.zip

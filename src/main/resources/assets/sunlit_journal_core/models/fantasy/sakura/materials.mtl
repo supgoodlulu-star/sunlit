@@ -1,45 +1,45 @@
 newmtl main
-Kd 0.9569 0.4275 0.6549
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/main
 newmtl secondary
-Kd 1.0000 0.9412 0.9059
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/secondary
 newmtl metal
-Kd 0.8627 0.6667 0.3843
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/metal
 newmtl gem
-Kd 0.9686 0.4314 0.6745
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/gem
 newmtl dark
-Kd 0.1451 0.1176 0.2118
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/dark
 newmtl light
-Kd 1.0000 0.8314 0.9176
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/light
 newmtl shade
-Kd 0.6392 0.1804 0.3922
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/shade
 newmtl edge
-Kd 0.6392 0.1804 0.3922
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/edge
 newmtl grip
-Kd 0.3882 0.1725 0.2824
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/grip
 newmtl grip_light
-Kd 0.5216 0.2314 0.3804
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/grip_light
 newmtl grip_shade
-Kd 0.2510 0.1098 0.1804
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/grip_shade
 newmtl wrap
-Kd 0.7922 0.4157 0.5490
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/wrap
 newmtl accent
-Kd 0.3412 0.7843 0.7451
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/accent
 newmtl shine
-Kd 1.0000 1.0000 1.0000
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/shine
 newmtl pearl
-Kd 1.0000 0.9294 0.8980
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/sakura/pearl

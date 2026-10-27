@@ -1,11 +1,12 @@
-Sunlit 0.6.1-dev sculpture acceptance
+Sunlit 0.6.2-dev pixel surface acceptance
 
 all 60 baked OBJ models, actual 1/10 draw packets and scaled click, 12 theme previews, rates, GUI scales, duplicate exchange, 10-fragment exchange and equipped S2C sync
-five actual-item galleries covering every theme and all 60 tool bodies
+five actual-item galleries covering every theme and all 60 tool bodies with pixel-painted material sprites
 
-60 sculpted models / 145726 triangles / 12 distinct head builders and handles.
-Head/handle thickness, material contrast, structural silhouette uniqueness, 30 base-item bindings and resource checks passed.
-Server logic is unchanged; 27 integration GameTests belong to 0.6.0 and were not rerun for this artwork release.
-Existing skin IDs, ownership, odds and task/ticket/fragment rules are unchanged.
-No hidden-map content added.
-Full user modpack / custom resource packs / Essential multiplayer were not available.
+180 original painted material sprites / 60 UV-mapped models / 145726 triangles.
+145357/145726 UV triangles have nonzero area; zero-area mappings occur on tiny degenerate/tip surfaces.
+All vertices and triangle connectivity exactly match 0.6.1.
+Resource, structural, binding and pixel sprite validators passed.
+Server economy/task/ownership logic unchanged. Earlier 27 server integration tests belong to 0.6.0 and were not rerun for this resource release.
+Skin ownership, odds and ticket/fragment rules unchanged. No hidden-map content added.
+Full user modpack / resource packs / shaders / Essential multiplayer were not available.

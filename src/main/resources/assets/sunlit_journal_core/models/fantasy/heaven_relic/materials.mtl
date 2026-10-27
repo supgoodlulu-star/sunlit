@@ -1,45 +1,45 @@
 newmtl main
-Kd 0.9020 0.9137 0.9529
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/main
 newmtl secondary
-Kd 1.0000 0.9804 0.9255
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/secondary
 newmtl metal
-Kd 0.8627 0.7490 0.4902
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/metal
 newmtl gem
-Kd 0.7216 0.8039 0.9765
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/gem
 newmtl dark
-Kd 0.1451 0.1176 0.2118
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/dark
 newmtl light
-Kd 1.0000 1.0000 1.0000
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/light
 newmtl shade
-Kd 0.5412 0.6706 0.7804
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/shade
 newmtl edge
-Kd 0.5412 0.6706 0.7804
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/edge
 newmtl grip
-Kd 0.2196 0.3059 0.5059
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/grip
 newmtl grip_light
-Kd 0.2941 0.4118 0.6824
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/grip_light
 newmtl grip_shade
-Kd 0.1412 0.1961 0.3255
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/grip_shade
 newmtl wrap
-Kd 0.6078 0.7255 0.8275
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/wrap
 newmtl accent
-Kd 0.4706 0.7882 0.7569
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/accent
 newmtl shine
-Kd 1.0000 1.0000 1.0000
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/shine
 newmtl pearl
-Kd 1.0000 0.9294 0.8980
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/heaven_relic/pearl

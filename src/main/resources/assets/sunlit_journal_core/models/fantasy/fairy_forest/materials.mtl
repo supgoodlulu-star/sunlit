@@ -1,45 +1,45 @@
 newmtl main
-Kd 0.3098 0.7294 0.4000
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/main
 newmtl secondary
-Kd 0.9294 1.0000 0.8510
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/secondary
 newmtl metal
-Kd 0.7882 0.6706 0.4078
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/metal
 newmtl gem
-Kd 0.2863 0.6667 0.5216
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/gem
 newmtl dark
-Kd 0.1451 0.1176 0.2118
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/dark
 newmtl light
-Kd 0.7882 0.9373 0.5333
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/light
 newmtl shade
-Kd 0.1412 0.3922 0.2784
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/shade
 newmtl edge
-Kd 0.1412 0.3922 0.2784
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/edge
 newmtl grip
-Kd 0.3373 0.2392 0.1765
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/grip
 newmtl grip_light
-Kd 0.4549 0.3216 0.2353
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/grip_light
 newmtl grip_shade
-Kd 0.2157 0.1529 0.1137
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/grip_shade
 newmtl wrap
-Kd 0.6196 0.4510 0.3137
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/wrap
 newmtl accent
-Kd 0.9647 0.8078 0.3765
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/accent
 newmtl shine
-Kd 1.0000 1.0000 1.0000
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/shine
 newmtl pearl
-Kd 1.0000 0.9294 0.8980
-map_Kd sunlit_journal_core:item/fantasy_white
+Kd 1.0 1.0 1.0
+map_Kd sunlit_journal_core:item/fantasy_materials/fairy_forest/pearl

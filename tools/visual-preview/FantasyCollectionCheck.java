@@ -37,7 +37,9 @@ public final class FantasyCollectionCheck {
                 for(var s:FantasyGacha.POOL){
                     var stack=FantasyGachaScreen.preview(s.id());var model=mc.getItemRenderer().getModel(stack,mc.level,mc.player,0);
                     require(model.getParticleIcon().contents().name().toString().equals("sunlit_journal_core:item/fantasy_"+s.theme()),"Wrong model "+s.id());
-                    require(model.getQuads(null,null,net.minecraft.util.RandomSource.create()).size()>200,"Empty OBJ "+s.id());
+                    var quads=model.getQuads(null,null,net.minecraft.util.RandomSource.create());
+                    require(quads.size()>200,"Empty OBJ "+s.id());
+                    for(var quad:quads)require(quad.getSprite().contents().name().toString().startsWith("sunlit_journal_core:item/fantasy_materials/"+s.theme()+"/"),"Unpainted or missing face texture "+s.id());
                 }
                 server(mc,p->{p.setGameMode(net.minecraft.world.level.GameType.CREATIVE);p.teleportTo(p.getServer().overworld(),0.5,140,0.5,0,15);p.getAbilities().flying=true;p.onUpdateAbilities();p.getServer().overworld().setDayTime(6000);p.getServer().overworld().setWeatherParameters(0,6000,false,false);p.getInventory().clearContent();JournalWorld.get(p.getServer()).player(p).remove("fantasyGacha");p.setItemInHand(InteractionHand.MAIN_HAND,new ItemStack(Items.DIAMOND_PICKAXE));p.getInventory().add(new ItemStack(SkyContent.TICKET.get(),64));p.containerMenu.broadcastChanges();});phase=2;ticks=0;
             }
@@ -99,7 +101,7 @@ public final class FantasyCollectionCheck {
             case 19 -> {
                 if(ticks<15)return;shot(mc,"fantasy-sculpted-gallery-"+galleryKind);
                 if(++galleryKind<5){mc.setScreen(new FantasyGalleryScreen(galleryKind));ticks=0;return;}
-                com.mojang.logging.LogUtils.getLogger().info("FANTASY_SCULPTURE_CHECK PASS: five actual-item galleries covering every theme and all 60 tool bodies");phase=15;ticks=0;
+                com.mojang.logging.LogUtils.getLogger().info("FANTASY_SCULPTURE_CHECK PASS: five actual-item galleries covering every theme and all 60 tool bodies with pixel-painted material sprites");phase=15;ticks=0;
             }
             case 15 -> {if(ticks>5)mc.stop();}
         }

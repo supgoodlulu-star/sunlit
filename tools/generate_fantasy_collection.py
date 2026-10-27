@@ -24,10 +24,17 @@ THEMES=[
 ]
 KINDS=[('sword','검'),('pickaxe','곡괭이'),('axe','도끼'),('shovel','삽'),('hoe','괭이')]
 class Mesh:
- def __init__(self):self.v=[];self.faces=[];self.normals=[];self.groups=[];self.group="body"
- def face(self,points,mat,normals=None):
+ def __init__(self):self.v=[];self.faces=[];self.normals=[];self.uvs=[];self.groups=[];self.group="body"
+ def face(self,points,mat,normals=None,uvs=None):
   ids=[]
-  for i,p in enumerate(points):self.v.append(p);self.normals.append(normals[i] if normals else None);ids.append(len(self.v))
+  if uvs is None:
+   aa,bb,cc=points[:3];u=[bb[k]-aa[k] for k in range(3)];v=[cc[k]-aa[k] for k in range(3)]
+   n=[abs(u[1]*v[2]-u[2]*v[1]),abs(u[2]*v[0]-u[0]*v[2]),abs(u[0]*v[1]-u[1]*v[0])]
+   axis=max(range(3),key=lambda k:n[k])
+   # Uniform model-space pixel density. OBJ UVs stay inside the sprite, never wrap into neighbours.
+   uvs=[((p[2]+16)/32,1-p[1]/32) if axis==0 else ((p[0]+16)/32,(p[2]+16)/32) if axis==1 else ((p[0]+16)/32,1-p[1]/32) for p in points]
+  for i,p in enumerate(points):
+   self.v.append(p);self.normals.append(normals[i] if normals else None);self.uvs.append(tuple(max(.003,min(.997,n)) for n in uvs[i]));ids.append(len(self.v))
   self.faces.append((ids,mat));self.groups.append(self.group)
  def ellipsoid(self,c,r,mat,seg=10,rings=6):
   for j in range(rings):
@@ -39,7 +46,11 @@ class Mesh:
     pts=[f(a,u),f(a,v),f(b,v),f(b,u)]
     if j==0:pts=[f(a,u),f(b,v),f(b,u)]
     if j==rings-1:pts=[f(a,u),f(a,v),f(b,u)]
-    pts=list(reversed(pts));ns=[tuple((p[k]-c[k])/(r[k]*r[k]) for k in range(3)) for p in pts];self.face(pts,mat,ns)
+    uv=[(i/seg,1-j/rings),((i+1)/seg,1-j/rings),((i+1)/seg,1-(j+1)/rings),(i/seg,1-(j+1)/rings)]
+    if j==0:uv=[uv[0],uv[2],uv[3]]
+    if j==rings-1:uv=[uv[0],uv[1],(i/seg,0)]
+    pts=list(reversed(pts));uv=list(reversed(uv));ns=[tuple((p[k]-c[k])/(r[k]*r[k]) for k in range(3)) for p in pts]
+    self.face(pts,mat,ns,uv if mat in ['gem','accent','pearl','shine'] else None)
  def tube(self,pts,r,mat,seg=8):
   rings=[]
   for i,p in enumerate(pts):
@@ -99,8 +110,9 @@ class Mesh:
    if not found:return out+[[remaining[0],remaining[i],remaining[i+1]] for i in range(1,len(remaining)-1)]
   return out+[remaining]
  def save(self,path):
-  lines=['# Original Sunlit sculpted equipment; coordinates in model units','mtllib materials.mtl','vt 0.5 0.5']
+  lines=['# Original Sunlit sculpted equipment; coordinates in model units','mtllib materials.mtl']
   lines += [f'v {(.5+x/24):.5f} {(y/24):.5f} {(.5+z/24):.5f}' for x,y,z in self.v]
+  lines += [f'vt {u:.6f} {v:.6f}' for u,v in self.uvs]
   # Explicit smooth normals for round gems and cloud/bunny forms.
   for ids,mat in self.faces:
    aa,bb,cc=[self.v[n-1] for n in ids[:3]];u=[bb[k]-aa[k] for k in range(3)];v=[cc[k]-aa[k] for k in range(3)]
@@ -115,7 +127,7 @@ class Mesh:
    if group!=last_group:lines.append('g '+group);last_group=group
    if last!=mat:lines.append('usemtl '+mat);last=mat
    # Ear clipping preserves concave tool outlines instead of drawing overlapping fan triangles.
-   for tri in self.triangulate(ids):lines.append('f '+' '.join(f'{n}/1/{n}' for n in tri))
+   for tri in self.triangulate(ids):lines.append('f '+' '.join(f'{n}/{n}/{n}' for n in tri))
   path.write_text('\n'.join(lines)+'\n')
 from fantasy_sculpture import sculpt, PALETTES
 
@@ -126,11 +138,10 @@ for ti,(theme,name,collection,colors,rarity,weight) in enumerate(THEMES):
  main,light,shade,grip,wrap,accent=PALETTES[theme]
  def tint(hex_color,factor):return '#'+''.join(f'{min(255,int(int(hex_color[k:k+2],16)*factor)):02x}' for k in [1,3,5])
  mats.update(main=main,light=light,shade=shade,edge=shade,grip=grip,grip_light=tint(grip,1.35),grip_shade=tint(grip,.65),wrap=wrap,accent=accent,shine='#FFFFFF',pearl='#FFEDE5')
- # Standard white sprite tinted by MTL diffuse colors.
- lines=[]
- for key,c in mats.items():
-  rgb=[int(c[i:i+2],16)/255 for i in [1,3,5]];lines += ['newmtl '+key,'Kd '+' '.join(f'{n:.4f}' for n in rgb),'map_Kd sunlit_journal_core:item/fantasy_white']
- (folder/'materials.mtl').write_text('\n'.join(lines)+'\n')
+ # Painted sprites supply the colour; neutral Kd avoids double-tinting.
+ from fantasy_pixel_materials import write_materials
+ material_text,texture_sizes=write_materials(theme,mats,A)
+ (folder/'materials.mtl').write_text(material_text)
  for ki,(kind,ko) in enumerate(KINDS):
   m=Mesh();sculpt(m,theme,kind);m.save(folder/f'{kind}.obj')
   sid=f'{theme}_{kind}';index=ti*5+ki+1

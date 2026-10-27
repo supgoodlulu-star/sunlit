@@ -1,6 +1,12 @@
-# Sunlit Journal 0.6.1 · 환상 도구 스킨 컬렉션
+# Sunlit Journal 0.6.2 · 환상 도구 스킨 컬렉션
 
 Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 JAR을 설치합니다. mods 폴더의 이전 Sunlit JAR을 새 버전으로 교체하고 재시작하세요.
+
+## 0.6.2 픽셀 명암과 재질
+
+면마다 단색만 표시하던 방식에서 표면 좌표(UV)와 픽셀 텍스처를 사용하는 방식으로 변경했습니다. 금속의 계단식 반사광·음각, 날의 밝은 픽셀과 짙은 면, 그립의 사선 짜임·나뭇결, 수정·보석의 컷과 하이라이트를 넣었습니다. [실제 게임 비교](PIXEL_MATERIALS.md).
+
+0.6.1의 입체 형태와 모든 스킨 ID·소유·확률·업무/조각 규칙은 유지합니다.
 
 ## 0.6.1 디자인 변경
 
@@ -44,7 +50,7 @@ Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 
 
 운영자 테스트 지급: `/give @s sunlit_journal_core:fantasy_ticket 10`, `/give @s sunlit_journal_core:fantasy_ticket_fragment 10`.
 
-Windows `gradlew.bat build`, Linux/macOS `./gradlew build`. 결과 `build/libs/sunlit-journal-core-0.6.1-dev.jar`. 코드·OBJ 모델·텍스처가 JAR에 포함되어 별도 모델 로더 모드를 설치하지 않습니다.
+Windows `gradlew.bat build`, Linux/macOS `./gradlew build`. 결과 `build/libs/sunlit-journal-core-0.6.2-dev.jar`. 코드·OBJ 모델·텍스처가 JAR에 포함되어 별도 모델 로더 모드를 설치하지 않습니다.
 
 확률과 모델 원본은 `src/main/resources/data/sunlit_journal_core/fantasy_skins.json`, `assets/sunlit_journal_core/models/fantasy/`, 생성기는 `tools/generate_fantasy_collection.py`입니다. 생성 후 `tools/validate_fantasy_collection.py`로 검사합니다.
 
