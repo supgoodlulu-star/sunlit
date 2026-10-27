@@ -158,6 +158,9 @@ for ti,(theme,name,collection,colors,rarity,weight) in enumerate(THEMES):
    'thirdperson_righthand':{'rotation':[0,-90,45],'translation':[0,2,0],'scale':[.8,.8,.8]},
    'thirdperson_lefthand':{'rotation':[0,90,-45],'translation':[0,2,0],'scale':[.8,.8,.8]},
    'ground':{'translation':[0,2,0],'scale':[.5,.5,.5]},'fixed':{'rotation':[0,0,-35],'scale':[.7,.7,.7]}}}
+  if theme=='sakura' and kind in ['sword','pickaxe']:
+   # Show the reference silhouette with only a slight yaw to reveal solid depth.
+   model['display']['gui']['rotation']=[5,-10,-30 if kind=='sword' else -22.65]
   p=A/f'models/item/fantasy/{sid}.json';p.parent.mkdir(exist_ok=True);p.write_text(json.dumps(model,indent=2)+'\n')
   catalog.append(dict(id=sid,name=f'{name} {ko}',theme=theme,themeName=name,collection=collection,kind=kind,rarity=rarity,weight=weight,index=index,description=f'{name} 테마의 장비 외형입니다. 장비 성능은 바뀌지 않아요.'))
  # New small original particle texture; no edits to generated concept art.

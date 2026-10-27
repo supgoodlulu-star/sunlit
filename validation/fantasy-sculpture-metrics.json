@@ -2,26 +2,26 @@
   "body_bounds_design_units": {
     "sakura_sword": {
       "handle": [
-        1.823,
-        10.469,
-        1.864
+        1.729,
+        7.981,
+        1.751
       ],
       "head": [
-        8.962,
-        21.046,
-        2.15
+        3.988,
+        17.763,
+        1.815
       ]
     },
     "sakura_pickaxe": {
       "handle": [
-        1.823,
-        18.669,
-        1.864
+        1.729,
+        15.77,
+        1.751
       ],
       "head": [
-        16.839,
-        4.541,
-        2.113
+        21.413,
+        9.037,
+        1.741
       ]
     },
     "sakura_axe": {
@@ -732,10 +732,10 @@
     },
     {
       "kind": "pickaxe",
-      "similarity": 0.7694,
+      "similarity": 0.7598,
       "pair": [
-        "sakura_pickaxe",
-        "star_cloud_pickaxe"
+        "star_cloud_pickaxe",
+        "abyss_sovereign_pickaxe"
       ]
     },
     {

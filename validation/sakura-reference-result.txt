@@ -1,11 +1,12 @@
-Sakura reference preview revision 2 (0.7.2), two items only
+Sakura B concept outline preview revision 3 (0.7.3), two items only
 
-two actual baked models, new material bindings, both server-authorized skins and client inventory sync, comparison and held-item captures
+REFERENCE_CHECK PASS: two actual baked models, new material bindings, both server-authorized skins and client inventory sync, comparison and held-item captures.
+Build: ./gradlew --offline build succeeded.
 
-Other 58 OBJ meshes byte-identical to 0.7.0. Production Java unchanged.
-Both preview items use their own material library. All OBJ/UV/texture resources validated.
-Comparison is an actual Minecraft render, not generated concept art.
-Aesthetic fidelity requires user review; numerical checks are not art approval.
+60 mesh resource, UV, material and body-thickness checks passed.
+Other 58 OBJ meshes byte-identical to the prior preview; production Java unchanged.
+Scalloped sword outline and broad asymmetric pickaxe wings are authored from B concept landmarks.
+Two item GUI poses adjusted to show the reference silhouettes.
+Comparison is an actual Minecraft render; no reference image pixels are shipped.
+Aesthetic fidelity requires user review; geometry checks do not establish an identical illustration.
 No full modpack/shader/Essential validation. Existing 0.7.0 reward rules retained.
-
-Revision 2: broader/thicker shallow pickaxe wings; left sword gold-rimmed petal collar, open scroll and side ribbon.
