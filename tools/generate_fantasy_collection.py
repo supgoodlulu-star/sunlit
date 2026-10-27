@@ -24,7 +24,7 @@ THEMES=[
 ]
 KINDS=[('sword','검'),('pickaxe','곡괭이'),('axe','도끼'),('shovel','삽'),('hoe','괭이')]
 class Mesh:
- def __init__(self):self.v=[];self.faces=[];self.normals=[];self.uvs=[];self.groups=[];self.group="body"
+ def __init__(self):self.v=[];self.faces=[];self.normals=[];self.uvs=[];self.groups=[];self.group="body";self.material_library="materials.mtl"
  def face(self,points,mat,normals=None,uvs=None):
   ids=[]
   if uvs is None:
@@ -110,7 +110,7 @@ class Mesh:
    if not found:return out+[[remaining[0],remaining[i],remaining[i+1]] for i in range(1,len(remaining)-1)]
   return out+[remaining]
  def save(self,path):
-  lines=['# Original Sunlit sculpted equipment; coordinates in model units','mtllib materials.mtl']
+  lines=['# Original Sunlit sculpted equipment; coordinates in model units','mtllib '+self.material_library]
   lines += [f'v {(.5+x/24):.5f} {(y/24):.5f} {(.5+z/24):.5f}' for x,y,z in self.v]
   lines += [f'vt {u:.6f} {v:.6f}' for u,v in self.uvs]
   # Explicit smooth normals for round gems and cloud/bunny forms.
@@ -142,8 +142,14 @@ for ti,(theme,name,collection,colors,rarity,weight) in enumerate(THEMES):
  from fantasy_pixel_materials import write_materials
  material_text,texture_sizes=write_materials(theme,mats,A)
  (folder/'materials.mtl').write_text(material_text)
+ if theme=='sakura':
+  from reference_sakura import paint,sculpt_reference
+  (folder/'reference_materials.mtl').write_text(paint(A))
  for ki,(kind,ko) in enumerate(KINDS):
-  m=Mesh();sculpt(m,theme,kind);m.save(folder/f'{kind}.obj')
+  m=Mesh()
+  if theme=='sakura' and kind in ['sword','pickaxe']:sculpt_reference(m,kind)
+  else:sculpt(m,theme,kind)
+  m.save(folder/f'{kind}.obj')
   sid=f'{theme}_{kind}';index=ti*5+ki+1
   model={'loader':'forge:obj','model':f'sunlit_journal_core:models/fantasy/{theme}/{kind}.obj','automatic_culling':False,'shade_quads':True,'flip_v':False,'gui_light':'front','textures':{'particle':f'sunlit_journal_core:item/fantasy_{theme}'},'display':{
    'gui':{'rotation':[18,-28,-35],'translation':[0,-1,0],'scale':[.72,.72,.72]},

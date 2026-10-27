@@ -1,0 +1,17 @@
+allprojects {
+    afterEvaluate { project ->
+        sourceSets {
+            referenceCheck {
+                java.srcDirs new File(rootDir, 'tools/visual-preview'), new File(rootDir, 'tools/reward-fixtures')
+                resources.srcDir new File(rootDir, 'tools/reward-fixtures/resources')
+                compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+                runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+            }
+        }
+        minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.referenceCheck
+        minecraft.runs.client.property 'sunlit.referenceCheck', 'true'
+        minecraft.runs.client.property 'sunlit.rewardFixtures', 'true'
+        minecraft.runs.client.property 'sunlit.previewOutput', new File(rootDir, 'validation').absolutePath
+        minecraft.runs.client.args '--width', '1440', '--height', '1080', '--quickPlaySingleplayer', 'SunlitCitadelTest'
+    }
+}

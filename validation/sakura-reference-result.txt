@@ -1,0 +1,9 @@
+Sakura reference preview, two items only
+
+two actual baked models, new material bindings, both server-authorized skins and client inventory sync, comparison and held-item captures
+
+Other 58 OBJ meshes byte-identical to 0.7.0. Production Java unchanged.
+Both preview items use their own material library. All OBJ/UV/texture resources validated.
+Comparison is an actual Minecraft render, not generated concept art.
+Aesthetic fidelity requires user review; numerical checks are not art approval.
+No full modpack/shader/Essential validation. Existing 0.7.0 reward rules retained.
