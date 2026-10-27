@@ -1,6 +1,14 @@
-# Sunlit Journal 0.6.2 · 환상 도구 스킨 컬렉션
+# Sunlit Journal 0.7.0 · 환상 도구 스킨 컬렉션
 
 Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 JAR을 설치합니다. mods 폴더의 이전 Sunlit JAR을 새 버전으로 교체하고 재시작하세요.
+
+## 0.7.0 업무와 보상
+
+일일 업무는 농사·낚시·채광·요리·목축에서 각각 1개, 총 5개입니다. 주간은 기존처럼 서로 다른 3개 분야입니다. 일일 업무마다 황동 코인 2개+XP 20, 주간마다 6개+XP 80과 분야별 랜덤 재료를 지급합니다. [전체 수량·동일 확률·지급 방법](REWARDS.md).
+
+랜덤 재료는 업무 생성 때 한 번 정해 저장하며 진행 중·재접속·화면 갱신으로 바뀌지 않습니다. 개별 업무는 직접 수령하며, 일일 5개 중 임의의 3개 완료 시 조각 1개가 자동 지급됩니다. 4·5번째 완료로 추가 조각을 주지 않습니다. 주간 3개 완료 시 뽑기권 1장과 조각 10개 교환은 유지합니다.
+
+황동 코인은 실제 `numismatics:cog` 아이템으로 인벤토리에 지급합니다. 은행 잔액에 직접 가산하는 방식이 아닙니다. 보상 아이템이 없는 설치에서는 진행도와 수령 권한을 보존하고 부분 지급을 하지 않습니다. 기존 3개 일일 업무의 진행·완료·수령·추가 보상 기록은 보존한 채 빠진 두 분야를 추가합니다.
 
 ## 0.6.2 픽셀 명암과 재질
 
@@ -22,9 +30,9 @@ Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 
 
 ## 업무 완료 보상과 조각 교환
 
-- **일일 업무 3개 모두 완료 → 뽑기권 조각 1개**.
+- **일일 업무 5개 중 3개 완료 → 뽑기권 조각 1개**.
 - **주간 업무 3개 모두 완료 → 뽑기권 1장**.
-- 각 업무의 진행도가 목표에 도달하면 기간당 한 번 자동 지급합니다. 개별 업무의 에메랄드/경험치 보상은 기존처럼 수령합니다. 업무마다 뽑기권을 지급하지 않습니다.
+- 각 업무의 진행도가 목표에 도달하면 기간당 한 번 자동 지급합니다. 개별 업무의 황동 코인·재료·경험치는 직접 수령합니다. 업무마다 뽑기권을 지급하지 않습니다.
 - **조각 10개 → 뽑기권 1장**. 공방의 교환 버튼을 누르면 인벤토리 조각을 정확히 10개 소비합니다. 9개로는 교환할 수 없습니다.
 - 날짜/주차는 기존과 동일하게 서버 UTC 일자, 월요일 시작입니다. 날짜가 뒤로 가도 보상 기간을 다시 열지 않습니다. 기간 변경 시 새 업무와 완료 보상으로 갱신합니다.
 - 아이템은 인벤토리로 지급합니다. 가득 차면 플레이어에게 귀속된 드롭으로 전달합니다.
@@ -50,7 +58,7 @@ Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 
 
 운영자 테스트 지급: `/give @s sunlit_journal_core:fantasy_ticket 10`, `/give @s sunlit_journal_core:fantasy_ticket_fragment 10`.
 
-Windows `gradlew.bat build`, Linux/macOS `./gradlew build`. 결과 `build/libs/sunlit-journal-core-0.6.2-dev.jar`. 코드·OBJ 모델·텍스처가 JAR에 포함되어 별도 모델 로더 모드를 설치하지 않습니다.
+Windows `gradlew.bat build`, Linux/macOS `./gradlew build`. 결과 `build/libs/sunlit-journal-core-0.7.0-dev.jar`. 코드·OBJ 모델·텍스처가 JAR에 포함되어 별도 모델 로더 모드를 설치하지 않습니다.
 
 확률과 모델 원본은 `src/main/resources/data/sunlit_journal_core/fantasy_skins.json`, `assets/sunlit_journal_core/models/fantasy/`, 생성기는 `tools/generate_fantasy_collection.py`입니다. 생성 후 `tools/validate_fantasy_collection.py`로 검사합니다.
 

@@ -27,30 +27,28 @@ public final class JournalWorld extends SavedData {
     }
     public CompoundTag player(UUID uuid){return child(child(root,"players"),uuid.toString());}
     public CompoundTag player(ServerPlayer p){return player(p.getUUID());}
+    public static int taskCount(String period){return period.equals("daily")?5:3;}
     public void refreshTasks(ServerPlayer p){
-        CompoundTag d=player(p);
-        LocalDate day=LocalDate.now(Clock.systemUTC());
-        String[] periods={day.toString(),day.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).toString()};
+        CompoundTag d=player(p);LocalDate day=LocalDate.now(Clock.systemUTC());
+        String[] dates={day.toString(),day.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).toString()};
         for(int period=0;period<2;period++){
-            String key=period==0?"daily":"weekly";
-            CompoundTag tasks=child(d,key);
-            // Clock rollback must not reopen an earlier reward period.
-            if(tasks.getString("date").isEmpty() || tasks.getString("date").compareTo(periods[period])<0){
-                CompoundTag fresh=new CompoundTag();fresh.putString("date",periods[period]);
-                List<Integer> pool=new ArrayList<>(List.of(0,1,2,3,4));Collections.shuffle(pool);
-                for(int i=0;i<3;i++){
-                    CompoundTag task=new CompoundTag();task.putInt("kind",pool.get(i));
-                    TaskTargets.assign(task,period,true);
-                    task.putInt("reward",period==0?2:8);fresh.put(Integer.toString(i),task);
-                }
-                d.put(key,fresh);setDirty();
+            String key=period==0?"daily":"weekly";CompoundTag tasks=child(d,key);
+            if(tasks.getString("date").isEmpty()||tasks.getString("date").compareTo(dates[period])<0){
+                tasks=new CompoundTag();tasks.putString("date",dates[period]);d.put(key,tasks);setDirty();
             }
-            // Migrate only untouched legacy tasks; preserve earned progress and claimed rewards.
-            for(int i=0;i<3;i++){
-                CompoundTag task=d.getCompound(key).getCompound(""+i);
+            // Append missing fields without reordering or resetting started/claimed legacy tasks.
+            var unused=new ArrayList<>(List.of(0,1,2,3,4));
+            for(int i=0;i<taskCount(key);i++)if(tasks.contains(""+i,Tag.TAG_COMPOUND))unused.remove(Integer.valueOf(tasks.getCompound(""+i).getInt("kind")));
+            if(period==1)Collections.shuffle(unused,new java.util.Random(p.getRandom().nextLong()));
+            for(int i=0;i<taskCount(key);i++){
+                if(!tasks.contains(""+i,Tag.TAG_COMPOUND)){
+                    var task=new CompoundTag();task.putInt("kind",unused.remove(0));TaskTargets.assign(task,period,true);tasks.put(""+i,task);setDirty();
+                }
+                var task=tasks.getCompound(""+i);
                 if((!task.contains("subject")||TaskTargets.excluded(task.getString("subject")))&&task.getInt("progress")==0&&!task.getBoolean("claimed")){
                     TaskTargets.assign(task,period,false);setDirty();
                 }
+                if(!task.contains("payout",Tag.TAG_COMPOUND)){TaskRewards.assign(task,period==1,p.getRandom());setDirty();}
             }
         }
         awardTaskSets(p);
@@ -59,22 +57,20 @@ public final class JournalWorld extends SavedData {
         var d=player(p);
         for(String period:List.of("daily","weekly")){
             var tasks=d.getCompound(period);if(tasks.getBoolean("setBonusAwarded"))continue;
-            boolean complete=true;
-            for(int i=0;i<3;i++){var t=tasks.getCompound(""+i);if(t.getInt("target")<=0||t.getInt("progress")<t.getInt("target"))complete=false;}
-            if(!complete)continue;
-            tasks.putBoolean("setBonusAwarded",true);setDirty();
-            boolean daily=period.equals("daily");
+            int completed=0;
+            for(int i=0;i<taskCount(period);i++){var t=tasks.getCompound(""+i);if(t.getInt("target")>0&&t.getInt("progress")>=t.getInt("target"))completed++;}
+            if(completed<3)continue;
+            tasks.putBoolean("setBonusAwarded",true);setDirty();boolean daily=period.equals("daily");
             FantasyGacha.deliver(p,new net.minecraft.world.item.ItemStack(daily?SkyContent.FRAGMENT.get():SkyContent.TICKET.get()));
             p.sendSystemMessage(net.minecraft.network.chat.Component.literal(daily?"[업무 일지] 일일 업무 3개 완료! 뽑기권 조각 1개를 받았어요.":"[업무 일지] 주간 업무 3개 완료! 뽑기권 1장을 받았어요."));
         }
     }
     public boolean claim(ServerPlayer p,String key,int index){
-        if((!key.equals("daily")&&!key.equals("weekly"))||index<0||index>2)return false;
-        refreshTasks(p);CompoundTag task=player(p).getCompound(key).getCompound(""+index);
+        if((!key.equals("daily")&&!key.equals("weekly"))||index<0||index>=taskCount(key))return false;
+        refreshTasks(p);var task=player(p).getCompound(key).getCompound(""+index);
         if(task.getInt("target")<=0||task.getInt("progress")<task.getInt("target")||task.getBoolean("claimed"))return false;
-        task.putBoolean("claimed",true);setDirty();
-        reward(p,task.getInt("reward"));
-        return true;
+        if(!TaskRewards.available(task)){TaskRewards.unavailable(p);return false;}
+        task.putBoolean("claimed",true);setDirty();TaskRewards.deliver(p,task);return true;
     }
     public static void reward(ServerPlayer p,int amount){
         // Inventory overflow is delivered as an owned item by vanilla's drop path.
@@ -88,7 +84,7 @@ public final class JournalWorld extends SavedData {
         refreshTasks(p);CompoundTag d=player(p),counts=child(d,"counts");
         long old=counts.getLong(ACTIVITIES[kind]);
         counts.putLong(ACTIVITIES[kind],old>Long.MAX_VALUE-amount?Long.MAX_VALUE:old+amount);
-        for(String period:List.of("daily","weekly"))for(int i=0;i<3;i++){
+        for(String period:List.of("daily","weekly"))for(int i=0;i<taskCount(period);i++){
             CompoundTag t=d.getCompound(period).getCompound(""+i);
             if(TaskTargets.matches(t,kind,subject))t.putInt("progress",(int)Math.min((long)t.getInt("target"),(long)t.getInt("progress")+amount));
         }

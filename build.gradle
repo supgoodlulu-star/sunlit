@@ -1,7 +1,7 @@
 plugins {
     id 'net.minecraftforge.gradle' version '6.0.54'
 }
-version = '0.6.2-dev'
+version = '0.7.0-dev'
 group = 'dev.sunlit.journal'
 base { archivesName = 'sunlit-journal-core' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -18,10 +18,14 @@ tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 
 jar.finalizedBy('reobfJar')
 
+sourceSets.test.java.srcDir "tools/reward-fixtures"
+sourceSets.test.resources.srcDir "tools/reward-fixtures/resources"
+
 minecraft.runs {
     gameTestServer {
         workingDirectory project.file('run-gametest')
         property 'forge.enabledGameTestNamespaces', 'sunlit_journal_core'
+        property 'sunlit.rewardFixtures', 'true'
         property 'forge.logging.console.level', 'info'
         mods { sunlit_journal_core { source sourceSets.main; source sourceSets.test } }
     }

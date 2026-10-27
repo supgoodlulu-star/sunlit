@@ -1,16 +1,16 @@
 # Sunlit · 모험가의 수첩
 
-Minecraft 1.20.1 / Forge 47.3.0 · **0.6.2 · 픽셀 명암·재질 디테일 개선**
+Minecraft 1.20.1 / Forge 47.3.0 · **0.7.0 · 일일 5개 분야 · 보상 미리보기**
 
-- [게임용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.6.2-dev.jar)
-- [전체 소스 ZIP](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA6_2_Pixel_Materials_Source.zip)
+- [게임용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.7.0-dev.jar)
+- [전체 소스 ZIP](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA7_Task_Rewards_Source.zip)
 - [설치·사용 안내](README_한국어.md) · [60종 컬렉션·확률](FANTASY_COLLECTION.md) · [검증](VALIDATION.md)
 
-![실제 Minecraft 곡괭이 12개 테마 비교](validation/screenshots/fantasy-sculpted-gallery-1.png)
+![업무 보상 화면 · 개발 검증용 아이템 아이콘](validation/screenshots/rewards-daily.png)
 
-60종의 입체 몸체에 픽셀 반사광·음영·금속 무늬·천 짜임·나뭇결·보석 컷을 입혔습니다. 기존 스킨 ID와 소유 기록을 유지합니다. [픽셀 재질 변경·실제 게임 비교](PIXEL_MATERIALS.md) · [몸체 조형 안내](SCULPTED_SKINS.md).
+일일 업무는 5개 분야에서 하나씩, 주간은 기존 3개입니다. 일일 황동 코인 2개·주간 6개와 분야별 랜덤 재료를 지급하며, 업무 생성 시 정한 보상을 아이콘과 수량으로 미리 표시합니다. [합의한 보상표와 검증 범위](REWARDS.md).
 
-**일일 업무 3개 완료 → 뽑기권 조각 1개 / 주간 업무 3개 완료 → 뽑기권 1장 / 조각 10개 → 뽑기권 1장**
+**일일 업무 5개 중 3개 완료 → 뽑기권 조각 1개 / 주간 업무 3개 완료 → 뽑기권 1장 / 조각 10개 → 뽑기권 1장**
 
 `/sunlit gacha` 또는 수첩의 **스킨 공방**으로 엽니다. 1회·10회 뽑기, 실제 3D 미리보기, 60종 수집·장착, 중복 별가루와 선택 교환을 제공합니다.
 

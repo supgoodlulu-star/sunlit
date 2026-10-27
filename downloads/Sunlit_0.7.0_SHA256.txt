@@ -1,0 +1,2 @@
+6ea7600a7e25d42d07c7e2c042f3661df7289df02e5ebe403044976e39afca2a  sunlit-journal-core-0.7.0-dev.jar
+f222d9a0dcf56045bb31fdb1a83fda8d6e6081461897e60d2fdf72b2f325abf4  Sunlit_Journal_ALPHA7_Task_Rewards_Source.zip

@@ -30,15 +30,16 @@ public class JournalGameTests {
         var daily=w.player(p).getCompound("daily");var task=daily.getCompound("0");
         h.assertFalse(w.claim(p,"daily",0),"Incomplete task accepted");
         task.putInt("progress",task.getInt("target"));
-        int before=p.getInventory().countItem(Items.EMERALD);
+        var coin=TaskRewards.stack(TaskRewards.COIN,1).getItem();
+        int before=p.getInventory().countItem(coin);
         h.assertTrue(w.claim(p,"daily",0),"Completed task rejected");
-        int after=p.getInventory().countItem(Items.EMERALD);
-        h.assertTrue(after-before==task.getInt("reward"),"Wrong reward amount");
+        int after=p.getInventory().countItem(coin);
+        h.assertTrue(after-before==2,"Wrong reward amount");
         h.assertFalse(w.claim(p,"daily",0),"Duplicate reward accepted");
         h.assertFalse(w.claim(p,"daily",-1),"Negative index accepted");
         h.assertFalse(w.claim(p,"weekly",3),"Out-of-range index accepted");
         h.assertFalse(w.claim(p,"other",0),"Unknown period accepted");
-        h.assertTrue(p.getInventory().countItem(Items.EMERALD)==after,"Invalid claims changed inventory");
+        h.assertTrue(p.getInventory().countItem(coin)==after,"Invalid claims changed inventory");
         var restored=new JournalWorld(w.save(new CompoundTag()));
         h.assertFalse(restored.claim(p,"daily",0),"Reload permitted duplicate reward");h.succeed();
     }
@@ -354,5 +355,51 @@ public class JournalGameTests {
         h.assertTrue(FantasyGacha.craftTicket(p),"Fragment conversion failed");h.assertTrue(FantasyGacha.fragments(p)==11&&FantasyGacha.tickets(p)==1,"Conversion did not consume exactly ten");
         h.assertTrue(FantasyGacha.craftTicket(p),"Second conversion failed");h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==2,"Second conversion count incorrect");
         h.assertFalse(FantasyGacha.craftTicket(p),"Repeat conversion minted free ticket");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void agreedRewardPools(GameTestHelper h){
+        String[][] ids={{"dew_drop_farmland_growth:low_quality_fertilizer","dew_drop_farmland_growth:weak_fertilizer","dew_drop_farmland_growth:hydrating_fertilizer"},{"aquaculture:worm","crabbersdelight:crab_trap_bait"},{"minecraft:coal","minecraft:copper_ingot","minecraft:iron_ingot"},{"minecraft:sugar","meadow:alpine_salt"},{"society:animal_feed","society:animal_feed","society:animal_feed"}};
+        int[][] counts={{12,12,14},{18,14},{64,64,64},{18,18},{18,22,26}};
+        for(int kind=0;kind<5;kind++)for(int i=0;i<ids[kind].length;i++)for(boolean weekly:new boolean[]{false,true}){
+            var plan=TaskRewards.plan(kind,weekly,i);
+            h.assertTrue(plan.getString("item").equals(ids[kind][i]),"Reward ID differs from agreed pool");
+            h.assertTrue(plan.getInt("count")== (weekly?(kind==2?96:counts[kind][i]*3):counts[kind][i]),"Reward count differs from agreement");
+            h.assertTrue(plan.getInt("coins")== (weekly?6:2)&&plan.getInt("xp")== (weekly?80:20),"Money or XP incorrect");
+        }h.succeed();
+    }
+    @GameTest(template="empty") public static void fiveFieldsStableRewardsAndThirdBonus(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var w=new JournalWorld();w.refreshTasks(p);var daily=w.player(p).getCompound("daily");var kinds=new java.util.HashSet<Integer>();
+        for(int i=0;i<5;i++)kinds.add(daily.getCompound(""+i).getInt("kind"));h.assertTrue(kinds.size()==5,"Daily does not cover five fields");
+        var initial=daily.copy();w.refreshTasks(p);h.assertTrue(initial.equals(daily),"Refresh rerolled reward");
+        var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);h.assertTrue(initial.equals(loaded.player(p).getCompound("daily")),"Restart rerolled reward");
+        for(int i:new int[]{1,3,4}){var task=daily.getCompound(""+i);task.putInt("progress",task.getInt("target"));}
+        w.refreshTasks(p);h.assertTrue(FantasyGacha.fragments(p)==1,"Any three of five did not trigger fragment");
+        for(int i:new int[]{0,2}){var task=daily.getCompound(""+i);task.putInt("progress",task.getInt("target"));}
+        w.refreshTasks(p);h.assertTrue(FantasyGacha.fragments(p)==1,"Fourth/fifth duplicated bonus");
+        h.assertTrue(w.claim(p,"daily",4),"Fifth task cannot be claimed");h.assertFalse(w.claim(p,"daily",5),"Sixth index accepted");h.succeed();
+    }
+    @GameTest(template="empty") public static void rewardMigrationPreservesProgress(GameTestHelper h){
+        var p=player(h);var w=new JournalWorld();w.refreshTasks(p);var daily=w.player(p).getCompound("daily");daily.remove("3");daily.remove("4");daily.putBoolean("setBonusAwarded",true);
+        for(int i=0;i<3;i++){daily.getCompound(""+i).remove("payout");daily.getCompound(""+i).putInt("reward",2);}
+        daily.getCompound("0").putInt("progress",2);daily.getCompound("1").putBoolean("claimed",true);
+        String target=daily.getCompound("0").getString("subject");w.refreshTasks(p);
+        h.assertTrue(daily.getCompound("0").getInt("progress")==2&&daily.getCompound("0").getString("subject").equals(target),"Migration reset progress/target");
+        h.assertTrue(daily.getCompound("1").getBoolean("claimed")&&daily.getCompound("1").getCompound("payout").getBoolean("legacy"),"Migration reopened old claim");
+        h.assertTrue(daily.contains("4",10)&&daily.getBoolean("setBonusAwarded"),"Migration lost slot or bonus flag");
+        var snapshot=daily.copy();w.refreshTasks(p);h.assertTrue(snapshot.equals(daily),"Migration repeated/rerolled");h.succeed();
+    }
+    @GameTest(template="empty") public static void missingRewardDoesNotPartiallyPay(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var w=new JournalWorld();w.refreshTasks(p);var task=w.player(p).getCompound("daily").getCompound("0");task.putInt("progress",task.getInt("target"));
+        task.getCompound("payout").putString("item","sunlit_missing:unavailable");var saved=task.copy();int xp=p.totalExperience;
+        h.assertFalse(w.claim(p,"daily",0),"Unavailable pack item paid");h.assertFalse(task.getBoolean("claimed"),"Unavailable reward consumed claim");
+        h.assertTrue(p.totalExperience==xp&&p.getInventory().isEmpty(),"Unavailable item allowed partial coins/XP");h.assertTrue(saved.equals(task),"Unavailable reward was rerolled");h.succeed();
+    }
+    @GameTest(template="empty") public static void weeklyMiningSplitsStacks(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var w=new JournalWorld();w.refreshTasks(p);var task=w.player(p).getCompound("weekly").getCompound("0");
+        task.putInt("kind",2);task.put("payout",TaskRewards.plan(2,true,2));task.putInt("progress",task.getInt("target"));int xp=p.totalExperience;
+        h.assertTrue(w.claim(p,"weekly",0),"Weekly mining claim failed");h.assertTrue(p.getInventory().countItem(Items.IRON_INGOT)==96,"Weekly mining not 96");
+        h.assertTrue(p.getInventory().countItem(TaskRewards.stack(TaskRewards.COIN,1).getItem())==6&&p.totalExperience==xp+80,"Weekly money/XP incorrect");
+        for(var stack:p.getInventory().items)h.assertTrue(stack.getCount()<=stack.getMaxStackSize(),"Oversized inventory stack");
+        h.assertFalse(w.claim(p,"weekly",0),"Weekly claim duplicated");h.succeed();
     }
 }

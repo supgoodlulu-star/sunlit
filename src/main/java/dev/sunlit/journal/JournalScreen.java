@@ -22,6 +22,8 @@ public final class JournalScreen extends Screen {
     private double scroll;
     private boolean draggingScroll;
     private EditBox nickname;
+    private CompoundTag questSummary;
+    private int questDone;
     private final List<Card> cards=new ArrayList<>();
     private final Set<String> expandedSkills=new HashSet<>();
     private static final String[] PAGES={"profile","skills","quests","achievements","collection"};
@@ -42,7 +44,8 @@ public final class JournalScreen extends Screen {
         final Runnable action;
         final boolean enabled;
         List<FormattedCharSequence> heading,lines;
-        int height,y,bodyOffset,progressOffset,actionOffset,badgeWidth;
+        int height,y,bodyOffset,progressOffset,actionOffset,badgeWidth,rewardOffset,rewardHeight;
+        List<TaskRewards.Display> rewards=List.of();
         boolean section;
         JournalButton button;
         Card(String title,String body,int icon,String badge,long value,long goal,String actionLabel,boolean enabled,Runnable action) {
@@ -61,7 +64,7 @@ public final class JournalScreen extends Screen {
     private void rebuild(){
         String editing=nickname==null?data.getString("nickname"):nickname.getValue();
         boolean focused=nickname!=null&&nickname.isFocused();
-        clearWidgets();cards.clear();nickname=null;
+        clearWidgets();cards.clear();nickname=null;questSummary=null;
         panelWidth=Math.min(480,width-12);panelHeight=Math.min(400,height-12);
         left=(width-panelWidth)/2;top=(height-panelHeight)/2;
         int tabWidth=(panelWidth-28)/PAGES.length;
@@ -87,12 +90,17 @@ public final class JournalScreen extends Screen {
             if(c.section)c.height=20+Math.max(28,c.heading.size()*lineStep+4+c.lines.size()*lineStep);
             else {
                 int cursor=c.bodyOffset+c.lines.size()*lineStep;
+                if(!c.rewards.isEmpty()){
+                    int colWidth=(cardWidth-32)/c.rewards.size();int maxLines=1;
+                    for(var reward:c.rewards)maxLines=Math.max(maxLines,font.split(Component.literal(reward.label()),Math.max(22,colWidth-31)).size());
+                    c.rewardOffset=cursor+4;c.rewardHeight=26+maxLines*lineStep+14;cursor=c.rewardOffset+c.rewardHeight+4;
+                }
                 if(c.goal>0){c.progressOffset=cursor+3;cursor+=lineStep+14;}
                 if(c.action!=null){c.actionOffset=cursor+8;cursor+=36;}
                 c.height=cursor+10;
             }
             c.y=totalHeight;totalHeight+=c.height+8;
-            if(c.action!=null){c.button=button(c.actionLabel,0,0,94,20,false,c.action);c.button.active=c.enabled;}
+            if(c.action!=null){c.button=button(c.actionLabel,0,0,94,20,c.actionLabel.equals("보상 받기")&&c.enabled,c.action);c.button.active=c.enabled;}
         }
         totalHeight=Math.max(0,totalHeight-8);clampScroll();layoutActions();
         button("위로",left+14,top+panelHeight-29,43,20,false,()->{scroll-=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();});
@@ -173,14 +181,16 @@ public final class JournalScreen extends Screen {
         if(!questPeriod.equals("seasonal")){
             String period=questPeriod;
             var tasks=data.getCompound(period);boolean daily=period.equals("daily");
-            int complete=0;for(int i=0;i<3;i++){var t=tasks.getCompound(""+i);if(t.getInt("target")>0&&t.getInt("progress")>=t.getInt("target"))complete++;}
-            section(daily?"오늘의 작은 부탁":"이번 주의 모험",(daily?"매일":"매주 월요일")+" 새 부탁이 도착해요. · "+tasks.getString("date")+"\n3개 완료 보상: "+(daily?"뽑기권 조각 1개":"뽑기권 1장")+" · "+complete+" / 3"+(tasks.getBoolean("setBonusAwarded")?" · 지급 완료":""),daily?6:7);
-            for(int i=0;i<3;i++){
-                var task=tasks.getCompound(""+i);int index=i,kind=Math.max(0,Math.min(4,task.getInt("kind")));
+            questSummary=tasks;questDone=0;
+            for(int i=0;i<JournalWorld.taskCount(period);i++){var t=tasks.getCompound(""+i);if(t.getInt("target")>0&&t.getInt("progress")>=t.getInt("target"))questDone++;}
+            contentTop=top+146;
+            for(int i=0;i<JournalWorld.taskCount(period);i++){
+                var task=tasks.getCompound(""+i);if(task.isEmpty())continue;
+                int index=i,kind=Math.max(0,Math.min(4,task.getInt("kind")));
                 boolean claimed=task.getBoolean("claimed"),ready=task.getInt("target")>0&&task.getInt("progress")>=task.getInt("target");
                 String verb=switch(kind){case 0->" 수확하기";case 1->" 낚기";case 2->" 캐기";case 3->" 만들기";default->" 번식시키기";};
-                String body=taskDescription(task)+"\n보상 · 에메랄드 "+task.getInt("reward")+"개 + 경험치 "+task.getInt("reward")*10;
-                actionCard(subjectName(task)+verb,body,kind,claimed?"수령 완료":daily?"일일":"주간",task.getInt("progress"),task.getInt("target"),claimed?"수령 완료":ready?"보상 받기":"진행 중",!claimed&&ready,()->request("claim",period+":"+index));
+                actionCard(subjectName(task)+verb,taskDescription(task),kind,claimed?"수령 완료":daily?"일일":"주간",task.getInt("progress"),task.getInt("target"),claimed?"수령 완료":ready?"보상 받기":"진행 중",!claimed&&ready,()->request("claim",period+":"+index));
+                cards.get(cards.size()-1).rewards=TaskRewards.display(task);
             }
         }
         if(!questPeriod.equals("seasonal"))return;
@@ -224,7 +234,7 @@ public final class JournalScreen extends Screen {
         for(var skin:FantasyGacha.POOL)if(gacha.getCompound("owned").getBoolean(skin.id()))count++;
         section("별빛 공방","12개 테마, 60종의 장비 외형을 모아 보세요. 장비 성능은 그대로 유지돼요.",7);
         actionCard("환상 도구 스킨 뽑기","보유 스킨 "+count+" / 60 · 뽑기권 "+gacha.getInt("tickets")+"장 · 조각 "+gacha.getInt("fragments")+"개\n스킨 미리보기·뽑기·장착·조각 교환은 공방에서 할 수 있어요.",7,"컬렉션",count,60,"공방 열기",true,()->request("open","gacha"));
-        card("뽑기권 모으기","일일 업무 3개 완료: 뽑기권 조각 1개\n주간 업무 3개 완료: 뽑기권 1장\n조각 10개는 공방에서 뽑기권 1장으로 교환해요.",11,"업무 보상",0,0);
+        card("뽑기권 모으기","일일 업무 5개 중 3개 완료: 뽑기권 조각 1개\n주간 업무 3개 완료: 뽑기권 1장\n조각 10개는 공방에서 뽑기권 1장으로 교환해요.",11,"업무 보상",0,0);
     }
     private void clampScroll(){scroll=Math.max(0,Math.min(scroll,Math.max(0,totalHeight-(contentBottom-contentTop))));}
     private void layoutActions(){
@@ -247,6 +257,7 @@ public final class JournalScreen extends Screen {
             String name=data.getString("username"),nick=data.getString("nickname");
             g.drawString(font,font.plainSubstrByWidth(name+(nick.isEmpty()?"":" · "+nick),panelWidth-32),left+16,top+68,TEXT,false);
         }
+        if(questSummary!=null)renderQuestBonus(g);
         g.enableScissor(left+12,contentTop,left+panelWidth-12,contentBottom);
         int cardWidth=panelWidth-40;
         for(Card c:cards){
@@ -271,6 +282,7 @@ public final class JournalScreen extends Screen {
             }
             int textY=y+c.bodyOffset;
             for(var line:c.lines){g.drawString(font,line,x+12,textY,MUTED,false);textY+=lineStep;}
+            if(!c.rewards.isEmpty())renderRewards(g,c,x,y,cardWidth);
             if(c.goal>0){
                 int progressY=y+c.progressOffset,barY=progressY+lineStep+1;long value=Math.max(0,Math.min(c.value,c.goal));
                 g.drawString(font,value+" / "+c.goal,x+12,progressY,TEXT,false);
@@ -289,6 +301,32 @@ public final class JournalScreen extends Screen {
         }
         if(panelWidth>350)centered(g,"마우스 휠로 넘겨보기",left+panelWidth/2,top+panelHeight-22,MUTED);
         super.render(g,mx,my,delta);
+    }
+    private void renderQuestBonus(GuiGraphics g){
+        int x=left+16,y=top+91,w=panelWidth-40;boolean daily=questPeriod.equals("daily"),done=questSummary.getBoolean("setBonusAwarded");
+        rounded(g,x,y,w,48,8,done?0xFF9AB78A:0xFFD4AE62);rounded(g,x+1,y+1,w-2,46,7,done?0xFFE0ECD5:0xFFFFE9B5);
+        g.renderItem(new net.minecraft.world.item.ItemStack(daily?SkyContent.FRAGMENT.get():SkyContent.TICKET.get()),x+10,y+12);
+        String heading=(daily?"일일 업무 · 5개 분야":"주간 업무 · 3개 도전")+"  "+questDone+"개 완료";
+        g.drawString(font,font.plainSubstrByWidth(heading,w-46),x+35,y+7,TEXT,false);
+        String gift="3개 완료 선물 · "+(daily?"뽑기권 조각 1개":"뽑기권 1장")+(done?" · 지급 완료":" ("+Math.min(3,questDone)+"/3)");
+        g.drawString(font,font.plainSubstrByWidth(gift,w-46),x+35,y+23,done?0xFF305439:0xFF79501C,false);
+        rounded(g,x+35,y+39,w-46,4,2,0xFFD9C6A1);int fill=(w-46)*Math.min(3,questDone)/3;if(fill>0)rounded(g,x+35,y+39,fill,4,2,0xFF77995E);
+    }
+    private void renderRewards(GuiGraphics g,Card c,int x,int y,int cardWidth){
+        int rx=x+10,ry=y+c.rewardOffset,rw=cardWidth-20;
+        rounded(g,rx,ry,rw,c.rewardHeight,7,0xFFD2AA5F);rounded(g,rx+1,ry+1,rw-2,c.rewardHeight-2,6,0xFFFFEDC5);
+        g.drawString(font,Component.literal("획득 보상").withStyle(net.minecraft.ChatFormatting.BOLD),rx+8,ry+6,0xFF765019,false);
+        int col=(rw-12)/c.rewards.size();
+        for(int i=0;i<c.rewards.size();i++){
+            var reward=c.rewards.get(i);int xx=rx+6+i*col,yy=ry+20;
+            rounded(g,xx,yy,col-4,c.rewardHeight-25,5,0xFFFFF8E5);
+            var stack=TaskRewards.stack(reward.id(),1);
+            if(!stack.isEmpty())g.renderItem(stack,xx+4,yy+6);else {g.pose().pushPose();g.pose().translate(xx+4,yy+6,0);g.pose().scale(.55f,.55f,1);icon(g,i==0?5:c.icon,0,0);g.pose().popPose();}
+            var lines=font.split(Component.literal(reward.label()),Math.max(22,col-31));int ty=yy+5;
+            for(var line:lines){g.drawString(font,line,xx+25,ty,TEXT,false);ty+=lineStep;}
+            int qtyY=ry+c.rewardHeight-15;
+            g.drawString(font,Component.literal("× "+reward.count()).withStyle(net.minecraft.ChatFormatting.BOLD),xx+25,qtyY,0xFF8B481A,false);
+        }
     }
     @Override public boolean mouseScrolled(double x,double y,double delta){
         if(x>=left&&x<=left+panelWidth&&y>=contentTop&&y<=contentBottom){scroll-=delta*30;clampScroll();layoutActions();return true;}

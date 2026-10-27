@@ -12,7 +12,7 @@ import net.minecraftforge.network.simple.SimpleChannel;
 import java.util.*;
 
 public final class JournalNetwork {
-    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation(SunlitJournal.MODID,"journal"),()->"5", "5"::equals,"5"::equals);
+    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation(SunlitJournal.MODID,"journal"),()->"6", "6"::equals,"6"::equals);
     private static final Map<UUID,Long> WATCHING=new HashMap<>(), LAST=new HashMap<>(), HEARTBEATS=new HashMap<>();
     private static final Set<String> PAGES=Set.of("profile","skills","quests","achievements","secrets","collection","gacha");
     public record Request(String action,String value){

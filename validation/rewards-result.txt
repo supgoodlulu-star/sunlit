@@ -1,0 +1,12 @@
+Sunlit 0.7.0-dev task reward acceptance
+
+32 Forge GameTests passed with actual Server Nick, Pufferfish Skills and Patchouli integration enabled.
+5 daily tasks, any-three automatic bonus, actual fifth-slot and weekly claim packets, coins/material/96-item sync, pinned gift panel, GUI scales 2/3; pack-item placeholders used in this test only
+
+Daily: all 5 fields; any 3 completed -> 1 ticket fragment once.
+Weekly: 3 tasks; all 3 completed -> 1 ticket once.
+Individual money: 2 / 6 physical numismatics:cog; XP: 20 / 80.
+Random materials stored at creation. Weekly mining: 96; other weekly amounts: 3x agreed daily.
+Legacy target/progress/claims/bonus preserved. Missing item blocks all individual claim payout; no replacement or reroll.
+Pack economic/farming items are fixtures in these tests, not original mod implementations. Test-only classes/resources excluded from distributable JAR.
+Full Sunlit Valley modpack integration and actual item icons/bank mechanics remain unverified.

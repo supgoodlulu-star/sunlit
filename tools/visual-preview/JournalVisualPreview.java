@@ -18,7 +18,11 @@ public class JournalVisualPreview {
         var titles=new CompoundTag();titles.putString("owned","새싹농부|꼬마낚시꾼|벚꽃요정");titles.putString("equipped","새싹농부");d.put("titles",titles);
         var sd=new CompoundTag();sd.putBoolean("available",true);var list=new ListTag();
         for(String name:new String[]{"exploration","life","books","farming","fishing","mining","cooking","husbandry"}){var c=new CompoundTag();c.putString("id","society:"+name);c.putBoolean("unlocked",true);c.putBoolean("hasXp",!java.util.Set.of("exploration","life","books").contains(name));c.putInt("level",7);c.putInt("xp",42);c.putInt("required",100);var names=new ListTag();for(int j=0;j<(java.util.Set.of("exploration","life","books").contains(name)?0:4);j++)names.add(StringTag.valueOf("fixture_"+j));c.put("skills",names);list.add(c);}sd.put("categories",list);d.put("skillsData",sd);
-        for(String period:new String[]{"daily","weekly"}){var tasks=new CompoundTag();tasks.putString("date","2026-10-26");int[] kinds={2,3,4};String[] ids={"minecraft:iron_ore","minecraft:bread","minecraft:cow"};for(int i=0;i<3;i++){var t=new CompoundTag();t.putInt("kind",kinds[i]);t.putString("subject",ids[i]);t.putInt("target",6);t.putInt("progress",i==1?6:2);t.putInt("reward",period.equals("daily")?2:8);tasks.put(""+i,t);}d.put(period,tasks);}
+        for(String period:new String[]{"daily","weekly"}){
+            var tasks=new CompoundTag();tasks.putString("date","2026-10-27");boolean daily=period.equals("daily");
+            int[] kinds=daily?new int[]{0,1,2,3,4}:new int[]{2,3,4};String[] ids={"minecraft:wheat","minecraft:cod","minecraft:iron_ore","minecraft:bread","minecraft:cow"};
+            for(int i=0;i<kinds.length;i++){int kind=kinds[i];var t=new CompoundTag();t.putInt("kind",kind);t.putString("subject",ids[kind]);t.putInt("target",6);t.putInt("progress",i==1?6:2);t.put("payout",TaskRewards.plan(kind,!daily,0));tasks.put(""+i,t);}d.put(period,tasks);
+        }
         var f=new CompoundTag();f.putBoolean("available",true);f.putString("season","SPRING");f.putLong("progress",250);f.putLong("goal",1000);d.put("festival",f);
         var counts=new CompoundTag();counts.putLong("farming",46);counts.putLong("mining",123);d.put("counts",counts);return d;
     }
