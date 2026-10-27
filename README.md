@@ -1,12 +1,14 @@
 # Sunlit · 모험가의 수첩
 
-Minecraft 1.20.1 / Forge 47.3.0 · **0.6.0 · Sunlit Fantasy 60종과 스킨 뽑기**
+Minecraft 1.20.1 / Forge 47.3.0 · **0.6.1 · 테마별 입체 조형·색감 개선**
 
-- [게임용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.6.0-dev.jar)
-- [전체 소스 ZIP](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA6_Fantasy_Collection_Source.zip)
+- [게임용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.6.1-dev.jar)
+- [전체 소스 ZIP](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA6_1_Sculpted_Skins_Source.zip)
 - [설치·사용 안내](README_한국어.md) · [60종 컬렉션·확률](FANTASY_COLLECTION.md) · [검증](VALIDATION.md)
 
-![실제 Minecraft 뽑기 화면](validation/screenshots/fantasy-gacha-ten.png)
+![실제 Minecraft 곡괭이 12개 테마 비교](validation/screenshots/fantasy-sculpted-gallery-1.png)
+
+장식뿐 아니라 도구 머리와 그립을 테마마다 새로 조형했습니다. 두툼한 단면·다각 면·명암 재질·독립 손잡이 구조를 사용하며 기존 스킨 ID와 소유 기록을 유지합니다. [변경 내용·실제 모델 비교](SCULPTED_SKINS.md).
 
 **일일 업무 3개 완료 → 뽑기권 조각 1개 / 주간 업무 3개 완료 → 뽑기권 1장 / 조각 10개 → 뽑기권 1장**
 

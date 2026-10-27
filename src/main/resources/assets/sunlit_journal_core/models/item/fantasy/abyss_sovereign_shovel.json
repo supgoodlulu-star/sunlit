@@ -11,8 +11,8 @@
   "display": {
     "gui": {
       "rotation": [
-        8,
-        -12,
+        18,
+        -28,
         -35
       ],
       "translation": [
@@ -29,7 +29,7 @@
     "firstperson_righthand": {
       "rotation": [
         0,
-        -90,
+        -70,
         20
       ],
       "translation": [
@@ -46,7 +46,7 @@
     "firstperson_lefthand": {
       "rotation": [
         0,
-        90,
+        70,
         -20
       ],
       "translation": [

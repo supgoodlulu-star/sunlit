@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 /** Opt-in client acceptance, real packet handling and disposable test-world state only. */
 @Mod.EventBusSubscriber(modid=SunlitJournal.MODID,value=Dist.CLIENT)
 public final class FantasyCollectionCheck {
-    private static int phase,ticks,theme;private static long start;
+    private static int phase,ticks,theme,galleryKind;private static long start;
     private static CompletableFuture<Void> pending;
     private static void require(boolean b,String message){if(!b)throw new IllegalStateException("FANTASY_CHECK: "+message);}
     private static void server(Minecraft mc,java.util.function.Consumer<net.minecraft.server.level.ServerPlayer> run){
@@ -27,7 +27,7 @@ public final class FantasyCollectionCheck {
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){
         if(e.phase!=TickEvent.Phase.END||!Boolean.getBoolean("sunlit.fantasyCheck"))return;
         if(start==0)start=System.currentTimeMillis();require(System.currentTimeMillis()-start<240000,"Timeout "+phase);
-        var mc=Minecraft.getInstance();if(mc.player==null||mc.level==null||mc.getSingleplayerServer()==null||mc.getOverlay()!=null)return;ticks++;
+        var mc=Minecraft.getInstance();if(mc.player==null||mc.level==null||mc.getSingleplayerServer()==null||mc.getOverlay()!=null)return;mc.getToasts().clear();ticks++;
         switch(phase){
             case 0 -> {
                 mc.options.guiScale().set(2);mc.options.renderDistance().set(6);mc.options.languageCode="ko_kr";mc.getLanguageManager().setSelected("ko_kr");mc.resizeDisplay();pending=mc.reloadResourcePacks();phase=1;ticks=0;
@@ -94,7 +94,12 @@ public final class FantasyCollectionCheck {
             case 18 -> {if(!pending.isDone()||ticks<10)return;pending.join();shot(mc,"fantasy-gacha-fragments");mc.screen.onClose();phase=14;ticks=0;}
             case 14 -> {
                 if(ticks<10)return;mc.player.setXRot(20);shot(mc,"fantasy-held-pickaxe");
-                com.mojang.logging.LogUtils.getLogger().info("FANTASY_CHECK PASS: all 60 baked OBJ models, actual 1/10 draw packets and scaled click, 12 theme previews, rates, GUI scales, duplicate exchange, 10-fragment exchange and equipped S2C sync");phase=15;ticks=0;
+                com.mojang.logging.LogUtils.getLogger().info("FANTASY_CHECK PASS: all 60 baked OBJ models, actual 1/10 draw packets and scaled click, 12 theme previews, rates, GUI scales, duplicate exchange, 10-fragment exchange and equipped S2C sync");phase=19;ticks=0;mc.options.guiScale().set(2);mc.resizeDisplay();mc.setScreen(new FantasyGalleryScreen(0));
+            }
+            case 19 -> {
+                if(ticks<15)return;shot(mc,"fantasy-sculpted-gallery-"+galleryKind);
+                if(++galleryKind<5){mc.setScreen(new FantasyGalleryScreen(galleryKind));ticks=0;return;}
+                com.mojang.logging.LogUtils.getLogger().info("FANTASY_SCULPTURE_CHECK PASS: five actual-item galleries covering every theme and all 60 tool bodies");phase=15;ticks=0;
             }
             case 15 -> {if(ticks>5)mc.stop();}
         }

@@ -1,4 +1,6 @@
-# 장비 외형 · Sunlit Fantasy 0.6.0
+# 장비 외형 · Sunlit Fantasy 0.6.1
+
+[0.6.1 입체 조형·색감 개선](SCULPTED_SKINS.md)에서 실제 모델을 비교할 수 있습니다.
 
 현재 60종의 게임용 곡면 OBJ 모델과 뽑기·조각 교환·수집·장착을 제공합니다. [컬렉션 목록](FANTASY_COLLECTION.md), [사용 안내](README_한국어.md)를 참조하세요.
 

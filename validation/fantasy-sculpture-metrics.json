@@ -1,0 +1,766 @@
+{
+  "body_bounds_design_units": {
+    "sakura_sword": {
+      "handle": [
+        2.499,
+        8.529,
+        2.695
+      ],
+      "head": [
+        7.055,
+        19.302,
+        2.199
+      ]
+    },
+    "sakura_pickaxe": {
+      "handle": [
+        2.5,
+        15.695,
+        2.695
+      ],
+      "head": [
+        15.517,
+        5.146,
+        2.746
+      ]
+    },
+    "sakura_axe": {
+      "handle": [
+        2.5,
+        15.695,
+        2.695
+      ],
+      "head": [
+        9.837,
+        8.0,
+        3.5
+      ]
+    },
+    "sakura_shovel": {
+      "handle": [
+        2.5,
+        15.695,
+        2.695
+      ],
+      "head": [
+        6.994,
+        8.252,
+        3.197
+      ]
+    },
+    "sakura_hoe": {
+      "handle": [
+        2.5,
+        15.695,
+        2.695
+      ],
+      "head": [
+        9.958,
+        4.552,
+        2.496
+      ]
+    },
+    "moon_bunny_sword": {
+      "handle": [
+        2.96,
+        8.748,
+        2.556
+      ],
+      "head": [
+        9.377,
+        19.514,
+        3.246
+      ]
+    },
+    "moon_bunny_pickaxe": {
+      "handle": [
+        2.96,
+        14.808,
+        2.557
+      ],
+      "head": [
+        14.71,
+        7.588,
+        2.9
+      ]
+    },
+    "moon_bunny_axe": {
+      "handle": [
+        2.96,
+        14.808,
+        2.557
+      ],
+      "head": [
+        10.783,
+        11.832,
+        3.0
+      ]
+    },
+    "moon_bunny_shovel": {
+      "handle": [
+        2.96,
+        14.808,
+        2.557
+      ],
+      "head": [
+        6.2,
+        8.7,
+        3.5
+      ]
+    },
+    "moon_bunny_hoe": {
+      "handle": [
+        2.96,
+        14.808,
+        2.557
+      ],
+      "head": [
+        9.66,
+        5.571,
+        2.6
+      ]
+    },
+    "star_cloud_sword": {
+      "handle": [
+        3.0,
+        8.25,
+        2.532
+      ],
+      "head": [
+        6.8,
+        16.4,
+        4.472
+      ]
+    },
+    "star_cloud_pickaxe": {
+      "handle": [
+        3.0,
+        14.15,
+        2.532
+      ],
+      "head": [
+        14.922,
+        5.251,
+        3.4
+      ]
+    },
+    "star_cloud_axe": {
+      "handle": [
+        3.0,
+        14.15,
+        2.532
+      ],
+      "head": [
+        5.9,
+        7.0,
+        4.748
+      ]
+    },
+    "star_cloud_shovel": {
+      "handle": [
+        3.0,
+        14.15,
+        2.532
+      ],
+      "head": [
+        6.8,
+        7.0,
+        3.6
+      ]
+    },
+    "star_cloud_hoe": {
+      "handle": [
+        3.0,
+        14.15,
+        2.532
+      ],
+      "head": [
+        8.479,
+        5.542,
+        3.4
+      ]
+    },
+    "fairy_forest_sword": {
+      "handle": [
+        5.043,
+        8.038,
+        2.183
+      ],
+      "head": [
+        7.02,
+        17.435,
+        2.147
+      ]
+    },
+    "fairy_forest_pickaxe": {
+      "handle": [
+        5.072,
+        15.725,
+        2.184
+      ],
+      "head": [
+        15.529,
+        7.264,
+        1.721
+      ]
+    },
+    "fairy_forest_axe": {
+      "handle": [
+        5.072,
+        15.725,
+        2.184
+      ],
+      "head": [
+        9.884,
+        6.331,
+        2.508
+      ]
+    },
+    "fairy_forest_shovel": {
+      "handle": [
+        5.072,
+        15.725,
+        2.184
+      ],
+      "head": [
+        6.757,
+        8.042,
+        2.663
+      ]
+    },
+    "fairy_forest_hoe": {
+      "handle": [
+        5.072,
+        15.725,
+        2.184
+      ],
+      "head": [
+        7.865,
+        5.838,
+        1.879
+      ]
+    },
+    "deep_pearl_sword": {
+      "handle": [
+        3.138,
+        8.543,
+        2.341
+      ],
+      "head": [
+        5.376,
+        18.831,
+        3.506
+      ]
+    },
+    "deep_pearl_pickaxe": {
+      "handle": [
+        3.146,
+        14.825,
+        2.342
+      ],
+      "head": [
+        14.618,
+        8.809,
+        4.318
+      ]
+    },
+    "deep_pearl_axe": {
+      "handle": [
+        3.146,
+        14.825,
+        2.342
+      ],
+      "head": [
+        9.24,
+        6.358,
+        4.288
+      ]
+    },
+    "deep_pearl_shovel": {
+      "handle": [
+        3.146,
+        14.825,
+        2.342
+      ],
+      "head": [
+        10.416,
+        7.114,
+        4.742
+      ]
+    },
+    "deep_pearl_hoe": {
+      "handle": [
+        3.146,
+        14.825,
+        2.342
+      ],
+      "head": [
+        10.141,
+        5.472,
+        3.718
+      ]
+    },
+    "snow_blossom_sword": {
+      "handle": [
+        2.786,
+        8.725,
+        2.536
+      ],
+      "head": [
+        7.463,
+        18.427,
+        1.521
+      ]
+    },
+    "snow_blossom_pickaxe": {
+      "handle": [
+        2.786,
+        14.925,
+        2.536
+      ],
+      "head": [
+        16.116,
+        6.068,
+        1.573
+      ]
+    },
+    "snow_blossom_axe": {
+      "handle": [
+        2.786,
+        14.925,
+        2.536
+      ],
+      "head": [
+        7.545,
+        8.308,
+        1.886
+      ]
+    },
+    "snow_blossom_shovel": {
+      "handle": [
+        2.786,
+        14.925,
+        2.536
+      ],
+      "head": [
+        5.185,
+        8.022,
+        1.991
+      ]
+    },
+    "snow_blossom_hoe": {
+      "handle": [
+        2.786,
+        14.925,
+        2.536
+      ],
+      "head": [
+        8.268,
+        4.422,
+        1.469
+      ]
+    },
+    "black_rose_sword": {
+      "handle": [
+        3.027,
+        9.004,
+        2.735
+      ],
+      "head": [
+        7.42,
+        17.549,
+        2.6
+      ]
+    },
+    "black_rose_pickaxe": {
+      "handle": [
+        3.027,
+        16.352,
+        2.735
+      ],
+      "head": [
+        12.678,
+        6.85,
+        2.5
+      ]
+    },
+    "black_rose_axe": {
+      "handle": [
+        3.027,
+        16.352,
+        2.735
+      ],
+      "head": [
+        11.258,
+        11.931,
+        2.6
+      ]
+    },
+    "black_rose_shovel": {
+      "handle": [
+        3.027,
+        16.352,
+        2.735
+      ],
+      "head": [
+        5.383,
+        7.016,
+        3.4
+      ]
+    },
+    "black_rose_hoe": {
+      "handle": [
+        3.027,
+        16.352,
+        2.735
+      ],
+      "head": [
+        10.672,
+        5.289,
+        2.4
+      ]
+    },
+    "abyss_sovereign_sword": {
+      "handle": [
+        3.8,
+        7.2,
+        3.154
+      ],
+      "head": [
+        8.8,
+        19.0,
+        4.55
+      ]
+    },
+    "abyss_sovereign_pickaxe": {
+      "handle": [
+        3.8,
+        14.0,
+        3.154
+      ],
+      "head": [
+        14.97,
+        6.623,
+        4.2
+      ]
+    },
+    "abyss_sovereign_axe": {
+      "handle": [
+        3.8,
+        14.0,
+        3.154
+      ],
+      "head": [
+        12.0,
+        8.0,
+        4.5
+      ]
+    },
+    "abyss_sovereign_shovel": {
+      "handle": [
+        3.8,
+        14.0,
+        3.154
+      ],
+      "head": [
+        6.8,
+        8.0,
+        4.3
+      ]
+    },
+    "abyss_sovereign_hoe": {
+      "handle": [
+        3.8,
+        14.0,
+        3.154
+      ],
+      "head": [
+        8.4,
+        5.2,
+        4.0
+      ]
+    },
+    "blood_eclipse_sword": {
+      "handle": [
+        3.397,
+        9.57,
+        2.626
+      ],
+      "head": [
+        8.334,
+        18.55,
+        3.128
+      ]
+    },
+    "blood_eclipse_pickaxe": {
+      "handle": [
+        3.399,
+        15.893,
+        2.626
+      ],
+      "head": [
+        13.862,
+        10.287,
+        3.0
+      ]
+    },
+    "blood_eclipse_axe": {
+      "handle": [
+        3.399,
+        15.893,
+        2.626
+      ],
+      "head": [
+        12.068,
+        14.366,
+        3.6
+      ]
+    },
+    "blood_eclipse_shovel": {
+      "handle": [
+        3.399,
+        15.893,
+        2.626
+      ],
+      "head": [
+        8.268,
+        9.911,
+        3.4
+      ]
+    },
+    "blood_eclipse_hoe": {
+      "handle": [
+        3.399,
+        15.893,
+        2.626
+      ],
+      "head": [
+        12.045,
+        5.877,
+        3.3
+      ]
+    },
+    "sun_blessing_sword": {
+      "handle": [
+        3.0,
+        9.37,
+        2.746
+      ],
+      "head": [
+        8.919,
+        17.55,
+        4.18
+      ]
+    },
+    "sun_blessing_pickaxe": {
+      "handle": [
+        3.0,
+        14.55,
+        2.746
+      ],
+      "head": [
+        12.142,
+        7.305,
+        3.98
+      ]
+    },
+    "sun_blessing_axe": {
+      "handle": [
+        3.0,
+        14.55,
+        2.746
+      ],
+      "head": [
+        11.336,
+        13.467,
+        5.292
+      ]
+    },
+    "sun_blessing_shovel": {
+      "handle": [
+        3.0,
+        14.55,
+        2.746
+      ],
+      "head": [
+        6.8,
+        7.0,
+        4.0
+      ]
+    },
+    "sun_blessing_hoe": {
+      "handle": [
+        3.0,
+        14.55,
+        2.746
+      ],
+      "head": [
+        8.5,
+        4.2,
+        3.7
+      ]
+    },
+    "sea_stars_sword": {
+      "handle": [
+        3.096,
+        8.589,
+        2.214
+      ],
+      "head": [
+        4.276,
+        16.614,
+        2.8
+      ]
+    },
+    "sea_stars_pickaxe": {
+      "handle": [
+        3.096,
+        15.129,
+        2.214
+      ],
+      "head": [
+        13.28,
+        5.462,
+        2.64
+      ]
+    },
+    "sea_stars_axe": {
+      "handle": [
+        3.096,
+        15.129,
+        2.214
+      ],
+      "head": [
+        8.597,
+        8.676,
+        3.96
+      ]
+    },
+    "sea_stars_shovel": {
+      "handle": [
+        3.096,
+        15.129,
+        2.214
+      ],
+      "head": [
+        8.026,
+        7.633,
+        3.696
+      ]
+    },
+    "sea_stars_hoe": {
+      "handle": [
+        3.096,
+        15.129,
+        2.214
+      ],
+      "head": [
+        9.341,
+        4.739,
+        2.8
+      ]
+    },
+    "heaven_relic_sword": {
+      "handle": [
+        3.0,
+        8.412,
+        2.733
+      ],
+      "head": [
+        7.961,
+        18.481,
+        2.0
+      ]
+    },
+    "heaven_relic_pickaxe": {
+      "handle": [
+        3.0,
+        15.612,
+        2.734
+      ],
+      "head": [
+        15.114,
+        5.562,
+        2.4
+      ]
+    },
+    "heaven_relic_axe": {
+      "handle": [
+        3.0,
+        15.612,
+        2.734
+      ],
+      "head": [
+        6.547,
+        8.16,
+        2.8
+      ]
+    },
+    "heaven_relic_shovel": {
+      "handle": [
+        3.0,
+        15.612,
+        2.734
+      ],
+      "head": [
+        7.536,
+        7.07,
+        3.0
+      ]
+    },
+    "heaven_relic_hoe": {
+      "handle": [
+        3.0,
+        15.612,
+        2.734
+      ],
+      "head": [
+        7.19,
+        5.376,
+        2.8
+      ]
+    }
+  },
+  "closest_normalized_head_silhouettes": [
+    {
+      "kind": "sword",
+      "similarity": 0.8765,
+      "pair": [
+        "abyss_sovereign_sword",
+        "sun_blessing_sword"
+      ]
+    },
+    {
+      "kind": "pickaxe",
+      "similarity": 0.7598,
+      "pair": [
+        "star_cloud_pickaxe",
+        "abyss_sovereign_pickaxe"
+      ]
+    },
+    {
+      "kind": "axe",
+      "similarity": 0.8759,
+      "pair": [
+        "moon_bunny_axe",
+        "blood_eclipse_axe"
+      ]
+    },
+    {
+      "kind": "shovel",
+      "similarity": 0.9251,
+      "pair": [
+        "snow_blossom_shovel",
+        "sun_blessing_shovel"
+      ]
+    },
+    {
+      "kind": "hoe",
+      "similarity": 0.8475,
+      "pair": [
+        "abyss_sovereign_hoe",
+        "sun_blessing_hoe"
+      ]
+    }
+  ]
+}

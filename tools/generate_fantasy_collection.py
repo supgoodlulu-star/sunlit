@@ -24,11 +24,11 @@ THEMES=[
 ]
 KINDS=[('sword','검'),('pickaxe','곡괭이'),('axe','도끼'),('shovel','삽'),('hoe','괭이')]
 class Mesh:
- def __init__(self):self.v=[];self.faces=[];self.normals=[]
+ def __init__(self):self.v=[];self.faces=[];self.normals=[];self.groups=[];self.group="body"
  def face(self,points,mat,normals=None):
   ids=[]
   for i,p in enumerate(points):self.v.append(p);self.normals.append(normals[i] if normals else None);ids.append(len(self.v))
-  self.faces.append((ids,mat))
+  self.faces.append((ids,mat));self.groups.append(self.group)
  def ellipsoid(self,c,r,mat,seg=10,rings=6):
   for j in range(rings):
    a=-pi/2+j*pi/rings;b=-pi/2+(j+1)*pi/rings
@@ -109,115 +109,35 @@ class Mesh:
     if self.normals[n-1] is None:self.normals[n-1]=normal
   for n in self.normals:
    length=sqrt(sum(x*x for x in n)) or 1;lines.append('vn '+' '.join(f'{x/length:.5f}' for x in n))
-  last=None
-  for ids,mat in self.faces:
+  last=None;last_group=None
+  for face_index,(ids,mat) in enumerate(self.faces):
+   group=self.groups[face_index]
+   if group!=last_group:lines.append('g '+group);last_group=group
    if last!=mat:lines.append('usemtl '+mat);last=mat
    # Ear clipping preserves concave tool outlines instead of drawing overlapping fan triangles.
    for tri in self.triangulate(ids):lines.append('f '+' '.join(f'{n}/1/{n}' for n in tri))
   path.write_text('\n'.join(lines)+'\n')
-def handle(m,theme,kind):
- top=11 if kind=='sword' else 18
- pts=[(.22*sin(i*.5) if theme in ['fairy_forest','black_rose'] else 0,1+i*(top-1)/12,0) for i in range(13)]
- m.tube(pts,.6,'secondary',12)
- for i in range(7):m.ring(0,2+i*(top-3)/7,0,.62,.17,'main',.12)
- m.ellipsoid((0,1,0),(.78,.6,.65),'metal');m.ellipsoid((0,.9,.55),(.42,.45,.25),'gem')
- m.ring(0,top-.5,0,.7,.22,'metal',.14)
-def head(m,kind,theme):
- # Five distinct functional silhouettes, further ornamented with theme-specific shapes.
- if kind=='sword':
-  width=1.2 if theme not in ['black_rose','blood_eclipse'] else 1.5
-  m.polygon([(-width,11.2),(width,11.2),(width*.9,25),(0,29),(-width*.9,25)],0,.65,'secondary', 'metal',.18)
-  m.polygon([(-.28,12),(.28,12),(.34,24),(0,26),(-.34,24)],.4,.12,'main','main',.05)
-  m.tube([(-4.4,12.2,0),(-3.4,11.5,0),(-1.5,10.9,0),(0,11.2,0),(1.5,10.9,0),(3.4,11.5,0),(4.4,12.2,0)],.36,'metal')
- elif kind=='pickaxe':
-  for side in [-1,1]:
-   upper=[(side*(16*t-8*t*t),20+8*t-11*t*t) for t in [i/12 for i in range(13)]]
-   lower=[(side*(16*t-8*t*t),18.6+6*t-7.6*t*t) for t in [i/12 for i in range(12,-1,-1)]]
-   m.polygon(upper+lower,0,.9,'main','metal',.08)
- elif kind=='axe':
-  m.polygon([(-.5,18),(-2.3,17),(-5.5,18.8),(-6.5,22),(-5.2,25.5),(-3.2,23.8),(-1.7,22),(-.5,23)],0,.8,'main','metal',.13)
-  m.polygon([(.2,19),(.2,23),(2.9,24),(4.6,22.2),(3.9,20),(2,18)],0,.65,'secondary','metal',.14)
- elif kind=='shovel':
-  # Rounded spade, not an axe silhouette.
-  m.polygon([(-.7,17),(.7,17),(2.9,19),(3.3,21.3),(2.8,23.6),(1.5,25.1),(0,25.7),(-1.5,25.1),(-2.8,23.6),(-3.3,21.3),(-2.9,19)],0,.6,'main','metal',.13)
-  m.tube([(0,17,.4),(0,20,.55),(0,23,.4)],.1,'secondary')
- else:
-  m.polygon([(-.7,18),(-.7,21),(1.6,21.8),(4.7,21.1),(7.3,19.4),(6.5,18.5),(3.1,19.3),(1,18.3)],0,.7,'main','metal',.12)
-  m.ellipsoid((0,19.5,0),(.9,.9,.65),'metal')
-def ornaments(m,theme,kind):
- y=11.1 if kind=='sword' else 20;z=.75
- m.ellipsoid((0,y,z),(.95,1.05,.46),'metal');m.ellipsoid((0,y,z+.3),(.69,.8,.4),'gem')
- if theme=='sakura':
-  for x,dy,s in [(0,0,1.15),(-2,1,.65),(2,.4,.72)]:m.flower(x,y+dy,z+.45,s)
-  m.ribbon(-.8,y-.5,1,-1);m.ribbon(.8,y-.5,1,1)
- elif theme=='moon_bunny':
-  m.ellipsoid((0,y,1.4),(1.1,.96,.67),'secondary')
-  for x in [-.52,.52]:
-   m.ellipsoid((x,y+1.38,1.1),(.35,1,.32),'secondary');m.ellipsoid((x,y+1.43,1.39),(.17,.68,.13),'main')
-  for x in [-.37,.37]:m.ellipsoid((x,y+.1,2.01),(.09,.12,.06),'dark',8,4)
-  m.ellipsoid((0,y-.17,2.04),(.1,.08,.06),'gem');m.ring(0,y,0,1.7,1.6,'metal',.15,.1,pi*1.7)
-  m.ribbon(1,y-1,.8);m.ellipsoid((-1,y-3,.8),(.62,.62,.62),'secondary')
- elif theme=='star_cloud':
-  for side in [-1,1]:
-   for i in range(3):m.ellipsoid((side*(1+i*.75),y+.2+(i%2)*.4,.8),(.83,.68,.5),'secondary')
-  m.star(0,y,1.6,1.45);m.ribbon(0,y-1,.7)
- elif theme=='fairy_forest':
-  for side in [-1,1]:
-   m.leaf(side*1.8,y+.7,.9,1.7,-side*.8);m.leaf(side*1.1,y-2,.7,.9,side*.5,'secondary')
-  m.flower(0,y,1.5,.72)
-  m.tube([(.6*sin(i*.6),3+i*1.8,.7) for i in range(8)],.12,'metal')
- elif theme=='deep_pearl':
-  for side in [-1,1]:
-   for i in range(3):m.tube([(side*.4,y,.6),(side*(1.3+i*.4),y+1+i*.3,.6),(side*(1.3+i*.6),y+2+i*.4,.6)],.13,'secondary')
-  m.ellipsoid((0,y,1.45),(.83,.83,.7),'secondary');m.ellipsoid((1.4,y-3,.8),(.37,.55,.37),'gem')
- elif theme=='snow_blossom':
-  for i in range(6):
-   a=i*pi/3;dx=cos(a);dy=sin(a)
-   m.tube([(0,y,1.5),(dx*2.2,y+dy*2.2,1.5)],.1,'secondary')
-   for side in [-1,1]:m.tube([(dx*1.1,y+dy*1.1,1.5),(dx*1.5-side*dy*.5,y+dy*1.5+side*dx*.5,1.5)],.09,'secondary')
-  m.ellipsoid((0,y,1.6),(.6,.6,.4),'gem');m.ellipsoid((0,5,0),(.8,.7,.7),'secondary')
- elif theme=='black_rose':
-  m.flower(0,y,1.4,1.2,True)
-  for a in [0,.8,1.6]:m.leaf(-2+a,y-1,.8,.85,a,'secondary')
-  m.ribbon(0,y-1,1,-1)
- elif theme=='abyss_sovereign':
-  for side in [-1,1]:
-   m.polygon([(side*.7,y),(side*1.3,y+2),(side*3.7,y+2.9),(side*3.1,y+1.1),(side*4,y-.2),(side*2,y+.2)],.7,.3,'main','metal',.08)
-  for x in [-.8,0,.8]:m.tube([(x,y+.6,1),(x*1.2,y+2.5-(abs(x)*.6),1)],.13,'metal')
- elif theme=='blood_eclipse':
-  m.ring(0,y,1.4,1.6,1.6,'metal',.17);m.ellipsoid((0,y,1.6),(.98,.98,.5),'gem');m.star(1.7,y-1.8,1,.65);m.ribbon(-1,y-1,1,-1)
- elif theme in ['sun_blessing','heaven_relic']:
-  for side in [-1,1]:
-   for i in range(4):m.leaf(side*(1+i*.65),y+.1+i*.45,.8,1.1,-side*(.6+i*.12),'secondary')
-  if theme=='sun_blessing':
-   for i in range(10):
-    a=i*pi/5;m.tube([(cos(a)*1.1,y+sin(a)*1.1,1.4),(cos(a)*1.6,y+sin(a)*1.6,1.4)],.1,'metal')
-  else:m.ring(0,y+2.6,.6,1.5,.5,'metal',.15)
-  m.ribbon(.7,y-1,.8)
- elif theme=='sea_stars':
-  m.ring(0,y,1,2.1,.8,'metal',.14);m.ellipsoid((0,y,1.4),(.95,.95,.65),'gem')
-  for x,dy in [(-2,-1),(1.4,1.7),(1,-2.5)]:m.star(x,y+dy,1,.55)
-  m.ribbon(-1,y-1,.7,-1)
- # A pendant and chain physically modelled for every set.
- m.tube([(1,y-1,.75),(1.5,y-2.2,.75),(1.4,y-3.2,.75)],.07,'metal',6)
- m.ellipsoid((1.4,y-3.5,.75),(.3,.5,.25),'gem',8,5)
+from fantasy_sculpture import sculpt, PALETTES
 
 catalog=[]
 for ti,(theme,name,collection,colors,rarity,weight) in enumerate(THEMES):
  folder=OUT/theme;folder.mkdir(exist_ok=True)
- mats=dict(zip(['main','secondary','metal','gem'],colors));mats['dark']='#493747'
+ mats=dict(zip(['main','secondary','metal','gem'],colors));mats['dark']='#251E36'
+ main,light,shade,grip,wrap,accent=PALETTES[theme]
+ def tint(hex_color,factor):return '#'+''.join(f'{min(255,int(int(hex_color[k:k+2],16)*factor)):02x}' for k in [1,3,5])
+ mats.update(main=main,light=light,shade=shade,edge=shade,grip=grip,grip_light=tint(grip,1.35),grip_shade=tint(grip,.65),wrap=wrap,accent=accent,shine='#FFFFFF',pearl='#FFEDE5')
  # Standard white sprite tinted by MTL diffuse colors.
  lines=[]
  for key,c in mats.items():
   rgb=[int(c[i:i+2],16)/255 for i in [1,3,5]];lines += ['newmtl '+key,'Kd '+' '.join(f'{n:.4f}' for n in rgb),'map_Kd sunlit_journal_core:item/fantasy_white']
  (folder/'materials.mtl').write_text('\n'.join(lines)+'\n')
  for ki,(kind,ko) in enumerate(KINDS):
-  m=Mesh();handle(m,theme,kind);head(m,kind,theme);ornaments(m,theme,kind);m.save(folder/f'{kind}.obj')
+  m=Mesh();sculpt(m,theme,kind);m.save(folder/f'{kind}.obj')
   sid=f'{theme}_{kind}';index=ti*5+ki+1
   model={'loader':'forge:obj','model':f'sunlit_journal_core:models/fantasy/{theme}/{kind}.obj','automatic_culling':False,'shade_quads':True,'flip_v':False,'gui_light':'front','textures':{'particle':f'sunlit_journal_core:item/fantasy_{theme}'},'display':{
-   'gui':{'rotation':[8,-12,-35],'translation':[0,-1,0],'scale':[.72,.72,.72]},
-   'firstperson_righthand':{'rotation':[0,-90,20],'translation':[1,1,0],'scale':[.78,.78,.78]},
-   'firstperson_lefthand':{'rotation':[0,90,-20],'translation':[1,1,0],'scale':[.78,.78,.78]},
+   'gui':{'rotation':[18,-28,-35],'translation':[0,-1,0],'scale':[.72,.72,.72]},
+   'firstperson_righthand':{'rotation':[0,-70,20],'translation':[1,1,0],'scale':[.78,.78,.78]},
+   'firstperson_lefthand':{'rotation':[0,70,-20],'translation':[1,1,0],'scale':[.78,.78,.78]},
    'thirdperson_righthand':{'rotation':[0,-90,45],'translation':[0,2,0],'scale':[.8,.8,.8]},
    'thirdperson_lefthand':{'rotation':[0,90,-45],'translation':[0,2,0],'scale':[.8,.8,.8]},
    'ground':{'translation':[0,2,0],'scale':[.5,.5,.5]},'fixed':{'rotation':[0,0,-35],'scale':[.7,.7,.7]}}}

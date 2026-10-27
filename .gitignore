@@ -5,3 +5,6 @@ run/
 .idea/
 run-gametest/
 provided-mods/
+
+__pycache__/
+*.pyc

@@ -1,5 +1,5 @@
 newmtl main
-Kd 0.7098 0.8431 1.0000
+Kd 0.4863 0.7137 0.9490
 map_Kd sunlit_journal_core:item/fantasy_white
 newmtl secondary
 Kd 0.9412 0.9686 1.0000
@@ -11,5 +11,35 @@ newmtl gem
 Kd 0.5529 0.6706 0.9451
 map_Kd sunlit_journal_core:item/fantasy_white
 newmtl dark
-Kd 0.2863 0.2157 0.2784
+Kd 0.1451 0.1176 0.2118
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl light
+Kd 0.8706 0.9882 1.0000
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl shade
+Kd 0.2471 0.3686 0.6863
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl edge
+Kd 0.2471 0.3686 0.6863
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl grip
+Kd 0.1882 0.2353 0.4471
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl grip_light
+Kd 0.2510 0.3176 0.6000
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl grip_shade
+Kd 0.1216 0.1529 0.2902
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl wrap
+Kd 0.4549 0.5490 0.8000
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl accent
+Kd 0.8157 0.6039 0.9412
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl shine
+Kd 1.0000 1.0000 1.0000
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl pearl
+Kd 1.0000 0.9294 0.8980
 map_Kd sunlit_journal_core:item/fantasy_white

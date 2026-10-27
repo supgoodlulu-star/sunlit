@@ -1,6 +1,12 @@
-# Sunlit Journal 0.6.0 · 환상 도구 스킨 컬렉션
+# Sunlit Journal 0.6.1 · 환상 도구 스킨 컬렉션
 
 Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 JAR을 설치합니다. mods 폴더의 이전 Sunlit JAR을 새 버전으로 교체하고 재시작하세요.
+
+## 0.6.1 디자인 변경
+
+60종의 도구 머리·손잡이를 테마별로 새로 조형했습니다. 칼날과 도구 머리는 폐쇄된 두꺼운 단면·융기 면·모따기를 가지며 손잡이는 감은 그립·목재 가지·육각 금속·수정·땋은 덩굴 등으로 구분합니다. 밝은 면·짙은 옆면·그립·보석의 재질을 따로 사용합니다.
+
+스킨 ID·확률·기존 소유·장착 상태와 아래 업무/조각 규칙은 0.6.0과 같습니다. 기존 장비도 업데이트하면 새 외형으로 표시됩니다. [모델별 변경과 실제 게임 비교](SCULPTED_SKINS.md).
 
 ## 공방 열기
 
@@ -38,7 +44,7 @@ Minecraft 1.20.1 / Forge 47.3.0 / Java 17. 서버와 모든 접속자가 같은 
 
 운영자 테스트 지급: `/give @s sunlit_journal_core:fantasy_ticket 10`, `/give @s sunlit_journal_core:fantasy_ticket_fragment 10`.
 
-Windows `gradlew.bat build`, Linux/macOS `./gradlew build`. 결과 `build/libs/sunlit-journal-core-0.6.0-dev.jar`. 코드·OBJ 모델·텍스처가 JAR에 포함되어 별도 모델 로더 모드를 설치하지 않습니다.
+Windows `gradlew.bat build`, Linux/macOS `./gradlew build`. 결과 `build/libs/sunlit-journal-core-0.6.1-dev.jar`. 코드·OBJ 모델·텍스처가 JAR에 포함되어 별도 모델 로더 모드를 설치하지 않습니다.
 
 확률과 모델 원본은 `src/main/resources/data/sunlit_journal_core/fantasy_skins.json`, `assets/sunlit_journal_core/models/fantasy/`, 생성기는 `tools/generate_fantasy_collection.py`입니다. 생성 후 `tools/validate_fantasy_collection.py`로 검사합니다.
 

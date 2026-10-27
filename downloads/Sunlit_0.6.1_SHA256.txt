@@ -1,0 +1,2 @@
+91bb9f6c757d3a76074a539072de501fc26a7e807a600e14b31b998e3b20bfdf  sunlit-journal-core-0.6.1-dev.jar
+6aee34cafc6f145bd81b42c6f38848c2378d442ca529709afd8eff4b30356fbb  Sunlit_Journal_ALPHA6_1_Sculpted_Skins_Source.zip
