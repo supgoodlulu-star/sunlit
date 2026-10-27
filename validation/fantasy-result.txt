@@ -1,0 +1,9 @@
+Sunlit 0.6.0-dev acceptance
+
+all 60 baked OBJ models, actual 1/10 draw packets and scaled click, 12 theme previews, rates, GUI scales, duplicate exchange, 10-fragment exchange and equipped S2C sync
+
+27 server GameTests passed, with Server Nick / Pufferfish Skills / Patchouli integration enabled.
+Resource and catalogue validators passed: 60 OBJ models, 326540 triangles, 30 vanilla base items.
+Task reward contract: daily all 3 -> 1 fragment; weekly all 3 -> 1 ticket; 10 fragments -> 1 ticket.
+Hidden map generation and entry excluded; prior-world return compatibility retained.
+Full user modpack / Essential multiplayer / custom resource packs were not available.

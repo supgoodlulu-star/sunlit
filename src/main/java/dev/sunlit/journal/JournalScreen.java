@@ -24,8 +24,8 @@ public final class JournalScreen extends Screen {
     private EditBox nickname;
     private final List<Card> cards=new ArrayList<>();
     private final Set<String> expandedSkills=new HashSet<>();
-    private static final String[] PAGES={"profile","skills","quests","achievements","secrets"};
-    private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","비밀 기록"};
+    private static final String[] PAGES={"profile","skills","quests","achievements","collection"};
+    private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","스킨 공방"};
     private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills"};
     private static final String[] ACTIVITY_HELP={
         "다 자란 작물을 직접 부숴 수확하면 진행도가 올라요. 덜 자란 작물은 포함되지 않아요.",
@@ -50,7 +50,7 @@ public final class JournalScreen extends Screen {
             this.actionLabel=actionLabel;this.enabled=enabled;this.action=action;
         }
     }
-    public JournalScreen(CompoundTag data,String tab){super(Component.literal("모험가의 수첩"));this.data=data;this.tab=Arrays.asList(PAGES).contains(tab)?tab:"profile";}
+    public JournalScreen(CompoundTag data,String tab){super(Component.literal("모험가의 수첩"));this.data=data;if(tab.equals("secrets"))tab="collection";this.tab=Arrays.asList(PAGES).contains(tab)?tab:"profile";}
     private void request(String action,String value){JournalNetwork.CHANNEL.sendToServer(new JournalNetwork.Request(action,value));}
     @Override protected void init(){rebuild();}
     public void update(CompoundTag next){data=next;rebuild();}
@@ -74,7 +74,7 @@ public final class JournalScreen extends Screen {
             case "skills" -> skills();
             case "quests" -> quests();
             case "achievements" -> achievements();
-            case "secrets" -> secrets();
+            case "collection" -> collection();
         }
         int cardWidth=panelWidth-40;
         lineStep=Math.max(14,font.lineHeight+5);
@@ -173,7 +173,8 @@ public final class JournalScreen extends Screen {
         if(!questPeriod.equals("seasonal")){
             String period=questPeriod;
             var tasks=data.getCompound(period);boolean daily=period.equals("daily");
-            section(daily?"오늘의 작은 부탁":"이번 주의 모험",(daily?"매일":"매주 월요일")+" 새 부탁이 도착해요. · "+tasks.getString("date"),daily?6:7);
+            int complete=0;for(int i=0;i<3;i++){var t=tasks.getCompound(""+i);if(t.getInt("target")>0&&t.getInt("progress")>=t.getInt("target"))complete++;}
+            section(daily?"오늘의 작은 부탁":"이번 주의 모험",(daily?"매일":"매주 월요일")+" 새 부탁이 도착해요. · "+tasks.getString("date")+"\n3개 완료 보상: "+(daily?"뽑기권 조각 1개":"뽑기권 1장")+" · "+complete+" / 3"+(tasks.getBoolean("setBonusAwarded")?" · 지급 완료":""),daily?6:7);
             for(int i=0;i<3;i++){
                 var task=tasks.getCompound(""+i);int index=i,kind=Math.max(0,Math.min(4,task.getInt("kind")));
                 boolean claimed=task.getBoolean("claimed"),ready=task.getInt("target")>0&&task.getInt("progress")>=task.getInt("target");
@@ -218,21 +219,12 @@ public final class JournalScreen extends Screen {
             card("사계요정","봄·여름·가을·겨울, 네 계절의 축제에 기여하고 각 축제를 완료해 보세요.",10,owned.contains("사계요정")?"획득":"도전 중",completed,4);
         }
     }
-    private void secrets(){
-        var sky=data.getCompound("skyGarden");
-        if(!sky.getBoolean("discovered")){
-            card("구름 너머의 소문","자수정 조각 네 개와 깃털 네 개로 나침반을 감싸면 잊힌 별길을 가리킨대요. 별길 나침반을 손에 들고 우클릭해 보세요.",12,"미발견",0,0);
-            return;
-        }
-        card("잊힌 하늘 정원","성채와 바깥 회랑의 빛나는 기록석을 읽고, 본당의 문양을 기록에 나온 순서로 깨워 보세요. 기록과 퍼즐은 각자의 모험으로 저장됩니다.",12,sky.getBoolean("complete")?"완료":"탐험 중",Integer.bitCount(sky.getInt("records")&7),3);
-        String[] names={"달의 기록","잎의 기록","별의 기록"};
-        for(int i=0;i<3;i++)card(names[i],(sky.getInt("records")&(1<<i))!=0?new String[]{"달이 먼저 길을 비춥니다.","달빛을 받은 새싹이 두 번째로 깨어납니다.","마지막 별빛이 모이면 정원의 문이 열립니다."}[i]:"아직 읽지 않은 기록이에요. 성채 안과 푸른 물길 바깥 회랑을 살펴보세요.",i==0?9:i==1?0:7,(sky.getInt("records")&(1<<i))!=0?"발견":"미발견",0,0);
-        if(sky.getBoolean("complete")){
-            actionCard("별빛의 잔상","손에 든 바닐라 검에 별빛 외형을 입힙니다. 공격력·내구도·인챈트는 바뀌지 않아요.",7,"영구 해금",0,0,"검 스킨 적용",true,()->request("skin","sword"));
-            actionCard("구름결","손에 든 바닐라 곡괭이에 구름빛 외형을 입힙니다. 채굴 성능은 그대로 유지됩니다.",2,"영구 해금",0,0,"곡괭이 적용",true,()->request("skin","pickaxe"));
-            actionCard("원래 모습으로","손에 든 장비에 적용한 하늘 정원 스킨만 해제합니다.",11,"",0,0,"외형 해제",true,()->request("skin","clear"));
-        }
-        actionCard("별길 귀환","하늘 정원에서 원래 있던 장소로 돌아갑니다. 섬의 귀환석이나 별길 나침반으로도 돌아갈 수 있어요.",12,"",0,0,"돌아가기",true,()->request("skyReturn",""));
+    private void collection(){
+        var gacha=data.getCompound("gacha");int count=0;
+        for(var skin:FantasyGacha.POOL)if(gacha.getCompound("owned").getBoolean(skin.id()))count++;
+        section("별빛 공방","12개 테마, 60종의 장비 외형을 모아 보세요. 장비 성능은 그대로 유지돼요.",7);
+        actionCard("환상 도구 스킨 뽑기","보유 스킨 "+count+" / 60 · 뽑기권 "+gacha.getInt("tickets")+"장 · 조각 "+gacha.getInt("fragments")+"개\n스킨 미리보기·뽑기·장착·조각 교환은 공방에서 할 수 있어요.",7,"컬렉션",count,60,"공방 열기",true,()->request("open","gacha"));
+        card("뽑기권 모으기","일일 업무 3개 완료: 뽑기권 조각 1개\n주간 업무 3개 완료: 뽑기권 1장\n조각 10개는 공방에서 뽑기권 1장으로 교환해요.",11,"업무 보상",0,0);
     }
     private void clampScroll(){scroll=Math.max(0,Math.min(scroll,Math.max(0,totalHeight-(contentBottom-contentTop))));}
     private void layoutActions(){

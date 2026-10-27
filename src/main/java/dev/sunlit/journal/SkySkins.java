@@ -19,14 +19,14 @@ public final class SkySkins {
         if(!requested.equals("sword")&&!requested.equals("pickaxe")&&!requested.equals("clear"))return false;
         ItemStack stack=player.getMainHandItem();CompoundTag tag=stack.getTag();
         if(requested.equals("clear")){
-            if(tag==null||!tag.contains("SunlitSkySkin"))return false;
-            tag.remove("SunlitSkySkin");if(tag.isEmpty())stack.setTag(null);
+            if(tag==null||(!tag.contains("SunlitSkySkin")&&!tag.contains(FantasySkins.KEY)))return false;
+            tag.remove("SunlitSkySkin");tag.remove(FantasySkins.KEY);if(tag.isEmpty())stack.setTag(null);
             player.getInventory().setChanged();player.containerMenu.broadcastChanges();return true;
         }
         var state=SkyGarden.player(player);
         if(!state.getBoolean("complete")||!kind(stack).equals(requested))return false;
         if(tag!=null&&tag.contains("CustomModelData"))return false;
-        stack.getOrCreateTag().putString("SunlitSkySkin",requested);
+        stack.getOrCreateTag().remove(FantasySkins.KEY);stack.getOrCreateTag().putString("SunlitSkySkin",requested);
         player.getInventory().setChanged();player.containerMenu.broadcastChanges();return true;
     }
 }

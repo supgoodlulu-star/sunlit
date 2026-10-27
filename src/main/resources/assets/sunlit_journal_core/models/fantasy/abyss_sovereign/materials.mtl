@@ -1,0 +1,15 @@
+newmtl main
+Kd 0.2863 0.2588 0.3725
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl secondary
+Kd 0.6353 0.5529 0.7529
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl metal
+Kd 0.7686 0.6314 0.4902
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl gem
+Kd 0.5843 0.3647 0.8863
+map_Kd sunlit_journal_core:item/fantasy_white
+newmtl dark
+Kd 0.2863 0.2157 0.2784
+map_Kd sunlit_journal_core:item/fantasy_white

@@ -19,12 +19,14 @@
   "key.sunlit_journal_core.open_profile": "프로필 열기",
   "key.categories.sunlit_journal_core": "모험가의 수첩",
   "item.sunlit_journal_core.star_compass": "별길 나침반",
-  "item.sunlit_journal_core.star_compass.hint": "우클릭: 하늘 정원으로 이동 / 정원에서는 귀환",
+  "item.sunlit_journal_core.star_compass.hint": "이전 버전의 유물 · 하늘 정원 콘텐츠는 종료되었어요.",
   "block.sunlit_journal_core.moon_record": "달의 기록석",
   "block.sunlit_journal_core.leaf_record": "잎의 기록석",
   "block.sunlit_journal_core.star_record": "별의 기록석",
   "block.sunlit_journal_core.moon_rune": "달의 문양",
   "block.sunlit_journal_core.leaf_rune": "잎의 문양",
   "block.sunlit_journal_core.star_rune": "별의 문양",
-  "block.sunlit_journal_core.return_stone": "별길 귀환석"
+  "block.sunlit_journal_core.return_stone": "별길 귀환석",
+  "item.sunlit_journal_core.fantasy_ticket": "별빛 공방 뽑기권",
+  "item.sunlit_journal_core.fantasy_ticket_fragment": "별빛 공방 뽑기권 조각"
 }

@@ -1,0 +1,2 @@
+4af785e329602a84f2eee492ef2e6bf6e5fc85ac66e8cb78daf007811a149b6b  sunlit-journal-core-0.6.0-dev.jar
+b381cb88a1b14069609b4b795427aea7325cc72299bd98ca9b65aa6bf944caa2  Sunlit_Journal_ALPHA6_Fantasy_Collection_Source.zip

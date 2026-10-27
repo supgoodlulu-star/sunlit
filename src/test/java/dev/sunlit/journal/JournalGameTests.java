@@ -198,32 +198,12 @@ public class JournalGameTests {
         d.remove("equipped");h.assertTrue(JournalChat.format(p,body).isEmpty(),"Unequipped title still displayed");h.succeed();
     }
 
-    @GameTest(template="empty",timeoutTicks=1200) public static void skyMapBuildPuzzleAndReturn(GameTestHelper h){
-        var a=player(h);var b=player(h);a.setGameMode(GameType.SURVIVAL);var home=a.position();
-        h.assertTrue(a.getServer().getLevel(SkyGarden.DIMENSION)!=null,"Sky dimension datapack not loaded");
-        SkyGarden.travel(a);
-        h.runAfterDelay(700,()->{
-            var level=a.getServer().getLevel(SkyGarden.DIMENSION);
-            h.assertTrue(!level.getBlockState(SkyGarden.LANDING.below()).isAir(),"Landing not generated");
-            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(45,130,0)).isAir(),"Central island did not expand");
-            h.assertFalse(level.getBlockState(new net.minecraft.core.BlockPos(33,190,-24)).isAir(),"Watchtower missing");
-            h.assertTrue(level.getBlockState(new net.minecraft.core.BlockPos(-14,135,-1)).is(net.minecraft.world.level.block.Blocks.BOOKSHELF),"Library interior missing");
-            for(int i=0;i<3;i++)h.assertTrue(level.getBlockState(SkyGarden.RECORDS[i]).is(SkyContent.RELICS[i].get()),"Record missing from real map");
-            SkyGarden.enter(a);
-            h.assertTrue(SkyGarden.inside(a),"Entry failed");
-            h.assertTrue(SunlitJournal.owned(a).contains("구름 위의 손님"),"Discovery title missing");
-            for(int i=0;i<3;i++){var pos=SkyGarden.RECORDS[i];a.moveTo(pos.getX()+.5,pos.getY(),pos.getZ()+2.5,0,0);SkyGarden.interact(a,pos,i);}
-            h.assertTrue(SkyGarden.player(a).getInt("records")==7,"Records not collected: "+SkyGarden.player(a));
-            var pos=SkyGarden.RUNES[1];a.moveTo(pos.getX()+.5,pos.getY(),pos.getZ()+2.5,0,0);SkyGarden.interact(a,pos,4);
-            h.assertFalse(SkyGarden.player(a).getBoolean("complete"),"Wrong order unlocked reward");
-            for(int i=0;i<3;i++){pos=SkyGarden.RUNES[i];a.moveTo(pos.getX()+.5,pos.getY(),pos.getZ()+2.5,0,0);SkyGarden.interact(a,pos,i+3);}
-            h.assertTrue(SkyGarden.player(a).getBoolean("complete"),"Puzzle reward missing");
-            h.assertTrue(SunlitJournal.owned(a).contains("하늘 정원의 수호자"),"Hidden title missing");
-            h.assertFalse(SkyGarden.player(b).getBoolean("complete"),"Reward leaked to another player");
-            var loaded=new JournalWorld(JournalWorld.get(a.getServer()).save(new CompoundTag()));
-            h.assertTrue(loaded.player(a).getCompound("skyGarden").getBoolean("complete"),"Unlock did not persist");
-            SkyGarden.leave(a);h.assertFalse(SkyGarden.inside(a),"Return failed");h.succeed();
-        });
+    @GameTest(template="empty") public static void retiredSkyCannotEnter(GameTestHelper h){
+        var p=player(h);var home=p.position();SkyGarden.travel(p);
+        h.assertFalse(SkyGarden.inside(p),"Retired map still accessible");
+        p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,new net.minecraft.world.item.ItemStack(SkyContent.COMPASS.get()));
+        SkyContent.COMPASS.get().use(p.level(),p,net.minecraft.world.InteractionHand.MAIN_HAND);
+        h.assertTrue(p.position().equals(home),"Legacy compass still teleports");h.succeed();
     }
     @GameTest(template="empty") public static void skySkinsPreserveEquipment(GameTestHelper h){
         var p=player(h);var sword=new net.minecraft.world.item.ItemStack(Items.DIAMOND_SWORD);sword.setDamageValue(37);
@@ -303,5 +283,76 @@ public class JournalGameTests {
     }
     private static net.minecraft.gametest.framework.TestFunction integration(String name,java.util.function.Consumer<GameTestHelper> test){
         return new net.minecraft.gametest.framework.TestFunction("sunlit_integrations",name,"sunlit_journal_core:empty",100,0L,true,test);
+    }
+
+    @GameTest(template="empty") public static void fantasyCatalogueDistribution(GameTestHelper h){
+        h.assertTrue(FantasyGacha.POOL.size()==60,"Missing designs");
+        var counts=new java.util.HashMap<String,Integer>();
+        for(int i=0;i<FantasyGacha.TOTAL_WEIGHT;i++)counts.merge(FantasyGacha.sample(i).id(),1,Integer::sum);
+        var indices=new java.util.HashSet<Integer>();
+        for(var skin:FantasyGacha.POOL){h.assertTrue(counts.get(skin.id())==skin.weight(),"Displayed odds differ from selection");h.assertTrue(indices.add(skin.index()),"Model predicate collision");}
+        h.assertTrue(indices.size()==60,"Index coverage");h.succeed();
+    }
+    @GameTest(template="empty") public static void fantasyChargeAndReject(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();
+        p.getInventory().add(new net.minecraft.world.item.ItemStack(SkyContent.TICKET.get(),11));
+        h.assertFalse(FantasyGacha.draw(p,0),"Invalid draw accepted");h.assertFalse(FantasyGacha.draw(p,100),"Invalid batch accepted");
+        h.assertTrue(FantasyGacha.draw(p,1),"Single draw failed");h.assertTrue(FantasyGacha.tickets(p)==10,"Single cost incorrect");
+        h.assertTrue(FantasyGacha.draw(p,10),"Ten draw failed");var d=FantasyGacha.state(p);
+        h.assertTrue(FantasyGacha.tickets(p)==0&&d.getList("results",Tag.TAG_COMPOUND).size()==10,"Batch not atomic");
+        var before=d.copy();h.assertFalse(FantasyGacha.draw(p,1),"Empty balance spent");h.assertTrue(before.equals(d),"Failed draw changed rewards");
+        var other=player(h);h.assertTrue(FantasyGacha.state(other).getCompound("owned").isEmpty(),"UUID leak");
+        var w=JournalWorld.get(p.getServer());var loaded=new JournalWorld(w.save(new CompoundTag()));
+        h.assertTrue(loaded.player(p).getCompound("fantasyGacha").equals(d),"Gacha persistence lost");h.succeed();
+    }
+    @GameTest(template="empty") public static void fantasyDuplicatesExchange(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var d=FantasyGacha.state(p);var owned=new CompoundTag();
+        for(var skin:FantasyGacha.POOL)owned.putBoolean(skin.id(),true);d.put("owned",owned);
+        p.getInventory().add(new net.minecraft.world.item.ItemStack(SkyContent.TICKET.get(),10));FantasyGacha.draw(p,10);
+        h.assertTrue(d.getInt("dust")==10,"Duplicate dust incorrect");
+        for(var t:d.getList("results",Tag.TAG_COMPOUND))h.assertTrue(((CompoundTag)t).getBoolean("duplicate"),"Owned reward not marked duplicate");
+        String id=FantasyGacha.POOL.get(0).id();h.assertFalse(FantasyGacha.exchange(p,id),"Owned exchange charged");
+        d.getCompound("owned").remove(id);h.assertFalse(FantasyGacha.exchange(p,"forged"),"Forged id accepted");
+        h.assertTrue(FantasyGacha.exchange(p,id),"Selection exchange failed");h.assertTrue(d.getInt("dust")==5&&FantasyGacha.owns(p,id),"Exchange not atomic");
+        d.putInt("dust",4);d.getCompound("owned").remove(id);h.assertFalse(FantasyGacha.exchange(p,id),"Insufficient dust accepted");h.succeed();
+    }
+    @GameTest(template="empty") public static void fantasyEquipmentIntegrity(GameTestHelper h){
+        var p=player(h);var d=FantasyGacha.state(p);var owned=new CompoundTag();
+        for(var skin:FantasyGacha.POOL){
+            var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.get(new net.minecraft.resources.ResourceLocation("minecraft","diamond_"+skin.kind()));
+            var stack=new net.minecraft.world.item.ItemStack(item);stack.setDamageValue(17);stack.setHoverName(net.minecraft.network.chat.Component.literal("Keep me"));
+            stack.enchant(net.minecraft.world.item.enchantment.Enchantments.UNBREAKING,3);var before=stack.getTag().copy();p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,stack);
+            h.assertFalse(FantasySkins.apply(p,skin.id()),"Unowned skin applied");owned.putBoolean(skin.id(),true);d.put("owned",owned);
+            h.assertTrue(FantasySkins.apply(p,skin.id()),"Owned skin failed");h.assertTrue(SkySkins.apply(p,"clear"),"Clear failed");
+            h.assertTrue(before.equals(stack.getTag())&&stack.is(item),"Cosmetic changed equipment stats or name");
+            stack.getOrCreateTag().putInt("CustomModelData",123);h.assertFalse(FantasySkins.apply(p,skin.id()),"External model overwritten");
+        }
+        p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,new net.minecraft.world.item.ItemStack(Items.APPLE));
+        h.assertFalse(FantasySkins.apply(p,FantasyGacha.POOL.get(0).id()),"Incompatible tool accepted");h.succeed();
+    }
+    @GameTest(template="empty") public static void fantasyTaskSetRewardsOnce(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var w=JournalWorld.get(p.getServer());w.refreshTasks(p);
+        for(String period:java.util.List.of("daily","weekly")){
+            for(int i=0;i<3;i++){
+                var task=w.player(p).getCompound(period).getCompound(""+i);task.putInt("progress",task.getInt("target"));
+                if(i<2){w.refreshTasks(p);h.assertFalse(w.player(p).getCompound(period).getBoolean("setBonusAwarded"),"Early set reward");}
+            }
+            w.refreshTasks(p);h.assertTrue(w.player(p).getCompound(period).getBoolean("setBonusAwarded"),"Set reward missing");
+            for(int i=0;i<3;i++){h.assertTrue(w.claim(p,period,i),"Individual claim failed");h.assertFalse(w.claim(p,period,i),"Individual duplicate claim");}
+            w.refreshTasks(p);w.refreshTasks(p);
+        }
+        h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==1,"Set reward count incorrect");
+        var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);
+        h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==1,"Restart duplicated set reward");
+        w.player(p).getCompound("daily").putString("date","2000-01-01");w.refreshTasks(p);
+        h.assertFalse(w.player(p).getCompound("daily").getBoolean("setBonusAwarded"),"New day did not reset set flag");h.succeed();
+    }
+    @GameTest(template="empty") public static void fantasyFragmentsNeedTen(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();p.getInventory().setItem(0,new net.minecraft.world.item.ItemStack(SkyContent.FRAGMENT.get(),9));
+        h.assertFalse(FantasyGacha.craftTicket(p),"Nine fragments accepted");h.assertTrue(FantasyGacha.fragments(p)==9&&FantasyGacha.tickets(p)==0,"Failed conversion changed inventory");
+        p.getInventory().setItem(5,new net.minecraft.world.item.ItemStack(SkyContent.FRAGMENT.get(),12));
+        h.assertTrue(FantasyGacha.craftTicket(p),"Fragment conversion failed");h.assertTrue(FantasyGacha.fragments(p)==11&&FantasyGacha.tickets(p)==1,"Conversion did not consume exactly ten");
+        h.assertTrue(FantasyGacha.craftTicket(p),"Second conversion failed");h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==2,"Second conversion count incorrect");
+        h.assertFalse(FantasyGacha.craftTicket(p),"Repeat conversion minted free ticket");h.succeed();
     }
 }

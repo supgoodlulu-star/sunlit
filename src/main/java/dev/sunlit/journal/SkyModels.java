@@ -15,5 +15,12 @@ public final class SkyModels {
             var item=BuiltInRegistries.ITEM.get(new ResourceLocation("minecraft",tier+"_"+kind));
             ItemProperties.register(item,new ResourceLocation(SunlitJournal.MODID,"sky_skin"),(stack,level,entity,seed)->stack.hasTag()&&kind.equals(stack.getTag().getString("SunlitSkySkin"))?1:0);
         }
+        for(String tier:new String[]{"wooden","stone","iron","golden","diamond","netherite"})for(String kind:new String[]{"sword","pickaxe","axe","shovel","hoe"}){
+            var item=BuiltInRegistries.ITEM.get(new ResourceLocation("minecraft",tier+"_"+kind));
+            ItemProperties.register(item,new ResourceLocation(SunlitJournal.MODID,"fantasy_skin"),(stack,level,entity,seed)->{
+                if(!stack.hasTag())return 0;var skin=FantasyGacha.find(stack.getTag().getString(FantasySkins.KEY));
+                return skin!=null&&kind.equals(skin.kind())?skin.index():0;
+            });
+        }
     });}
 }

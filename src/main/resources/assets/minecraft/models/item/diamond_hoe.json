@@ -1,0 +1,80 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/diamond_hoe"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 5
+      },
+      "model": "sunlit_journal_core:item/fantasy/sakura_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 10
+      },
+      "model": "sunlit_journal_core:item/fantasy/moon_bunny_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 15
+      },
+      "model": "sunlit_journal_core:item/fantasy/star_cloud_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 20
+      },
+      "model": "sunlit_journal_core:item/fantasy/fairy_forest_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 25
+      },
+      "model": "sunlit_journal_core:item/fantasy/deep_pearl_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 30
+      },
+      "model": "sunlit_journal_core:item/fantasy/snow_blossom_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 35
+      },
+      "model": "sunlit_journal_core:item/fantasy/black_rose_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 40
+      },
+      "model": "sunlit_journal_core:item/fantasy/abyss_sovereign_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 45
+      },
+      "model": "sunlit_journal_core:item/fantasy/blood_eclipse_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 50
+      },
+      "model": "sunlit_journal_core:item/fantasy/sun_blessing_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 55
+      },
+      "model": "sunlit_journal_core:item/fantasy/sea_stars_hoe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 60
+      },
+      "model": "sunlit_journal_core:item/fantasy/heaven_relic_hoe"
+    }
+  ]
+}

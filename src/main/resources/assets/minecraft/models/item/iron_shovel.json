@@ -1,0 +1,80 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "minecraft:item/iron_shovel"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 4
+      },
+      "model": "sunlit_journal_core:item/fantasy/sakura_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 9
+      },
+      "model": "sunlit_journal_core:item/fantasy/moon_bunny_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 14
+      },
+      "model": "sunlit_journal_core:item/fantasy/star_cloud_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 19
+      },
+      "model": "sunlit_journal_core:item/fantasy/fairy_forest_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 24
+      },
+      "model": "sunlit_journal_core:item/fantasy/deep_pearl_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 29
+      },
+      "model": "sunlit_journal_core:item/fantasy/snow_blossom_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 34
+      },
+      "model": "sunlit_journal_core:item/fantasy/black_rose_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 39
+      },
+      "model": "sunlit_journal_core:item/fantasy/abyss_sovereign_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 44
+      },
+      "model": "sunlit_journal_core:item/fantasy/blood_eclipse_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 49
+      },
+      "model": "sunlit_journal_core:item/fantasy/sun_blessing_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 54
+      },
+      "model": "sunlit_journal_core:item/fantasy/sea_stars_shovel"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 59
+      },
+      "model": "sunlit_journal_core:item/fantasy/heaven_relic_shovel"
+    }
+  ]
+}

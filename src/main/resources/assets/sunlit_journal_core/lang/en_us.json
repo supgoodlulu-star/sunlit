@@ -19,12 +19,14 @@
   "key.sunlit_journal_core.open_profile": "Open Profile",
   "key.categories.sunlit_journal_core": "Sunlit Journal",
   "item.sunlit_journal_core.star_compass": "Starpath Compass",
-  "item.sunlit_journal_core.star_compass.hint": "Use: visit the sky garden / return home",
+  "item.sunlit_journal_core.star_compass.hint": "Legacy relic. Sky Garden content has been retired.",
   "block.sunlit_journal_core.moon_record": "달의 기록석",
   "block.sunlit_journal_core.leaf_record": "잎의 기록석",
   "block.sunlit_journal_core.star_record": "별의 기록석",
   "block.sunlit_journal_core.moon_rune": "달의 문양",
   "block.sunlit_journal_core.leaf_rune": "잎의 문양",
   "block.sunlit_journal_core.star_rune": "별의 문양",
-  "block.sunlit_journal_core.return_stone": "별길 귀환석"
+  "block.sunlit_journal_core.return_stone": "별길 귀환석",
+  "item.sunlit_journal_core.fantasy_ticket": "Starlight Workshop Ticket",
+  "item.sunlit_journal_core.fantasy_ticket_fragment": "Starlight Ticket Fragment"
 }

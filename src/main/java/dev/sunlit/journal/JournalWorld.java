@@ -53,13 +53,28 @@ public final class JournalWorld extends SavedData {
                 }
             }
         }
+        awardTaskSets(p);
+    }
+    private void awardTaskSets(ServerPlayer p){
+        var d=player(p);
+        for(String period:List.of("daily","weekly")){
+            var tasks=d.getCompound(period);if(tasks.getBoolean("setBonusAwarded"))continue;
+            boolean complete=true;
+            for(int i=0;i<3;i++){var t=tasks.getCompound(""+i);if(t.getInt("target")<=0||t.getInt("progress")<t.getInt("target"))complete=false;}
+            if(!complete)continue;
+            tasks.putBoolean("setBonusAwarded",true);setDirty();
+            boolean daily=period.equals("daily");
+            FantasyGacha.deliver(p,new net.minecraft.world.item.ItemStack(daily?SkyContent.FRAGMENT.get():SkyContent.TICKET.get()));
+            p.sendSystemMessage(net.minecraft.network.chat.Component.literal(daily?"[업무 일지] 일일 업무 3개 완료! 뽑기권 조각 1개를 받았어요.":"[업무 일지] 주간 업무 3개 완료! 뽑기권 1장을 받았어요."));
+        }
     }
     public boolean claim(ServerPlayer p,String key,int index){
         if((!key.equals("daily")&&!key.equals("weekly"))||index<0||index>2)return false;
         refreshTasks(p);CompoundTag task=player(p).getCompound(key).getCompound(""+index);
         if(task.getInt("target")<=0||task.getInt("progress")<task.getInt("target")||task.getBoolean("claimed"))return false;
         task.putBoolean("claimed",true);setDirty();
-        reward(p,task.getInt("reward"));return true;
+        reward(p,task.getInt("reward"));
+        return true;
     }
     public static void reward(ServerPlayer p,int amount){
         // Inventory overflow is delivered as an owned item by vanilla's drop path.
@@ -77,6 +92,7 @@ public final class JournalWorld extends SavedData {
             CompoundTag t=d.getCompound(period).getCompound(""+i);
             if(TaskTargets.matches(t,kind,subject))t.putInt("progress",(int)Math.min((long)t.getInt("target"),(long)t.getInt("progress")+amount));
         }
+        awardTaskSets(p);
         updateFestival(p);
         contribute(p,amount);
         setDirty();achievements(p);
@@ -146,6 +162,7 @@ public final class JournalWorld extends SavedData {
         refreshTasks(p);updateFestival(p);achievements(p);
         CompoundTag out=player(p).copy();out.putString("username",p.getGameProfile().getName());
         out.put("titles",SunlitJournal.data(p).copy());
+        out.put("gacha",FantasyGacha.snapshot(p));
         try{out.putString("nickname",Integrations.nick(p));out.putBoolean("nickAvailable",true);}
         catch(ReflectiveOperationException|RuntimeException|LinkageError e){Integrations.failure("nickname",e);}
         var balance=Integrations.balance(p);

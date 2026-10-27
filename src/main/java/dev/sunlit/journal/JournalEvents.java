@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 
 public final class JournalEvents {
     @SubscribeEvent public void login(PlayerEvent.PlayerLoggedInEvent e){
-        if(e.getEntity() instanceof ServerPlayer p){var w=JournalWorld.get(p.getServer());w.refreshTasks(p);w.updateFestival(p);w.achievements(p);}
+        if(e.getEntity() instanceof ServerPlayer p){if(SkyGarden.inside(p))SkyGarden.leave(p);var w=JournalWorld.get(p.getServer());w.refreshTasks(p);w.updateFestival(p);w.achievements(p);}
     }
     @SubscribeEvent public void tick(TickEvent.PlayerTickEvent e){
         if(e.phase!=TickEvent.Phase.END||!(e.player instanceof ServerPlayer p)||p.tickCount%40!=0)return;

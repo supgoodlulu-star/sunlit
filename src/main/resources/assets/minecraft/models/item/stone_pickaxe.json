@@ -9,6 +9,78 @@
         "sunlit_journal_core:sky_skin": 1
       },
       "model": "sunlit_journal_core:item/cloud_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 2
+      },
+      "model": "sunlit_journal_core:item/fantasy/sakura_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 7
+      },
+      "model": "sunlit_journal_core:item/fantasy/moon_bunny_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 12
+      },
+      "model": "sunlit_journal_core:item/fantasy/star_cloud_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 17
+      },
+      "model": "sunlit_journal_core:item/fantasy/fairy_forest_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 22
+      },
+      "model": "sunlit_journal_core:item/fantasy/deep_pearl_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 27
+      },
+      "model": "sunlit_journal_core:item/fantasy/snow_blossom_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 32
+      },
+      "model": "sunlit_journal_core:item/fantasy/black_rose_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 37
+      },
+      "model": "sunlit_journal_core:item/fantasy/abyss_sovereign_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 42
+      },
+      "model": "sunlit_journal_core:item/fantasy/blood_eclipse_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 47
+      },
+      "model": "sunlit_journal_core:item/fantasy/sun_blessing_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 52
+      },
+      "model": "sunlit_journal_core:item/fantasy/sea_stars_pickaxe"
+    },
+    {
+      "predicate": {
+        "sunlit_journal_core:fantasy_skin": 57
+      },
+      "model": "sunlit_journal_core:item/fantasy/heaven_relic_pickaxe"
     }
   ]
 }
