@@ -28,7 +28,7 @@ public final class JournalScreen extends Screen {
     private final Set<String> expandedSkills=new HashSet<>();
     private static final String[] PAGES={"profile","skills","quests","achievements","titles"};
     private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","칭호 도감"};
-    private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills","skill_tree"};
+    private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills","skill_tree","four_seasons"};
     private static final String[] ACTIVITY_HELP={
         "다 자란 작물을 직접 부숴 수확하면 진행도가 올라요. 덜 자란 작물은 포함되지 않아요.",
         "낚싯대로 물고기를 낚으면 진행도가 올라요. 보물과 쓰레기는 포함되지 않아요.",
@@ -132,7 +132,7 @@ public final class JournalScreen extends Screen {
         card("나의 모험가", "",11,"",0,0);
         cards.get(cards.size()-1).avatar=true;
     }
-    private static int titleIcon(String title){int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);return i<24&&i>=0?i/4:title.equals("사계요정")?10:title.equals("벚꽃요정")?6:title.equals("별빛요정")?7:title.equals("풍요요정")?8:title.equals("눈꽃요정")?9:title.equals("구름 위의 손님")?12:title.equals("하늘 정원의 수호자")?10:11;}
+    private static int titleIcon(String title){int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);return i<24&&i>=0?i/4:title.equals("사계요정")?17:title.equals("벚꽃요정")?6:title.equals("별빛요정")?7:title.equals("풍요요정")?8:title.equals("눈꽃요정")?9:title.equals("구름 위의 손님")?12:title.equals("하늘 정원의 수호자")?10:11;}
     private void skills(){
         var categories=data.getCompound("skillsData").getList("categories",Tag.TAG_COMPOUND);
         if(categories.isEmpty())card("생활 기술","배울 수 있는 기술이 생기면 분야별로 표시됩니다.",0,"",0,0);
@@ -258,6 +258,8 @@ public final class JournalScreen extends Screen {
                 String name=SunlitJournal.TITLES[20+i];String body="개인 계좌에 "+JournalWorld.SUN_TARGETS[i]+" Sun 이상 모아 보세요. 현금과 공동 계좌는 포함하지 않아요.";
                 if(hasBalance&&unit>0)body+="\n현재 저금액 · "+BigDecimal.valueOf(data.getLong("spurs")).divide(BigDecimal.valueOf(unit),4,RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" Sun";
                 card(name,body,5,owned.contains(name)?"획득":"도전 중",hasBalance&&unit>0?data.getLong("spurs")/unit:0,hasBalance&&unit>0?JournalWorld.SUN_TARGETS[i]:0);
+                cards.get(cards.size()-1).illustrated=true;
+                cards.get(cards.size()-1).caption="차곡차곡 쌓은 나의 자산";
             }
         }
         if(achievementFilter==-1||achievementFilter==6){
@@ -267,7 +269,9 @@ public final class JournalScreen extends Screen {
                 String name=JournalWorld.seasonTitle(season);
                 card(name,JournalWorld.festivalName(season)+"에 생활 활동으로 1회 이상 기여하고, 마을이 공동 목표를 달성하면 얻어요.",seasonIcon(season),owned.contains(name)?"획득":"도전 중",done?1:0,1);
             }
-            card("사계요정","봄·여름·가을·겨울, 네 계절의 축제에 기여하고 각 축제를 완료해 보세요.",10,owned.contains("사계요정")?"획득":"도전 중",completed,4);
+            card("사계요정","봄·여름·가을·겨울, 네 계절의 축제에 기여하고 각 축제를 완료해 보세요.",17,owned.contains("사계요정")?"획득":"도전 중",completed,4);
+            cards.get(cards.size()-1).illustrated=true;
+            cards.get(cards.size()-1).caption="봄 · 여름 · 가을 · 겨울";
         }
     }
     private void titles(){
@@ -299,7 +303,7 @@ public final class JournalScreen extends Screen {
     }
     private static void rounded(GuiGraphics g,int x,int y,int w,int h,int radius,int color){JournalButton.rounded(g,x,y,w,h,radius,color);}
     private void centered(GuiGraphics g,String text,int center,int y,int color){g.drawString(font,text,center-font.width(text)/2,y,color,false);}
-    private static final Set<String> ILLUSTRATIONS=Set.of("farming","fishing","mining","cooking","ranching","exploration","life","books","spring","summer","autumn","winter","skill_tree");
+    private static final Set<String> ILLUSTRATIONS=Set.of("farming","fishing","mining","cooking","ranching","exploration","life","books","spring","summer","autumn","winter","skill_tree","wealth","four_seasons");
     private void art(GuiGraphics g,int index,int x,int y,int size){
         String name=ICONS[Math.max(0,Math.min(ICONS.length-1,index))];
         com.mojang.blaze3d.systems.RenderSystem.enableBlend();
