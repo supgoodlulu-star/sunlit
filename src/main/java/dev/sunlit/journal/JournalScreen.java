@@ -132,7 +132,7 @@ public final class JournalScreen extends Screen {
         card("나의 모험가", "",11,"",0,0);
         cards.get(cards.size()-1).avatar=true;
     }
-    private static int titleIcon(String title){int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);return i<24&&i>=0?i/4:title.equals("사계요정")?17:title.equals("벚꽃요정")?6:title.equals("별빛요정")?7:title.equals("풍요요정")?8:title.equals("눈꽃요정")?9:title.equals("구름 위의 손님")?12:title.equals("하늘 정원의 수호자")?10:11;}
+    private static int titleIcon(String title){int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);return i<24&&i>=0?i/4:title.equals("사계요정")?17:title.equals("벚꽃요정")?6:title.equals("별빛요정")?7:title.equals("풍요요정")?8:title.equals("눈꽃요정")?9:11;}
     private void skills(){
         var categories=data.getCompound("skillsData").getList("categories",Tag.TAG_COMPOUND);
         if(categories.isEmpty())card("생활 기술","배울 수 있는 기술이 생기면 분야별로 표시됩니다.",0,"",0,0);
@@ -287,8 +287,7 @@ public final class JournalScreen extends Screen {
             if(i<20){int kind=i/4;goal=JournalWorld.MILESTONES[i%4];value=data.getCompound("counts").getLong(JournalWorld.ACTIVITIES[kind]);condition=ACTIVITY_HELP[kind]+"\n누적 목표 · "+goal+(kind==1||kind==4?"마리":"개");}
             else if(i<24){goal=JournalWorld.SUN_TARGETS[i-20];long unit=data.getLong("perSun");value=unit>0?data.getLong("spurs")/unit:0;condition="개인 계좌에 "+goal+" Sun 저축. 현금·공동 계좌는 제외됩니다."+(data.getBoolean("balanceAvailable")?"":"\n계좌 연동을 확인할 수 없습니다.");}
             else if(name.equals("사계요정")){goal=4;for(String season:List.of("SPRING","SUMMER","AUTUMN","WINTER"))if(data.getCompound("seasons").getBoolean(season))value++;condition="네 계절 축제에 각각 기여하고 공동 목표를 달성하세요.";}
-            else if(i<29){String season=switch(name){case "벚꽃요정"->"SPRING";case "별빛요정"->"SUMMER";case "풍요요정"->"AUTUMN";default->"WINTER";};value=data.getCompound("seasons").getBoolean(season)?1:0;condition=JournalWorld.festivalName(season)+"에 1회 이상 기여하고 공동 목표를 달성하세요.";}
-            else {condition="이전 버전의 특별 칭호입니다. 이 버전에서는 새로 획득할 수 없어요.";value=has?1:0;}
+            else {String season=switch(name){case "벚꽃요정"->"SPRING";case "별빛요정"->"SUMMER";case "풍요요정"->"AUTUMN";default->"WINTER";};value=data.getCompound("seasons").getBoolean(season)?1:0;condition=JournalWorld.festivalName(season)+"에 1회 이상 기여하고 공동 목표를 달성하세요.";}
             if(has)value=goal;
             actionCard(name,condition,titleIcon(name),wearing?"장착 중":has?"획득":"미획득",value,goal,wearing?"칭호 해제":has?"대표 칭호 장착":"미획득",has,()->request("equip",name));
         }

@@ -134,6 +134,7 @@ public final class JournalWorld extends SavedData {
     public static String seasonTitle(String s){return switch(s){case "SPRING"->"벚꽃요정";case "SUMMER"->"별빛요정";case "AUTUMN"->"풍요요정";case "WINTER"->"눈꽃요정";default->"";};}
     public static String festivalName(String s){return switch(s){case "SPRING"->"벚꽃 축제";case "SUMMER"->"별빛 해변 축제";case "AUTUMN"->"풍요의 수확제";case "WINTER"->"눈꽃 축제";default->"계절 축제";};}
     public static void grant(ServerPlayer p,String title){
+        if(!SunlitJournal.isAllowedTitle(title))return;
         Set<String> owned=SunlitJournal.owned(p);
         if(owned.add(title)){
             SunlitJournal.saveOwned(p,owned);

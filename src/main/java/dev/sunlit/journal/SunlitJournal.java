@@ -28,9 +28,9 @@ public class SunlitJournal {
         "견습요리사", "마을요리사", "별빛셰프", "주방지기",
         "동물친구", "목장의일꾼", "초원의수호자", "초원목자",
         "동전수집가", "알뜰상인", "황금상단주", "억만장자",
-        "사계요정", "벚꽃요정", "별빛요정", "풍요요정", "눈꽃요정",
-        "구름 위의 손님", "하늘 정원의 수호자"
+        "사계요정", "벚꽃요정", "별빛요정", "풍요요정", "눈꽃요정"
     };
+    private static final Set<String> RETIRED_SKY_TITLES = Set.of("구름 위의 손님", "하늘 정원의 수호자");
     private static final Set<String> ALLOWED = new LinkedHashSet<>(Arrays.asList(TITLES));
 
     public SunlitJournal() {
@@ -46,8 +46,20 @@ public class SunlitJournal {
     public static CompoundTag data(ServerPlayer player) {
         CompoundTag persistent = player.getPersistentData();
         if (!persistent.contains(DATA_KEY, 10)) persistent.put(DATA_KEY, new CompoundTag());
-        return persistent.getCompound(DATA_KEY);
+        CompoundTag titles=persistent.getCompound(DATA_KEY);
+        removeRetiredTitles(titles);
+        return titles;
     }
+    /** Upgrade only the two explicitly retired title records; preserve all other NBT. */
+    private static void removeRetiredTitles(CompoundTag titles) {
+        String raw=titles.getString("owned");
+        String kept=Arrays.stream(raw.split("\\|",-1)).filter(name->!RETIRED_SKY_TITLES.contains(name)).collect(java.util.stream.Collectors.joining("|"));
+        if(!raw.equals(kept)){
+            if(kept.isEmpty())titles.remove("owned");else titles.putString("owned",kept);
+        }
+        if(RETIRED_SKY_TITLES.contains(titles.getString("equipped")))titles.remove("equipped");
+    }
+    public static boolean isAllowedTitle(String title){return ALLOWED.contains(title);}
     public static Set<String> owned(ServerPlayer player) {
         Set<String> result = new LinkedHashSet<>();
         String raw = data(player).getString("owned");
@@ -55,7 +67,8 @@ public class SunlitJournal {
         return result;
     }
     public static void saveOwned(ServerPlayer player, Set<String> titles) {
-        data(player).putString("owned", String.join("|", titles));
+        var kept=new LinkedHashSet<>(titles);kept.removeAll(RETIRED_SKY_TITLES);
+        data(player).putString("owned", String.join("|", kept));
     }
     private static void reply(ServerPlayer player, String message) {
         player.sendSystemMessage(Component.literal("[모험가의 수첩] " + message).withStyle(ChatFormatting.GOLD));
@@ -132,7 +145,9 @@ public class SunlitJournal {
     }
     public static void copyTitles(net.minecraft.world.entity.player.Player original, net.minecraft.world.entity.player.Player replacement) {
         CompoundTag old = original.getPersistentData();
-        if (old.contains(DATA_KEY, 10))
+        if (old.contains(DATA_KEY, 10)) {
+            removeRetiredTitles(old.getCompound(DATA_KEY));
             replacement.getPersistentData().put(DATA_KEY, old.getCompound(DATA_KEY).copy());
+        }
     }
 }

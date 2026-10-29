@@ -334,7 +334,8 @@ public class JournalGameTests {
         h.assertTrue(loaded.player(p).getCompound("fantasyGacha").equals(legacy),"Legacy ownership was erased");
         h.assertTrue(before.equals(loaded.player(p).getCompound("daily")),"Migration changed completed task payout/progress");
         h.assertTrue(p.getInventory().countItem(SkyContent.TICKET.get())==4&&p.getInventory().countItem(SkyContent.FRAGMENT.get())==12,"Removed bonus changed old inventory");
-        h.assertTrue(snapshot.getCompound("titles").getString("equipped").equals("하늘 정원의 수호자"),"Legacy equipped title lost");h.succeed();
+        h.assertTrue(snapshot.getCompound("titles").getString("equipped").isEmpty(),"Retired equipped title survived migration");
+        h.assertTrue(snapshot.getCompound("titles").getString("owned").equals("새싹농부"),"Unrelated title lost or retired title retained");h.succeed();
     }
     @GameTest(template="empty") public static void profileUsesActualVanillaExperience(GameTestHelper h){
         var p=player(h);p.giveExperiencePoints(137);var snapshot=JournalWorld.get(p.getServer()).snapshot(p);
@@ -347,6 +348,34 @@ public class JournalGameTests {
         var before=weekly.copy();w.refreshTasks(p);var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);
         h.assertTrue(kinds.size()==3,"Weekly repeated a field");h.assertTrue(before.equals(loaded.player(p).getCompound("weekly")),"Reload changed weekly rewards");
         h.assertTrue(p.getInventory().isEmpty(),"Removed weekly bonus minted items");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void removedSkyTitlesMigrateWithoutOtherLoss(GameTestHelper h){
+        var p=player(h);var old=new CompoundTag();
+        old.putString("owned","새싹농부|구름 위의 손님|사계요정|하늘 정원의 수호자|미래 칭호");old.putString("equipped","구름 위의 손님");old.putInt("customRecord",73);
+        p.getPersistentData().put("SunlitJournalTitles",old);p.getPersistentData().putString("anotherMod","keep");
+        new JournalEvents().login(new net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent(p));
+        var cleaned=p.getPersistentData().getCompound("SunlitJournalTitles");h.assertTrue(cleaned.getString("owned").equals("새싹농부|사계요정|미래 칭호"),"Upgrade removed unrelated titles or left sky titles");
+        h.assertFalse(cleaned.contains("equipped"),"Retired equipped title retained");h.assertTrue(cleaned.getInt("customRecord")==73&&p.getPersistentData().getString("anotherMod").equals("keep"),"Upgrade touched unrelated NBT");
+        var saved=cleaned.copy();SunlitJournal.data(p);h.assertTrue(saved.equals(SunlitJournal.data(p)),"Cleanup is not idempotent");
+        h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("test")).isEmpty(),"Retired prefix still appears in chat");
+        var snapshot=JournalWorld.get(p.getServer()).snapshot(p).getCompound("titles");h.assertTrue(snapshot.equals(saved),"Snapshot resurrected or damaged title records");h.succeed();
+    }
+    @GameTest(template="empty") public static void removedSkyTitlesCannotBeRegranted(GameTestHelper h){
+        var p=player(h);SunlitJournal.saveOwned(p,new LinkedHashSet<>(List.of("새싹농부","구름 위의 손님","하늘 정원의 수호자")));
+        h.assertTrue(p.getPersistentData().getCompound("SunlitJournalTitles").getString("owned").equals("새싹농부"),"Save API persisted a retired title");
+        JournalWorld.grant(p,"구름 위의 손님");JournalWorld.grant(p,"하늘 정원의 수호자");
+        h.assertTrue(SunlitJournal.owned(p).equals(Set.of("새싹농부")),"Grant API restored retired title");
+        h.assertFalse(SunlitJournal.isAllowedTitle("구름 위의 손님")||SunlitJournal.isAllowedTitle("하늘 정원의 수호자"),"Command grant registry still accepts retired titles");
+        JournalWorld.grant(p,"사계요정");h.assertTrue(SunlitJournal.owned(p).contains("사계요정"),"Ordinary grant stopped working");h.succeed();
+    }
+    @GameTest(template="empty") public static void removedSkyTitlesDoNotReturnOnClone(GameTestHelper h){
+        var original=player(h);var replacement=player(h);var old=new CompoundTag();old.putString("owned","하늘 정원의 수호자|벚꽃요정|구름 위의 손님");old.putString("equipped","벚꽃요정");old.putLong("extra",100);
+        original.getPersistentData().put("SunlitJournalTitles",old);SunlitJournal.copyTitles(original,replacement);
+        var copied=replacement.getPersistentData().getCompound("SunlitJournalTitles");h.assertTrue(copied.getString("owned").equals("벚꽃요정"),"Clone restored removed title");
+        h.assertTrue(copied.getString("equipped").equals("벚꽃요정")&&copied.getLong("extra")==100,"Clone lost valid equip or unrelated record");
+        var saved=copied.copy();replacement.getPersistentData().put("SunlitJournalTitles",saved.copy());h.assertTrue(SunlitJournal.data(replacement).equals(saved),"Reload changed migrated titles");
+        h.assertTrue(original.getPersistentData().getCompound("SunlitJournalTitles").getString("owned").equals("벚꽃요정"),"Original retained retired records after clone");h.succeed();
     }
 
 }
