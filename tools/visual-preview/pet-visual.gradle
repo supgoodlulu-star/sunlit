@@ -8,7 +8,7 @@ allprojects {
   }}
   minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.petVisual
   minecraft.runs.client.property 'sunlit.petVisualCheck','true'
-  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/pets-0.9.0').absolutePath
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/pets-0.9.1').absolutePath
   minecraft.runs.client.args '--width','1280','--height','900'
  }
 }

@@ -49,14 +49,14 @@ public final class PetScreen extends Screen {
   g.drawString(font,mode().equals("draw")?"생활 친구 · 펫 자판기":mode().equals("shop")?"생활 친구 · 전용 장식":"생활 친구 · 펫 보관함",left+12,top+12,0x573a27,false);
   var s=species();int half=w/2;
   if(mode().equals("draw")){
-   PetRender.preview(g,s.id(),false,left+w/2,top+Math.min(h-105,143),Math.min(100,h*.36f));
+   PetRender.previewFit(g,s.id(),false,left+w/2,top+Math.min(h-105,143),w-40,Math.max(35,Math.min(h-140,110)),152);
    line(g,data.getString("lastDraw").isEmpty()?"어떤 친구를 만나게 될까요?":s.name()+" 인형",left+12,top+h-100,w-24);
    line(g,"일반 95% · 전설 5% / 중복 가능\n현재 계절 전설 상대 확률 1.5배\n계절: "+(data.getString("season").isEmpty()?"연동 없음 · 전설 균등":seasonName(data.getString("season")))+" · 뽑기권 "+data.getInt("tickets")+"장",left+12,top+h-83,w-24);
   }else{
    if(count()==0)line(g,"펫 인형을 손에 들고 우클릭하면 친구를 등록할 수 있어요.",left+12,top+42,half-24);
    else{
     boolean acc=mode().equals("shop")?previewAccessory:owned().get(selected).getBoolean("accessory");
-    int previewHeight=Math.max(40,h-145);PetRender.preview(g,s.id(),acc,left+half+(w-half)/2,top+45+previewHeight,Math.min(105,previewHeight*1.25f));
+    int previewHeight=Math.max(40,h-145);PetRender.previewFit(g,s.id(),acc,left+half+(w-half)/2,top+45+previewHeight,w-half-24,previewHeight-5,152);
     line(g,s.name()+" · "+(s.legendary()?"전설":"일반"),left+half+8,top+33,w-half-22);
     if(mode().equals("vault"))line(g,"#"+owned().get(selected).getString("id").substring(0,8)+(data.getString("active").equals(owned().get(selected).getString("id"))?" · 소환 중":" · 보관 중"),left+half+8,top+h-94,w-half-22);
     if(mode().equals("shop"))line(g,s.accessory(),left+half+8,top+h-78,w-half-22);

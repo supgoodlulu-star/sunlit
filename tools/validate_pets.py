@@ -13,13 +13,15 @@ assert sum(bool(r[3]) for r in catalog)==20
 hashes=set()
 for id,name,accessory,season,fantasy in catalog:
     model=json.loads((assets/'pets'/f'{id}.json').read_text())
+    assert model.get('format')==2 and abs(model.get('voxelSize',0)-1/3)<1e-6,id
     faces=model['faces'];groups={f[5] for f in faces}
     assert {'eyes','smile','accessory'}<=groups,(id,groups)
-    assert all(len(f)==6 and 0<=f[3]<=5 and 0<=f[4]<=0xffffff for f in faces),id
+    assert all(len(f)==9 and 0<=f[3]<=5 and 0<=f[4]<=0xffffff for f in faces),id
+    assert all(0<value<=32 for f in faces for value in f[6:]),id
     assert all(-32<=value<=32 for f in faces for value in f[:3]),id
     assert model['scale']==(.032 if id.endswith('_fairy') else .045),id
     body=[f for f in faces if f[5]!='accessory']
-    height=(max(f[1] for f in body)+1-min(f[1] for f in body))*model['scale']
+    height=(max(f[1]+f[7] for f in body)-min(f[1] for f in body))*model['scale']
     assert height<=1.15,(id,height)
     if id.endswith('_fairy'):assert height<=.6,(id,height)
     accessory_hash=hashlib.sha256(json.dumps([f for f in faces if f[5]=='accessory']).encode()).hexdigest()
