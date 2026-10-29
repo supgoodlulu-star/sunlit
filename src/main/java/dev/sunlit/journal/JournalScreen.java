@@ -28,7 +28,7 @@ public final class JournalScreen extends Screen {
     private final Set<String> expandedSkills=new HashSet<>();
     private static final String[] PAGES={"profile","skills","quests","achievements","titles"};
     private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","칭호 도감"};
-    private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills"};
+    private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills","skill_tree"};
     private static final String[] ACTIVITY_HELP={
         "다 자란 작물을 직접 부숴 수확하면 진행도가 올라요. 덜 자란 작물은 포함되지 않아요.",
         "낚싯대로 물고기를 낚으면 진행도가 올라요. 보물과 쓰레기는 포함되지 않아요.",
@@ -86,12 +86,12 @@ public final class JournalScreen extends Screen {
         totalHeight=0;
         for(Card c:cards){
             c.badgeWidth=c.badge.isEmpty()?0:Math.max(54,font.width(c.badge)+16);
-            c.artSize=cardWidth<340?80:104;
+            c.artSize=c.icon==16?(cardWidth<340?48:64):cardWidth<340?80:104;
             int headingWidth=c.illustrated?cardWidth-c.artSize-40:cardWidth-(c.section?60:57+c.badgeWidth+12);
             c.heading=font.split(Component.literal(c.title),Math.max(40,headingWidth));
             c.lines=font.split(Component.literal(c.body),cardWidth-(c.section?60:24));
             c.captionLines=font.split(Component.literal(c.caption),Math.max(40,headingWidth));
-            c.headerHeight=c.illustrated?Math.max(c.artSize+20,(c.heading.size()+c.captionLines.size())*lineStep+56):0;
+            c.headerHeight=c.illustrated?(c.icon==16?Math.max(c.artSize+16,c.heading.size()*lineStep+20):Math.max(c.artSize+20,(c.heading.size()+c.captionLines.size())*lineStep+56)):0;
             c.bodyOffset=c.illustrated?c.headerHeight:c.section?10+c.heading.size()*lineStep+4:10+Math.max(28,c.heading.size()*lineStep)+10;
             if(c.section)c.height=20+Math.max(28,c.heading.size()*lineStep+4+c.lines.size()*lineStep);
             else {
@@ -153,7 +153,10 @@ public final class JournalScreen extends Screen {
             cards.get(cards.size()-1).illustrated=true;
             cards.get(cards.size()-1).caption=c.getBoolean("hasXp")?"레벨 "+c.getInt("level")+" · "+c.getInt("xp")+" / "+c.getInt("required")+" XP":"배운 기술 "+unlocked.size()+"개";
         }
-        if(data.getCompound("skillsData").getBoolean("available"))actionCard("원본 스킬 트리","각 기술의 효과와 해금 조건을 원본 스킬 트리에서 확인하세요.",10,"",0,0,"스킬 트리 열기",true,()->request("skillsTree",""));
+        if(data.getCompound("skillsData").getBoolean("available")){
+            actionCard("원본 스킬 트리","각 기술의 효과와 해금 조건을 원본 스킬 트리에서 확인하세요.",16,"",0,0,"스킬 트리 열기",true,()->request("skillsTree",""));
+            cards.get(cards.size()-1).illustrated=true;
+        }
     }
     private static String subjectName(CompoundTag task){
         ResourceLocation id=ResourceLocation.tryParse(task.getString("subject"));int kind=task.getInt("kind");
@@ -296,7 +299,7 @@ public final class JournalScreen extends Screen {
     }
     private static void rounded(GuiGraphics g,int x,int y,int w,int h,int radius,int color){JournalButton.rounded(g,x,y,w,h,radius,color);}
     private void centered(GuiGraphics g,String text,int center,int y,int color){g.drawString(font,text,center-font.width(text)/2,y,color,false);}
-    private static final Set<String> ILLUSTRATIONS=Set.of("farming","fishing","mining","cooking","ranching","exploration","life","books","spring","summer","autumn","winter");
+    private static final Set<String> ILLUSTRATIONS=Set.of("farming","fishing","mining","cooking","ranching","exploration","life","books","spring","summer","autumn","winter","skill_tree");
     private void art(GuiGraphics g,int index,int x,int y,int size){
         String name=ICONS[Math.max(0,Math.min(ICONS.length-1,index))];
         com.mojang.blaze3d.systems.RenderSystem.enableBlend();
