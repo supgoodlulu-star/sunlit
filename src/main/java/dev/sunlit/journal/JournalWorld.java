@@ -68,6 +68,7 @@ public final class JournalWorld extends SavedData {
     public void activity(ServerPlayer p,int kind,int amount){activity(p,kind,amount,"");}
     public void activity(ServerPlayer p,int kind,int amount,String subject){
         if(kind<0||kind>=5||amount<=0||p.isCreative()||p.isSpectator())return;
+        PetEvents.activity(p,kind);
         refreshTasks(p);CompoundTag d=player(p),counts=child(d,"counts");
         long old=counts.getLong(ACTIVITIES[kind]);
         counts.putLong(ACTIVITIES[kind],old>Long.MAX_VALUE-amount?Long.MAX_VALUE:old+amount);

@@ -28,5 +28,10 @@
   "block.sunlit_journal_core.star_rune": "별의 문양",
   "block.sunlit_journal_core.return_stone": "별길 귀환석",
   "item.sunlit_journal_core.fantasy_ticket": "별빛 공방 뽑기권",
-  "item.sunlit_journal_core.fantasy_ticket_fragment": "별빛 공방 뽑기권 조각"
+  "item.sunlit_journal_core.fantasy_ticket_fragment": "별빛 공방 뽑기권 조각",
+  "item.sunlit_journal_core.pet_ticket": "펫 뽑기권",
+  "item.sunlit_journal_core.pet_doll": "펫 인형",
+  "block.sunlit_journal_core.pet_vending": "펫 자판기",
+  "block.sunlit_journal_core.pet_accessory_shop": "펫 장식 가게",
+  "entity.sunlit_journal_core.companion": "생활 친구"
 }

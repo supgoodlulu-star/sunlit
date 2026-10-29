@@ -1,0 +1,16 @@
+allprojects {
+ afterEvaluate { project ->
+  sourceSets { petIntegration {
+   java.srcDirs new File(rootDir,'tools/visual-preview'),new File(rootDir,'tools/reward-fixtures')
+   java.include 'PetIntegrationCheck.java','RewardFixtureItems.java'
+   resources.srcDir new File(rootDir,'tools/reward-fixtures/resources')
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.petIntegration
+  minecraft.runs.client.property 'sunlit.petIntegrationCheck','true'
+  minecraft.runs.client.property 'sunlit.rewardFixtures','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/pets-0.9.0').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitInputTest'
+ }
+}

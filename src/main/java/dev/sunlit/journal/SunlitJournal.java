@@ -40,7 +40,11 @@ public class SunlitJournal {
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, JournalConfig.SPEC);
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, JournalClientConfig.SPEC);
         SkyContent.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
+        PetContent.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
+        net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, PetConfig.SPEC, "sunlit-pets.toml");
+        MinecraftForge.EVENT_BUS.register(new PetEvents());
         JournalNetwork.register();
+        PetNetwork.register();
     }
 
     public static CompoundTag data(ServerPlayer player) {

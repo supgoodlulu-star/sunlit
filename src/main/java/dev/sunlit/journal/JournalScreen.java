@@ -121,6 +121,7 @@ public final class JournalScreen extends Screen {
     }
     private void profile(String editing,boolean focused){
         boolean available=data.getBoolean("nickAvailable");
+        button("펫 보관함",left+panelWidth-100,top+58,84,20,false,()->PetScreen.request("open",""));
         if(available){
             nickname=addRenderableWidget(new EditBox(font,left+16,top+88,panelWidth-160,20,Component.literal("닉네임")));
             nickname.setMaxLength(128);nickname.setValue(editing);nickname.setFocused(focused);if(focused)setFocused(nickname);
@@ -326,7 +327,7 @@ public final class JournalScreen extends Screen {
         centered(g,title.getString(),left+panelWidth/2,top+13,TEXT);
         if(tab.equals("profile")){
             String name=data.getString("username"),nick=data.getString("nickname");
-            g.drawString(font,font.plainSubstrByWidth(name+(nick.isEmpty()?"":" · "+nick),panelWidth-32),left+16,top+68,TEXT,false);
+            g.drawString(font,font.plainSubstrByWidth(name+(nick.isEmpty()?"":" · "+nick),panelWidth-132),left+16,top+68,TEXT,false);
         }
         if(questSummary!=null)renderQuestBonus(g);
         g.enableScissor(left+12,contentTop,left+panelWidth-12,contentBottom);
