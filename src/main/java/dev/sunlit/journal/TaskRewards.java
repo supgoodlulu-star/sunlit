@@ -18,7 +18,7 @@ public final class TaskRewards {
         List.of(new Material("dew_drop_farmland_growth:low_quality_fertilizer","저등급 비료",12),new Material("dew_drop_farmland_growth:weak_fertilizer","약한 비료",12),new Material("dew_drop_farmland_growth:hydrating_fertilizer","보습 비료",14)),
         List.of(new Material("aquaculture:worm","지렁이",18),new Material("crabbersdelight:crab_trap_bait","게잡이 통발 미끼",14)),
         List.of(new Material("minecraft:coal","석탄",64),new Material("minecraft:copper_ingot","구리 주괴",64),new Material("minecraft:iron_ingot","철 주괴",64)),
-        List.of(new Material("minecraft:sugar","설탕",18),new Material("meadow:alpine_salt","소금",18)),
+        List.of(new Material("minecraft:sugar","설탕",18),new Material("meadow:alpine_salt","알프스 소금",18)),
         List.of(new Material("society:animal_feed","동물 먹이",18),new Material("society:animal_feed","동물 먹이",22),new Material("society:animal_feed","동물 먹이",26))
     );
     public static CompoundTag plan(int kind,boolean weekly,int choice){
@@ -38,7 +38,7 @@ public final class TaskRewards {
     public static List<Display> display(CompoundTag task){
         var r=task.getCompound("payout");
         if(r.getBoolean("legacy"))return List.of(new Display("minecraft:emerald","에메랄드",r.getInt("coins")),new Display("minecraft:experience_bottle","경험치",r.getInt("xp")));
-        return List.of(new Display(r.getString("currency"),"황동 코인",r.getInt("coins")),new Display(r.getString("item"),r.getString("label"),r.getInt("count")),new Display("minecraft:experience_bottle","경험치",r.getInt("xp")));
+        return List.of(new Display(r.getString("currency"),"황동 동전",r.getInt("coins")),new Display(r.getString("item"),r.getString("label"),r.getInt("count")),new Display("minecraft:experience_bottle","경험치",r.getInt("xp")));
     }
     /** No partial currency/XP or claim flag if one of the required pack items is unavailable. */
     public static boolean available(CompoundTag task){
@@ -50,6 +50,6 @@ public final class TaskRewards {
         p.getInventory().setChanged();p.containerMenu.broadcastChanges();
     }
     private static void give(ServerPlayer p,String id,int amount){
-        while(amount>0){var sample=stack(id,1);int n=Math.min(amount,sample.getMaxStackSize());sample.setCount(n);FantasyGacha.deliver(p,sample);amount-=n;}
+        while(amount>0){var sample=stack(id,1);int n=Math.min(amount,sample.getMaxStackSize());sample.setCount(n);if(!p.getInventory().add(sample))p.drop(sample,false);amount-=n;}
     }
 }

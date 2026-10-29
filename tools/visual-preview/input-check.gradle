@@ -3,6 +3,7 @@ allprojects {
         sourceSets {
             inputCheck {
                 java.srcDir new File(rootDir, 'tools/visual-preview')
+                java.include 'JournalInputChatCheck.java'
                 compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
                 runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
             }

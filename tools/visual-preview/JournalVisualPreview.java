@@ -12,10 +12,10 @@ import java.util.concurrent.CompletableFuture;
 public class JournalVisualPreview {
     private static int stage=-1,ticks;
     private static CompletableFuture<Void> reloading;
-    private static final String[] PAGES={"skills","quests","achievements","achievements","profile","quests","achievements","skills","achievements","quests","quests","quests","skills","quests","quests"};
+    private static final String[] PAGES={"profile","skills","quests","achievements","titles","quests","achievements","skills","achievements","quests","quests","quests","skills","quests","quests","skills","skills","skills","skills","skills","skills","skills","skills","quests","quests","quests","quests","quests","quests","skills","quests"};
     private static CompoundTag data(){
         var d=new CompoundTag();d.putString("username","Sunlit");d.putString("nickname","햇살");d.putBoolean("nickAvailable",true);
-        var titles=new CompoundTag();titles.putString("owned","새싹농부|꼬마낚시꾼|벚꽃요정");titles.putString("equipped","새싹농부");d.put("titles",titles);
+        d.putInt("level",7);d.putInt("levelRequired",21);d.putFloat("levelProgress",.4f);var titles=new CompoundTag();titles.putString("owned","새싹농부|꼬마낚시꾼|벚꽃요정");titles.putString("equipped","새싹농부");d.put("titles",titles);
         var sd=new CompoundTag();sd.putBoolean("available",true);var list=new ListTag();
         for(String name:new String[]{"exploration","life","books","farming","fishing","mining","cooking","husbandry"}){var c=new CompoundTag();c.putString("id","society:"+name);c.putBoolean("unlocked",true);c.putBoolean("hasXp",!java.util.Set.of("exploration","life","books").contains(name));c.putInt("level",7);c.putInt("xp",42);c.putInt("required",100);var names=new ListTag();for(int j=0;j<(java.util.Set.of("exploration","life","books").contains(name)?0:4);j++)names.add(StringTag.valueOf("fixture_"+j));c.put("skills",names);list.add(c);}sd.put("categories",list);d.put("skillsData",sd);
         for(String period:new String[]{"daily","weekly"}){
@@ -32,27 +32,38 @@ public class JournalVisualPreview {
     }
     private static CompoundTag stageData(){
         var d=data();
-        if(stage==11)d.remove("festival");
+        if(stage==11||stage==27)d.remove("festival");
+        if(stage>=15&&stage<=22||stage==29){
+            String category=stage==29?"farming":new String[]{"farming","fishing","mining","cooking","husbandry","exploration","life","books"}[stage-15];
+            var list=new ListTag();for(var tag:d.getCompound("skillsData").getList("categories",Tag.TAG_COMPOUND)){var c=(CompoundTag)tag;if(c.getString("id").equals("society:"+category))list.add(c.copy());}d.getCompound("skillsData").put("categories",list);
+        }
+        if(stage>=23&&stage<=26||stage==28||stage==30){var f=d.getCompound("festival");f.putString("season",stage>=28?"WINTER":new String[]{"SPRING","SUMMER","AUTUMN","WINTER"}[stage-23]);if(stage==28||stage==30){f.putBoolean("complete",true);f.putLong("progress",f.getLong("goal"));}}
         if(stage==13){var t=d.getCompound("daily").getCompound("0");t.putInt("kind",0);t.putString("subject","minecraft:carrots");}
         return d;
+    }
+    @SubscribeEvent public static void label(net.minecraftforge.client.event.ScreenEvent.Render.Post e){
+        if(Boolean.getBoolean("sunlit.visualPreview")&&e.getScreen() instanceof JournalScreen)e.getGuiGraphics().drawString(Minecraft.getInstance().font,"UI 검증용 예시 데이터 · 전체 모드팩 플레이 화면 아님",8,e.getScreen().height-12,0xFFFFE7A0,false);
     }
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){
         if(e.phase!=TickEvent.Phase.END||!Boolean.getBoolean("sunlit.visualPreview"))return;
         var mc=Minecraft.getInstance();
         if(stage==-1){if(!(mc.screen instanceof TitleScreen))return;mc.options.languageCode="ko_kr";mc.getLanguageManager().setSelected("ko_kr");reloading=mc.reloadResourcePacks();stage=-2;return;}
         if(stage==-2){if(!reloading.isDone())return;
-            if(java.util.Set.of(SkillCategoryIcons.select("society:exploration","탐험"),SkillCategoryIcons.select("society:life","생활 기술"),SkillCategoryIcons.select("society:books","서적")).size()!=3)throw new IllegalStateException("Category icons collide");stage=0;ticks=0;mc.options.guiScale().set(2);mc.resizeDisplay();mc.setScreen(new JournalScreen(data(),PAGES[stage]));return;}
+            if(java.util.Set.of(SkillCategoryIcons.select("society:exploration","탐험"),SkillCategoryIcons.select("society:life","생활 기술"),SkillCategoryIcons.select("society:books","서적")).size()!=3)throw new IllegalStateException("Category icons collide");stage=Boolean.getBoolean("sunlit.artOnlyPreview")?15:0;ticks=0;mc.options.guiScale().set(2);mc.resizeDisplay();mc.setScreen(new JournalScreen(stageData(),PAGES[stage]));return;}
         if(stage>=PAGES.length)return;
         if(mc.getOverlay()!=null){ticks=0;return;}
         if(++ticks<40)return;
-        Screenshot.grab(new java.io.File(System.getProperty("sunlit.previewOutput","../validation")),"cards-"+stage+"-"+PAGES[stage]+".png",mc.getMainRenderTarget(),c->{});
+        String file=stage<15?"cards-"+stage+"-"+PAGES[stage]:stage<=22?"art-skill-"+new String[]{"farming","fishing","mining","cooking","ranching","exploration","life","books"}[stage-15]:stage<=26?"art-festival-"+new String[]{"spring","summer","autumn","winter"}[stage-23]:"art-state-"+stage;
+        Screenshot.grab(new java.io.File(System.getProperty("sunlit.previewOutput","../validation")),file+".png",mc.getMainRenderTarget(),c->{});
         if(++stage>=PAGES.length){mc.stop();return;}ticks=0;
-        if(stage==7||stage==9){mc.options.guiScale().set(2);mc.resizeDisplay();}
+        if(stage==15){org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),1280,900);}
+        if(stage==7||stage==9||stage==15){mc.options.guiScale().set(2);mc.resizeDisplay();}
         if(stage==14){org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),960,720);mc.options.guiScale().set(3);mc.resizeDisplay();}
+        if(stage==29){org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),960,720);mc.options.guiScale().set(3);mc.resizeDisplay();}
         if(stage==5){mc.options.guiScale().set(3);mc.resizeDisplay();}
         var screen=new JournalScreen(stageData(),PAGES[stage]);mc.setScreen(screen);
         if(stage==9){press(screen,"주간 업무");screen.update(stageData());}
-        if(stage==10||stage==11)press(screen,"계절 특별 업무");
+        if(stage==10||stage==11||stage>=23&&stage!=29)press(screen,"계절 특별 업무");
         if(stage==12)screen.mouseScrolled(screen.width/2,screen.height/2,-10);
         if(stage==7){for(var child:screen.children())if(child instanceof JournalButton b&&b.getMessage().getString().equals("기술 펼치기")){b.onPress();break;}}
         if(stage==3||stage==6||stage==8){int pw=Math.min(480,screen.width-12),ph=Math.min(400,screen.height-12),left=(screen.width-pw)/2,top=(screen.height-ph)/2,w=(pw-28)/8;int filter=stage==3?7:stage==8?6:3;screen.mouseClicked(left+14+filter*w+5,top+68,0);}

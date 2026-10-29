@@ -1,0 +1,8 @@
+BUILD SUCCESSFUL: clean build, 0.8.0-journal, JDK 17 / Forge 47.3.0
+All 28 required server GameTests passed with three provided integration mods.
+SUNLIT_INPUT_CHAT_CHECK PASS
+REWARD_CHECK PASS (pack item fixtures)
+TITLE_CHECK PASS
+15 final actual-renderer UI captures; fixture data explicitly labeled.
+No production gacha/skin classes, models, vanilla overrides or test fixture classes in JAR.
+Full modpack and real legacy world upgrade remain unverified; see JOURNAL_VALIDATION.md.

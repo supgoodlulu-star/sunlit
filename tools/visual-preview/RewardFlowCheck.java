@@ -38,7 +38,7 @@ public final class RewardFlowCheck {
                 JournalNetwork.send(p,true,"quests");
             });phase=2;ticks=0;}
             case 2 -> {if(!pending.isDone()||!(mc.screen instanceof JournalScreen)||ticks<25)return;pending.join();shot(mc,"rewards-daily");
-                server(mc,p->{require(FantasyGacha.fragments(p)==1,"Three-of-five bonus");var t=JournalWorld.get(p.getServer()).player(p).getCompound("daily").getCompound("4");require(!t.getBoolean("claimed"),"Unexpected claim");});phase=3;ticks=0;}
+                server(mc,p->{require(p.getInventory().countItem(SkyContent.FRAGMENT.get())==0,"Removed bonus issued fragments");var t=JournalWorld.get(p.getServer()).player(p).getCompound("daily").getCompound("4");require(!t.getBoolean("claimed"),"Unexpected claim");});phase=3;ticks=0;}
             case 3 -> {if(!pending.isDone()||ticks<10)return;pending.join();JournalNetwork.CHANNEL.sendToServer(new JournalNetwork.Request("claim","daily:4"));phase=4;ticks=0;}
             case 4 -> {if(ticks<20)return;server(mc,p->{var t=JournalWorld.get(p.getServer()).player(p).getCompound("daily").getCompound("4");require(t.getBoolean("claimed"),"Fifth-slot packet rejected");require(p.getInventory().countItem(TaskRewards.stack(TaskRewards.COIN,1).getItem())==2,"Daily coin count");});phase=5;ticks=0;}
             case 5 -> {if(!pending.isDone()||ticks<10)return;pending.join();press((JournalScreen)mc.screen,"주간 업무");phase=6;ticks=0;}
@@ -47,8 +47,15 @@ public final class RewardFlowCheck {
             case 8 -> {if(!pending.isDone()||ticks<10)return;pending.join();shot(mc,"rewards-claimed");press((JournalScreen)mc.screen,"일일 업무");mc.options.guiScale().set(3);mc.resizeDisplay();phase=9;ticks=0;}
             case 9 -> {if(ticks<15)return;shot(mc,"rewards-small-scale");mc.screen.mouseScrolled(mc.screen.width/2,mc.screen.height/2,-12);phase=10;ticks=0;}
             case 10 -> {if(ticks<15)return;shot(mc,"rewards-bottom");
-                com.mojang.logging.LogUtils.getLogger().info("REWARD_CHECK PASS: 5 daily tasks, any-three automatic bonus, actual fifth-slot and weekly claim packets, coins/material/96-item sync, pinned gift panel, GUI scales 2/3; pack-item placeholders used in this test only");mc.screen.onClose();phase=11;ticks=0;}
-            case 11 -> {if(ticks>5)mc.stop();}
+                com.mojang.logging.LogUtils.getLogger().info("REWARD_CHECK PASS: 5 daily tasks, no retired ticket bonus, actual fifth-slot and weekly claim packets, coins/material/96-item sync, task summary, GUI scales 2/3; pack-item placeholders used in this test only");mc.screen.onClose();phase=11;ticks=0;}
+            case 11 -> {if(ticks<8)return;mc.options.guiScale().set(2);mc.resizeDisplay();server(mc,p->{SunlitJournal.saveOwned(p,new java.util.LinkedHashSet<>(java.util.List.of("새싹농부","꼬마낚시꾼")));JournalNetwork.send(p,true,"titles");});phase=12;ticks=0;}
+            case 12 -> {if(!pending.isDone()||ticks<20||!(mc.screen instanceof JournalScreen))return;pending.join();press((JournalScreen)mc.screen,"획득");press((JournalScreen)mc.screen,"대표 칭호 장착");phase=13;ticks=0;}
+            case 13 -> {if(ticks<20)return;server(mc,p->{require(SunlitJournal.data(p).getString("equipped").equals("새싹농부"),"Title equip packet did not persist");});phase=14;ticks=0;}
+            case 14 -> {if(!pending.isDone()||ticks<10)return;pending.join();shot(mc,"titles-equipped");press((JournalScreen)mc.screen,"미획득");for(var c:mc.screen.children())if(c instanceof JournalButton b&&b.getMessage().getString().equals("미획득")&&b.getWidth()==110)require(!b.active,"Unowned title equip enabled");phase=18;ticks=0;}
+            case 15 -> {if(ticks<20)return;server(mc,p->{require(SunlitJournal.data(p).getString("equipped").isEmpty(),"Title unequip packet failed");JournalNetwork.send(p,true,"profile");});phase=16;ticks=0;}
+            case 16 -> {if(!pending.isDone()||ticks<20)return;pending.join();shot(mc,"profile-live");com.mojang.logging.LogUtils.getLogger().info("TITLE_CHECK PASS: independent tab, owned/unowned filters, equip/unequip server packets");phase=17;ticks=0;}
+            case 18 -> {if(ticks<15)return;shot(mc,"titles-unowned");press((JournalScreen)mc.screen,"전체");press((JournalScreen)mc.screen,"칭호 해제");phase=15;ticks=0;}
+            case 17 -> {if(ticks>5)mc.stop();}
         }
     }
 }

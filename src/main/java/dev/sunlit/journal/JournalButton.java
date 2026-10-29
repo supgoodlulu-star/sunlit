@@ -14,23 +14,18 @@ final class JournalButton extends Button {
     }
     static void rounded(GuiGraphics g,int x,int y,int w,int h,int radius,int color) {
         if(w<=0||h<=0)return;
-        int r=Math.max(0,Math.min(radius,Math.min(w,h)/2));
-        g.fill(x+r,y,x+w-r,y+h,color);
-        for(int dy=0;dy<h;dy++) {
-            int cy=dy<r?r-1-dy:dy>=h-r?dy-(h-r):0;
-            int inset=r==0?0:r-(int)Math.sqrt(Math.max(0,r*r-cy*cy));
-            g.fill(x+inset,y+dy,x+r,y+dy+1,color);
-            g.fill(x+w-r,y+dy,x+w-inset,y+dy+1,color);
-        }
+        // Stepped corners instead of antialiased curves: pixel notebook geometry.
+        int r=Math.min(2,Math.min(w,h)/2);
+        g.fill(x+r,y,x+w-r,y+h,color);g.fill(x,y+r,x+w,y+h-r,color);
     }
     @Override public void renderWidget(GuiGraphics g,int mx,int my,float delta) {
-        int border=active?0xFFB28D73:0xFFC3B4A1;
-        int color=!active?0xFFE0D5C6:selected?0xFFBDD8C4:isHoveredOrFocused()?0xFFE8C6B0:0xFFEEDCC8;
+        int border=active?0xFF795127:0xFFC3B4A1;
+        int color=!active?0xFFE0D5C6:selected?0xFF769748:isHoveredOrFocused()?0xFFE7C17E:0xFFF2D59A;
         rounded(g,getX(),getY()+1,width,height,7,border);
         rounded(g,getX()+1,getY(),width-2,height-1,6,color);
         var font=Minecraft.getInstance().font;
         String label=font.plainSubstrByWidth(getMessage().getString(),Math.max(1,width-12));
-        g.drawString(font,label,getX()+(width-font.width(label))/2,getY()+(height-font.lineHeight)/2,active?0xFF3F3028:0xFF756354,false);
+        g.drawString(font,label,getX()+(width-font.width(label))/2,getY()+(height-font.lineHeight)/2,!active?0xFF756354:selected?0xFFFFF9DD:0xFF3F3028,false);
         if(isFocused())rounded(g,getX()+6,getY()+height-3,width-12,1,0,0xFF9EBCAF);
     }
 }

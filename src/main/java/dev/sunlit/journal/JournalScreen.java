@@ -18,7 +18,7 @@ public final class JournalScreen extends Screen {
     private String tab;
     private String questPeriod="daily";
     private int lineStep;
-    private int heartbeat,left,top,panelWidth,panelHeight,contentTop,contentBottom,totalHeight,achievementFilter=-1;
+    private int heartbeat,left,top,panelWidth,panelHeight,contentTop,contentBottom,totalHeight,achievementFilter=-1,titleFilter=0;
     private double scroll;
     private boolean draggingScroll;
     private EditBox nickname;
@@ -26,9 +26,9 @@ public final class JournalScreen extends Screen {
     private int questDone;
     private final List<Card> cards=new ArrayList<>();
     private final Set<String> expandedSkills=new HashSet<>();
-    private static final String[] PAGES={"profile","skills","quests","achievements","collection"};
-    private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","스킨 공방"};
-    private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills"};
+    private static final String[] PAGES={"profile","skills","quests","achievements","titles"};
+    private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","칭호 도감"};
+    private static final String[] ICONS={"farming","fishing","mining","cooking","ranching","wealth","spring","summer","autumn","winter","fairy","profile","exploration","life","books","skills","skill_tree","four_seasons"};
     private static final String[] ACTIVITY_HELP={
         "다 자란 작물을 직접 부숴 수확하면 진행도가 올라요. 덜 자란 작물은 포함되지 않아요.",
         "낚싯대로 물고기를 낚으면 진행도가 올라요. 보물과 쓰레기는 포함되지 않아요.",
@@ -43,17 +43,19 @@ public final class JournalScreen extends Screen {
         final String actionLabel;
         final Runnable action;
         final boolean enabled;
-        List<FormattedCharSequence> heading,lines;
+        List<FormattedCharSequence> heading,lines,captionLines;
+        String caption="";
         int height,y,bodyOffset,progressOffset,actionOffset,badgeWidth,rewardOffset,rewardHeight;
         List<TaskRewards.Display> rewards=List.of();
-        boolean section;
+        boolean section,avatar,illustrated;
+        int artSize,headerHeight;
         JournalButton button;
         Card(String title,String body,int icon,String badge,long value,long goal,String actionLabel,boolean enabled,Runnable action) {
             this.title=title;this.body=body;this.icon=icon;this.badge=badge;this.value=value;this.goal=goal;
             this.actionLabel=actionLabel;this.enabled=enabled;this.action=action;
         }
     }
-    public JournalScreen(CompoundTag data,String tab){super(Component.literal("모험가의 수첩"));this.data=data;if(tab.equals("secrets"))tab="collection";this.tab=Arrays.asList(PAGES).contains(tab)?tab:"profile";}
+    public JournalScreen(CompoundTag data,String tab){super(Component.literal("모험가의 수첩"));this.data=data;this.tab=Arrays.asList(PAGES).contains(tab)?tab:"profile";}
     private void request(String action,String value){JournalNetwork.CHANNEL.sendToServer(new JournalNetwork.Request(action,value));}
     @Override protected void init(){rebuild();}
     public void update(CompoundTag next){data=next;rebuild();}
@@ -69,7 +71,7 @@ public final class JournalScreen extends Screen {
         left=(width-panelWidth)/2;top=(height-panelHeight)/2;
         int tabWidth=(panelWidth-28)/PAGES.length;
         for(int i=0;i<PAGES.length;i++){
-            String page=PAGES[i];button(LABELS[i],left+14+i*tabWidth,top+32,tabWidth-4,23,tab.equals(page),()->{tab=page;scroll=0;rebuild();});
+            String page=PAGES[i];button(LABELS[i],left+14+i*tabWidth,top+32,tabWidth-2,23,tab.equals(page),()->{tab=page;scroll=0;rebuild();});
         }
         contentTop=top+65;contentBottom=top+panelHeight-39;
         switch(tab){
@@ -77,16 +79,20 @@ public final class JournalScreen extends Screen {
             case "skills" -> skills();
             case "quests" -> quests();
             case "achievements" -> achievements();
-            case "collection" -> collection();
+            case "titles" -> titles();
         }
         int cardWidth=panelWidth-40;
         lineStep=Math.max(14,font.lineHeight+5);
         totalHeight=0;
         for(Card c:cards){
             c.badgeWidth=c.badge.isEmpty()?0:Math.max(54,font.width(c.badge)+16);
-            c.heading=font.split(Component.literal(c.title),Math.max(40,cardWidth-(c.section?60:57+c.badgeWidth+12)));
+            c.artSize=c.icon==16?(cardWidth<340?48:64):cardWidth<340?80:104;
+            int headingWidth=c.illustrated?cardWidth-c.artSize-40:cardWidth-(c.section?60:57+c.badgeWidth+12);
+            c.heading=font.split(Component.literal(c.title),Math.max(40,headingWidth));
             c.lines=font.split(Component.literal(c.body),cardWidth-(c.section?60:24));
-            c.bodyOffset=c.section?10+c.heading.size()*lineStep+4:10+Math.max(28,c.heading.size()*lineStep)+10;
+            c.captionLines=font.split(Component.literal(c.caption),Math.max(40,headingWidth));
+            c.headerHeight=c.illustrated?(c.icon==16?Math.max(c.artSize+16,c.heading.size()*lineStep+20):Math.max(c.artSize+20,(c.heading.size()+c.captionLines.size())*lineStep+56)):0;
+            c.bodyOffset=c.illustrated?c.headerHeight:c.section?10+c.heading.size()*lineStep+4:10+Math.max(28,c.heading.size()*lineStep)+10;
             if(c.section)c.height=20+Math.max(28,c.heading.size()*lineStep+4+c.lines.size()*lineStep);
             else {
                 int cursor=c.bodyOffset+c.lines.size()*lineStep;
@@ -99,13 +105,19 @@ public final class JournalScreen extends Screen {
                 if(c.action!=null){c.actionOffset=cursor+8;cursor+=36;}
                 c.height=cursor+10;
             }
+            if(c.avatar)c.height=128;
             c.y=totalHeight;totalHeight+=c.height+8;
-            if(c.action!=null){c.button=button(c.actionLabel,0,0,94,20,c.actionLabel.equals("보상 받기")&&c.enabled,c.action);c.button.active=c.enabled;}
+            if(c.action!=null){c.button=button(c.actionLabel,0,0,110,20,c.actionLabel.equals("보상 받기")&&c.enabled,c.action);c.button.active=c.enabled;}
         }
         totalHeight=Math.max(0,totalHeight-8);clampScroll();layoutActions();
         button("위로",left+14,top+panelHeight-29,43,20,false,()->{scroll-=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();});
         button("아래로",left+62,top+panelHeight-29,43,20,false,()->{scroll+=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();});
         button("닫기",left+panelWidth-62,top+panelHeight-29,48,20,false,this::onClose);
+    }
+    private String taskSummary(String period){
+        var tasks=data.getCompound(period);int complete=0,claimed=0;
+        for(int i=0;i<JournalWorld.taskCount(period);i++){var t=tasks.getCompound(""+i);if(t.getInt("target")>0&&t.getInt("progress")>=t.getInt("target"))complete++;if(t.getBoolean("claimed"))claimed++;}
+        return (period.equals("daily")?"일일":"주간")+" 업무 "+complete+"/"+JournalWorld.taskCount(period)+" 완료 · "+claimed+" 수령";
     }
     private void profile(String editing,boolean focused){
         boolean available=data.getBoolean("nickAvailable");
@@ -116,17 +128,18 @@ public final class JournalScreen extends Screen {
             button("초기화",left+panelWidth-77,top+88,61,20,false,()->request("resetNick",""));
         }
         contentTop=top+(available?120:86);
-        String equipped=data.getCompound("titles").getString("equipped");
-        List<String> owned=Arrays.stream(data.getCompound("titles").getString("owned").split("\\|")).filter(s->!s.isBlank()).toList();
-        if(owned.isEmpty())card("아직 비어 있는 칭호 보관함","생활 활동과 축제에 참여해 나만의 칭호를 모아 보세요.",11,"",0,0);
-        for(String name:owned)actionCard(name,"마음에 드는 칭호를 대표 칭호로 골라 보세요.",titleIcon(name),equipped.equals(name)?"장착 중":"보유",0,0,equipped.equals(name)?"칭호 해제":"칭호 장착",true,()->request("equip",name));
+        // Avatar is a scrollable card so it remains usable at the smallest GUI viewport.
+        card("나의 모험가", "",11,"",0,0);
+        cards.get(cards.size()-1).avatar=true;
     }
-    private static int titleIcon(String title){int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);return i<24&&i>=0?i/4:title.equals("사계요정")?10:title.equals("벚꽃요정")?6:title.equals("별빛요정")?7:title.equals("풍요요정")?8:title.equals("눈꽃요정")?9:title.equals("구름 위의 손님")?12:title.equals("하늘 정원의 수호자")?10:11;}
+    private static int titleIcon(String title){int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);return i<24&&i>=0?i/4:title.equals("사계요정")?17:title.equals("벚꽃요정")?6:title.equals("별빛요정")?7:title.equals("풍요요정")?8:title.equals("눈꽃요정")?9:11;}
     private void skills(){
         var categories=data.getCompound("skillsData").getList("categories",Tag.TAG_COMPOUND);
         if(categories.isEmpty())card("생활 기술","배울 수 있는 기술이 생기면 분야별로 표시됩니다.",0,"",0,0);
-        for(int i=0;i<categories.size();i++){
-            var c=categories.getCompound(i);String id=c.getString("id"),name=SkillLabels.category(id);
+        var ordered=new ArrayList<CompoundTag>();
+        for(int i=0;i<categories.size();i++)ordered.add(categories.getCompound(i));
+        ordered.sort(Comparator.comparingInt(c->{int icon=SkillCategoryIcons.select(c.getString("id"),SkillLabels.category(c.getString("id")));return icon<=4?icon:icon>=12&&icon<=14?icon-7:15;}));
+        for(var c:ordered){String id=c.getString("id"),name=SkillLabels.category(id);
             boolean expanded=expandedSkills.contains(id);var unlocked=c.getList("skills",Tag.TAG_STRING);
             StringBuilder detail=new StringBuilder();
             if(c.getBoolean("hasXp"))detail.append("레벨 ").append(c.getInt("level")).append(" · 다음 레벨까지 필요한 경험치 ").append(Math.max(0,c.getInt("required")-c.getInt("xp"))).append("\n");
@@ -137,8 +150,13 @@ public final class JournalScreen extends Screen {
             if(shown<unlocked.size())detail.append("\n그 밖의 기술 ").append(unlocked.size()-shown).append("개");
             if(unlocked.size()>3)actionCard(name,detail.toString(),SkillCategoryIcons.select(id,name),c.getBoolean("unlocked")?"해금됨":"잠김",c.getBoolean("hasXp")?c.getInt("xp"):0,c.getBoolean("hasXp")?c.getInt("required"):0,expanded?"간단히 보기":"기술 펼치기",true,()->{if(!expandedSkills.add(id))expandedSkills.remove(id);rebuild();});
             else card(name,detail.toString(),SkillCategoryIcons.select(id,name),c.getBoolean("unlocked")?"해금됨":"잠김",c.getBoolean("hasXp")?c.getInt("xp"):0,c.getBoolean("hasXp")?c.getInt("required"):0);
+            cards.get(cards.size()-1).illustrated=true;
+            cards.get(cards.size()-1).caption=c.getBoolean("hasXp")?"레벨 "+c.getInt("level")+" · "+c.getInt("xp")+" / "+c.getInt("required")+" XP":"배운 기술 "+unlocked.size()+"개";
         }
-        if(data.getCompound("skillsData").getBoolean("available"))actionCard("원본 스킬 트리","각 기술의 효과와 해금 조건을 원본 스킬 트리에서 확인하세요.",10,"",0,0,"스킬 트리 열기",true,()->request("skillsTree",""));
+        if(data.getCompound("skillsData").getBoolean("available")){
+            actionCard("원본 스킬 트리","각 기술의 효과와 해금 조건을 원본 스킬 트리에서 확인하세요.",16,"",0,0,"스킬 트리 열기",true,()->request("skillsTree",""));
+            cards.get(cards.size()-1).illustrated=true;
+        }
     }
     private static String subjectName(CompoundTag task){
         ResourceLocation id=ResourceLocation.tryParse(task.getString("subject"));int kind=task.getInt("kind");
@@ -183,7 +201,7 @@ public final class JournalScreen extends Screen {
             var tasks=data.getCompound(period);boolean daily=period.equals("daily");
             questSummary=tasks;questDone=0;
             for(int i=0;i<JournalWorld.taskCount(period);i++){var t=tasks.getCompound(""+i);if(t.getInt("target")>0&&t.getInt("progress")>=t.getInt("target"))questDone++;}
-            contentTop=top+146;
+            contentTop=top+(panelHeight<300?122:146);
             for(int i=0;i<JournalWorld.taskCount(period);i++){
                 var task=tasks.getCompound(""+i);if(task.isEmpty())continue;
                 int index=i,kind=Math.max(0,Math.min(4,task.getInt("kind")));
@@ -195,11 +213,34 @@ public final class JournalScreen extends Screen {
         }
         if(!questPeriod.equals("seasonal"))return;
         var f=data.getCompound("festival");
-        if(f.getBoolean("available")){
-            String season=f.getString("season");int icon=seasonIcon(season);
-            String uuid=minecraft.player==null?"":minecraft.player.getUUID().toString();
-            card(JournalWorld.festivalName(season),"생활 활동으로 마을의 축제를 함께 준비해요.\n나의 기여 "+f.getCompound("contributions").getLong(uuid)+" · 완료되면 기여자에게 보상을 보내드려요.\n보상 · 에메랄드 16개 + 경험치 160",icon,f.getBoolean("complete")?"축제 완료":"함께해요",f.getLong("progress"),f.getLong("goal"));
-        }else section("계절 특별 업무","새로운 계절 업무가 열리면 이곳에서 확인할 수 있어요.",10);
+        String current=f.getBoolean("available")?f.getString("season"):"";
+        var seasons=new ArrayList<>(List.of("SPRING","SUMMER","AUTUMN","WINTER"));
+        if(seasons.contains(current))Collections.rotate(seasons,-seasons.indexOf(current));
+        for(String season:seasons){
+            boolean active=season.equals(current),complete=active&&f.getBoolean("complete"),participated=data.getCompound("seasons").getBoolean(season);
+            String atmosphere=switch(season){
+                case "SPRING"->"벚꽃 아래에서 새 계절의 시작을 함께 준비해요.";
+                case "SUMMER"->"푸른 물결과 별빛이 반짝이는 해변 축제를 준비해요.";
+                case "AUTUMN"->"황금빛 곡식과 풍성한 수확으로 마을을 채워요.";
+                default->"눈꽃이 내려앉은 마을에 따뜻한 온기를 나눠요.";
+            };
+            String description=atmosphere+"\n";
+            if(active){
+                String uuid=minecraft.player==null?"":minecraft.player.getUUID().toString();
+                description+="공동 목표 · 생활 활동 "+f.getLong("goal")+"회\n";
+                description+="수확·낚시·자연 광석 채광·음식 제작·동물 번식으로 기여하세요.\n";
+                description+="나의 기여 · "+f.getCompound("contributions").getLong(uuid)+"회\n";
+                description+="1회 이상 기여하고 공동 목표를 달성하면 보상을 받아요.\n처음 달성하면 ‘"+JournalWorld.seasonTitle(season)+"’ 칭호도 얻어요.";
+            }else {
+                description+=current.isEmpty()?"계절 연동이 확인되면 해당 계절의 공동 임무가 열려요.":"이 계절이 돌아오면 공동 임무가 열려요.";
+                description+="\n해당 계절에 생활 활동으로 1회 이상 기여하고 마을 공동 목표를 달성하세요.";
+                if(participated)description+="\n이 계절의 축제에 참여해 완료한 기록이 있어요.";
+            }
+            card(JournalWorld.festivalName(season),description,seasonIcon(season),active?(complete?"축제 완료":"진행 중"):"계절 대기",active?f.getLong("progress"):0,active?f.getLong("goal"):0);
+            var event=cards.get(cards.size()-1);event.illustrated=true;
+            event.caption=active?"마을 공동 목표\n"+f.getLong("progress")+" / "+f.getLong("goal")+(complete?" · 달성":""):"계절이 돌아오면 만나요";
+            event.rewards=List.of(new TaskRewards.Display("minecraft:emerald","에메랄드",16),new TaskRewards.Display("minecraft:experience_bottle","경험치",160));
+        }
     }
     private static int seasonIcon(String season){return switch(season){case "SPRING"->6;case "SUMMER"->7;case "AUTUMN"->8;default->9;};}
     private void achievements(){
@@ -226,32 +267,62 @@ public final class JournalScreen extends Screen {
                 String name=JournalWorld.seasonTitle(season);
                 card(name,JournalWorld.festivalName(season)+"에 생활 활동으로 1회 이상 기여하고, 마을이 공동 목표를 달성하면 얻어요.",seasonIcon(season),owned.contains(name)?"획득":"도전 중",done?1:0,1);
             }
-            card("사계요정","봄·여름·가을·겨울, 네 계절의 축제에 기여하고 각 축제를 완료해 보세요.",10,owned.contains("사계요정")?"획득":"도전 중",completed,4);
+            card("사계요정","봄·여름·가을·겨울, 네 계절의 축제에 기여하고 각 축제를 완료해 보세요.",17,owned.contains("사계요정")?"획득":"도전 중",completed,4);
         }
     }
-    private void collection(){
-        var gacha=data.getCompound("gacha");int count=0;
-        for(var skin:FantasyGacha.POOL)if(gacha.getCompound("owned").getBoolean(skin.id()))count++;
-        section("별빛 공방","12개 테마, 60종의 장비 외형을 모아 보세요. 장비 성능은 그대로 유지돼요.",7);
-        actionCard("환상 도구 스킨 뽑기","보유 스킨 "+count+" / 60 · 뽑기권 "+gacha.getInt("tickets")+"장 · 조각 "+gacha.getInt("fragments")+"개\n스킨 미리보기·뽑기·장착·조각 교환은 공방에서 할 수 있어요.",7,"컬렉션",count,60,"공방 열기",true,()->request("open","gacha"));
-        card("뽑기권 모으기","일일 업무 5개 중 3개 완료: 뽑기권 조각 1개\n주간 업무 3개 완료: 뽑기권 1장\n조각 10개는 공방에서 뽑기권 1장으로 교환해요.",11,"업무 보상",0,0);
+    private void titles(){
+        String[] filters={"전체","획득","미획득"};int w=(panelWidth-28)/3;
+        for(int i=0;i<filters.length;i++){int filter=i;button(filters[i],left+14+i*w,top+61,w-4,20,titleFilter==filter,()->{titleFilter=filter;scroll=0;rebuild();});}
+        contentTop=top+89;
+        var owned=new HashSet<>(Arrays.asList(data.getCompound("titles").getString("owned").split("\\|")));
+        String equipped=data.getCompound("titles").getString("equipped");
+        for(int i=0;i<SunlitJournal.TITLES.length;i++){
+            String name=SunlitJournal.TITLES[i];boolean has=owned.contains(name),wearing=has&&name.equals(equipped);
+            if(titleFilter==1&&!has||titleFilter==2&&has)continue;
+            long value=0,goal=1;String condition;
+            if(i<20){int kind=i/4;goal=JournalWorld.MILESTONES[i%4];value=data.getCompound("counts").getLong(JournalWorld.ACTIVITIES[kind]);condition=ACTIVITY_HELP[kind]+"\n누적 목표 · "+goal+(kind==1||kind==4?"마리":"개");}
+            else if(i<24){goal=JournalWorld.SUN_TARGETS[i-20];long unit=data.getLong("perSun");value=unit>0?data.getLong("spurs")/unit:0;condition="개인 계좌에 "+goal+" Sun 저축. 현금·공동 계좌는 제외됩니다."+(data.getBoolean("balanceAvailable")?"":"\n계좌 연동을 확인할 수 없습니다.");}
+            else if(name.equals("사계요정")){goal=4;for(String season:List.of("SPRING","SUMMER","AUTUMN","WINTER"))if(data.getCompound("seasons").getBoolean(season))value++;condition="네 계절 축제에 각각 기여하고 공동 목표를 달성하세요.";}
+            else {String season=switch(name){case "벚꽃요정"->"SPRING";case "별빛요정"->"SUMMER";case "풍요요정"->"AUTUMN";default->"WINTER";};value=data.getCompound("seasons").getBoolean(season)?1:0;condition=JournalWorld.festivalName(season)+"에 1회 이상 기여하고 공동 목표를 달성하세요.";}
+            if(has)value=goal;
+            actionCard(name,condition,titleIcon(name),wearing?"장착 중":has?"획득":"미획득",value,goal,wearing?"칭호 해제":has?"대표 칭호 장착":"미획득",has,()->request("equip",name));
+        }
+        if(cards.isEmpty())section("해당하는 칭호가 없어요","다른 필터에서 칭호와 획득 조건을 확인하세요.",14);
     }
     private void clampScroll(){scroll=Math.max(0,Math.min(scroll,Math.max(0,totalHeight-(contentBottom-contentTop))));}
     private void layoutActions(){
         for(Card c:cards)if(c.button!=null){
-            int y=contentTop+c.y-(int)scroll+c.actionOffset;c.button.setX(left+panelWidth-134);c.button.setY(y);
+            int y=contentTop+c.y-(int)scroll+c.actionOffset;c.button.setX(left+panelWidth-150);c.button.setY(y);
             c.button.visible=y>=contentTop&&y+20<=contentBottom;
         }
     }
     private static void rounded(GuiGraphics g,int x,int y,int w,int h,int radius,int color){JournalButton.rounded(g,x,y,w,h,radius,color);}
     private void centered(GuiGraphics g,String text,int center,int y,int color){g.drawString(font,text,center-font.width(text)/2,y,color,false);}
-    private void icon(GuiGraphics g,int index,int x,int y){com.mojang.blaze3d.systems.RenderSystem.enableBlend();g.blit(new ResourceLocation(SunlitJournal.MODID,"textures/gui/badges/"+ICONS[Math.max(0,Math.min(ICONS.length-1,index))]+".png"),x,y,0,0,28,28,28,28);com.mojang.blaze3d.systems.RenderSystem.disableBlend();}
+    private static final Set<String> ILLUSTRATIONS=Set.of("farming","fishing","mining","cooking","ranching","exploration","life","books","spring","summer","autumn","winter","skill_tree","wealth","four_seasons");
+    private void art(GuiGraphics g,int index,int x,int y,int size){
+        String name=ICONS[Math.max(0,Math.min(ICONS.length-1,index))];
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        if(ILLUSTRATIONS.contains(name))g.blit(new ResourceLocation(SunlitJournal.MODID,"textures/gui/illustrations/"+name+".png"),x,y,size,size,0,0,256,256,256,256);
+        else g.blit(new ResourceLocation(SunlitJournal.MODID,"textures/gui/badges/"+name+".png"),x,y,size,size,0,0,28,28,28,28);
+        com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+    }
+    private void icon(GuiGraphics g,int index,int x,int y){art(g,index,x,y,28);}
+    private void cardArt(GuiGraphics g,Card c,int x,int y,int size){
+        if(!TitleThemes.known(c.title)){art(g,c.icon,x,y,size);return;}
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        g.blit(TitleIcons.texture(c.title),x,y,size,size,0,0,256,256,256,256);
+        com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+    }
     @Override public void render(GuiGraphics g,int mx,int my,float delta){
         renderBackground(g);
         rounded(g,left+3,top+4,panelWidth,panelHeight,15,0x803E353D);
-        rounded(g,left,top,panelWidth,panelHeight,15,0xFFC4A184);
-        rounded(g,left+2,top+2,panelWidth-4,panelHeight-4,13,0xFFF0DFCA);
-        rounded(g,left+8,top+8,panelWidth-16,18,9,0xFFE5CAB2);
+        rounded(g,left,top,panelWidth,panelHeight,4,0xFF704322);
+        rounded(g,left+2,top+2,panelWidth-4,panelHeight-4,3,0xFFCF9B4F);
+        rounded(g,left+7,top+7,panelWidth-14,panelHeight-14,2,0xFFFFF1CE);
+        // Sparse paper fibres and wooden binding stitches, drawn on exact pixel boundaries.
+        for(int yy=top+29;yy<top+panelHeight-34;yy+=12)g.fill(left+10,yy,left+panelWidth-10,yy+1,0x0D9B713E);
+        for(int yy=top+19;yy<top+panelHeight-12;yy+=20){g.fill(left+2,yy,left+6,yy+2,0xFF8C5B2C);g.fill(left+panelWidth-6,yy,left+panelWidth-2,yy+2,0xFF8C5B2C);}
+        rounded(g,left+8,top+8,panelWidth-16,18,9,0xFFE8C68A);
         centered(g,title.getString(),left+panelWidth/2,top+13,TEXT);
         if(tab.equals("profile")){
             String name=data.getString("username"),nick=data.getString("nickname");
@@ -263,9 +334,31 @@ public final class JournalScreen extends Screen {
         for(Card c:cards){
             int x=left+16,y=contentTop+c.y-(int)scroll;
             if(y+c.height<contentTop||y>contentBottom)continue;
-            rounded(g,x,y+1,cardWidth,c.height,10,0xFFCDB59C);
-            rounded(g,x+1,y,cardWidth-2,c.height-1,9,0xFFF7ECDD);
-            icon(g,c.icon,x+10,y+10);
+            rounded(g,x,y+1,cardWidth,c.height,10,0xFFC89A53);
+            rounded(g,x+1,y,cardWidth-2,c.height-1,9,0xFFFFF7E2);
+            if(c.avatar){
+                int ax=x+40,ay=y+103;
+                rounded(g,x+10,y+8,62,100,3,0xFFE5CE9F);
+                if(minecraft.player!=null)net.minecraft.client.gui.screens.inventory.InventoryScreen.renderEntityInInventoryFollowsMouse(g,ax,ay,43,ax-mx,ay-55-my,minecraft.player);
+                else {icon(g,11,x+27,y+38);}
+                String nick=data.getString("nickname"),equipped=data.getCompound("titles").getString("equipped");
+                int tx=x+83,tw=cardWidth-96;
+                g.drawString(font,font.plainSubstrByWidth(nick.isEmpty()?data.getString("username"):nick,tw),tx,y+12,TEXT,false);
+                g.drawString(font,font.plainSubstrByWidth(equipped.isEmpty()?"대표 칭호 없음":equipped,tw),tx,y+30,equipped.isEmpty()?MUTED:TitleThemes.color(equipped,false),false);
+                g.drawString(font,"Lv. "+data.getInt("level"),tx,y+48,TEXT,false);
+                int required=data.getInt("levelRequired"),xp=(int)(data.getFloat("levelProgress")*required);
+                g.drawString(font,font.plainSubstrByWidth("경험치 "+xp+" / "+required,tw),tx,y+64,MUTED,false);
+                rounded(g,tx,y+79,tw,4,1,0xFFD9C5AF);int fill=(int)(tw*Math.max(0,Math.min(1,data.getFloat("levelProgress"))));if(fill>0)rounded(g,tx,y+79,fill,4,1,0xFF73965F);
+                g.drawString(font,font.plainSubstrByWidth(taskSummary("daily"),tw),tx,y+93,MUTED,false);
+                g.drawString(font,font.plainSubstrByWidth(taskSummary("weekly"),tw),tx,y+109,MUTED,false);
+                continue;
+            }
+            int[] accents={0xFF68893F,0xFF397E9B,0xFF776192,0xFFC17A32,0xFF93734A,0xFFB78E39,0xFFB85E7E,0xFF557DA4,0xFFA57834,0xFF4F8795,0xFF826899,0xFF8C6940,0xFFAC653A,0xFF6F8B4C,0xFF5369A0,0xFF78664B};
+            g.fill(x+2,y+5,x+5,y+c.height-5,accents[Math.max(0,Math.min(c.icon,accents.length-1))]);
+            if(c.illustrated){
+                rounded(g,x+9,y+8,c.artSize+4,c.artSize+4,3,0xFFF0DFBA);
+                cardArt(g,c,x+11,y+10,c.artSize);
+            }else cardArt(g,c,x+10,y+10,28);
             if(c.section){
                 int textY=y+10;
                 for(var line:c.heading){g.drawString(font,line,x+47,textY,TEXT,false);textY+=lineStep;}
@@ -273,12 +366,17 @@ public final class JournalScreen extends Screen {
                 for(var line:c.lines){g.drawString(font,line,x+47,textY,MUTED,false);textY+=lineStep;}
                 continue;
             }
-            int headingY=y+13;
-            for(var line:c.heading){g.drawString(font,line,x+47,headingY,TitleThemes.known(c.title)?TitleThemes.color(c.title,false):TEXT,false);headingY+=lineStep;}
+            int headingY=y+13,headingX=x+(c.illustrated?c.artSize+24:47);
+            for(var line:c.heading){g.drawString(font,line,headingX,headingY,TitleThemes.known(c.title)?TitleThemes.color(c.title,false):TEXT,false);headingY+=lineStep;}
+            if(c.illustrated){
+                int cy=headingY+7;
+                for(var line:c.captionLines){g.drawString(font,line,headingX,cy,0xFF557044,false);cy+=lineStep;}
+            }
             if(!c.badge.isEmpty()){
                 boolean done=c.badge.equals("획득")||c.badge.equals("수령 완료")||c.badge.equals("장착 중");
-                rounded(g,x+cardWidth-c.badgeWidth-10,y+12,c.badgeWidth,18,7,done?0xFFD1E0C5:0xFFE7D1BB);
-                centered(g,c.badge,x+cardWidth-10-c.badgeWidth/2,y+17,done?0xFF305439:MUTED);
+                int badgeY=y+(c.illustrated?c.headerHeight-32:12);
+                rounded(g,x+cardWidth-c.badgeWidth-10,badgeY,c.badgeWidth,18,7,done?0xFFD1E0C5:0xFFE7D1BB);
+                centered(g,c.badge,x+cardWidth-10-c.badgeWidth/2,badgeY+5,done?0xFF305439:MUTED);
             }
             int textY=y+c.bodyOffset;
             for(var line:c.lines){g.drawString(font,line,x+12,textY,MUTED,false);textY+=lineStep;}
@@ -303,14 +401,12 @@ public final class JournalScreen extends Screen {
         super.render(g,mx,my,delta);
     }
     private void renderQuestBonus(GuiGraphics g){
-        int x=left+16,y=top+91,w=panelWidth-40;boolean daily=questPeriod.equals("daily"),done=questSummary.getBoolean("setBonusAwarded");
-        rounded(g,x,y,w,48,8,done?0xFF9AB78A:0xFFD4AE62);rounded(g,x+1,y+1,w-2,46,7,done?0xFFE0ECD5:0xFFFFE9B5);
-        g.renderItem(new net.minecraft.world.item.ItemStack(daily?SkyContent.FRAGMENT.get():SkyContent.TICKET.get()),x+10,y+12);
-        String heading=(daily?"일일 업무 · 5개 분야":"주간 업무 · 3개 도전")+"  "+questDone+"개 완료";
-        g.drawString(font,font.plainSubstrByWidth(heading,w-46),x+35,y+7,TEXT,false);
-        String gift="3개 완료 선물 · "+(daily?"뽑기권 조각 1개":"뽑기권 1장")+(done?" · 지급 완료":" ("+Math.min(3,questDone)+"/3)");
-        g.drawString(font,font.plainSubstrByWidth(gift,w-46),x+35,y+23,done?0xFF305439:0xFF79501C,false);
-        rounded(g,x+35,y+39,w-46,4,2,0xFFD9C6A1);int fill=(w-46)*Math.min(3,questDone)/3;if(fill>0)rounded(g,x+35,y+39,fill,4,2,0xFF77995E);
+        int x=left+16,y=top+91,w=panelWidth-40;boolean daily=questPeriod.equals("daily");int count=JournalWorld.taskCount(questPeriod);
+        int h=panelHeight<300?26:48;
+        rounded(g,x,y,w,h,3,0xFFC89A53);rounded(g,x+1,y+1,w-2,h-2,2,0xFFFFE9B5);
+        g.drawString(font,font.plainSubstrByWidth((daily?"일일 업무 · 5개 분야":"주간 업무 · 서로 다른 3개 분야")+"  "+questDone+" / "+count,w-16),x+8,y+7,TEXT,false);
+        if(h>26)g.drawString(font,font.plainSubstrByWidth("업무마다 황동 동전 "+(daily?2:6)+"개 · 경험치 "+(daily?20:80)+" · 재료 1종",w-16),x+8,y+23,MUTED,false);
+        rounded(g,x+8,y+h-9,w-16,4,1,0xFFD9C6A1);int fill=(w-16)*questDone/count;if(fill>0)rounded(g,x+8,y+h-9,fill,4,1,0xFF6B8D41);
     }
     private void renderRewards(GuiGraphics g,Card c,int x,int y,int cardWidth){
         int rx=x+10,ry=y+c.rewardOffset,rw=cardWidth-20;

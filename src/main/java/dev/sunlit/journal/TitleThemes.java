@@ -28,8 +28,6 @@ public final class TitleThemes {
         int i=Arrays.asList(SunlitJournal.TITLES).indexOf(title);
         if(i>=0&&i<24)return (chat?CHAT:PAPER)[i/4][i%4];
         return switch(title){
-            case "구름 위의 손님" -> chat?0xB7E8FF:0x3B6B87;
-            case "하늘 정원의 수호자" -> chat?0xE3CBFF:0x71538B;
             case "사계요정" -> chat?0xE6BCFF:0x815293;
             case "벚꽃요정" -> chat?0xFFADCF:0x98506D;
             case "별빛요정" -> chat?0xAAC8FF:0x475D94;

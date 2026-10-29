@@ -24,7 +24,7 @@ public final class JournalChat {
         return player.getDisplayName().copy();
     }
     static Optional<Component> format(ServerPlayer player,Component message){
-        return equipped(player).map(title->Component.empty().append(TitleThemes.badge(title)).append(" ")
+        return equipped(player).map(title->Component.empty().append(TitleIcons.icon(title)).append(" ").append(TitleThemes.badge(title)).append(" ")
             .append(nickname(player)).append(Component.literal(": ").withStyle(s->s.withColor(0xFFFFFF))).append(message.copy()));
     }
     // Server Nick 1.2.0 cancels and broadcasts at NORMAL. Run before it so a titled

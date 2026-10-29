@@ -1,0 +1,5 @@
+0.8.2-journal clean build succeeded.
+Original skill tree icon: open hand, floating gold/teal magic circle, lavender star.
+Normal and small GUI renders captured in Minecraft with explicit UI fixture data.
+Release JAR includes new skill_tree.png and excludes preview/test classes.
+No server skill tree action, rewards, quest, season or storage logic changed.

@@ -1,0 +1,16 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "sunlit_journal_core:font/title_chat_badges.png",
+      "height": 9,
+      "ascent": 8,
+      "chars": [
+        "",
+        "",
+        "",
+        "\u0000\u0000\u0000"
+      ]
+    }
+  ]
+}

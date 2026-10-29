@@ -1,0 +1,5 @@
+0.8.3-journal clean build succeeded.
+Four-seasons fairy and wealth achievement illustrations applied to actual UI resources.
+Four captures from the Minecraft renderer: wealth/fairy at normal/small GUI sizes, explicit fixture data.
+Release JAR includes 15 illustration assets and excludes preview/test classes.
+Achievement conditions, account units, festival rules, rewards and persistence unchanged.

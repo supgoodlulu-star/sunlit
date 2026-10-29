@@ -190,12 +190,12 @@ public class JournalGameTests {
         d.putString("owned","새싹농부|별빛셰프");
         var body=net.minecraft.network.chat.Component.literal("안녕하세요").withStyle(net.minecraft.ChatFormatting.AQUA);
         var line=JournalChat.format(p,body).orElseThrow();
-        h.assertTrue(line.getString().equals("[새싹농부] "+p.getDisplayName().getString()+": 안녕하세요"),"Title/name/body order incorrect");
-        h.assertTrue(line.getSiblings().get(0).getStyle().getColor().getValue()==TitleThemes.color("새싹농부",true),"Chat title color missing");
+        h.assertTrue(line.getString().equals(TitleIcons.glyph("새싹농부")+" [새싹농부] "+p.getDisplayName().getString()+": 안녕하세요"),"Title/name/body order incorrect");
+        h.assertTrue(line.getSiblings().get(2).getStyle().getColor().getValue()==TitleThemes.color("새싹농부",true),"Chat title color missing");
         h.assertTrue(line.getSiblings().get(line.getSiblings().size()-1).getStyle().equals(body.getStyle()),"Title theme leaked into message body");
         h.assertTrue(body.getString().equals("안녕하세요"),"Formatting mutated original message");
         d.putString("equipped","별빛셰프");
-        h.assertTrue(JournalChat.format(p,body).orElseThrow().getString().startsWith("[별빛셰프]"),"New equipped title not used immediately");
+        h.assertTrue(JournalChat.format(p,body).orElseThrow().getString().startsWith(TitleIcons.glyph("별빛셰프")+" [별빛셰프]"),"New equipped title not used immediately");
         d.remove("equipped");h.assertTrue(JournalChat.format(p,body).isEmpty(),"Unequipped title still displayed");h.succeed();
     }
 
@@ -205,16 +205,6 @@ public class JournalGameTests {
         p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,new net.minecraft.world.item.ItemStack(SkyContent.COMPASS.get()));
         SkyContent.COMPASS.get().use(p.level(),p,net.minecraft.world.InteractionHand.MAIN_HAND);
         h.assertTrue(p.position().equals(home),"Legacy compass still teleports");h.succeed();
-    }
-    @GameTest(template="empty") public static void skySkinsPreserveEquipment(GameTestHelper h){
-        var p=player(h);var sword=new net.minecraft.world.item.ItemStack(Items.DIAMOND_SWORD);sword.setDamageValue(37);
-        sword.enchant(net.minecraft.world.item.enchantment.Enchantments.SHARPNESS,3);sword.setHoverName(net.minecraft.network.chat.Component.literal("보관 중인 검"));
-        p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,sword);var before=sword.save(new CompoundTag());
-        h.assertFalse(SkySkins.apply(p,"sword"),"Locked skin applied");SkyGarden.player(p).putBoolean("complete",true);
-        h.assertFalse(SkySkins.apply(p,"pickaxe"),"Wrong tool accepted");h.assertTrue(SkySkins.apply(p,"sword"),"Unlocked skin rejected");
-        h.assertTrue(sword.getDamageValue()==37&&sword.getItem()==Items.DIAMOND_SWORD,"Skin changed equipment");
-        h.assertTrue(SkySkins.apply(p,"clear"),"Skin removal failed");h.assertTrue(before.equals(sword.save(new CompoundTag())),"Original NBT changed");
-        sword.getOrCreateTag().putInt("CustomModelData",87);h.assertFalse(SkySkins.apply(p,"sword"),"Existing external skin overwritten");h.succeed();
     }
 
     @GameTest(template="empty") public static void legacySkyReturnPreservesUnlocks(GameTestHelper h){
@@ -260,7 +250,7 @@ public class JournalGameTests {
                 try{
                     Integrations.nick(p,"햇살테스트",false);
                     var formatted=JournalChat.format(p,net.minecraft.network.chat.Component.literal("안녕!")).orElseThrow();
-                    h.assertTrue(formatted.getString().equals("[새싹농부] 햇살테스트: 안녕!"),"Actual nickname not retained in themed chat");
+                    h.assertTrue(formatted.getString().equals(TitleIcons.glyph("새싹농부")+" [새싹농부] 햇살테스트: 안녕!"),"Actual nickname not retained in themed chat");
                     var event=new net.minecraftforge.event.ServerChatEvent(p,"안녕!",net.minecraft.network.chat.Component.literal("안녕!"));
                     net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
                     h.assertTrue(event.isCanceled(),"Titled chat fell through to duplicate nickname handler");
@@ -286,76 +276,6 @@ public class JournalGameTests {
         return new net.minecraft.gametest.framework.TestFunction("sunlit_integrations",name,"sunlit_journal_core:empty",100,0L,true,test);
     }
 
-    @GameTest(template="empty") public static void fantasyCatalogueDistribution(GameTestHelper h){
-        h.assertTrue(FantasyGacha.POOL.size()==60,"Missing designs");
-        var counts=new java.util.HashMap<String,Integer>();
-        for(int i=0;i<FantasyGacha.TOTAL_WEIGHT;i++)counts.merge(FantasyGacha.sample(i).id(),1,Integer::sum);
-        var indices=new java.util.HashSet<Integer>();
-        for(var skin:FantasyGacha.POOL){h.assertTrue(counts.get(skin.id())==skin.weight(),"Displayed odds differ from selection");h.assertTrue(indices.add(skin.index()),"Model predicate collision");}
-        h.assertTrue(indices.size()==60,"Index coverage");h.succeed();
-    }
-    @GameTest(template="empty") public static void fantasyChargeAndReject(GameTestHelper h){
-        var p=player(h);p.getInventory().clearContent();
-        p.getInventory().add(new net.minecraft.world.item.ItemStack(SkyContent.TICKET.get(),11));
-        h.assertFalse(FantasyGacha.draw(p,0),"Invalid draw accepted");h.assertFalse(FantasyGacha.draw(p,100),"Invalid batch accepted");
-        h.assertTrue(FantasyGacha.draw(p,1),"Single draw failed");h.assertTrue(FantasyGacha.tickets(p)==10,"Single cost incorrect");
-        h.assertTrue(FantasyGacha.draw(p,10),"Ten draw failed");var d=FantasyGacha.state(p);
-        h.assertTrue(FantasyGacha.tickets(p)==0&&d.getList("results",Tag.TAG_COMPOUND).size()==10,"Batch not atomic");
-        var before=d.copy();h.assertFalse(FantasyGacha.draw(p,1),"Empty balance spent");h.assertTrue(before.equals(d),"Failed draw changed rewards");
-        var other=player(h);h.assertTrue(FantasyGacha.state(other).getCompound("owned").isEmpty(),"UUID leak");
-        var w=JournalWorld.get(p.getServer());var loaded=new JournalWorld(w.save(new CompoundTag()));
-        h.assertTrue(loaded.player(p).getCompound("fantasyGacha").equals(d),"Gacha persistence lost");h.succeed();
-    }
-    @GameTest(template="empty") public static void fantasyDuplicatesExchange(GameTestHelper h){
-        var p=player(h);p.getInventory().clearContent();var d=FantasyGacha.state(p);var owned=new CompoundTag();
-        for(var skin:FantasyGacha.POOL)owned.putBoolean(skin.id(),true);d.put("owned",owned);
-        p.getInventory().add(new net.minecraft.world.item.ItemStack(SkyContent.TICKET.get(),10));FantasyGacha.draw(p,10);
-        h.assertTrue(d.getInt("dust")==10,"Duplicate dust incorrect");
-        for(var t:d.getList("results",Tag.TAG_COMPOUND))h.assertTrue(((CompoundTag)t).getBoolean("duplicate"),"Owned reward not marked duplicate");
-        String id=FantasyGacha.POOL.get(0).id();h.assertFalse(FantasyGacha.exchange(p,id),"Owned exchange charged");
-        d.getCompound("owned").remove(id);h.assertFalse(FantasyGacha.exchange(p,"forged"),"Forged id accepted");
-        h.assertTrue(FantasyGacha.exchange(p,id),"Selection exchange failed");h.assertTrue(d.getInt("dust")==5&&FantasyGacha.owns(p,id),"Exchange not atomic");
-        d.putInt("dust",4);d.getCompound("owned").remove(id);h.assertFalse(FantasyGacha.exchange(p,id),"Insufficient dust accepted");h.succeed();
-    }
-    @GameTest(template="empty") public static void fantasyEquipmentIntegrity(GameTestHelper h){
-        var p=player(h);var d=FantasyGacha.state(p);var owned=new CompoundTag();
-        for(var skin:FantasyGacha.POOL){
-            var item=net.minecraft.core.registries.BuiltInRegistries.ITEM.get(new net.minecraft.resources.ResourceLocation("minecraft","diamond_"+skin.kind()));
-            var stack=new net.minecraft.world.item.ItemStack(item);stack.setDamageValue(17);stack.setHoverName(net.minecraft.network.chat.Component.literal("Keep me"));
-            stack.enchant(net.minecraft.world.item.enchantment.Enchantments.UNBREAKING,3);var before=stack.getTag().copy();p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,stack);
-            h.assertFalse(FantasySkins.apply(p,skin.id()),"Unowned skin applied");owned.putBoolean(skin.id(),true);d.put("owned",owned);
-            h.assertTrue(FantasySkins.apply(p,skin.id()),"Owned skin failed");h.assertTrue(SkySkins.apply(p,"clear"),"Clear failed");
-            h.assertTrue(before.equals(stack.getTag())&&stack.is(item),"Cosmetic changed equipment stats or name");
-            stack.getOrCreateTag().putInt("CustomModelData",123);h.assertFalse(FantasySkins.apply(p,skin.id()),"External model overwritten");
-        }
-        p.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND,new net.minecraft.world.item.ItemStack(Items.APPLE));
-        h.assertFalse(FantasySkins.apply(p,FantasyGacha.POOL.get(0).id()),"Incompatible tool accepted");h.succeed();
-    }
-    @GameTest(template="empty") public static void fantasyTaskSetRewardsOnce(GameTestHelper h){
-        var p=player(h);p.getInventory().clearContent();var w=JournalWorld.get(p.getServer());w.refreshTasks(p);
-        for(String period:java.util.List.of("daily","weekly")){
-            for(int i=0;i<3;i++){
-                var task=w.player(p).getCompound(period).getCompound(""+i);task.putInt("progress",task.getInt("target"));
-                if(i<2){w.refreshTasks(p);h.assertFalse(w.player(p).getCompound(period).getBoolean("setBonusAwarded"),"Early set reward");}
-            }
-            w.refreshTasks(p);h.assertTrue(w.player(p).getCompound(period).getBoolean("setBonusAwarded"),"Set reward missing");
-            for(int i=0;i<3;i++){h.assertTrue(w.claim(p,period,i),"Individual claim failed");h.assertFalse(w.claim(p,period,i),"Individual duplicate claim");}
-            w.refreshTasks(p);w.refreshTasks(p);
-        }
-        h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==1,"Set reward count incorrect");
-        var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);
-        h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==1,"Restart duplicated set reward");
-        w.player(p).getCompound("daily").putString("date","2000-01-01");w.refreshTasks(p);
-        h.assertFalse(w.player(p).getCompound("daily").getBoolean("setBonusAwarded"),"New day did not reset set flag");h.succeed();
-    }
-    @GameTest(template="empty") public static void fantasyFragmentsNeedTen(GameTestHelper h){
-        var p=player(h);p.getInventory().clearContent();p.getInventory().setItem(0,new net.minecraft.world.item.ItemStack(SkyContent.FRAGMENT.get(),9));
-        h.assertFalse(FantasyGacha.craftTicket(p),"Nine fragments accepted");h.assertTrue(FantasyGacha.fragments(p)==9&&FantasyGacha.tickets(p)==0,"Failed conversion changed inventory");
-        p.getInventory().setItem(5,new net.minecraft.world.item.ItemStack(SkyContent.FRAGMENT.get(),12));
-        h.assertTrue(FantasyGacha.craftTicket(p),"Fragment conversion failed");h.assertTrue(FantasyGacha.fragments(p)==11&&FantasyGacha.tickets(p)==1,"Conversion did not consume exactly ten");
-        h.assertTrue(FantasyGacha.craftTicket(p),"Second conversion failed");h.assertTrue(FantasyGacha.fragments(p)==1&&FantasyGacha.tickets(p)==2,"Second conversion count incorrect");
-        h.assertFalse(FantasyGacha.craftTicket(p),"Repeat conversion minted free ticket");h.succeed();
-    }
 
     @GameTest(template="empty") public static void agreedRewardPools(GameTestHelper h){
         String[][] ids={{"dew_drop_farmland_growth:low_quality_fertilizer","dew_drop_farmland_growth:weak_fertilizer","dew_drop_farmland_growth:hydrating_fertilizer"},{"aquaculture:worm","crabbersdelight:crab_trap_bait"},{"minecraft:coal","minecraft:copper_ingot","minecraft:iron_ingot"},{"minecraft:sugar","meadow:alpine_salt"},{"society:animal_feed","society:animal_feed","society:animal_feed"}};
@@ -367,15 +287,15 @@ public class JournalGameTests {
             h.assertTrue(plan.getInt("coins")== (weekly?6:2)&&plan.getInt("xp")== (weekly?80:20),"Money or XP incorrect");
         }h.succeed();
     }
-    @GameTest(template="empty") public static void fiveFieldsStableRewardsAndThirdBonus(GameTestHelper h){
+    @GameTest(template="empty") public static void fiveFieldsStableRewardsWithoutBonus(GameTestHelper h){
         var p=player(h);p.getInventory().clearContent();var w=new JournalWorld();w.refreshTasks(p);var daily=w.player(p).getCompound("daily");var kinds=new java.util.HashSet<Integer>();
         for(int i=0;i<5;i++)kinds.add(daily.getCompound(""+i).getInt("kind"));h.assertTrue(kinds.size()==5,"Daily does not cover five fields");
         var initial=daily.copy();w.refreshTasks(p);h.assertTrue(initial.equals(daily),"Refresh rerolled reward");
         var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);h.assertTrue(initial.equals(loaded.player(p).getCompound("daily")),"Restart rerolled reward");
         for(int i:new int[]{1,3,4}){var task=daily.getCompound(""+i);task.putInt("progress",task.getInt("target"));}
-        w.refreshTasks(p);h.assertTrue(FantasyGacha.fragments(p)==1,"Any three of five did not trigger fragment");
+        w.refreshTasks(p);h.assertTrue(p.getInventory().countItem(SkyContent.FRAGMENT.get())==0,"Removed bonus issued a fragment");
         for(int i:new int[]{0,2}){var task=daily.getCompound(""+i);task.putInt("progress",task.getInt("target"));}
-        w.refreshTasks(p);h.assertTrue(FantasyGacha.fragments(p)==1,"Fourth/fifth duplicated bonus");
+        w.refreshTasks(p);h.assertTrue(p.getInventory().countItem(SkyContent.FRAGMENT.get())==0,"Removed bonus issued a fragment");
         h.assertTrue(w.claim(p,"daily",4),"Fifth task cannot be claimed");h.assertFalse(w.claim(p,"daily",5),"Sixth index accepted");h.succeed();
     }
     @GameTest(template="empty") public static void rewardMigrationPreservesProgress(GameTestHelper h){
@@ -402,4 +322,84 @@ public class JournalGameTests {
         for(var stack:p.getInventory().items)h.assertTrue(stack.getCount()<=stack.getMaxStackSize(),"Oversized inventory stack");
         h.assertFalse(w.claim(p,"weekly",0),"Weekly claim duplicated");h.succeed();
     }
+    @GameTest(template="empty") public static void retiredDataAndItemsRemainInert(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var w=JournalWorld.get(p.getServer());w.refreshTasks(p);
+        var legacy=new CompoundTag();legacy.putInt("dust",37);var owned=new CompoundTag();owned.putBoolean("sakura_sword",true);legacy.put("owned",owned);w.player(p).put("fantasyGacha",legacy.copy());
+        SunlitJournal.data(p).putString("owned","새싹농부|하늘 정원의 수호자");SunlitJournal.data(p).putString("equipped","하늘 정원의 수호자");
+        for(String period:List.of("daily","weekly")){var tasks=w.player(p).getCompound(period);for(int n=0;n<JournalWorld.taskCount(period);n++){var t=tasks.getCompound(""+n);t.putInt("progress",t.getInt("target"));}}
+        p.getInventory().add(new net.minecraft.world.item.ItemStack(SkyContent.TICKET.get(),4));p.getInventory().add(new net.minecraft.world.item.ItemStack(SkyContent.FRAGMENT.get(),12));
+        var before=w.player(p).getCompound("daily").copy();w.refreshTasks(p);
+        var snapshot=w.snapshot(p);h.assertFalse(snapshot.contains("fantasyGacha")||snapshot.contains("gacha")||snapshot.contains("skyGarden"),"Retired data leaked into client snapshot");
+        var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);
+        h.assertTrue(loaded.player(p).getCompound("fantasyGacha").equals(legacy),"Legacy ownership was erased");
+        h.assertTrue(before.equals(loaded.player(p).getCompound("daily")),"Migration changed completed task payout/progress");
+        h.assertTrue(p.getInventory().countItem(SkyContent.TICKET.get())==4&&p.getInventory().countItem(SkyContent.FRAGMENT.get())==12,"Removed bonus changed old inventory");
+        h.assertTrue(snapshot.getCompound("titles").getString("equipped").isEmpty(),"Retired equipped title survived migration");
+        h.assertTrue(snapshot.getCompound("titles").getString("owned").equals("새싹농부"),"Unrelated title lost or retired title retained");h.succeed();
+    }
+    @GameTest(template="empty") public static void profileUsesActualVanillaExperience(GameTestHelper h){
+        var p=player(h);p.giveExperiencePoints(137);var snapshot=JournalWorld.get(p.getServer()).snapshot(p);
+        h.assertTrue(snapshot.getInt("level")==p.experienceLevel&&snapshot.getFloat("levelProgress")==p.experienceProgress,"Profile XP was fabricated");
+        h.assertTrue(snapshot.getInt("levelRequired")==p.getXpNeededForNextLevel(),"Wrong next-level requirement");h.succeed();
+    }
+    @GameTest(template="empty") public static void weeklyFieldsDistinctNoTicketBonus(GameTestHelper h){
+        var p=player(h);p.getInventory().clearContent();var w=new JournalWorld();w.refreshTasks(p);var weekly=w.player(p).getCompound("weekly");var kinds=new HashSet<Integer>();
+        for(int n=0;n<3;n++){var t=weekly.getCompound(""+n);kinds.add(t.getInt("kind"));t.putInt("progress",t.getInt("target"));}
+        var before=weekly.copy();w.refreshTasks(p);var loaded=new JournalWorld(w.save(new CompoundTag()));loaded.refreshTasks(p);
+        h.assertTrue(kinds.size()==3,"Weekly repeated a field");h.assertTrue(before.equals(loaded.player(p).getCompound("weekly")),"Reload changed weekly rewards");
+        h.assertTrue(p.getInventory().isEmpty(),"Removed weekly bonus minted items");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void removedSkyTitlesMigrateWithoutOtherLoss(GameTestHelper h){
+        var p=player(h);var old=new CompoundTag();
+        old.putString("owned","새싹농부|구름 위의 손님|사계요정|하늘 정원의 수호자|미래 칭호");old.putString("equipped","구름 위의 손님");old.putInt("customRecord",73);
+        p.getPersistentData().put("SunlitJournalTitles",old);p.getPersistentData().putString("anotherMod","keep");
+        new JournalEvents().login(new net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent(p));
+        var cleaned=p.getPersistentData().getCompound("SunlitJournalTitles");h.assertTrue(cleaned.getString("owned").equals("새싹농부|사계요정|미래 칭호"),"Upgrade removed unrelated titles or left sky titles");
+        h.assertFalse(cleaned.contains("equipped"),"Retired equipped title retained");h.assertTrue(cleaned.getInt("customRecord")==73&&p.getPersistentData().getString("anotherMod").equals("keep"),"Upgrade touched unrelated NBT");
+        var saved=cleaned.copy();SunlitJournal.data(p);h.assertTrue(saved.equals(SunlitJournal.data(p)),"Cleanup is not idempotent");
+        h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("test")).isEmpty(),"Retired prefix still appears in chat");
+        var snapshot=JournalWorld.get(p.getServer()).snapshot(p).getCompound("titles");h.assertTrue(snapshot.equals(saved),"Snapshot resurrected or damaged title records");h.succeed();
+    }
+    @GameTest(template="empty") public static void removedSkyTitlesCannotBeRegranted(GameTestHelper h){
+        var p=player(h);SunlitJournal.saveOwned(p,new LinkedHashSet<>(List.of("새싹농부","구름 위의 손님","하늘 정원의 수호자")));
+        h.assertTrue(p.getPersistentData().getCompound("SunlitJournalTitles").getString("owned").equals("새싹농부"),"Save API persisted a retired title");
+        JournalWorld.grant(p,"구름 위의 손님");JournalWorld.grant(p,"하늘 정원의 수호자");
+        h.assertTrue(SunlitJournal.owned(p).equals(Set.of("새싹농부")),"Grant API restored retired title");
+        h.assertFalse(SunlitJournal.isAllowedTitle("구름 위의 손님")||SunlitJournal.isAllowedTitle("하늘 정원의 수호자"),"Command grant registry still accepts retired titles");
+        JournalWorld.grant(p,"사계요정");h.assertTrue(SunlitJournal.owned(p).contains("사계요정"),"Ordinary grant stopped working");h.succeed();
+    }
+    @GameTest(template="empty") public static void removedSkyTitlesDoNotReturnOnClone(GameTestHelper h){
+        var original=player(h);var replacement=player(h);var old=new CompoundTag();old.putString("owned","하늘 정원의 수호자|벚꽃요정|구름 위의 손님");old.putString("equipped","벚꽃요정");old.putLong("extra",100);
+        original.getPersistentData().put("SunlitJournalTitles",old);SunlitJournal.copyTitles(original,replacement);
+        var copied=replacement.getPersistentData().getCompound("SunlitJournalTitles");h.assertTrue(copied.getString("owned").equals("벚꽃요정"),"Clone restored removed title");
+        h.assertTrue(copied.getString("equipped").equals("벚꽃요정")&&copied.getLong("extra")==100,"Clone lost valid equip or unrelated record");
+        var saved=copied.copy();replacement.getPersistentData().put("SunlitJournalTitles",saved.copy());h.assertTrue(SunlitJournal.data(replacement).equals(saved),"Reload changed migrated titles");
+        h.assertTrue(original.getPersistentData().getCompound("SunlitJournalTitles").getString("owned").equals("벚꽃요정"),"Original retained retired records after clone");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void chatArtworkSurvivesComponentNetworkCodec(GameTestHelper h){
+        var p=player(h);SunlitJournal.saveOwned(p,new LinkedHashSet<>(Arrays.asList(SunlitJournal.TITLES)));
+        var assets=new HashSet<String>();var glyphs=new HashSet<String>();
+        for(String title:SunlitJournal.TITLES){
+            SunlitJournal.data(p).putString("equipped",title);var body=net.minecraft.network.chat.Component.literal("그림 채팅").withStyle(net.minecraft.ChatFormatting.AQUA);
+            var line=JournalChat.format(p,body).orElseThrow();var buf=new FriendlyByteBuf(Unpooled.buffer());
+            try{buf.writeComponent(line);var decoded=buf.readComponent();
+                h.assertTrue(decoded.getString().startsWith(TitleIcons.glyph(title)+" ["+title+"] "),"Title image or text lost during network encoding");
+                var icon=decoded.getSiblings().get(0);h.assertTrue(icon.getStyle().getFont().equals(TitleIcons.FONT)&&icon.getStyle().getColor().getValue()==0xFFFFFF,"Image font lost or title tint applied to artwork");
+                h.assertTrue(!decoded.getSiblings().get(decoded.getSiblings().size()-1).getStyle().getFont().equals(TitleIcons.FONT),"Image font leaked into message");
+                h.assertTrue(body.getString().equals("그림 채팅"),"Decoration mutated message");
+            }finally{buf.release();}
+            assets.add(TitleIcons.asset(title));glyphs.add(TitleIcons.glyph(title));
+        }
+        h.assertTrue(assets.size()==29&&glyphs.size()==29,"Some titles share a tier image or glyph");h.succeed();
+    }
+    @GameTest(template="empty") public static void equippedTierImmediatelyChangesChatArtwork(GameTestHelper h){
+        var p=player(h);SunlitJournal.saveOwned(p,new LinkedHashSet<>(Arrays.asList(SunlitJournal.TITLES)));var images=new HashSet<String>();
+        for(int i=0;i<4;i++){String name=SunlitJournal.TITLES[i];SunlitJournal.data(p).putString("equipped",name);var line=JournalChat.format(p,net.minecraft.network.chat.Component.literal("단계 변경")).orElseThrow();images.add(line.getSiblings().get(0).getString());}
+        h.assertTrue(images.size()==4,"Equipped tier did not change image");
+        SunlitJournal.data(p).remove("equipped");h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("해제")).isEmpty(),"Unequipped player still had an image");
+        SunlitJournal.saveOwned(p,Set.of("새싹농부"));SunlitJournal.data(p).putString("equipped","풍년지기");h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("미획득")).isEmpty(),"Unowned tier image accepted");h.succeed();
+    }
+
 }

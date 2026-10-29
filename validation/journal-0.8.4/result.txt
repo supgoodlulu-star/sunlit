@@ -1,0 +1,6 @@
+0.8.4-journal build succeeded; all 31 required server GameTests passed with three integration mods.
+Removed: two legacy sky-island titles from registered catalogue and grant/equip paths.
+Login/data access/clone cleanup removes retired ownership and equipped titles, preserving other records.
+Save and grant APIs prevent reintroduction. Cleanup is idempotent.
+Network protocol journal-9 requires matching updated server/client.
+No live user world was modified; offline player records migrate on next login.

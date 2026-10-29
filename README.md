@@ -1,19 +1,20 @@
-# Sunlit · 모험가의 수첩
+# Sunlit Journal
 
-Minecraft 1.20.1 / Forge 47.3.0 · **0.7.0 · 일일 5개 분야 · 보상 미리보기**
+Forge 1.20.1용 수첩 전용 0.8.6-journal 개발 버전입니다.
+프로필 / 생활 기술 / 업무 일지 / 업적 도감 / 칭호 도감의 다섯 탭을 제공합니다.
 
-- [게임용 JAR 다운로드](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/sunlit-journal-core-0.7.0-dev.jar)
-- [전체 소스 ZIP](https://github.com/supgoodlulu-star/sunlit/raw/refs/heads/main/downloads/Sunlit_Journal_ALPHA7_Task_Rewards_Source.zip)
-- [설치·사용 안내](README_한국어.md) · [60종 컬렉션·확률](FANTASY_COLLECTION.md) · [검증](VALIDATION.md)
+현재 버전의 기능·보상·구버전 데이터 호환·빌드는 [README_JOURNAL_ONLY.md](README_JOURNAL_ONLY.md), 검증 결과와 한계는 [JOURNAL_VALIDATION.md](JOURNAL_VALIDATION.md)를 참고하세요.
 
-![업무 보상 화면 · 개발 검증용 아이템 아이콘](validation/screenshots/rewards-daily.png)
+main 0.7.0의 스킨 공방·뽑기·뽑기권 보너스는 이 버전에서 제공하지 않습니다. 기존 아이템·차원 ID와 원본 소유 NBT는 세이브 호환을 위해 유지합니다.
 
-일일 업무는 5개 분야에서 하나씩, 주간은 기존 3개입니다. 일일 황동 코인 2개·주간 6개와 분야별 랜덤 재료를 지급하며, 업무 생성 시 정한 보상을 아이콘과 수량으로 미리 표시합니다. [합의한 보상표와 검증 범위](REWARDS.md).
+0.8.1에서는 승인 시안을 참고한 생활 분야 삽화 8종과 계절 공동 축제 삽화 4종을 실제 카드에 반영했습니다. [그림·계절 이벤트 변경 및 화면 구분](ILLUSTRATIONS_0.8.1.md)을 참고하세요.
 
-**일일 업무 5개 중 3개 완료 → 뽑기권 조각 1개 / 주간 업무 3개 완료 → 뽑기권 1장 / 조각 10개 → 뽑기권 1장**
+0.8.2: 원본 스킬 트리 아이콘을 손 위에 떠 있는 마법진 그림으로 교체했습니다. [아이콘 변경과 화면 검증](SKILL_TREE_0.8.2.md)을 참고하세요.
 
-`/sunlit gacha` 또는 수첩의 **스킨 공방**으로 엽니다. 1회·10회 뽑기, 실제 3D 미리보기, 60종 수집·장착, 중복 별가루와 선택 교환을 제공합니다.
+0.8.3: 업적 도감의 사계요정과 자산 분야 삽화를 교체했습니다. [그림 변경과 검증](ACHIEVEMENT_ART_0.8.3.md)을 참고하세요.
 
-하늘 정원 입장·생성·퍼즐은 제외했습니다. 기존 저장 파일의 차원과 귀환 호환만 남겼습니다. 프로필·생활 기술·업무·공동 축제·칭호 채팅 기능은 유지합니다.
+0.8.4: 이전 하늘섬 칭호 2종을 도감·보유·장착 기록에서 제거합니다. [정리 범위와 업그레이드](REMOVED_SKY_TITLES_0.8.4.md)를 참고하세요.
 
-기존 JAR을 교체하고 서버와 모든 접속자에 같은 새 버전을 설치하세요. 실제 모델은 승인한 시안을 게임용으로 단순화한 곡면 OBJ이며, 시안 이미지와 동일한 PBR 렌더는 아닙니다. 전체 사용자 모드팩/리소스팩/Essential 조합은 별도 확인 대상입니다.
+0.8.5: 장착 칭호의 그림을 채팅에 표시하고, 6개 분야의 칭호 4단계를 서로 다른 그림으로 구분합니다. [채팅 이미지와 검증](CHAT_TITLE_IMAGES_0.8.5.md)을 참고하세요.
+
+0.8.6: 자산·사계요정 이미지를 다른 업적과 같은 크기로 통일했습니다. [크기 수정과 검증](UNIFORM_ICONS_0.8.6.md)을 참고하세요.
