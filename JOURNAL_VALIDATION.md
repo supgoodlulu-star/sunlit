@@ -1,3 +1,7 @@
+# 0.8.1-journal 추가 검증
+
+승인 시안 삽화·계절 공동 축제의 현재 결과는 [ILLUSTRATIONS_0.8.1.md](ILLUSTRATIONS_0.8.1.md)를 참고하세요. 아래 0.8.0 기록은 이전 버전의 검증 이력입니다.
+
 # 0.8.0-journal 검증 기록
 
 검증일: 2026-10-29 (한국 시간). 기준 main: `4cedc92ee1a3a20cbc5448ff6f9421aac9c5b6fb`.

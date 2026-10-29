@@ -1,0 +1,6 @@
+0.8.1-journal: clean build succeeded, Forge 1.20.1-47.3.0 / JDK 17.
+All 28 required server GameTests passed with three provided integration mods.
+16 final actual-renderer captures: 8 life categories, 4 seasons, unavailable/completed/small GUI states.
+All captures use explicit UI fixture data, labeled on screen; not full modpack play-through evidence.
+12 distinct 256x256 RGBA illustration assets, with large responsive card headers.
+Existing co-op festivals only. No individual seasonal tasks or reward/gameplay/storage rule changes.
