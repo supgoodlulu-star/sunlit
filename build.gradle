@@ -1,7 +1,7 @@
 plugins {
     id 'net.minecraftforge.gradle' version '6.0.54'
 }
-version = '0.7.0-dev'
+version = '0.8.0-journal'
 group = 'dev.sunlit.journal'
 base { archivesName = 'sunlit-journal-core' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -49,4 +49,20 @@ if (providers.gradleProperty('integrationMods').getOrElse('false').toBoolean()) 
     tasks.matching { it.name in ['runGameTestServer', 'runClient', 'runServer'] }.configureEach {
         dependsOn 'createSrgToMcp'
     }
+}
+
+// Journal-only distribution: no vanilla item overrides or cosmetic models/textures.
+tasks.named('processResources') {
+    exclude 'assets/minecraft/**'
+    exclude 'assets/sunlit_journal_core/models/fantasy/**'
+    exclude 'assets/sunlit_journal_core/models/item/fantasy/**'
+    exclude 'assets/sunlit_journal_core/models/item/cloud_pickaxe.json'
+    exclude 'assets/sunlit_journal_core/models/item/starlight_sword.json'
+    exclude 'assets/sunlit_journal_core/textures/item/cloud_pickaxe.png'
+    exclude 'assets/sunlit_journal_core/textures/item/starlight_sword.png'
+    exclude 'assets/sunlit_journal_core/textures/item/celestial_palette.png'
+    exclude 'assets/sunlit_journal_core/textures/item/fantasy_materials/**'
+    exclude { e -> e.path.startsWith('assets/sunlit_journal_core/textures/item/fantasy_') && !e.name.startsWith('fantasy_ticket') }
+    // Retain old item IDs and their basic icons only.
+    includeEmptyDirs = false
 }

@@ -1,3 +1,10 @@
+# 0.8.0-journal 현재 검사
+
+현재 배포 검증은 `JOURNAL_VALIDATION.md`를 기준으로 합니다. 아래의 스킨/하늘 정원 검사 설명은 구버전 역사 자료이며, 삭제한 실행 클래스에 의존하는 도구는 현재 빌드에서 사용하지 않습니다.
+
+`preview.gradle`은 `JournalVisualPreview.java`만, `input-check.gradle`은 `JournalInputChatCheck.java`만, `reward-check.gradle`은 `RewardFlowCheck.java`와 테스트용 보상 fixture만 컴파일합니다. 배포 JAR에는 이 도구가 포함되지 않습니다.
+보상 검사는 복사한 전용 월드 `SunlitCitadelTest`, 입력 검사는 `SunlitInputTest`를 사용합니다. 실제 월드에는 실행하지 마세요. 첫 진입에서 실험적 설정 안내의 진행을 눌러야 할 수 있습니다.
+
 # UI 렌더링 검사
 
 실제 Minecraft 클라이언트에서 서버 접속 없이 예시 데이터를 표시하고 `validation/screenshots/`에 15개 화면을 저장합니다. 화면 크기는 1280×900 및 960×720, GUI 크기는 2/3입니다. 이 Java 파일은 기본 소스 세트에 포함되지 않으며 배포 JAR에도 들어가지 않습니다. 원본 모드팩 연동 검사가 아닙니다.

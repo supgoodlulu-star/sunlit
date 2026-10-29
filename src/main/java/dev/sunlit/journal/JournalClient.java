@@ -4,8 +4,7 @@ import net.minecraft.client.Minecraft;
 public final class JournalClient {
     public static void receive(JournalNetwork.Snapshot msg){
         Minecraft mc=Minecraft.getInstance();
-        if(msg.open())mc.setScreen(msg.page().equals("gacha")?new FantasyGachaScreen(msg.data()):new JournalScreen(msg.data(),msg.page()));
-        else if(mc.screen instanceof FantasyGachaScreen screen)screen.update(msg.data());
+        if(msg.open())mc.setScreen(new JournalScreen(msg.data(),msg.page()));
         else if(mc.screen instanceof JournalScreen screen)screen.update(msg.data());
     }
 }

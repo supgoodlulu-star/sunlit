@@ -25,18 +25,10 @@ public final class SkyContent {
         }
         @Override public void appendHoverText(ItemStack stack,Level level,java.util.List<Component> lines,TooltipFlag flag){lines.add(Component.translatable("item.sunlit_journal_core.star_compass.hint"));}
     });
-    public static final RegistryObject<Item> TICKET=ITEMS.register("fantasy_ticket",()->new Item(new Item.Properties().rarity(Rarity.RARE)){
-        @Override public InteractionResultHolder<ItemStack> use(Level level,Player player,InteractionHand hand){
-            if(!level.isClientSide&&player instanceof ServerPlayer p)JournalNetwork.send(p,true,"gacha");
-            return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand),level.isClientSide);
-        }
-    });
-    public static final RegistryObject<Item> FRAGMENT=ITEMS.register("fantasy_ticket_fragment",()->new Item(new Item.Properties()){
-        @Override public InteractionResultHolder<ItemStack> use(Level level,Player player,InteractionHand hand){
-            if(!level.isClientSide&&player instanceof ServerPlayer p)JournalNetwork.send(p,true,"gacha");
-            return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand),level.isClientSide);
-        }
-    });
+    // Keep registry identities so upgrading a 0.7 world does not destroy inventory stacks.
+    // These inert compatibility items have no use action, recipe, exchange or creative tab.
+    public static final RegistryObject<Item> TICKET=ITEMS.register("fantasy_ticket",()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FRAGMENT=ITEMS.register("fantasy_ticket_fragment",()->new Item(new Item.Properties()));
     @SuppressWarnings("unchecked") public static final RegistryObject<Block>[] RELICS=new RegistryObject[7];
     static {
         String[] ids={"moon_record","leaf_record","star_record","moon_rune","leaf_rune","star_rune","return_stone"};

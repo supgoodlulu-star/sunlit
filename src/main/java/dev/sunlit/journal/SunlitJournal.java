@@ -72,10 +72,9 @@ public class SunlitJournal {
                 JournalNetwork.send(ctx.getSource().getPlayerOrException(), true, "profile"); return 1;
             }).then(Commands.argument("page", StringArgumentType.word()).executes(ctx -> {
                 String page=StringArgumentType.getString(ctx,"page");
-                if(!Set.of("profile","skills","quests","achievements","secrets","collection","gacha").contains(page))return 0;
+                if(!Set.of("profile","skills","quests","achievements","titles").contains(page))return 0;
                 JournalNetwork.send(ctx.getSource().getPlayerOrException(),true,page);return 1;
             })))
-            .then(Commands.literal("gacha").executes(ctx->{JournalNetwork.send(ctx.getSource().getPlayerOrException(),true,"gacha");return 1;}))
             .then(Commands.literal("titles").executes(ctx -> {
                 ServerPlayer p = ctx.getSource().getPlayerOrException();
                 String equipped = data(p).getString("equipped");

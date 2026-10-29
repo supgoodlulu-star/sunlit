@@ -12,10 +12,10 @@ import java.util.concurrent.CompletableFuture;
 public class JournalVisualPreview {
     private static int stage=-1,ticks;
     private static CompletableFuture<Void> reloading;
-    private static final String[] PAGES={"skills","quests","achievements","achievements","profile","quests","achievements","skills","achievements","quests","quests","quests","skills","quests","quests"};
+    private static final String[] PAGES={"profile","skills","quests","achievements","titles","quests","achievements","skills","achievements","quests","quests","quests","skills","quests","quests"};
     private static CompoundTag data(){
         var d=new CompoundTag();d.putString("username","Sunlit");d.putString("nickname","햇살");d.putBoolean("nickAvailable",true);
-        var titles=new CompoundTag();titles.putString("owned","새싹농부|꼬마낚시꾼|벚꽃요정");titles.putString("equipped","새싹농부");d.put("titles",titles);
+        d.putInt("level",7);d.putInt("levelRequired",21);d.putFloat("levelProgress",.4f);var titles=new CompoundTag();titles.putString("owned","새싹농부|꼬마낚시꾼|벚꽃요정");titles.putString("equipped","새싹농부");d.put("titles",titles);
         var sd=new CompoundTag();sd.putBoolean("available",true);var list=new ListTag();
         for(String name:new String[]{"exploration","life","books","farming","fishing","mining","cooking","husbandry"}){var c=new CompoundTag();c.putString("id","society:"+name);c.putBoolean("unlocked",true);c.putBoolean("hasXp",!java.util.Set.of("exploration","life","books").contains(name));c.putInt("level",7);c.putInt("xp",42);c.putInt("required",100);var names=new ListTag();for(int j=0;j<(java.util.Set.of("exploration","life","books").contains(name)?0:4);j++)names.add(StringTag.valueOf("fixture_"+j));c.put("skills",names);list.add(c);}sd.put("categories",list);d.put("skillsData",sd);
         for(String period:new String[]{"daily","weekly"}){
@@ -35,6 +35,9 @@ public class JournalVisualPreview {
         if(stage==11)d.remove("festival");
         if(stage==13){var t=d.getCompound("daily").getCompound("0");t.putInt("kind",0);t.putString("subject","minecraft:carrots");}
         return d;
+    }
+    @SubscribeEvent public static void label(net.minecraftforge.client.event.ScreenEvent.Render.Post e){
+        if(Boolean.getBoolean("sunlit.visualPreview")&&e.getScreen() instanceof JournalScreen)e.getGuiGraphics().drawString(Minecraft.getInstance().font,"UI 검증용 예시 데이터 · 전체 모드팩 플레이 화면 아님",8,e.getScreen().height-12,0xFFFFE7A0,false);
     }
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e){
         if(e.phase!=TickEvent.Phase.END||!Boolean.getBoolean("sunlit.visualPreview"))return;
