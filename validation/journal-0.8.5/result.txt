@@ -1,0 +1,6 @@
+0.8.5-journal clean build succeeded; all 33 required server GameTests passed.
+CHAT_TIER_CHECK PASS: all 29 titles via actual equip/chat packets, 6 families x 4 tiers and 5 seasonal titles.
+SUNLIT_INPUT_CHAT_CHECK PASS: input, nickname, ownership, colors, artwork, single delivery, cancellation.
+Final chat font sheet verified with 29 glyphs; 29 unique title images; native 9px line-compatible icons.
+GUI 2/3 captures from Minecraft in a dedicated prepared test world, not a full modpack play-through.
+Protocol journal-10; server/client update together. No reward or title-condition changes.

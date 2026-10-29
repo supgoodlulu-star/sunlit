@@ -61,11 +61,13 @@ public final class JournalInputChatCheck {
     private static void received(String token,String prefix,String title){
         var list=RECEIVED.getOrDefault(token,List.of());
         require(list.size()==1,"Expected one chat delivery for "+token+", got "+list.size());
-        var component=list.get(0);require(component.getString().startsWith(prefix),"Unexpected chat prefix: "+component.getString());
+        var component=list.get(0);require(component.getString().startsWith((title.isEmpty()?"":TitleIcons.glyph(title)+" ")+prefix),"Unexpected chat prefix: "+component.getString());
         if(!title.isEmpty()){
             final boolean[] found={false};
             component.visit((style,text)->{if(text.contains(title)&&style.getColor()!=null&&style.getColor().getValue()==TitleThemes.color(title,true))found[0]=true;return Optional.empty();},net.minecraft.network.chat.Style.EMPTY);
             require(found[0],"Title color missing after real network delivery");
+            final boolean[] image={false};component.visit((style,text)->{if(text.contains(TitleIcons.glyph(title))&&style.getFont().equals(TitleIcons.FONT)&&style.getColor()!=null&&style.getColor().getValue()==0xFFFFFF)image[0]=true;return Optional.empty();},net.minecraft.network.chat.Style.EMPTY);
+            require(image[0],"Title image missing after real network delivery");
         }
     }
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent event)throws ReflectiveOperationException {
@@ -112,7 +114,7 @@ public final class JournalInputChatCheck {
             case 11 -> {
                 if(ticks<25)return;require(RECEIVED.getOrDefault(TOKENS[3],List.of()).isEmpty(),"Pre-cancelled chat was published");
                 if(mc.screen!=null)mc.screen.onClose();
-                com.mojang.logging.LogUtils.getLogger().info("SUNLIT_INPUT_CHAT_CHECK PASS: air gesture, block/entity exclusions, rebindable key, real profile snapshots, one chat delivery, nickname, title change/unequip, network colors and prior-cancellation handling");
+                com.mojang.logging.LogUtils.getLogger().info("SUNLIT_INPUT_CHAT_CHECK PASS: air gesture, block/entity exclusions, rebindable key, real profile snapshots, one chat delivery, nickname, title change/unequip, network colors, title images and prior-cancellation handling");
                 phase=12;ticks=0;
             }
             case 12 -> {

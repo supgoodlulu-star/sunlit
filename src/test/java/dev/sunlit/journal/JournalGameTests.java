@@ -190,12 +190,12 @@ public class JournalGameTests {
         d.putString("owned","새싹농부|별빛셰프");
         var body=net.minecraft.network.chat.Component.literal("안녕하세요").withStyle(net.minecraft.ChatFormatting.AQUA);
         var line=JournalChat.format(p,body).orElseThrow();
-        h.assertTrue(line.getString().equals("[새싹농부] "+p.getDisplayName().getString()+": 안녕하세요"),"Title/name/body order incorrect");
-        h.assertTrue(line.getSiblings().get(0).getStyle().getColor().getValue()==TitleThemes.color("새싹농부",true),"Chat title color missing");
+        h.assertTrue(line.getString().equals(TitleIcons.glyph("새싹농부")+" [새싹농부] "+p.getDisplayName().getString()+": 안녕하세요"),"Title/name/body order incorrect");
+        h.assertTrue(line.getSiblings().get(2).getStyle().getColor().getValue()==TitleThemes.color("새싹농부",true),"Chat title color missing");
         h.assertTrue(line.getSiblings().get(line.getSiblings().size()-1).getStyle().equals(body.getStyle()),"Title theme leaked into message body");
         h.assertTrue(body.getString().equals("안녕하세요"),"Formatting mutated original message");
         d.putString("equipped","별빛셰프");
-        h.assertTrue(JournalChat.format(p,body).orElseThrow().getString().startsWith("[별빛셰프]"),"New equipped title not used immediately");
+        h.assertTrue(JournalChat.format(p,body).orElseThrow().getString().startsWith(TitleIcons.glyph("별빛셰프")+" [별빛셰프]"),"New equipped title not used immediately");
         d.remove("equipped");h.assertTrue(JournalChat.format(p,body).isEmpty(),"Unequipped title still displayed");h.succeed();
     }
 
@@ -250,7 +250,7 @@ public class JournalGameTests {
                 try{
                     Integrations.nick(p,"햇살테스트",false);
                     var formatted=JournalChat.format(p,net.minecraft.network.chat.Component.literal("안녕!")).orElseThrow();
-                    h.assertTrue(formatted.getString().equals("[새싹농부] 햇살테스트: 안녕!"),"Actual nickname not retained in themed chat");
+                    h.assertTrue(formatted.getString().equals(TitleIcons.glyph("새싹농부")+" [새싹농부] 햇살테스트: 안녕!"),"Actual nickname not retained in themed chat");
                     var event=new net.minecraftforge.event.ServerChatEvent(p,"안녕!",net.minecraft.network.chat.Component.literal("안녕!"));
                     net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(event);
                     h.assertTrue(event.isCanceled(),"Titled chat fell through to duplicate nickname handler");
@@ -376,6 +376,30 @@ public class JournalGameTests {
         h.assertTrue(copied.getString("equipped").equals("벚꽃요정")&&copied.getLong("extra")==100,"Clone lost valid equip or unrelated record");
         var saved=copied.copy();replacement.getPersistentData().put("SunlitJournalTitles",saved.copy());h.assertTrue(SunlitJournal.data(replacement).equals(saved),"Reload changed migrated titles");
         h.assertTrue(original.getPersistentData().getCompound("SunlitJournalTitles").getString("owned").equals("벚꽃요정"),"Original retained retired records after clone");h.succeed();
+    }
+
+    @GameTest(template="empty") public static void chatArtworkSurvivesComponentNetworkCodec(GameTestHelper h){
+        var p=player(h);SunlitJournal.saveOwned(p,new LinkedHashSet<>(Arrays.asList(SunlitJournal.TITLES)));
+        var assets=new HashSet<String>();var glyphs=new HashSet<String>();
+        for(String title:SunlitJournal.TITLES){
+            SunlitJournal.data(p).putString("equipped",title);var body=net.minecraft.network.chat.Component.literal("그림 채팅").withStyle(net.minecraft.ChatFormatting.AQUA);
+            var line=JournalChat.format(p,body).orElseThrow();var buf=new FriendlyByteBuf(Unpooled.buffer());
+            try{buf.writeComponent(line);var decoded=buf.readComponent();
+                h.assertTrue(decoded.getString().startsWith(TitleIcons.glyph(title)+" ["+title+"] "),"Title image or text lost during network encoding");
+                var icon=decoded.getSiblings().get(0);h.assertTrue(icon.getStyle().getFont().equals(TitleIcons.FONT)&&icon.getStyle().getColor().getValue()==0xFFFFFF,"Image font lost or title tint applied to artwork");
+                h.assertTrue(!decoded.getSiblings().get(decoded.getSiblings().size()-1).getStyle().getFont().equals(TitleIcons.FONT),"Image font leaked into message");
+                h.assertTrue(body.getString().equals("그림 채팅"),"Decoration mutated message");
+            }finally{buf.release();}
+            assets.add(TitleIcons.asset(title));glyphs.add(TitleIcons.glyph(title));
+        }
+        h.assertTrue(assets.size()==29&&glyphs.size()==29,"Some titles share a tier image or glyph");h.succeed();
+    }
+    @GameTest(template="empty") public static void equippedTierImmediatelyChangesChatArtwork(GameTestHelper h){
+        var p=player(h);SunlitJournal.saveOwned(p,new LinkedHashSet<>(Arrays.asList(SunlitJournal.TITLES)));var images=new HashSet<String>();
+        for(int i=0;i<4;i++){String name=SunlitJournal.TITLES[i];SunlitJournal.data(p).putString("equipped",name);var line=JournalChat.format(p,net.minecraft.network.chat.Component.literal("단계 변경")).orElseThrow();images.add(line.getSiblings().get(0).getString());}
+        h.assertTrue(images.size()==4,"Equipped tier did not change image");
+        SunlitJournal.data(p).remove("equipped");h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("해제")).isEmpty(),"Unequipped player still had an image");
+        SunlitJournal.saveOwned(p,Set.of("새싹농부"));SunlitJournal.data(p).putString("equipped","풍년지기");h.assertTrue(JournalChat.format(p,net.minecraft.network.chat.Component.literal("미획득")).isEmpty(),"Unowned tier image accepted");h.succeed();
     }
 
 }

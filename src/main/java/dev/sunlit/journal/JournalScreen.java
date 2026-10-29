@@ -311,6 +311,12 @@ public final class JournalScreen extends Screen {
         com.mojang.blaze3d.systems.RenderSystem.disableBlend();
     }
     private void icon(GuiGraphics g,int index,int x,int y){art(g,index,x,y,28);}
+    private void cardArt(GuiGraphics g,Card c,int x,int y,int size){
+        if(!TitleThemes.known(c.title)){art(g,c.icon,x,y,size);return;}
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        g.blit(TitleIcons.texture(c.title),x,y,size,size,0,0,256,256,256,256);
+        com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+    }
     @Override public void render(GuiGraphics g,int mx,int my,float delta){
         renderBackground(g);
         rounded(g,left+3,top+4,panelWidth,panelHeight,15,0x803E353D);
@@ -355,8 +361,8 @@ public final class JournalScreen extends Screen {
             g.fill(x+2,y+5,x+5,y+c.height-5,accents[Math.max(0,Math.min(c.icon,accents.length-1))]);
             if(c.illustrated){
                 rounded(g,x+9,y+8,c.artSize+4,c.artSize+4,3,0xFFF0DFBA);
-                art(g,c.icon,x+11,y+10,c.artSize);
-            }else icon(g,c.icon,x+10,y+10);
+                cardArt(g,c,x+11,y+10,c.artSize);
+            }else cardArt(g,c,x+10,y+10,28);
             if(c.section){
                 int textY=y+10;
                 for(var line:c.heading){g.drawString(font,line,x+47,textY,TEXT,false);textY+=lineStep;}

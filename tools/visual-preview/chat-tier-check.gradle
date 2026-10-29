@@ -1,0 +1,16 @@
+allprojects {
+    afterEvaluate { project ->
+        sourceSets {
+            inputCheck {
+                java.srcDir new File(rootDir, 'tools/visual-preview')
+                java.include 'ChatTierCheck.java'
+                compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+                runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+            }
+        }
+        minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.inputCheck
+        minecraft.runs.client.property 'sunlit.chatTierCheck', 'true'
+        minecraft.runs.client.property 'sunlit.previewOutput', new File(rootDir, 'validation').absolutePath
+        minecraft.runs.client.args '--width', '1280', '--height', '900', '--quickPlaySingleplayer', 'SunlitInputTest'
+    }
+}
