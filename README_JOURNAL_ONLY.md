@@ -1,4 +1,4 @@
-# Sunlit Journal 0.8.5-journal · Forge 1.20.1
+# Sunlit Journal 0.8.6-journal · Forge 1.20.1
 
 수첩 전용 버전입니다. main 4cedc92에서 분기했으며 preview/sakura-reference의 스킨 변경은 합치지 않았습니다.
 

@@ -24,7 +24,7 @@ public final class AchievementArtPreview {
         var d=new CompoundTag();d.putBoolean("balanceAvailable",true);d.putLong("perSun",1);d.putLong("spurs",500);
         var seasons=new CompoundTag();seasons.putBoolean("SPRING",true);seasons.putBoolean("SUMMER",true);if(stage==3){seasons.putBoolean("AUTUMN",true);seasons.putBoolean("WINTER",true);var titles=new CompoundTag();titles.putString("owned","사계요정");d.put("titles",titles);}d.put("seasons",seasons);
         var screen=new JournalScreen(d,"achievements");mc.setScreen(screen);
-        for(var child:screen.children())if(child instanceof JournalButton b&&b.getMessage().getString().equals(stage%2==0?"자산":"축제")){b.onPress();break;}
+        for(var child:screen.children())if(child instanceof JournalButton b&&b.getMessage().getString().equals(stage>=4?"농사":stage%2==0?"자산":"축제")){b.onPress();break;}
         align(mc);
     }
     @SubscribeEvent public static void label(net.minecraftforge.client.event.ScreenEvent.Render.Post e){
@@ -36,9 +36,10 @@ public final class AchievementArtPreview {
         if(stage==-1){if(!(mc.screen instanceof TitleScreen))return;mc.options.languageCode="ko_kr";mc.getLanguageManager().setSelected("ko_kr");loading=mc.reloadResourcePacks();stage=-2;return;}
         if(stage==-2){if(!loading.isDone())return;mc.options.guiScale().set(2);mc.resizeDisplay();stage=0;show(mc);ticks=0;return;}
         if(mc.getOverlay()!=null)return;++ticks;if(ticks==10)align(mc);if(ticks<30)return;
-        Screenshot.grab(new java.io.File(System.getProperty("sunlit.previewOutput","../validation")),"achievement-"+(stage%2==0?"wealth":"four-seasons")+(stage<2?"-normal":"-small")+".png",mc.getMainRenderTarget(),c->{});
-        if(++stage==4){mc.stop();return;}
-        if(stage==2){org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),960,720);mc.options.guiScale().set(3);mc.resizeDisplay();}
+        Screenshot.grab(new java.io.File(System.getProperty("sunlit.previewOutput","../validation")),"achievement-"+(stage>=4?"farming":stage%2==0?"wealth":"four-seasons")+((stage==2||stage==3||stage==5)?"-small":"-normal")+".png",mc.getMainRenderTarget(),c->{});
+        if(++stage==(Boolean.getBoolean("sunlit.uniformAchievementPreview")?6:4)){mc.stop();return;}
+        if(stage==4){org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),1280,900);mc.options.guiScale().set(2);mc.resizeDisplay();}
+        if(stage==2||stage==5){org.lwjgl.glfw.GLFW.glfwSetWindowSize(mc.getWindow().getWindow(),960,720);mc.options.guiScale().set(3);mc.resizeDisplay();}
         show(mc);ticks=0;
     }
 }

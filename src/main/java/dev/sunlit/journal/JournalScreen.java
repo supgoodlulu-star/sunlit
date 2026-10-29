@@ -258,8 +258,6 @@ public final class JournalScreen extends Screen {
                 String name=SunlitJournal.TITLES[20+i];String body="개인 계좌에 "+JournalWorld.SUN_TARGETS[i]+" Sun 이상 모아 보세요. 현금과 공동 계좌는 포함하지 않아요.";
                 if(hasBalance&&unit>0)body+="\n현재 저금액 · "+BigDecimal.valueOf(data.getLong("spurs")).divide(BigDecimal.valueOf(unit),4,RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" Sun";
                 card(name,body,5,owned.contains(name)?"획득":"도전 중",hasBalance&&unit>0?data.getLong("spurs")/unit:0,hasBalance&&unit>0?JournalWorld.SUN_TARGETS[i]:0);
-                cards.get(cards.size()-1).illustrated=true;
-                cards.get(cards.size()-1).caption="차곡차곡 쌓은 나의 자산";
             }
         }
         if(achievementFilter==-1||achievementFilter==6){
@@ -270,8 +268,6 @@ public final class JournalScreen extends Screen {
                 card(name,JournalWorld.festivalName(season)+"에 생활 활동으로 1회 이상 기여하고, 마을이 공동 목표를 달성하면 얻어요.",seasonIcon(season),owned.contains(name)?"획득":"도전 중",done?1:0,1);
             }
             card("사계요정","봄·여름·가을·겨울, 네 계절의 축제에 기여하고 각 축제를 완료해 보세요.",17,owned.contains("사계요정")?"획득":"도전 중",completed,4);
-            cards.get(cards.size()-1).illustrated=true;
-            cards.get(cards.size()-1).caption="봄 · 여름 · 가을 · 겨울";
         }
     }
     private void titles(){

@@ -1,3 +1,7 @@
+# 0.8.6-journal 현재 검증
+
+이번 이미지 크기 수정과 실제 UI 비교는 [UNIFORM_ICONS_0.8.6.md](UNIFORM_ICONS_0.8.6.md)를 참고하세요. 직전 채팅 배지·서버 검사 기록은 [CHAT_TITLE_IMAGES_0.8.5.md](CHAT_TITLE_IMAGES_0.8.5.md)에 있으며 아래 내용은 구버전 이력입니다.
+
 # 0.8.1-journal 추가 검증
 
 승인 시안 삽화·계절 공동 축제의 현재 결과는 [ILLUSTRATIONS_0.8.1.md](ILLUSTRATIONS_0.8.1.md)를 참고하세요. 아래 0.8.0 기록은 이전 버전의 검증 이력입니다.

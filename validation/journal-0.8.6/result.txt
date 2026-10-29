@@ -1,0 +1,5 @@
+0.8.6-journal clean build succeeded.
+Wealth achievements and four-seasons fairy use the same 28px artwork and standard card layout as other achievements.
+Six real Minecraft rendering captures compare wealth/fairy/farming at normal/small GUI sizes, with explicit fixture data.
+No artwork assets, chat badges, title conditions, rewards or migration rules changed.
+Server GameTests were not rerun for this UI-only change; prior 0.8.5 checks remain separately documented.
