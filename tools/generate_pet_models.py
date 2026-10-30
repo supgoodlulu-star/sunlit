@@ -8,6 +8,10 @@ root=Path(__file__).resolve().parents[1]/'src/main/resources/assets/sunlit_journ
 (root/'pets').mkdir(parents=True,exist_ok=True)
 rows=json.loads((Path(__file__).parent/'art-sources/pet_catalog.json').read_text())
 for id,name,accessory,season,fantasy in rows:
+    if id=="fox":
+        from blockbench.import_model import export
+        export()
+        continue
     model=sculpt(id,season)
     decorate(model,id,season)
     faces=model.mesh()

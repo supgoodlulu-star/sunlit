@@ -1,6 +1,8 @@
 # Sunlit Journal
 
-Forge 1.20.1용 수첩 + 펫 0.9.1-pets-art-dev 개발 버전입니다.
+0.9.2는 첨부 Blockbench 여우를 게임에 연결한 시험 빌드입니다. 여우만 교체했고 다른 59종은 0.9.1 외형을 유지합니다. [실제 화면·원본/파생 프로젝트·검증 및 비용](docs/pets/FOX_BLOCKBENCH_0.9.2.md)을 참고하세요.
+
+Forge 1.20.1용 수첩 + 펫 0.9.2-fox-bb-dev 개발 버전입니다.
 
 펫 개체·보관함·소환·쓰다듬기·한 장 뽑기·종별 장식 영구 구매를 추가했습니다. [펫 명세와 운영](docs/pets/SPEC.md), [검증 및 외형의 현재 단계](docs/pets/VALIDATION.md)를 확인해 주세요.
 

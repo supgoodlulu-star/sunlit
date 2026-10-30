@@ -55,4 +55,17 @@ public class PetGameTests {
   h.assertFalse(entity.hurt(p.damageSources().generic(),999),"Pet is damageable");h.assertFalse(entity.isPushable(),"Pet obstructs players");h.assertTrue(entity.isIgnoringBlockTriggers(),"Pet activates pressure plates");h.assertFalse(entity.canTrample(net.minecraft.world.level.block.Blocks.FARMLAND.defaultBlockState(),at,8),"Pet destroys crops");h.assertFalse(entity.canBeHitByProjectile(),"Pet blocks arrows");h.assertFalse(entity.shouldBeSaved(),"Chunk can persist duplicate pets");h.assertFalse(entity.canBeLeashed(p),"Pet can be stolen with lead");
   h.assertFalse(w.summon(p,UUID.randomUUID()),"Forged summon accepted");w.recall(p);PetEvents.ensure(p);h.assertTrue(p.serverLevel().getEntities(PetContent.PET.get(),v->p.getUUID().equals(v.owner())).isEmpty(),"Manual recall did not stick");h.succeed();
  }
+ @GameTest(template="empty") public static void animationLinearAndLoop(GameTestHelper h){
+  var keys=java.util.List.of(new PetAnimation.Key(0,0,0,0,false),new PetAnimation.Key(1,10,20,30,false));
+  var value=PetAnimation.sample(keys,.25f,1,false,0);h.assertTrue(Math.abs(value[0]-2.5f)<.0001&&Math.abs(value[2]-7.5f)<.0001,"Linear sample wrong");
+  h.assertTrue(Math.abs(PetAnimation.sample(keys,1.25f,1,true,0)[1]-5)<.0001,"Loop did not wrap");h.succeed();
+ }
+ @GameTest(template="empty") public static void animationCatmullAndEndpoints(GameTestHelper h){
+  var keys=java.util.List.of(new PetAnimation.Key(0,0,0,0,true),new PetAnimation.Key(1,1,1,1,true),new PetAnimation.Key(2,0,0,0,true),new PetAnimation.Key(3,-1,-1,-1,true));
+  h.assertTrue(Math.abs(PetAnimation.sample(keys,1.5f,3,false,0)[0]-.625f)<.0001,"Catmull-Rom interpolation wrong");h.assertTrue(PetAnimation.sample(keys,1,3,false,0)[0]==1,"Exact keyframe changed");h.succeed();
+ }
+ @GameTest(template="empty") public static void animationMissingAndClamp(GameTestHelper h){
+  var empty=PetAnimation.sample(java.util.List.of(),2,1,false,1);h.assertTrue(empty[0]==1&&empty[1]==1&&empty[2]==1,"Missing scale not identity");
+  var keys=java.util.List.of(new PetAnimation.Key(0,2,3,4,false),new PetAnimation.Key(1,5,6,7,false));h.assertTrue(PetAnimation.sample(keys,3,1,false,0)[2]==7,"Once animation did not clamp");h.assertTrue(PetAnimation.sample(keys,-3,1,false,0)[0]==2,"Negative time not clamped");h.succeed();
+ }
 }

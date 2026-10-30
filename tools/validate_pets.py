@@ -13,6 +13,18 @@ assert sum(bool(r[3]) for r in catalog)==20
 hashes=set()
 for id,name,accessory,season,fantasy in catalog:
     model=json.loads((assets/'pets'/f'{id}.json').read_text())
+    if id=='fox':
+        assert model.get('format')==3 and model.get('kind')=='blockbench'
+        assert len(model['bones'])>=25 and len(model['clips'])==10
+        assert abs((model['bounds'][1][1]-model['bounds'][0][1])*model['scale']-.75)<1e-6
+        assert any(b.get('pettingOnly') for b in model['bones'])
+        accessory=[b['quads'] for b in model['bones'] if b['accessory']]
+        assert accessory
+        hashes.add(hashlib.sha256(json.dumps(accessory).encode()).hexdigest())
+        for texture in model['textures']:assert (assets/texture['path']).is_file()
+        for bone in model['bones']:
+            for q in bone['quads']:assert len(q)==24 and all(isinstance(n,(int,float)) for n in q)
+        continue
     assert model.get('format')==2 and abs(model.get('voxelSize',0)-1/3)<1e-6,id
     faces=model['faces'];groups={f[5] for f in faces}
     assert {'eyes','smile','accessory'}<=groups,(id,groups)

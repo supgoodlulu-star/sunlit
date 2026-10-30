@@ -31,15 +31,16 @@ public final class PetRender extends EntityRenderer<PetEntity> {
  private static BlockEntityWithoutLevelRenderer DOLL;
  private static boolean PREVIEW;
  private static final org.joml.Matrix3f GUI_NORMAL=new org.joml.Matrix3f();
- private static final RenderType PREVIEW_TYPE=PreviewType.make();
+ private static final Map<ResourceLocation,RenderType> MATERIALS=new HashMap<>();
+ private static final RenderType PREVIEW_TYPE=PreviewType.make(TEX);
  /** Emissive GUI shading with real depth writes; vanilla emissive entities only write color. */
  private static final class PreviewType extends RenderType {
   private PreviewType(){super("sunlit_pet_preview",DefaultVertexFormat.NEW_ENTITY,VertexFormat.Mode.QUADS,65536,false,false,()->{},()->{});}
-  static RenderType make(){return create("sunlit_pet_preview",DefaultVertexFormat.NEW_ENTITY,VertexFormat.Mode.QUADS,65536,false,false,
-   CompositeState.builder().setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER).setTextureState(new TextureStateShard(TEX,false,false)).setCullState(NO_CULL).setDepthTestState(LEQUAL_DEPTH_TEST).setWriteMaskState(COLOR_DEPTH_WRITE).setOverlayState(OVERLAY).createCompositeState(false));}
+  static RenderType make(ResourceLocation texture){return create("sunlit_pet_preview",DefaultVertexFormat.NEW_ENTITY,VertexFormat.Mode.QUADS,65536,false,false,
+   CompositeState.builder().setShaderState(RENDERTYPE_ENTITY_TRANSLUCENT_EMISSIVE_SHADER).setTextureState(new TextureStateShard(texture,false,false)).setCullState(NO_CULL).setDepthTestState(LEQUAL_DEPTH_TEST).setWriteMaskState(COLOR_DEPTH_WRITE).setOverlayState(OVERLAY).createCompositeState(false));}
  }
  public PetRender(EntityRendererProvider.Context ctx){super(ctx);shadowRadius=.3f;}
- @SubscribeEvent public static void reload(net.minecraftforge.client.event.RegisterClientReloadListenersEvent e){e.registerReloadListener((net.minecraft.server.packs.resources.ResourceManagerReloadListener)manager->{CACHE.clear();BOUNDS.clear();});}
+ @SubscribeEvent public static void reload(net.minecraftforge.client.event.RegisterClientReloadListenersEvent e){e.registerReloadListener((net.minecraft.server.packs.resources.ResourceManagerReloadListener)manager->{CACHE.clear();BOUNDS.clear();BlockbenchPet.clear();});}
  @SubscribeEvent public static void register(EntityRenderersEvent.RegisterRenderers e){e.registerEntityRenderer(PetContent.PET.get(),PetRender::new);}
  private static Mesh mesh(String species){return CACHE.computeIfAbsent(species,id->{
   try(var r=Minecraft.getInstance().getResourceManager().openAsReader(new ResourceLocation(SunlitJournal.MODID,"pets/"+id+".json"))){
@@ -54,7 +55,9 @@ public final class PetRender extends EntityRenderer<PetEntity> {
   draw(e.species(),e.accessory(),e.petting(),time,e.getDeltaMovement().horizontalDistanceSqr()>.0005,pose,buffers,light);pose.popPose();super.render(e,yaw,partial,pose,buffers,light);
  }
  public static void draw(String species,boolean accessory,boolean smiling,float time,boolean walking,PoseStack pose,MultiBufferSource buffers,int light){
-  if(PetCatalog.find(species).isEmpty())return;Mesh mesh=mesh(species);pose.pushPose();pose.scale(mesh.scale,mesh.scale,mesh.scale);var out=buffers.getBuffer(PREVIEW?PREVIEW_TYPE:RenderType.entityCutoutNoCull(TEX));
+  if(PetCatalog.find(species).isEmpty())return;
+  if(BlockbenchPet.supports(species)){BlockbenchPet.draw(accessory,smiling,time,walking,pose,buffers,light);return;}
+  Mesh mesh=mesh(species);pose.pushPose();pose.scale(mesh.scale,mesh.scale,mesh.scale);var out=buffers.getBuffer(PREVIEW?PREVIEW_TYPE:RenderType.entityCutoutNoCull(TEX));
   for(var group:mesh.groups.entrySet()){
    String name=group.getKey();if(name.equals("accessory")&&!accessory||name.equals("eyes")&&smiling||name.equals("smile")&&!smiling)continue;
    pose.pushPose();
@@ -69,8 +72,15 @@ public final class PetRender extends EntityRenderer<PetEntity> {
  private static final int[][] NORMALS={{-1,0,0},{1,0,0},{0,-1,0},{0,1,0},{0,0,-1},{0,0,1}};
  private static void face(Face f,PoseStack.Pose pose,VertexConsumer v,int light){var n=NORMALS[f.side];int c=f.color;float offset=f.group.equals("eyes")||f.group.equals("smile")?.012f:0;float shade=PREVIEW?(f.side==3?1f:f.side==4?.96f:f.side==2?.78f:.86f):1f;for(int i=0;i<4;i++){var p=QUADS[f.side][i];v.vertex(pose.pose(),f.x+p[0]*f.sx+n[0]*offset,f.y+p[1]*f.sy+n[1]*offset,f.z+p[2]*f.sz+n[2]*offset).color((int)((c>>16&255)*shade),(int)((c>>8&255)*shade),(int)((c&255)*shade),255).uv(.5f,.5f).overlayCoords(OverlayTexture.NO_OVERLAY).uv2(light).normal(PREVIEW?GUI_NORMAL:pose.normal(),PREVIEW?0:n[0],PREVIEW?1:n[1],PREVIEW?0:n[2]).endVertex();}}
  /** Fit actual rotated geometry above a caption, including low-hanging ornaments. */
- public static void previewFit(GuiGraphics g,String species,boolean accessory,int centerX,int bottomY,float maxWidth,float maxHeight,float angle){
+ public static void previewFit(GuiGraphics g,String species,boolean accessory,int centerX,int bottomY,float maxWidth,float maxHeight,float angle){previewFit(g,species,accessory,centerX,bottomY,maxWidth,maxHeight,angle,false,(net.minecraft.Util.getMillis()%3_600_000L)/50f,false);}
+ public static void previewFit(GuiGraphics g,String species,boolean accessory,int centerX,int bottomY,float maxWidth,float maxHeight,float angle,boolean petting,float ticks,boolean moving){
   if(PetCatalog.find(species).isEmpty())return;
+  if(BlockbenchPet.supports(species)){
+   float[] b=BlockbenchPet.bounds(accessory);var rotation=new org.joml.Matrix3f().rotateX((float)Math.toRadians(12)).rotateY((float)Math.toRadians(angle));var point=new org.joml.Vector3f();
+   float minX=Float.POSITIVE_INFINITY,minY=minX,maxX=Float.NEGATIVE_INFINITY,maxY=maxX;
+   for(int corner=0;corner<8;corner++){point.set(b[(corner&1)==0?0:3],b[(corner&2)==0?1:4],b[(corner&4)==0?2:5]);rotation.transform(point);minX=Math.min(minX,point.x);maxX=Math.max(maxX,point.x);minY=Math.min(minY,point.y);maxY=Math.max(maxY,point.y);}
+   float size=Math.min(Math.max(8,maxWidth-6)/(maxX-minX),Math.max(8,maxHeight-6)/(maxY-minY));preview(g,species,accessory,Math.round(centerX-(minX+maxX)*.5f*size),Math.round(bottomY+minY*size),size,angle,petting,ticks,moving);return;
+  }
   Mesh model=mesh(species);
   Bounds b=BOUNDS.computeIfAbsent(species+":"+accessory+":"+angle,key->{
    var rotation=new org.joml.Matrix3f().rotateX((float)Math.toRadians(12)).rotateY((float)Math.toRadians(angle));
@@ -84,15 +94,18 @@ public final class PetRender extends EntityRenderer<PetEntity> {
    }return new Bounds(minX,minY,maxX,maxY);
   });
   float pixels=Math.min(Math.max(8,maxWidth-4)/Math.max(1,b.maxX-b.minX),Math.max(8,maxHeight-4)/Math.max(1,b.maxY-b.minY));
-  preview(g,species,accessory,Math.round(centerX-(b.minX+b.maxX)*.5f*pixels),Math.round(bottomY+b.minY*pixels),pixels/model.scale,angle);
+  preview(g,species,accessory,Math.round(centerX-(b.minX+b.maxX)*.5f*pixels),Math.round(bottomY+b.minY*pixels),pixels/model.scale,angle,petting,ticks,moving);
  }
+ static boolean isPreview(){return PREVIEW;}
+ static RenderType material(ResourceLocation texture){return PREVIEW?MATERIALS.computeIfAbsent(texture,PreviewType::make):RenderType.entityCutoutNoCull(texture);}
  public static void preview(GuiGraphics g,String species,boolean accessory,int x,int y,float size){preview(g,species,accessory,x,y,size,152);}
- public static void preview(GuiGraphics g,String species,boolean accessory,int x,int y,float size,float angle){
+ public static void preview(GuiGraphics g,String species,boolean accessory,int x,int y,float size,float angle){preview(g,species,accessory,x,y,size,angle,false,(net.minecraft.Util.getMillis()%3_600_000L)/50f,false);}
+ public static void preview(GuiGraphics g,String species,boolean accessory,int x,int y,float size,float angle,boolean petting,float ticks,boolean moving){
   g.flush();
   var pose=g.pose();pose.pushPose();pose.translate(x,y,180);pose.scale(size,-size,size);pose.mulPose(Axis.XP.rotationDegrees(12));pose.mulPose(Axis.YP.rotationDegrees(angle));
   com.mojang.blaze3d.systems.RenderSystem.setShaderLights(new org.joml.Vector3f(.2f,1f,-.7f).normalize(),new org.joml.Vector3f(-.2f,1f,.7f).normalize());
   boolean old=PREVIEW;PREVIEW=true;
-  try{draw(species,accessory,false,(float)(net.minecraft.Util.getMillis()/50d),false,pose,g.bufferSource(),15728880);com.mojang.blaze3d.systems.RenderSystem.enableDepthTest();g.bufferSource().endBatch();}finally{PREVIEW=old;pose.popPose();Lighting.setupFor3DItems();}
+  try{draw(species,accessory,petting,ticks,moving,pose,g.bufferSource(),15728880);com.mojang.blaze3d.systems.RenderSystem.enableDepthTest();g.bufferSource().endBatch();}finally{PREVIEW=old;pose.popPose();Lighting.setupFor3DItems();}
  }
  public static BlockEntityWithoutLevelRenderer dollRenderer(){
   if(DOLL==null){var mc=Minecraft.getInstance();DOLL=new BlockEntityWithoutLevelRenderer(mc.getBlockEntityRenderDispatcher(),mc.getEntityModels()){
