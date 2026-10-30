@@ -43,7 +43,7 @@ public final class HallClientCheck {
             case 6->{require(mc.screen instanceof HallScreen,"figure interaction did not open screen");mc.options.guiScale().set(4);mc.resizeDisplay();}
             case 7->{shot(mc,"small-gui-example-records");mc.screen.onClose();}
             case 8->{require(!(mc.screen instanceof HallScreen),"close failed");mc.options.guiScale().set(2);mc.resizeDisplay();server(mc,p->JournalNetwork.send(p,true,"profile"));}
-            case 9->{require(mc.screen instanceof JournalScreen,"profile failed");shot(mc,"profile-hall-entry");for(var child:mc.screen.children())require(!(child instanceof Button b&&b.getMessage().getString().equals("명예의 전당")),"Hall button remains in journal");mc.screen.onClose();mc.player.connection.sendCommand("명예의전당");}
+            case 9->{require(mc.screen instanceof JournalScreen,"profile failed");shot(mc,"profile-without-hall-entry");for(var child:mc.screen.children())require(!(child instanceof Button b&&b.getMessage().getString().equals("명예의 전당")),"Hall button remains in journal");mc.screen.onClose();mc.player.connection.sendCommand("명예의전당");}
             case 10->{require(mc.screen instanceof HallScreen,"public view failed after leaving profile");System.out.println("HALL_CLIENT_PASSED: public command, single winner at exact command position, live records, figure interaction, asset balances, small GUI, close and absence of journal entry. Example QA scores only.");mc.stop();}
         }
     }
