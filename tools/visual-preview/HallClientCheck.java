@@ -35,7 +35,7 @@ public final class HallClientCheck {
                 for(int x=-2;x<=2;x++)for(int z=-10;z<=-6;z++)for(int y=81;y<=82;y++)level.setBlockAndUpdate(new BlockPos(x,y,z),Blocks.STONE_BRICKS.defaultBlockState());p.teleportTo(.5,83,-8.5);p.setYRot(180);
                 int result=p.getServer().getCommands().getDispatcher().execute("명예의 전당 업무",p.createCommandSourceStack().withPermission(2));require(result==1,"placement command failed");p.teleportTo(.5,83,-14.5);p.setXRot(0);
             });}
-            case 1->{mc.player.setYRot(0);mc.player.setXRot(0);mc.gui.getChat().clearMessages(true);mc.setScreen(null);mc.options.hideGui=false;}
+            case 1->{mc.player.setYRot(0);mc.player.setXRot(-15);mc.gui.getChat().clearMessages(true);mc.setScreen(null);mc.options.hideGui=false;}
             case 2->{shot(mc,"winner-only-example-records");mc.options.hideGui=false;mc.player.connection.sendCommand("명예의전당");}
             case 3->{require(mc.screen instanceof HallScreen,"public command did not open screen");shot(mc,"monthly-leaderboard-example-records");server(mc,p->{var w=HallWorld.get(p.getServer());w.add(new UUID(0,109),"tasks",100);});}
             case 4->{require(mc.screen instanceof HallScreen,"live screen lost");if(!((HallScreen)mc.screen).snapshot().getList("rows",10).getCompound(0).getUUID("id").equals(new UUID(0,109))){phase=4;return;}server(mc,p->{var list=p.serverLevel().getEntitiesOfClass(HallFigure.class,p.getBoundingBox().inflate(32));require(list.size()==1,"incorrect figure count");worldReady=list.stream().anyMatch(f->f.getCustomName()!=null&&f.getCustomName().getString().startsWith("1위 · 소담"));});}
