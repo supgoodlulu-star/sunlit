@@ -73,7 +73,11 @@ public final class JournalWorld extends SavedData {
         counts.putLong(ACTIVITIES[kind],old>Long.MAX_VALUE-amount?Long.MAX_VALUE:old+amount);
         for(String period:List.of("daily","weekly"))for(int i=0;i<taskCount(period);i++){
             CompoundTag t=d.getCompound(period).getCompound(""+i);
-            if(TaskTargets.matches(t,kind,subject))t.putInt("progress",(int)Math.min((long)t.getInt("target"),(long)t.getInt("progress")+amount));
+            if(TaskTargets.matches(t,kind,subject)){
+                int before=t.getInt("progress"),target=t.getInt("target");
+                t.putInt("progress",(int)Math.min((long)target,(long)before+amount));
+                if(target>0&&before<target&&t.getInt("progress")>=target)HallWorld.get(p.getServer()).task(p);
+            }
         }
         updateFestival(p);
         contribute(p,amount);
@@ -84,6 +88,8 @@ public final class JournalWorld extends SavedData {
             CompoundTag f=root.getCompound("festival");
             if(f.getBoolean("available")&&!f.getBoolean("complete")){
                 CompoundTag people=child(f,"contributions");String id=p.getUUID().toString();
+                long accepted=Math.min((long)amount,Math.max(0,f.getLong("goal")-f.getLong("progress")));
+                HallWorld.get(p.getServer()).festival(p,accepted);
                 people.putLong(id,people.getLong(id)+amount);
                 f.putLong("progress",Math.min(f.getLong("goal"),f.getLong("progress")+amount));
                 if(f.getLong("progress")>=f.getLong("goal")){

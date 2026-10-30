@@ -41,6 +41,9 @@ public class SunlitJournal {
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, JournalClientConfig.SPEC);
         SkyContent.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
         JournalNetwork.register();
+        HallContent.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
+        MinecraftForge.EVENT_BUS.register(new HallEvents());
+        HallNetwork.register();
     }
 
     public static CompoundTag data(ServerPlayer player) {
@@ -81,6 +84,7 @@ public class SunlitJournal {
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
         ItemShowcase.register(event.getDispatcher());
+        HallContent.commands(event.getDispatcher());
         event.getDispatcher().register(Commands.literal("sunlit")
             .then(Commands.literal("journal").executes(ctx -> {
                 JournalNetwork.send(ctx.getSource().getPlayerOrException(), true, "profile"); return 1;

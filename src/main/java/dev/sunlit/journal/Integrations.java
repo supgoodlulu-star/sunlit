@@ -90,6 +90,24 @@ public final class Integrations {
             return Optional.of(new Season(no(s,"getSeason").toString(),((Number)no(s,"getSeasonCycleTicks")).intValue(),((Number)no(s,"getCycleDuration")).intValue()));
         } catch(ReflectiveOperationException|RuntimeException|LinkageError e) { failure("season",e); return Optional.empty(); }
     }
+    /** Lightweight server-only ranking poll; does not enumerate unlocked tree nodes. */
+    public static CompoundTag skillTotals(ServerPlayer p) {
+        CompoundTag out=new CompoundTag();ListTag rows=new ListTag();
+        try {
+            var api=Class.forName("net.puffish.skillsmod.api.SkillsAPI");
+            try(Stream<?> categories=(Stream<?>)no(api,"streamCategories")) {
+                for(Object category:categories.limit(128).toList()) {
+                    Optional<?> experience=(Optional<?>)no(category,"getExperience");
+                    if(experience.isEmpty())continue;
+                    CompoundTag row=new CompoundTag();row.putString("id",no(category,"getId").toString());
+                    row.putLong("total",Math.max(0,((Number)call(experience.get(),"getTotal",new Class<?>[]{ServerPlayer.class},p)).longValue()));
+                    row.putBoolean("hasTotal",true);rows.add(row);
+                }
+            }
+            out.putBoolean("available",true);
+        } catch(ReflectiveOperationException|RuntimeException|LinkageError e){failure("hallSkills",e);}
+        out.put("categories",rows);return out;
+    }
     public static CompoundTag skills(ServerPlayer p) {
         CompoundTag out=new CompoundTag(); ListTag list=new ListTag();
         try {

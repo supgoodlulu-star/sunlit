@@ -1,0 +1,14 @@
+allprojects {
+ afterEvaluate {
+  sourceSets { hallCheck {
+   java.srcDir new File(rootDir,'tools/visual-preview')
+   java.include 'HallClientCheck.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.hallCheck
+  minecraft.runs.client.property 'sunlit.hallCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/hall-0.8.8').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitHallTest'
+ }
+}

@@ -259,6 +259,7 @@ public class JournalGameTests {
             integration("skillsapiintegration",h->{
                 var p=player(h);var snapshot=Integrations.skills(p);
                 h.assertTrue(snapshot.getBoolean("available"),"Installed Skills API was not readable");
+                h.assertTrue(Integrations.skillTotals(p).getBoolean("available"),"Ranking XP API was not readable");
                 h.assertTrue(snapshot.contains("categories",Tag.TAG_LIST),"Missing actual category list");
                 h.assertTrue(!snapshot.contains("error"),"Skills read reported an error");h.succeed();
             }),
