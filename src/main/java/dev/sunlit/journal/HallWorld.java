@@ -75,6 +75,7 @@ public final class HallWorld extends SavedData {
         return out;
     }
     public List<String> seasons(){season();var out=new ArrayList<>(root.getCompound("archive").getAllKeys());out.sort(Comparator.reverseOrder());out.add(0,root.getString("season"));return out;}
+    void declareSkill(String id){child(root,"categories").putString("skill:"+id,HallNames.skill(id));setDirty();}
     public Map<String,String> categories(){var out=new LinkedHashMap<String,String>();out.put("tasks","업무 완료");out.put("festival","축제 기여");out.put("achievements","업적 · 누적");var c=root.getCompound("categories");c.getAllKeys().stream().sorted().forEach(k->out.put(k,c.getString(k)+" 경험치"));return out;}
     public CompoundTag snapshot(String requested,String category,int page){
         var seasons=seasons();String selected=seasons.contains(requested)?requested:season();if(!categories().containsKey(category))category="tasks";

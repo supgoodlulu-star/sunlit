@@ -7,5 +7,6 @@ final class HallNames {
         Map.entry("society:cooking","요리"),Map.entry("society:husbandry","목축"),Map.entry("society:combat","전투"),
         Map.entry("society:foraging","채집"),Map.entry("society:woodcutting","벌목"),Map.entry("society:exploration","탐험"),
         Map.entry("society:life","생활"),Map.entry("society:books","서적"));
+    static Map<String,String> known(){return KNOWN;}
     static String skill(String id){return KNOWN.getOrDefault(id,id);}
 }

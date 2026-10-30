@@ -51,4 +51,27 @@ public class HallGameTests {
         var entity=HallContent.FIGURE.get().create(h.getLevel());entity.configure("tasks",1);entity.moveTo(h.absolutePos(new net.minecraft.core.BlockPos(1,1,1)),0,0);h.getLevel().addFreshEntity(entity);
         CompoundTag n=new CompoundTag();entity.save(n);h.assertTrue(n.getString("HallCategory").equals("tasks")&&n.getInt("HallSlot")==1,"Display settings not persisted");h.assertTrue(!entity.hurt(h.getLevel().damageSources().generic(),10)&&!entity.isPushable(),"Display vulnerable");entity.discard();h.succeed();
     }
+    @GameTest(template="empty") public static void winnerOnlyAtExactPositionWithoutChangingBlocks(GameTestHelper h)throws Exception{
+        var p=net.minecraftforge.common.util.FakePlayerFactory.get(h.getLevel(),new com.mojang.authlib.GameProfile(UUID.randomUUID(),"HallPosition"));var pos=h.absolutePos(new net.minecraft.core.BlockPos(2,2,2));p.setPos(pos.getX()+.27,pos.getY()+.35,pos.getZ()+.68);p.setYRot(73);
+        var level=h.getLevel();var marker=pos.below();level.setBlockAndUpdate(marker,net.minecraft.world.level.block.Blocks.DIAMOND_BLOCK.defaultBlockState());
+        var before=new java.util.HashMap<net.minecraft.core.BlockPos,net.minecraft.world.level.block.state.BlockState>();for(var b:net.minecraft.core.BlockPos.betweenClosed(pos.offset(-5,-2,-5),pos.offset(5,4,5)))before.put(b.immutable(),level.getBlockState(b));
+        var prior=level.getEntitiesOfClass(HallFigure.class,p.getBoundingBox().inflate(20)).stream().map(net.minecraft.world.entity.Entity::getUUID).collect(java.util.stream.Collectors.toSet());
+        int result=p.getServer().getCommands().getDispatcher().execute("명예의 전당 채광",p.createCommandSourceStack().withPermission(2));
+        var added=level.getEntitiesOfClass(HallFigure.class,p.getBoundingBox().inflate(20)).stream().filter(f->!prior.contains(f.getUUID())).toList();h.assertTrue(result==1&&added.size()==1,"Not exactly one figure");var figure=added.get(0);
+        h.assertTrue(figure.position().distanceTo(p.position())<.000001&&figure.getYRot()==73,"Position or facing changed");CompoundTag n=new CompoundTag();figure.save(n);h.assertTrue(n.getString("HallCategory").equals("skill:society:mining")&&n.getInt("HallSlot")==0,"Incorrect category/rank");
+        h.assertTrue(before.entrySet().stream().allMatch(e->level.getBlockState(e.getKey()).equals(e.getValue())),"Placement changed construction blocks");figure.discard();h.succeed();
+    }
+    @GameTest(template="empty") public static void koreanPlacementIsOperatorOnlyAndUnknownNamesDoNotSpawn(GameTestHelper h)throws Exception{
+        var p=net.minecraftforge.common.util.FakePlayerFactory.get(h.getLevel(),new com.mojang.authlib.GameProfile(UUID.randomUUID(),"HallAlias"));var d=p.getServer().getCommands().getDispatcher();
+        for(String command:java.util.List.of("명예의전당 채광","명예의 전당 채광","sunlithall place tasks")){
+            boolean rejected=false;try{d.execute(command,p.createCommandSourceStack().withPermission(0));}catch(com.mojang.brigadier.exceptions.CommandSyntaxException e){rejected=true;}h.assertTrue(rejected,"Unprivileged placement: "+command);
+        }
+        h.assertTrue(HallContent.resolve(HallWorld.get(p.getServer()),"목축").equals("skill:society:husbandry"),"Ranching alias wrong");
+        h.assertTrue(d.execute("명예의전당 없는분야",p.createCommandSourceStack().withPermission(2))==0,"Unknown category accepted");h.succeed();
+    }
+    @GameTest(template="empty") public static void legacyRunnerUpFiguresAreRemovedButWinnerPersists(GameTestHelper h){
+        var level=h.getLevel();var runner=HallContent.FIGURE.get().create(level);CompoundTag n=new CompoundTag();n.putString("HallCategory","tasks");n.putInt("HallSlot",1);runner.readAdditionalSaveData(n);runner.tick();h.assertTrue(runner.isRemoved(),"Legacy runner-up persisted");
+        var winner=HallContent.FIGURE.get().create(level);winner.configure("tasks",0);winner.tick();h.assertTrue(!winner.isRemoved(),"Winner removed");winner.discard();h.succeed();
+    }
+
 }
