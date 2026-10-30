@@ -1,0 +1,15 @@
+allprojects {
+ afterEvaluate {
+  sourceSets { fontCheck {
+   java.srcDir new File(rootDir,'qa')
+   java.include 'FontFixedCheck.java'
+   resources.srcDir providers.gradleProperty('fontPackDir').getOrElse(new File(rootDir,'../fixed').absolutePath)
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_font_bold_fix.source sourceSets.fontCheck
+  minecraft.runs.client.property 'sunlit.fontFixedCheck','true'
+  minecraft.runs.client.property 'sunlit.fontQaOutput',new File(rootDir,'validation/fixed').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900'
+ }
+}

@@ -1,0 +1,10 @@
+Forge 47.3.0 / Minecraft 1.20.1 / Java 17 actual client captures.
+All font PNG bytes and supported characters preserved.
+Normal text screenshot regions pixel-identical before/after.
+Target bold offset .25; normal advance and shadow offset preserved.
+Vanilla/uniform and unsupported fallback fonts not wrapped.
+Resource reload repeats assertions successfully.
+Installed production JAR and ZIP resource pack loaded in separate userdev client without explicit --mixin arguments.
+JAR MixinConfigs and client-only injection verified. No QA classes in shipped JAR.
+No server/world/gameplay changes. Full user modpack / Jade integration is separate from these checks.
+Source ZIP independent build passed; all JAR entry contents identical. Bundle payloads and SHA-256 verified.
