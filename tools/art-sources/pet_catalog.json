@@ -1,0 +1,422 @@
+[
+  [
+    "fox",
+    "여우",
+    "두루마리 가방",
+    "",
+    false
+  ],
+  [
+    "dog",
+    "강아지",
+    "산책 스카프",
+    "",
+    false
+  ],
+  [
+    "cat",
+    "고양이",
+    "붕어 방울 목걸이",
+    "",
+    false
+  ],
+  [
+    "capybara",
+    "카피바라",
+    "머리 위 귤",
+    "",
+    false
+  ],
+  [
+    "hyrax",
+    "바위너구리",
+    "풀잎 배낭",
+    "",
+    false
+  ],
+  [
+    "red_panda",
+    "레서판다",
+    "대나무 도시락",
+    "",
+    false
+  ],
+  [
+    "otter",
+    "수달",
+    "조개 목걸이",
+    "",
+    false
+  ],
+  [
+    "ferret",
+    "페럿",
+    "탐험 파우치",
+    "",
+    false
+  ],
+  [
+    "hedgehog",
+    "고슴도치",
+    "버섯 모자",
+    "",
+    false
+  ],
+  [
+    "chinchilla",
+    "친칠라",
+    "라벤더 귀 리본",
+    "",
+    false
+  ],
+  [
+    "hamster",
+    "햄스터",
+    "해바라기씨 주머니",
+    "",
+    false
+  ],
+  [
+    "guinea_pig",
+    "기니피그",
+    "당근 턱받이",
+    "",
+    false
+  ],
+  [
+    "raccoon",
+    "너구리",
+    "보자기 꾸러미",
+    "",
+    false
+  ],
+  [
+    "squirrel",
+    "다람쥐",
+    "도토리 베레모",
+    "",
+    false
+  ],
+  [
+    "quokka",
+    "쿼카",
+    "데이지 귀 장식",
+    "",
+    false
+  ],
+  [
+    "koala",
+    "코알라",
+    "유칼립투스 화관",
+    "",
+    false
+  ],
+  [
+    "meerkat",
+    "미어캣",
+    "탐험가 고글",
+    "",
+    false
+  ],
+  [
+    "penguin",
+    "아기 펭귄",
+    "짧은 니트 목도리",
+    "",
+    false
+  ],
+  [
+    "duck",
+    "아기 오리",
+    "밀짚모자",
+    "",
+    false
+  ],
+  [
+    "seal",
+    "아기 물범",
+    "불가사리 머리핀",
+    "",
+    false
+  ],
+  [
+    "sprout",
+    "새싹 정령",
+    "작은 물뿌리개 가방",
+    "",
+    true
+  ],
+  [
+    "mushroom",
+    "버섯 정령",
+    "체크 목수건",
+    "",
+    true
+  ],
+  [
+    "acorn",
+    "도토리 정령",
+    "잎사귀 나비넥타이",
+    "",
+    true
+  ],
+  [
+    "moss_golem",
+    "이끼 골렘",
+    "미니 화분",
+    "",
+    true
+  ],
+  [
+    "flowerbud",
+    "꽃봉오리 요정",
+    "꽃술 목걸이",
+    "",
+    true
+  ],
+  [
+    "crystal",
+    "수정 정령",
+    "황동 받침 장식",
+    "",
+    true
+  ],
+  [
+    "pebble",
+    "조약돌 골렘",
+    "작은 광부 헬멧",
+    "",
+    true
+  ],
+  [
+    "amber",
+    "호박석 정령",
+    "금빛 나뭇잎 브로치",
+    "",
+    true
+  ],
+  [
+    "pearl",
+    "진주 정령",
+    "산호 리본",
+    "",
+    true
+  ],
+  [
+    "droplet",
+    "물방울 슬라임",
+    "나뭇잎 우산",
+    "",
+    true
+  ],
+  [
+    "star_slime",
+    "별빛 슬라임",
+    "초승달 머리 장식",
+    "",
+    true
+  ],
+  [
+    "cloud",
+    "구름 정령",
+    "작은 우편 가방",
+    "",
+    true
+  ],
+  [
+    "whirlwind",
+    "꼬마 회오리",
+    "바람개비 스카프",
+    "",
+    true
+  ],
+  [
+    "baby_dragon",
+    "아기 용",
+    "모험가 스카프",
+    "",
+    true
+  ],
+  [
+    "griffin",
+    "아기 그리핀",
+    "황동 깃털 휘장",
+    "",
+    true
+  ],
+  [
+    "unicorn",
+    "아기 유니콘",
+    "별 모양 머리핀",
+    "",
+    true
+  ],
+  [
+    "phoenix",
+    "아기 불사조",
+    "금빛 발찌",
+    "",
+    true
+  ],
+  [
+    "goblin",
+    "별사탕 도깨비",
+    "별사탕 단추 미니 망토",
+    "",
+    true
+  ],
+  [
+    "book",
+    "책 요정",
+    "열쇠 모양 책갈피",
+    "",
+    true
+  ],
+  [
+    "clockwork",
+    "태엽 인형",
+    "작은 공구통",
+    "",
+    true
+  ],
+  [
+    "spring_fairy",
+    "봄의 요정",
+    "꽃잎 양산",
+    "SPRING",
+    true
+  ],
+  [
+    "spring_dragon",
+    "봄의 용",
+    "꽃씨 우편 가방",
+    "SPRING",
+    true
+  ],
+  [
+    "spring_haetae",
+    "봄의 해태",
+    "매화 매듭 장식",
+    "SPRING",
+    true
+  ],
+  [
+    "spring_skywhale",
+    "봄의 하늘고래",
+    "꽃 배달 바구니",
+    "SPRING",
+    true
+  ],
+  [
+    "spring_tiger",
+    "봄의 백호",
+    "꽃 자수 목수건",
+    "SPRING",
+    true
+  ],
+  [
+    "summer_fairy",
+    "여름의 요정",
+    "진주 조개 손가방",
+    "SUMMER",
+    true
+  ],
+  [
+    "summer_dragon",
+    "여름의 용",
+    "조개 방울 목걸이",
+    "SUMMER",
+    true
+  ],
+  [
+    "summer_haetae",
+    "여름의 해태",
+    "물결 방울술",
+    "SUMMER",
+    true
+  ],
+  [
+    "summer_skywhale",
+    "여름의 하늘고래",
+    "작은 닻 목걸이",
+    "SUMMER",
+    true
+  ],
+  [
+    "summer_tiger",
+    "여름의 백호",
+    "파도 팔찌",
+    "SUMMER",
+    true
+  ],
+  [
+    "autumn_fairy",
+    "가을의 요정",
+    "도토리 작은 등",
+    "AUTUMN",
+    true
+  ],
+  [
+    "autumn_dragon",
+    "가을의 용",
+    "수확 바구니",
+    "AUTUMN",
+    true
+  ],
+  [
+    "autumn_haetae",
+    "가을의 해태",
+    "단풍 노리개",
+    "AUTUMN",
+    true
+  ],
+  [
+    "autumn_skywhale",
+    "가을의 하늘고래",
+    "곡식 가방",
+    "AUTUMN",
+    true
+  ],
+  [
+    "autumn_tiger",
+    "가을의 백호",
+    "단풍 깃 장식",
+    "AUTUMN",
+    true
+  ],
+  [
+    "winter_fairy",
+    "겨울의 요정",
+    "눈꽃 케이프",
+    "WINTER",
+    true
+  ],
+  [
+    "winter_dragon",
+    "겨울의 용",
+    "눈꽃 니트 목도리",
+    "WINTER",
+    true
+  ],
+  [
+    "winter_haetae",
+    "겨울의 해태",
+    "백옥 목걸이",
+    "WINTER",
+    true
+  ],
+  [
+    "winter_skywhale",
+    "겨울의 하늘고래",
+    "별 모빌",
+    "WINTER",
+    true
+  ],
+  [
+    "winter_tiger",
+    "겨울의 백호",
+    "목화 귀마개",
+    "WINTER",
+    true
+  ]
+]

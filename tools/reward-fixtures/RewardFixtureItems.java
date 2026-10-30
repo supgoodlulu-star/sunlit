@@ -14,7 +14,7 @@ public final class RewardFixtureItems {
     @SubscribeEvent public static void register(RegisterEvent event){
         if(!Boolean.getBoolean("sunlit.rewardFixtures")||!event.getRegistryKey().equals(Registries.ITEM))return;
         event.<Item>register(Registries.ITEM,helper->{
-            for(String id:new String[]{"numismatics:cog","dew_drop_farmland_growth:low_quality_fertilizer","dew_drop_farmland_growth:weak_fertilizer","dew_drop_farmland_growth:hydrating_fertilizer","aquaculture:worm","crabbersdelight:crab_trap_bait","meadow:alpine_salt","society:animal_feed"}){
+            for(String id:new String[]{"numismatics:cog","numismatics:sun","dew_drop_farmland_growth:low_quality_fertilizer","dew_drop_farmland_growth:weak_fertilizer","dew_drop_farmland_growth:hydrating_fertilizer","aquaculture:worm","crabbersdelight:crab_trap_bait","meadow:alpine_salt","society:animal_feed"}){
                 var key=new ResourceLocation(id);if(!BuiltInRegistries.ITEM.containsKey(key))helper.register(key,new Item(new Item.Properties()));
             }
         });

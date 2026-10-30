@@ -1,0 +1,4 @@
+Original uploaded project preserved byte-for-byte.
+Source SHA256: 3c5ea868ce13d6672840e6e1a6174ef66b793108fbdf165dfe1a0437d284aa77
+Embedded PNG preserved byte-for-byte.
+Texture SHA256: 3e2fd92d935306757199137ced42418db0f9b125645437bf5efbe318ec21707d

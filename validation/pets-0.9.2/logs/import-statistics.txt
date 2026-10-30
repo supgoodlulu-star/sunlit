@@ -1,0 +1,8 @@
+{
+  "fully_hidden_faces": 6009,
+  "input_cubes": 3793,
+  "input_faces": 22758,
+  "output_faces": 16749,
+  "trimmed_or_hidden_faces": 13446,
+  "split_faces": 0
+}
