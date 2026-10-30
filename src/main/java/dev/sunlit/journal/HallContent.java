@@ -32,19 +32,19 @@ public final class HallContent {
     }
     private static java.util.Set<String> suggestions(CommandSourceStack source){
         var out=new java.util.TreeSet<>(HallWorld.get(source.getServer()).categories().keySet());
-        out.addAll(HallNames.known().values());out.addAll(java.util.List.of("업무","축제","업적"));return out;
+        out.addAll(HallNames.known().values());out.addAll(java.util.List.of("업무","축제","업적","자산"));return out;
     }
     private static int open(CommandSourceStack source)throws com.mojang.brigadier.exceptions.CommandSyntaxException{HallNetwork.open(source.getPlayerOrException(),"tasks");return 1;}
     static String resolve(HallWorld world,String input){
         if(world.categories().containsKey(input))return input;
         if(input.startsWith("skill:")&&HallNames.known().containsKey(input.substring(6)))return input;
-        String basic=switch(input){case "업무"->"tasks";case "축제"->"festival";case "업적"->"achievements";default->"";};if(!basic.isEmpty())return basic;
+        String basic=switch(input){case "업무"->"tasks";case "축제"->"festival";case "업적"->"achievements";case "자산"->"assets";default->"";};if(!basic.isEmpty())return basic;
         for(var entry:HallNames.known().entrySet())if(entry.getValue().equals(input))return "skill:"+entry.getKey();
         return "";
     }
     static int place(CommandSourceStack source,String input)throws com.mojang.brigadier.exceptions.CommandSyntaxException{
         var p=source.getPlayerOrException();var world=HallWorld.get(p.getServer());String category=resolve(world,input.strip());
-        if(category.isEmpty()){source.sendFailure(Component.literal("등록되지 않은 분야입니다. 농사·낚시·채광·요리·목축·업무·축제·업적 또는 자동완성의 분야 ID를 입력해 주세요."));return 0;}
+        if(category.isEmpty()){source.sendFailure(Component.literal("등록되지 않은 분야입니다. 농사·낚시·채광·요리·목축·업무·축제·업적·자산 또는 자동완성의 분야 ID를 입력해 주세요."));return 0;}
         if(category.startsWith("skill:")&&!world.categories().containsKey(category))world.declareSkill(category.substring(6));
         var figure=FIGURE.get().create(p.serverLevel());if(figure==null)return 0;
         figure.configure(category,0);figure.moveTo(p.getX(),p.getY(),p.getZ(),p.getYRot(),0);

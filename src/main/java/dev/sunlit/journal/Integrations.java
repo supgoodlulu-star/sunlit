@@ -53,12 +53,13 @@ public final class Integrations {
         call(store,"setNick",new Class<?>[]{MinecraftServer.class,UUID.class,String.class,String.class,String.class},p.getServer(),p.getUUID(),clean,name,name);
     }
     public record Balance(long spurs, long perSun) {}
-    public static Optional<Balance> balance(ServerPlayer p) {
+    public static Optional<Balance> balance(ServerPlayer p) {return balance(p.getUUID());}
+    public static Optional<Balance> balance(UUID id) {
         try {
             Class<?> mod=Class.forName("dev.ithundxr.createnumismatics.Numismatics");
             Object bank=mod.getField("BANK").get(null);
             // UUID overload is read-only: do not create an account or deposit starter funds.
-            Object account=call(bank,"getAccount",new Class<?>[]{UUID.class},p.getUUID());
+            Object account=call(bank,"getAccount",new Class<?>[]{UUID.class},id);
             if (account==null) return Optional.empty();
             Object raw=no(account,"getBalance");
             if (!(raw instanceof Number n)) return Optional.empty();

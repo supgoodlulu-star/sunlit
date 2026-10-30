@@ -128,7 +128,6 @@ public final class JournalScreen extends Screen {
             button("초기화",left+panelWidth-77,top+88,61,20,false,()->request("resetNick",""));
         }
         contentTop=top+(available?120:86);
-        button("명예의 전당",left+panelWidth-100,top+62,84,20,false,()->HallNetwork.request("","tasks",0));
         // Avatar is a scrollable card so it remains usable at the smallest GUI viewport.
         card("나의 모험가", "",11,"",0,0);
         cards.get(cards.size()-1).avatar=true;
@@ -327,7 +326,7 @@ public final class JournalScreen extends Screen {
         centered(g,title.getString(),left+panelWidth/2,top+13,TEXT);
         if(tab.equals("profile")){
             String name=data.getString("username"),nick=data.getString("nickname");
-            g.drawString(font,font.plainSubstrByWidth(name+(nick.isEmpty()?"":" · "+nick),panelWidth-126),left+16,top+68,TEXT,false);
+            g.drawString(font,font.plainSubstrByWidth(name+(nick.isEmpty()?"":" · "+nick),panelWidth-32),left+16,top+68,TEXT,false);
         }
         if(questSummary!=null)renderQuestBonus(g);
         g.enableScissor(left+12,contentTop,left+panelWidth-12,contentBottom);

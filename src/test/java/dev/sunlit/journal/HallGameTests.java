@@ -74,4 +74,20 @@ public class HallGameTests {
         var winner=HallContent.FIGURE.get().create(level);winner.configure("tasks",0);winner.tick();h.assertTrue(!winner.isRemoved(),"Winner removed");winner.discard();h.succeed();
     }
 
+    @GameTest(template="empty") public static void assetsTrackWithdrawalsArchiveAndCarryActualMoney(GameTestHelper h){
+        var t=time();var w=world(t);w.balance(id(1),Optional.of(new Integrations.Balance(8192,4096)));w.balance(id(2),Optional.of(new Integrations.Balance(4096,4096)));
+        h.assertTrue(w.rows(w.season(),"assets").get(0).id().equals(id(1)),"Wealth leader incorrect");
+        w.balance(id(1),Optional.of(new Integrations.Balance(2048,4096)));h.assertTrue(w.rows(w.season(),"assets").get(0).id().equals(id(2)),"Withdrawal did not lower ranking");
+        t.set(Instant.parse("2026-10-31T15:00:00Z"));w.season();w.balance(id(2),Optional.of(new Integrations.Balance(1024,4096)));
+        h.assertTrue(w.rows("2026-10","assets").get(0).score()==4096,"Archived balance changed");h.assertTrue(w.rows(w.season(),"assets").get(0).score()==2048,"Month rollover zeroed money");
+        var saved=new HallWorld(w.save(new CompoundTag()),t::get);h.assertTrue(saved.rows("2026-10","assets").get(0).score()==4096,"Archive lost on restart");h.succeed();
+    }
+    @GameTest(template="empty") public static void unavailableAssetsKeepLastKnownAndUseExactCoinDisplay(GameTestHelper h){
+        var w=world(time());w.balance(id(1),Optional.empty());h.assertTrue(w.rows(w.season(),"assets").isEmpty(),"Missing integration fabricated a balance");
+        w.balance(id(1),Optional.of(new Integrations.Balance(2049,4096)));w.balance(id(1),Optional.empty());w.balance(id(1),Optional.of(new Integrations.Balance(-1,4096)));
+        h.assertTrue(w.rows(w.season(),"assets").get(0).score()==2049,"Missing/invalid reading overwrote balance");
+        var row=w.snapshot("","assets",0).getList("rows",10).getCompound(0);h.assertTrue(row.getString("displayScore").equals("0.500244140625 Sun"),"Fractional assets truncated or raw spurs displayed");
+        h.assertTrue(HallContent.resolve(w,"자산").equals("assets"),"Korean wealth alias missing");h.succeed();
+    }
+
 }
