@@ -80,6 +80,7 @@ public class SunlitJournal {
 
     @SubscribeEvent
     public void commands(RegisterCommandsEvent event) {
+        ItemShowcase.register(event.getDispatcher());
         event.getDispatcher().register(Commands.literal("sunlit")
             .then(Commands.literal("journal").executes(ctx -> {
                 JournalNetwork.send(ctx.getSource().getPlayerOrException(), true, "profile"); return 1;

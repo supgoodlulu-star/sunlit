@@ -7,7 +7,7 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import java.util.Optional;
 
-/** Decorates only owned, equipped titles. Unadorned chat stays with the existing handler. */
+/** Decorates equipped titles and item shares; ordinary chat keeps its existing handler. */
 public final class JournalChat {
     static Optional<String> equipped(ServerPlayer player){
         String title=SunlitJournal.data(player).getString("equipped");
@@ -27,7 +27,7 @@ public final class JournalChat {
         return equipped(player).map(title->Component.empty().append(TitleIcons.icon(title)).append(" ").append(TitleThemes.badge(title)).append(" ")
             .append(nickname(player)).append(Component.literal(": ").withStyle(s->s.withColor(0xFFFFFF))).append(message.copy()));
     }
-    // Server Nick 1.2.0 cancels and broadcasts at NORMAL. Run before it so a titled
+    // Server Nick 1.2.0 cancels and broadcasts at NORMAL. Run before it so a titled or item-sharing
     // message is sent once. Already-cancelled events are deliberately not received.
     @SubscribeEvent(priority=EventPriority.HIGH)
     public void chat(ServerChatEvent event){
@@ -39,9 +39,19 @@ public final class JournalChat {
         else server.submit(()->publish(event)).join();
     }
     private void publish(ServerChatEvent event){
-        format(event.getPlayer(),event.getMessage()).ifPresent(message->{
+        var player=event.getPlayer();Component body=event.getMessage();
+        boolean itemShare=ItemShowcase.containsToken(body);
+        if(itemShare){
+            if(player.getMainHandItem().isEmpty()){
+                event.setCanceled(true);player.sendSystemMessage(ItemShowcase.emptyHand());return;
+            }
+            body=ItemShowcase.expand(body,player.getMainHandItem()).orElse(body);
+        }
+        Component message=format(player,body).orElse(null);
+        if(message==null&&itemShare)message=Component.empty().append(nickname(player)).append(": ").append(body);
+        if(message!=null){
             event.setCanceled(true);
-            event.getPlayer().getServer().getPlayerList().broadcastSystemMessage(message,false);
-        });
+            player.getServer().getPlayerList().broadcastSystemMessage(message,false);
+        }
     }
 }

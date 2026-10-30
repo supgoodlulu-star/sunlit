@@ -1,0 +1,14 @@
+allprojects {
+ afterEvaluate { project ->
+  sourceSets { showcaseCheck {
+   java.srcDir new File(rootDir,'tools/visual-preview')
+   java.include 'ShowcaseClientCheck.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.showcaseCheck
+  minecraft.runs.client.property 'sunlit.showcaseCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/journal-0.8.7').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitShowcaseTest'
+ }
+}

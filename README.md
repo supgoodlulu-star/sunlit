@@ -1,6 +1,8 @@
 # Sunlit Journal
 
-Forge 1.20.1용 수첩 전용 0.8.6-journal 개발 버전입니다.
+Forge 1.20.1용 수첩 전용 0.8.7-journal-showcase 개발 버전입니다.
+`/자랑하기`와 일반 채팅의 `[아이템]`으로 손에 든 아이템을 전체 채팅에 공유합니다. 아이템 이름 위에 마우스를 올리면 실제 툴팁을 표시합니다. [사용법과 실제 게임 화면](ITEM_SHOWCASE_0.8.7.md).
+
 프로필 / 생활 기술 / 업무 일지 / 업적 도감 / 칭호 도감의 다섯 탭을 제공합니다.
 
 현재 버전의 기능·보상·구버전 데이터 호환·빌드는 [README_JOURNAL_ONLY.md](README_JOURNAL_ONLY.md), 검증 결과와 한계는 [JOURNAL_VALIDATION.md](JOURNAL_VALIDATION.md)를 참고하세요.
