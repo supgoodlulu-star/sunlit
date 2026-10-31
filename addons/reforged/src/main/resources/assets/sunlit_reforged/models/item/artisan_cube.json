@@ -1,1 +1,15 @@
-{"parent":"minecraft:block/purple_stained_glass"}
+{
+  "textures": {
+    "particle": "sunlit_reforged:item/dreamdrop_radiant"
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "sunlit_reforged:item/dreamdrop_radiant_held"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "sunlit_reforged:item/dreamdrop_radiant_icon"
+    }
+  }
+}

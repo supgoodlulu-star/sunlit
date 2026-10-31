@@ -1,0 +1,38 @@
+{
+  "small": {
+    "iconSize": [
+      128,
+      128
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "cuboids": 66,
+    "embeddedTextureMatches": true
+  },
+  "radiant": {
+    "iconSize": [
+      128,
+      128
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "cuboids": 66,
+    "embeddedTextureMatches": true
+  },
+  "brilliant": {
+    "iconSize": [
+      128,
+      128
+    ],
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "cuboids": 73,
+    "embeddedTextureMatches": true
+  }
+}

@@ -1,5 +1,12 @@
 {
-  "item.sunlit_reforged.suspicious_cube": "수상한 큐브",
-  "item.sunlit_reforged.artisan_cube": "장인의 큐브",
-  "item.sunlit_reforged.master_cube": "명장의 큐브"
+  "item.sunlit_reforged.suspicious_cube": "작은 꿈방울",
+  "item.sunlit_reforged.artisan_cube": "영롱한 꿈방울",
+  "item.sunlit_reforged.master_cube": "찬란한 꿈방울",
+  "tooltip.sunlit_reforged.dreamdrop.first": "첫 사용: 레어 잠재능력 3줄",
+  "tooltip.sunlit_reforged.dreamdrop.suspicious": "레어 → 에픽 8%",
+  "tooltip.sunlit_reforged.dreamdrop.artisan": "레어 → 에픽 15% · 에픽 → 유니크 5%",
+  "tooltip.sunlit_reforged.dreamdrop.master": "레어 → 에픽 25% · 에픽 → 유니크 12%",
+  "tooltip.sunlit_reforged.dreamdrop.master_legendary": "유니크 → 레전드리 3%",
+  "tooltip.sunlit_reforged.dreamdrop.choice": "기존 잠재능력이 있으면 기존 / 신규 옵션 선택",
+  "tooltip.sunlit_reforged.dreamdrop.promotion": "승급 성공 시 기존 옵션을 골라도 등급 유지"
 }

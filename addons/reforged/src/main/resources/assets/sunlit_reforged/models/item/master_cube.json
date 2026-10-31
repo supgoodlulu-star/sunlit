@@ -1,1 +1,15 @@
-{"parent":"minecraft:block/yellow_stained_glass"}
+{
+  "textures": {
+    "particle": "sunlit_reforged:item/dreamdrop_brilliant"
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "sunlit_reforged:item/dreamdrop_brilliant_held"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "sunlit_reforged:item/dreamdrop_brilliant_icon"
+    }
+  }
+}

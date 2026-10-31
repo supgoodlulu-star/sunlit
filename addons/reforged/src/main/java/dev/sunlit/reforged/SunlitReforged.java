@@ -30,6 +30,13 @@ public final class SunlitReforged {
     public static Item cube(Potential.Cube c){return switch(c){case SUSPICIOUS->SUSPICIOUS.get();case ARTISAN->ARTISAN.get();case MASTER->MASTER.get();};}
     public static class CubeItem extends Item{
         public final Potential.Cube type;CubeItem(Potential.Cube t){super(new Item.Properties().stacksTo(64).rarity(t==Potential.Cube.MASTER?Rarity.EPIC:t==Potential.Cube.ARTISAN?Rarity.UNCOMMON:Rarity.COMMON));type=t;}
+        @Override public void appendHoverText(ItemStack stack,net.minecraft.world.level.Level level,java.util.List<net.minecraft.network.chat.Component> lines,TooltipFlag flags){
+            String key="tooltip.sunlit_reforged.dreamdrop.";
+            lines.add(net.minecraft.network.chat.Component.translatable(key+"first").withStyle(net.minecraft.ChatFormatting.GRAY));
+            String kind=switch(type){case SUSPICIOUS->"suspicious";case ARTISAN->"artisan";case MASTER->"master";};
+            lines.add(net.minecraft.network.chat.Component.translatable(key+kind).withStyle(net.minecraft.ChatFormatting.AQUA));
+            if(type==Potential.Cube.MASTER){for(String detail:java.util.List.of("master_legendary","choice","promotion"))lines.add(net.minecraft.network.chat.Component.translatable(key+detail).withStyle(net.minecraft.ChatFormatting.LIGHT_PURPLE));}
+        }
         @Override public net.minecraft.world.InteractionResultHolder<ItemStack> use(net.minecraft.world.level.Level level,net.minecraft.world.entity.player.Player p,net.minecraft.world.InteractionHand hand){if(p instanceof net.minecraft.server.level.ServerPlayer s)StationMenu.open(s);return net.minecraft.world.InteractionResultHolder.sidedSuccess(p.getItemInHand(hand),level.isClientSide);}
     }
 }

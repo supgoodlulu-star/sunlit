@@ -1,0 +1,13 @@
+기준 커밋: 7aee8d3
+아래 파일은 바이트 단위로 동일합니다.
+f9454f9a0d385751eaeb467c66878f0026be1a58106f56317861c6da9f939e77  addons/reforged/src/main/java/dev/sunlit/reforged/Potential.java
+ced3d10438b2ddd8c3b17c9bccfccf6cb8e9eff838fdc938cbed3d57b328b0d7  addons/reforged/src/main/java/dev/sunlit/reforged/Rules.java
+48d167413383fc3b30a656d23236248c70cbd9b6d859109353bd5b0e927d93ed  addons/reforged/src/main/java/dev/sunlit/reforged/Economy.java
+5cf2aa9ef76ed45e020248e40e3af839fd404a544a304de87d5e8440d66873d5  addons/reforged/src/main/java/dev/sunlit/reforged/StationMenu.java
+d7e8d5c4568bad4ec443ee2eb44c2a7db1fbbd7e008f7cfdbd4c562cc63131a0  addons/reforged/src/main/java/dev/sunlit/reforged/Ledger.java
+b177c6235ccd55d3e3d43191daa0bac034a61a2c81d667e7ec96689a42245baf  addons/reforged/src/main/java/dev/sunlit/reforged/Effects.java
+68f8345968404d805564884b20fce2bc6e542aab51e55f95ce0804479e02b3d4  addons/reforged/src/main/java/dev/sunlit/reforged/Skills.java
+bbefc5d80f359a01054a671ae6b7f8d6f57e5f7fb6d4440fd5a0e4818205297c  addons/reforged/src/main/java/dev/sunlit/reforged/Activity.java
+9668c0e73d0ebd6c628a7f07a0c007b4fb7130184e2103e6a6e9078fed5e3f63  addons/reforged/src/main/java/dev/sunlit/reforged/LootBonus.java
+30837d2f899a3b0cb62510a08993cf6901f98218c8dcf98cfa672cbf554c97c5  addons/reforged/src/main/java/dev/sunlit/reforged/JournalBridge.java
+3b21cc80faec0e6a91125aa76c10faa6d0dc58a4a3c37e3d94c8a8c07796d2e9  addons/reforged/src/main/resources/data/sunlit_reforged/potential_rules/default.json

@@ -1,5 +1,12 @@
 {
-  "item.sunlit_reforged.suspicious_cube": "수상한 큐브",
-  "item.sunlit_reforged.artisan_cube": "장인의 큐브",
-  "item.sunlit_reforged.master_cube": "명장의 큐브"
+  "item.sunlit_reforged.suspicious_cube": "Small Dreamdrop",
+  "item.sunlit_reforged.artisan_cube": "Radiant Dreamdrop",
+  "item.sunlit_reforged.master_cube": "Brilliant Dreamdrop",
+  "tooltip.sunlit_reforged.dreamdrop.first": "First use: three Rare potential lines",
+  "tooltip.sunlit_reforged.dreamdrop.suspicious": "Rare to Epic: 8%",
+  "tooltip.sunlit_reforged.dreamdrop.artisan": "Rare to Epic: 15%; Epic to Unique: 5%",
+  "tooltip.sunlit_reforged.dreamdrop.master": "Rare to Epic: 25%; Epic to Unique: 12%",
+  "tooltip.sunlit_reforged.dreamdrop.master_legendary": "Unique to Legendary: 3%",
+  "tooltip.sunlit_reforged.dreamdrop.choice": "Existing potentials: choose old or new lines",
+  "tooltip.sunlit_reforged.dreamdrop.promotion": "Successful promotion remains with either choice"
 }

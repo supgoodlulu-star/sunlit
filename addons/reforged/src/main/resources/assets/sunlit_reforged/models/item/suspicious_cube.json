@@ -1,1 +1,15 @@
-{"parent":"minecraft:block/lime_stained_glass"}
+{
+  "textures": {
+    "particle": "sunlit_reforged:item/dreamdrop_small"
+  },
+  "gui_light": "front",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "sunlit_reforged:item/dreamdrop_small_held"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "sunlit_reforged:item/dreamdrop_small_icon"
+    }
+  }
+}
