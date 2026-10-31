@@ -1,0 +1,16 @@
+allprojects {
+ afterEvaluate {
+  sourceSets { notebookCheck {
+   java.srcDir new File(rootDir,'tools/visual-preview')
+   java.include 'NotebookClientCheck.java','JournalVisualPreview.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  repositories { flatDir { dirs '/workspace/reference/mods' } }
+  dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-reforged:1.0.0-dev.4') }
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.notebookCheck
+  minecraft.runs.client.property 'sunlit.notebookCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/notebook-0.8.12').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitNotebookTest'
+ }
+}

@@ -25,6 +25,7 @@ public final class JournalScreen extends Screen {
     private CompoundTag questSummary;
     private int questDone;
     private final List<Card> cards=new ArrayList<>();
+    private final List<JournalButton> footerControls=new ArrayList<>();
     private final Set<String> expandedSkills=new HashSet<>();
     private static final String[] PAGES={"profile","skills","quests","achievements","titles"};
     private static final String[] LABELS={"프로필","생활 기술","업무 일지","업적 도감","칭호 도감"};
@@ -35,6 +36,7 @@ public final class JournalScreen extends Screen {
         "자연에서 생성된 광석을 캐면 진행도가 올라요. 직접 설치한 광석은 포함되지 않아요.",
         "작업대에서 음식을 만들거나 화로에서 완성된 음식을 꺼내면 진행도가 올라요.",
         "동물에게 먹이를 주어 번식시키세요. 새끼가 태어나야 진행도가 올라요."};
+    private static final ResourceLocation BOOK=new ResourceLocation(SunlitJournal.MODID,"textures/gui/notebook_open.png");
     private static final int TEXT=0xFF3F3028,MUTED=0xFF594435;
     private static final class Card {
         final String title,body,badge;
@@ -59,14 +61,14 @@ public final class JournalScreen extends Screen {
     private void request(String action,String value){JournalNetwork.CHANNEL.sendToServer(new JournalNetwork.Request(action,value));}
     @Override protected void init(){rebuild();}
     public void update(CompoundTag next){data=next;rebuild();}
-    private JournalButton button(String label,int x,int y,int w,int h,boolean selected,Runnable action){return addRenderableWidget(new JournalButton(label,x,y,w,h,selected,action));}
+    private JournalButton button(String label,int x,int y,int w,int h,boolean selected,Runnable action){return addRenderableWidget(new JournalButton(label,x,y,w,h,selected,action).notebook(y==top+32));}
     private void card(String title,String body,int icon,String badge,long value,long goal){cards.add(new Card(title,body,icon,badge,value,goal,null,false,null));}
     private void section(String title,String body,int icon){card(title,body,icon,"",0,0);cards.get(cards.size()-1).section=true;}
     private void actionCard(String title,String body,int icon,String badge,long value,long goal,String label,boolean enabled,Runnable action){cards.add(new Card(title,body,icon,badge,value,goal,label,enabled,action));}
     private void rebuild(){
         String editing=nickname==null?data.getString("nickname"):nickname.getValue();
         boolean focused=nickname!=null&&nickname.isFocused();
-        clearWidgets();cards.clear();nickname=null;questSummary=null;
+        clearWidgets();cards.clear();footerControls.clear();nickname=null;questSummary=null;
         panelWidth=Math.min(480,width-12);panelHeight=Math.min(400,height-12);
         left=(width-panelWidth)/2;top=(height-panelHeight)/2;
         int tabWidth=(panelWidth-28)/PAGES.length;
@@ -110,9 +112,9 @@ public final class JournalScreen extends Screen {
             if(c.action!=null){c.button=button(c.actionLabel,0,0,110,20,c.actionLabel.equals("보상 받기")&&c.enabled,c.action);c.button.active=c.enabled;}
         }
         totalHeight=Math.max(0,totalHeight-8);clampScroll();layoutActions();
-        button("위로",left+14,top+panelHeight-29,43,20,false,()->{scroll-=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();});
-        button("아래로",left+62,top+panelHeight-29,43,20,false,()->{scroll+=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();});
-        button("닫기",left+panelWidth-62,top+panelHeight-29,48,20,false,this::onClose);
+        footerControls.add(button("위로",left+14,top+panelHeight-29,43,20,false,()->{scroll-=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();}));
+        footerControls.add(button("아래로",left+62,top+panelHeight-29,43,20,false,()->{scroll+=Math.max(50,contentBottom-contentTop-16);clampScroll();layoutActions();}));
+        footerControls.add(button("닫기",left+panelWidth-62,top+panelHeight-29,48,20,false,this::onClose));
     }
     private String taskSummary(String period){
         var tasks=data.getCompound(period);int complete=0,claimed=0;
@@ -122,7 +124,7 @@ public final class JournalScreen extends Screen {
     private void profile(String editing,boolean focused){
         boolean available=data.getBoolean("nickAvailable");
         if(available){
-            nickname=addRenderableWidget(new EditBox(font,left+16,top+88,panelWidth-160,20,Component.literal("닉네임")));
+            nickname=addRenderableWidget(new PaperEditBox(font,left+16,top+88,panelWidth-160,20,Component.literal("닉네임")));
             nickname.setMaxLength(128);nickname.setValue(editing);nickname.setFocused(focused);if(focused)setFocused(nickname);
             button("변경",left+panelWidth-135,top+88,54,20,false,()->request("nick",nickname.getValue()));
             button("초기화",left+panelWidth-77,top+88,61,20,false,()->request("resetNick",""));
@@ -315,14 +317,13 @@ public final class JournalScreen extends Screen {
     }
     @Override public void render(GuiGraphics g,int mx,int my,float delta){
         renderBackground(g);
-        rounded(g,left+3,top+4,panelWidth,panelHeight,15,0x803E353D);
-        rounded(g,left,top,panelWidth,panelHeight,4,0xFF704322);
-        rounded(g,left+2,top+2,panelWidth-4,panelHeight-4,3,0xFFCF9B4F);
-        rounded(g,left+7,top+7,panelWidth-14,panelHeight-14,2,0xFFFFF1CE);
-        // Sparse paper fibres and wooden binding stitches, drawn on exact pixel boundaries.
-        for(int yy=top+29;yy<top+panelHeight-34;yy+=12)g.fill(left+10,yy,left+panelWidth-10,yy+1,0x0D9B713E);
-        for(int yy=top+19;yy<top+panelHeight-12;yy+=20){g.fill(left+2,yy,left+6,yy+2,0xFF8C5B2C);g.fill(left+panelWidth-6,yy,left+panelWidth-2,yy+2,0xFF8C5B2C);}
-        rounded(g,left+8,top+8,panelWidth-16,18,9,0xFFE8C68A);
+        com.mojang.blaze3d.systems.RenderSystem.enableBlend();
+        g.blit(BOOK,left,top,panelWidth,panelHeight,0,0,1536,1024,1536,1024);
+        com.mojang.blaze3d.systems.RenderSystem.disableBlend();
+        rounded(g,left+11,top+9,panelWidth-22,18,2,0xFFF6E3BC);
+        int seasonInk=switch(data.getCompound("festival").getString("season")){case "SPRING"->0xFFB9758B;case "SUMMER"->0xFF5598A6;case "AUTUMN"->0xFFAE7B36;case "WINTER"->0xFF7296A9;default->0xFF73884B;};
+        g.fill(left+20,top+18,left+24,top+19,seasonInk);g.fill(left+21,top+16,left+23,top+21,seasonInk);
+        g.fill(left+panelWidth-24,top+18,left+panelWidth-20,top+19,seasonInk);g.fill(left+panelWidth-23,top+16,left+panelWidth-21,top+21,seasonInk);
         centered(g,title.getString(),left+panelWidth/2,top+13,TEXT);
         if(tab.equals("profile")){
             String name=data.getString("username"),nick=data.getString("nickname");
@@ -334,11 +335,10 @@ public final class JournalScreen extends Screen {
         for(Card c:cards){
             int x=left+16,y=contentTop+c.y-(int)scroll;
             if(y+c.height<contentTop||y>contentBottom)continue;
-            rounded(g,x,y+1,cardWidth,c.height,10,0xFFC89A53);
-            rounded(g,x+1,y,cardWidth-2,c.height-1,9,0xFFFFF7E2);
+            paperCard(g,x,y,cardWidth,c.height);
             if(c.avatar){
                 int ax=x+40,ay=y+103;
-                rounded(g,x+10,y+8,62,100,3,0xFFE5CE9F);
+                rounded(g,x+9,y+7,64,102,2,0xFF9A713E);rounded(g,x+11,y+9,60,98,1,0xFFE9D4AE);
                 if(minecraft.player!=null)net.minecraft.client.gui.screens.inventory.InventoryScreen.renderEntityInInventoryFollowsMouse(g,ax,ay,43,ax-mx,ay-55-my,minecraft.player);
                 else {icon(g,11,x+27,y+38);}
                 String nick=data.getString("nickname"),equipped=data.getCompound("titles").getString("equipped");
@@ -356,7 +356,7 @@ public final class JournalScreen extends Screen {
             int[] accents={0xFF68893F,0xFF397E9B,0xFF776192,0xFFC17A32,0xFF93734A,0xFFB78E39,0xFFB85E7E,0xFF557DA4,0xFFA57834,0xFF4F8795,0xFF826899,0xFF8C6940,0xFFAC653A,0xFF6F8B4C,0xFF5369A0,0xFF78664B};
             g.fill(x+2,y+5,x+5,y+c.height-5,accents[Math.max(0,Math.min(c.icon,accents.length-1))]);
             if(c.illustrated){
-                rounded(g,x+9,y+8,c.artSize+4,c.artSize+4,3,0xFFF0DFBA);
+                rounded(g,x+9,y+8,c.artSize+4,c.artSize+4,2,0xFFD4B77C);rounded(g,x+10,y+9,c.artSize+2,c.artSize+2,1,0xFFFFF1D2);
                 cardArt(g,c,x+11,y+10,c.artSize);
             }else cardArt(g,c,x+10,y+10,28);
             if(c.section){
@@ -389,16 +389,39 @@ public final class JournalScreen extends Screen {
                 if(fill>0)rounded(g,x+12,barY,fill,5,2,value>=c.goal?0xFF73965F:0xFF7FA992);
             }
         }
-        g.disableScissor();
+        g.flush();g.disableScissor();
         int viewport=contentBottom-contentTop;
         if(totalHeight>viewport){
             int thumb=Math.max(18,viewport*viewport/totalHeight),railX=left+panelWidth-17;
-            rounded(g,railX,contentTop,4,viewport,2,0xFFD7BFA5);
+            rounded(g,railX,contentTop,4,viewport,2,0xFFC6A16C);
             int thumbY=contentTop+(int)(scroll/(totalHeight-viewport)*(viewport-thumb));
-            rounded(g,railX,thumbY,4,thumb,2,0xFF9A755D);
+            rounded(g,railX,thumbY,4,thumb,2,0xFF718B47);
         }
-        if(panelWidth>350)centered(g,"마우스 휠로 넘겨보기",left+panelWidth/2,top+panelHeight-22,MUTED);
-        super.render(g,mx,my,delta);
+        g.pose().pushPose();g.pose().translate(0,0,200);
+        if(panelWidth>350){rounded(g,left+116,top+panelHeight-28,panelWidth-232,18,1,0xFFF0D8A8);centered(g,"마우스 휠로 넘겨보기",left+panelWidth/2,top+panelHeight-22,MUTED);}
+        super.render(g,mx,my,delta);g.flush();g.pose().popPose();
+        // Fixed navigation gets its own final pass, above long cards and their clipped actions.
+        com.mojang.blaze3d.systems.RenderSystem.disableScissor();
+        g.pose().pushPose();g.pose().translate(0,0,600);
+        for(var control:footerControls)control.renderWidget(g,mx,my,delta);
+        g.flush();g.pose().popPose();
+    }
+    /** Retains EditBox keyboard, focus and narration behavior; only paints its paper field. */
+    private static final class PaperEditBox extends EditBox {
+        PaperEditBox(net.minecraft.client.gui.Font font,int x,int y,int w,int h,Component label){super(font,x,y,w,h,label);setBordered(false);setTextColor(TEXT);setTextColorUneditable(MUTED);}
+        @Override public int getInnerWidth(){return Math.max(0,getWidth()-8);}
+        @Override public boolean mouseClicked(double x,double y,int button){return super.mouseClicked(isMouseOver(x,y)?Math.max(getX(),x-4):x,y,button);}
+        @Override public void renderWidget(GuiGraphics g,int mx,int my,float delta){
+            rounded(g,getX(),getY(),getWidth(),getHeight(),1,isFocused()?0xFF77924B:0xFFB68A48);
+            rounded(g,getX()+1,getY()+1,getWidth()-2,getHeight()-2,1,0xFFFFF4D9);
+            g.pose().pushPose();g.pose().translate(4,(getHeight()-9)/2,0);super.renderWidget(g,mx-4,my-5,delta);g.pose().popPose();
+        }
+    }
+    private static void paperCard(GuiGraphics g,int x,int y,int w,int h){
+        rounded(g,x+1,y+2,w,h-1,2,0x665A3E26);
+        rounded(g,x,y,w,h-1,2,0xFFC69B59);rounded(g,x+1,y+1,w-2,h-3,1,0xFFFFF5DD);
+        g.fill(x+6,y+3,x+w-6,y+4,0xFFF2DDAE);
+        for(int xx:new int[]{x+4,x+w-7}){g.fill(xx,y+5,xx+3,y+6,0xFFCCA56B);g.fill(xx,y+h-7,xx+3,y+h-6,0xFFCCA56B);}
     }
     private void renderQuestBonus(GuiGraphics g){
         int x=left+16,y=top+91,w=panelWidth-40;boolean daily=questPeriod.equals("daily");int count=JournalWorld.taskCount(questPeriod);

@@ -1,0 +1,2 @@
+bce3fa270b428bd5ead1ee66903ca75795a4c377adcaad05cc22b84fe0f9523d  Sunlit_Journal_0.8.12_Source.zip
+036c8626b6a6eafb3d8a04c130cabd74d3f4e09e37de24d2193d4c47d12f3010  sunlit-journal-core-0.8.12-warm-notebook.jar

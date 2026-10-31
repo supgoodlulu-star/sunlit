@@ -1,0 +1,10 @@
+기준 커밋 4ddbabe; 아래 파일은 이전 버전과 바이트 단위로 동일합니다.
+0a44e5492ec8845fdd08a2f1a7e04b9b25c2734ce64a71443a8216d8289e0c5c  src/main/java/dev/sunlit/journal/JournalWorld.java
+032db665d52a64acc64cccbed0fdfe78b49ebf9f5c181ae2c32fe3cf9fd160e8  src/main/java/dev/sunlit/journal/SunlitJournal.java
+fbbde6f50422a4e24d8da299ef84bb4e51cb13b4b30228390e4dc916335d080e  src/main/java/dev/sunlit/journal/JournalNetwork.java
+6b21fb50ec6e67e0bef86bffa4f678d74480b218274a39105d4936b96fb3f6c2  src/main/java/dev/sunlit/journal/TaskRewards.java
+992c5de6a2f0452d829c138d2f1f993fbe0abfa31495dde384243ee125eb4810  src/main/java/dev/sunlit/journal/Integrations.java
+52c590eee6fcdacc04d7e3ce60b8a7284710ec5313b2d13c9cb84a12f87183ac  src/main/java/dev/sunlit/journal/TitleThemes.java
+99004a74761b176aaa123d8d6a158cbb4316b859a76920331e6334da0580e4b3  src/main/java/dev/sunlit/journal/TitleIcons.java
+bbf0793a9f89922ebfb8b57100199f4a1e8d12ff74f076afdf4374412170f623  src/main/java/dev/sunlit/journal/SkillLabels.java
+766d965e61f9a8923fd18a355db07c042a4f82eb2682ef3a1bab645e38fe09ca  src/main/java/dev/sunlit/journal/SkillCategoryIcons.java
