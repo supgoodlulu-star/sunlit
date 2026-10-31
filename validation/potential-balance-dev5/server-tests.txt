@@ -1,0 +1,207 @@
+Starting a Gradle Daemon (subsequent builds will be faster)
+> Task :compileJava UP-TO-DATE
+> Task :processResources
+> Task :classes
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createSrgToMcp UP-TO-DATE
+> Task :downloadMCMeta UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :extractNatives UP-TO-DATE
+> Task :makeSrcDirs
+> Task :prepareRuns
+> Task :prepareRunGameTestServer
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+> Task :prepareRunGameTestServerCompile
+
+> Task :runGameTestServer
+2026-10-31 06:56:02,690 main WARN Advanced terminal features are not available in this environment
+[06:56:02] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgegametestserveruserdev, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin, sunlit_reforged.mixins.json]
+[06:56:02] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.57
+[06:56:02] [main/INFO] [ne.mi.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgegametestserveruserdev
+[06:56:02] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/workspace/gradle-cache/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=SERVER
+[06:56:03] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.4.0/f0c0b352173d0a378cbdcec9cfc4ba65899a721/javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[06:56:03] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.4.0/e862740d8c84d08dbfedea412bef88fe42e727c5/lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[06:56:03] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.4.0/5719b3a297a33f877ed5dde4cb4bd75c859096af/mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[06:56:03] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.4.0/235975dafa4309945b59c56b53f31dc5b65a6051/fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[06:56:03] [main/INFO] [ne.mi.fm.lo.mo.JarInJarDependencyLocator/]: Found 6 dependencies adding them to mods collection
+[06:56:05] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[06:56:05] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgegametestserveruserdev' with arguments [--gameDir, .]
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap mixins.stardew_fishing.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap puffish_skills-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap glitchcore.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap glitchcore.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap sereneseasons.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap sereneseasons.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap CreateNumismatics-common-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap CreateNumismatics-forge-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap backend-flywheel.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[06:56:05] [main/WARN] [mixin/]: Error loading class: com/scouter/netherdepthsupgrade/entity/entities/LavaFishingBobberEntity (java.lang.ClassNotFoundException: com.scouter.netherdepthsupgrade.entity.entities.LavaFishingBobberEntity)
+[06:56:05] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.compat.carryon.MixinPickupHandler is not being applied because the mod(s) [CARRYON] are not loaded
+[06:56:05] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableEnergyInterfaceBlockEntityMixin is not being applied because the mod(s) [CREATEADDITION] are not loaded
+[06:56:05] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableEnergyInterfaceBlockEntityMixin$InterfaceEnergyHandlerAccessor is not being applied because the mod(s) [CREATEADDITION] are not loaded
+[06:56:05] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableFuelInterfaceBlockEntityMixin is not being applied because the mod(s) [RAILWAYS] are not loaded
+[06:56:05] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.self.ComputerBehaviourCapabilities is not being applied because the mod(s) [COMPUTERCRAFT] are not loaded
+[06:56:05] [main/WARN] [mixin/]: Error loading class: com/railwayteam/railways/content/fuel/psi/PortableFuelInterfaceBlockEntity$InterfaceFluidHandler (java.lang.ClassNotFoundException: com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler)
+[06:56:05] [main/WARN] [mixin/]: @Mixin target com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler was not found numismatics.mixins.json:compat.PortableFuelInterfaceBlockEntityMixin$InterfaceFluidHandlerAccessor
+[06:56:05] [main/WARN] [mixin/]: Error loading class: com/railwayteam/railways/content/fuel/psi/PortableFuelInterfaceBlockEntity$InterfaceFluidHandler (java.lang.ClassNotFoundException: com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler)
+[06:56:05] [main/WARN] [mixin/]: @Mixin target com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler was not found numismatics.mixins.json:compat.PortableFuelInterfaceBlockEntityMixin$InterfaceFluidHandlerMixin
+[06:56:06] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.4).
+[06:56:09] [modloading-worker-0/INFO] [Create: Numismatics/]: Create: Numismatics v1.1.0 initializing! Commit hash: 56a5907fd34255c8cfd9a37c116800f7a5d92d3a Create version: 6.0.8 on platform: Forge
+[06:56:09] [modloading-worker-0/INFO] [ne.mi.co.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[06:56:09] [modloading-worker-0/INFO] [ne.mi.co.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[06:56:09] [modloading-worker-0/INFO] [Create: Numismatics/]: Registering items for Create: Numismatics
+[06:56:09] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.8 initializing! Commit hash: 1a1a9a2819b4f89f78caec41b55ed8cb222fa24b
+[06:56:09] [modloading-worker-0/INFO] [Create: Numismatics/]: Registering blocks for Create: Numismatics
+[06:56:11] [Forge Version Check/INFO] [ne.mi.fm.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[06:56:12] [Forge Version Check/WARN] [ne.mi.fm.VersionChecker/]: Failed to process update information
+java.net.ConnectException: null
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:900) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.openUrlString(VersionChecker.java:142) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.process(VersionChecker.java:180) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+	at java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {re:mixin}
+	at net.minecraftforge.fml.VersionChecker$1.run(VersionChecker.java:117) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1107) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:203) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:238) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:214) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:195) ~[?:?] {}
+	at sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:760) ~[?:?] {}
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:848) ~[?:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$0(PlainHttpConnection.java:187) ~[java.net.http:?] {}
+	at java.security.AccessController.doPrivileged(AccessController.java:569) ~[?:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:189) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:238) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:214) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+[06:56:12] [main/INFO] [mojang/YggdrasilAuthenticationService]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[06:56:12] [main/WARN] [ne.mi.co.ForgeHooks/WP]: The following mods have version differences that were not resolved:
+sunlit_reforged (version 1.0.0-dev.4 -> 1.0.0-dev.5)
+Things may not work well.
+[06:56:13] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/gradle-cache/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[06:56:13] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/gradle-cache/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[06:56:13] [main/INFO] [co.si.cr.Create/]: Created 157 recipes which will be injected into the game
+[06:56:13] [main/INFO] [co.si.cr.Create/]: Created 0 tags which will be injected into the game
+[06:56:15] [main/WARN] [minecraft/LootDataManager]: Found loot table element validation problem in {loot_tables:netherdepthsupgrade:gameplay/nether_fishing}.pools[0].entries[1]: Unknown loot table called netherdepthsupgrade:gameplay/nether_fishing/fish
+[06:56:15] [main/WARN] [minecraft/LootDataManager]: Found loot table element validation problem in {loot_tables:netherdepthsupgrade:gameplay/nether_fishing}.pools[0].entries[0]: Unknown loot table called netherdepthsupgrade:gameplay/nether_fishing/junk
+[06:56:15] [main/INFO] [minecraft/RecipeManager]: Loaded 22 recipes
+[06:56:15] [main/INFO] [minecraft/AdvancementList]: Loaded 2510 advancements
+[06:56:15] [main/INFO] [de.su.re.SunlitReforged/]: Loaded Sunlit potential rules: 19 options
+[06:56:16] [main/INFO] [ne.mi.ga.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [sunlit_reforged]
+[06:56:18] [Yggdrasil Key Fetcher/ERROR] [mojang/YggdrasilServicesKeyInfo]: Failed to request yggdrasil public key
+com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:119) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:91) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.fetch(YggdrasilServicesKeyInfo.java:94) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.lambda$get$1(YggdrasilServicesKeyInfo.java:81) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[?:?] {}
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[?:?] {}
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?] {}
+	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?] {}
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.net.Socket.connect(Socket.java:633) ~[?:?] {}
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:533) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:638) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1307) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1148) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1717) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1641) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:224) ~[?:?] {}
+	at com.mojang.authlib.HttpAuthenticationService.performGetRequest(HttpAuthenticationService.java:140) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:96) ~[authlib-4.0.43.jar%23121!/:?] {}
+	... 9 more
+[06:56:18] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[06:56:21] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:21] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:21] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:21] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:21] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:21] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:21] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:56:22] [Worker-Main-2/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 2%
+[06:56:22] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 36%
+[06:56:23] [Worker-Main-1/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 95%
+[06:56:23] [Server thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 4533 ms
+[06:56:23] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server
+[06:56:23] [Server thread/INFO] [ne.mi.se.pe.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[06:56:23] [Server thread/INFO] [puffish_skills/]: [puffish_skills] Mod configuration loaded successfully!
+[06:56:23] [Server thread/INFO] [minecraft/GameTestBatchRunner]: Running test batch 'defaultBatch:1' (24 tests)...
+[06:56:23] [Server thread/INFO] [minecraft/GameTestServer]: 24 tests are now running!
+[06:56:24] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++]
+[06:56:24] [Server thread/INFO] [minecraft/GameTestServer]: ========= 24 GAME TESTS COMPLETE ======================
+[06:56:24] [Server thread/INFO] [minecraft/GameTestServer]: All 24 required tests passed :)
+[06:56:24] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================
+[06:56:24] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[06:56:24] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[06:56:24] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[06:56:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden_grand
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_citadel
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_garden_grand): All chunks are saved
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_citadel): All chunks are saved
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_garden): All chunks are saved
+[06:56:26] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+[06:56:27] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down
+
+> Task :jar
+> Task :createMcpToSrg UP-TO-DATE
+> Task :reobfJar
+> Task :jarJar SKIPPED
+> Task :reobfJarJar SKIPPED
+> Task :assemble
+> Task :test
+> Task :check
+> Task :build
+
+[Incubating] Problems report is available at: file:///workspace/sunlit/addons/reforged/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 36s
+16 actionable tasks: 7 executed, 9 up-to-date

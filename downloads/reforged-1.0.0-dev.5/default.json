@@ -1,0 +1,241 @@
+{
+  "options": [
+    {
+      "id": "attack_percent",
+      "weight": 1,
+      "values": [
+        2,
+        4,
+        6,
+        9
+      ]
+    },
+    {
+      "id": "attack_flat",
+      "weight": 1,
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "attack_speed",
+      "weight": 1,
+      "values": [
+        2,
+        6,
+        10,
+        14
+      ]
+    },
+    {
+      "id": "lifesteal",
+      "weight": 1,
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "execute",
+      "weight": 1,
+      "values": [
+        3,
+        5,
+        8,
+        12
+      ]
+    },
+    {
+      "id": "health_percent",
+      "weight": 1,
+      "values": [
+        2,
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "id": "health_flat",
+      "weight": 1,
+      "values": [
+        2,
+        4,
+        6,
+        10
+      ]
+    },
+    {
+      "id": "armor",
+      "weight": 1,
+      "values": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "reduction",
+      "weight": 1,
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "knockback",
+      "weight": 1,
+      "values": [
+        5,
+        10,
+        15,
+        20
+      ]
+    },
+    {
+      "id": "reflect",
+      "weight": 1,
+      "values": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "mining_speed",
+      "weight": 1,
+      "values": [
+        3,
+        6,
+        10,
+        15
+      ]
+    },
+    {
+      "id": "ore_bonus",
+      "weight": 1,
+      "values": [
+        10,
+        15,
+        30,
+        50
+      ]
+    },
+    {
+      "id": "crop_bonus",
+      "weight": 1,
+      "values": [
+        10,
+        15,
+        30,
+        50
+      ]
+    },
+    {
+      "id": "rare_fish",
+      "weight": 1,
+      "values": [
+        5,
+        10,
+        20,
+        40
+      ]
+    },
+    {
+      "id": "life_xp",
+      "weight": 1,
+      "values": [
+        5,
+        10,
+        15,
+        20
+      ]
+    },
+    {
+      "id": "movement",
+      "weight": 1,
+      "values": [
+        3,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "id": "jump",
+      "weight": 1,
+      "values": [
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "durability",
+      "weight": 1,
+      "values": [
+        5,
+        15,
+        30,
+        50
+      ]
+    }
+  ],
+  "upgrades": [
+    [
+      8,
+      0,
+      0,
+      0
+    ],
+    [
+      15,
+      5,
+      0,
+      0
+    ],
+    [
+      25,
+      12,
+      3,
+      0
+    ]
+  ],
+  "sameTier": [
+    100,
+    20,
+    15,
+    10
+  ],
+  "pricesSun": [
+    500,
+    2500,
+    10000
+  ],
+  "rewardRates": [
+    0.3,
+    0.1,
+    2,
+    5,
+    10,
+    2
+  ],
+  "lowHealthFraction": 0.3,
+  "verifiedRareFishingTable": "",
+  "skillCategories": [
+    "society:farming",
+    "society:fishing",
+    "society:mining",
+    "society:husbandry"
+  ]
+}

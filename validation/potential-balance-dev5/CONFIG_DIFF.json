@@ -1,0 +1,162 @@
+{
+  "order": [
+    "RARE",
+    "EPIC",
+    "UNIQUE",
+    "LEGENDARY"
+  ],
+  "changed": [
+    {
+      "id": "attack_speed",
+      "before": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "after": [
+        2,
+        6,
+        10,
+        14
+      ]
+    },
+    {
+      "id": "health_flat",
+      "before": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "after": [
+        2,
+        4,
+        6,
+        10
+      ]
+    },
+    {
+      "id": "armor",
+      "before": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "after": [
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "ore_bonus",
+      "before": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "after": [
+        10,
+        15,
+        30,
+        50
+      ]
+    },
+    {
+      "id": "crop_bonus",
+      "before": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "after": [
+        10,
+        15,
+        30,
+        50
+      ]
+    },
+    {
+      "id": "rare_fish",
+      "before": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "after": [
+        5,
+        10,
+        20,
+        40
+      ]
+    },
+    {
+      "id": "life_xp",
+      "before": [
+        2,
+        4,
+        6,
+        10
+      ],
+      "after": [
+        5,
+        10,
+        15,
+        20
+      ]
+    },
+    {
+      "id": "movement",
+      "before": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "after": [
+        3,
+        5,
+        10,
+        20
+      ]
+    },
+    {
+      "id": "jump",
+      "before": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "after": [
+        3,
+        5,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "durability",
+      "before": [
+        2,
+        4,
+        6,
+        8
+      ],
+      "after": [
+        5,
+        15,
+        30,
+        50
+      ]
+    }
+  ],
+  "otherOptionsUnchanged": true,
+  "weightsPricesPromotionRewardRulesUnchanged": true
+}
