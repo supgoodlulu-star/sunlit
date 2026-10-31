@@ -27,7 +27,7 @@ public final class StationMenu extends AbstractContainerMenu{
     int revision(){return saved.getInt("revision");}
     private void advance(){saved.putInt("revision",revision()+1);ledger.setDirty();}
     void persist(){if(owner==null)return;saved.put("equipment",work.getItem(0).save(new CompoundTag()));saved.put("cubes",work.getItem(1).save(new CompoundTag()));advance();}
-    public CompoundTag snapshot(){var out=saved.copy();out.putInt("menuId",containerId);out.put("equipment",work.getItem(0).save(new CompoundTag()));out.put("cubes",work.getItem(1).save(new CompoundTag()));out.put("balance",Economy.view(owner));out.putString("prefixStatus","Reforged JAR 미확인 · 접두사 데이터는 원본 그대로 보존");out.putBoolean("hammerAvailable",Economy.hammer().isPresent());out.putBoolean("fishingReady",FishingPools.ready());var list=new ListTag();for(int price:Rules.get().prices)list.add(IntTag.valueOf(price));out.put("prices",list);return out;}
+    public CompoundTag snapshot(){var out=saved.copy();out.putInt("menuId",containerId);out.put("equipment",work.getItem(0).save(new CompoundTag()));out.put("cubes",work.getItem(1).save(new CompoundTag()));out.put("balance",Economy.view(owner));out.putString("prefixStatus","Reforged JAR 미확인 · 접두사 데이터는 원본 그대로 보존");out.putBoolean("fishingReady",FishingPools.ready());var list=new ListTag();for(int price:Rules.get().prices)list.add(IntTag.valueOf(price));out.put("prices",list);return out;}
     public boolean roll(){
         if(owner==null||pending())return false;ItemStack gear=work.getItem(0),cubes=work.getItem(1);var type=Potential.gear(gear);
         if(type.orElse(null)==Potential.Gear.ROD&&!FishingPools.ready())return false;

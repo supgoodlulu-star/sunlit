@@ -220,8 +220,7 @@
   "pricesSun": [
     500,
     2500,
-    10000,
-    3000
+    10000
   ],
   "rewardRates": [
     0.3,
@@ -232,7 +231,6 @@
     2
   ],
   "lowHealthFraction": 0.3,
-  "verifiedHammerItem": "",
   "verifiedRareFishingTable": "",
   "skillCategories": [
     "society:farming",

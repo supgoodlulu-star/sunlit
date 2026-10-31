@@ -10,9 +10,9 @@ import java.util.*;
 public final class Rules extends SimpleJsonResourceReloadListener {
     public final double[][] values=new double[19][4];public final int[] weights=new int[19];
     public final double[][] upgrades={{8,0,0,0},{15,5,0,0},{25,12,3,0}};
-    public final double[] sameTier={100,20,15,10};public final int[] prices={500,2500,10000,3000};
+    public final double[] sameTier={100,20,15,10};public final int[] prices={500,2500,10000};
     public final double[] rewardRates={.3,.1,2,5,10,2};
-    public double lowHealth=.30;public String hammer="",rareFishingTable="";
+    public double lowHealth=.30;public String rareFishingTable="";
     public List<String> skillCategories=List.of("society:farming","society:fishing","society:mining","society:cooking","society:husbandry");
     private static volatile Rules active=defaults();
     public Rules(){super(new Gson(),"potential_rules");}
@@ -27,10 +27,10 @@ public final class Rules extends SimpleJsonResourceReloadListener {
         var cubes=root.getAsJsonArray("upgrades");if(cubes.size()!=3)throw new IllegalArgumentException("Three cubes required");for(int c=0;c<3;c++){var a=cubes.get(c).getAsJsonArray();if(a.size()!=4)throw new IllegalArgumentException();for(int i=0;i<4;i++){r.upgrades[c][i]=number(a.get(i));if(r.upgrades[c][i]>100)throw new IllegalArgumentException();}}
         if(r.upgrades[0][1]!=0||r.upgrades[0][2]!=0||r.upgrades[0][3]!=0||r.upgrades[1][2]!=0||r.upgrades[1][3]!=0||r.upgrades[2][3]!=0)throw new IllegalArgumentException("Cube tier limits are fixed");
         var chances=root.getAsJsonArray("sameTier");if(chances.size()!=4)throw new IllegalArgumentException();for(int i=0;i<4;i++){r.sameTier[i]=number(chances.get(i));if(r.sameTier[i]>100)throw new IllegalArgumentException();}if(r.sameTier[0]!=100)throw new IllegalArgumentException("Rare lines stay rare");
-        var prices=root.getAsJsonArray("pricesSun");if(prices.size()!=4)throw new IllegalArgumentException();for(int i=0;i<4;i++){r.prices[i]=prices.get(i).getAsInt();if(r.prices[i]<=0)throw new IllegalArgumentException("Price exceeds safe transaction range");}
+        var prices=root.getAsJsonArray("pricesSun");if(prices.size()!=3&&prices.size()!=4)throw new IllegalArgumentException();for(int i=0;i<3;i++){r.prices[i]=prices.get(i).getAsInt();if(r.prices[i]<=0)throw new IllegalArgumentException("Price exceeds safe transaction range");}
         var rates=root.getAsJsonArray("rewardRates");if(rates.size()!=6)throw new IllegalArgumentException();for(int i=0;i<6;i++){r.rewardRates[i]=number(rates.get(i));if(r.rewardRates[i]>100)throw new IllegalArgumentException();}
-        r.lowHealth=number(root.get("lowHealthFraction"));if(r.lowHealth>1)throw new IllegalArgumentException();r.hammer=root.get("verifiedHammerItem").getAsString();r.rareFishingTable=root.get("verifiedRareFishingTable").getAsString();
-        for(String id:List.of(r.hammer,r.rareFishingTable))if(!id.isBlank()&&ResourceLocation.tryParse(id)==null)throw new IllegalArgumentException("Invalid integration ID");
+        r.lowHealth=number(root.get("lowHealthFraction"));if(r.lowHealth>1)throw new IllegalArgumentException();r.rareFishingTable=root.get("verifiedRareFishingTable").getAsString();
+        for(String id:List.of(r.rareFishingTable))if(!id.isBlank()&&ResourceLocation.tryParse(id)==null)throw new IllegalArgumentException("Invalid integration ID");
         r.skillCategories=new ArrayList<>();for(var id:root.getAsJsonArray("skillCategories")){String name=id.getAsString();if(ResourceLocation.tryParse(name)==null)throw new IllegalArgumentException();r.skillCategories.add(name);}return r;
     }
     @Override protected void apply(Map<ResourceLocation,JsonElement> files,ResourceManager manager,ProfilerFiller profiler){
