@@ -1,0 +1,14 @@
+allprojects {
+ afterEvaluate {
+  sourceSets { reforgedCheck {
+   java.srcDir new File(rootDir,'qa')
+   java.include 'ReforgedClientCheck.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_reforged.source sourceSets.reforgedCheck
+  minecraft.runs.client.property 'sunlit.reforgedCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'../../validation/reforged-dev1').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitReforgedTest'
+ }
+}

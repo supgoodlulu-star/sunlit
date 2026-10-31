@@ -76,7 +76,10 @@ public final class JournalWorld extends SavedData {
             if(TaskTargets.matches(t,kind,subject)){
                 int before=t.getInt("progress"),target=t.getInt("target");
                 t.putInt("progress",(int)Math.min((long)target,(long)before+amount));
-                if(target>0&&before<target&&t.getInt("progress")>=target)HallWorld.get(p.getServer()).task(p);
+                if(target>0&&before<target&&t.getInt("progress")>=target){
+                    HallWorld.get(p.getServer()).task(p);
+                    dev.sunlit.journal.api.JournalRewardEvent.publish(p,period,d.getCompound(period).getString("date")+":"+i);
+                }
             }
         }
         updateFestival(p);
@@ -99,6 +102,7 @@ public final class JournalWorld extends SavedData {
                         CompoundTag pd=player(UUID.fromString(who));
                         child(pd,"seasons").putBoolean(f.getString("season"),true);
                         pd.putInt("festivalRewards",pd.getInt("festivalRewards")+1);
+                        var pending=pd.getList("festivalRewardIds",Tag.TAG_STRING);pending.add(StringTag.valueOf(f.getLong("sequence")+":"+f.getString("season")));pd.put("festivalRewardIds",pending);
                     }
                 }
             }
@@ -135,7 +139,10 @@ public final class JournalWorld extends SavedData {
         }
         if(n==4)grant(p,"사계요정");
         int rewards=d.getInt("festivalRewards");
-        if(rewards>0){d.putInt("festivalRewards",0);setDirty();for(int i=0;i<rewards;i++)reward(p,16);}
+        if(rewards>0){
+            var ids=d.getList("festivalRewardIds",Tag.TAG_STRING);d.putInt("festivalRewards",0);d.remove("festivalRewardIds");setDirty();
+            for(int i=0;i<rewards;i++){reward(p,16);if(i<ids.size())dev.sunlit.journal.api.JournalRewardEvent.publish(p,"festival",ids.getString(i));}
+        }
     }
     public static String seasonTitle(String s){return switch(s){case "SPRING"->"벚꽃요정";case "SUMMER"->"별빛요정";case "AUTUMN"->"풍요요정";case "WINTER"->"눈꽃요정";default->"";};}
     public static String festivalName(String s){return switch(s){case "SPRING"->"벚꽃 축제";case "SUMMER"->"별빛 해변 축제";case "AUTUMN"->"풍요의 수확제";case "WINTER"->"눈꽃 축제";default->"계절 축제";};}

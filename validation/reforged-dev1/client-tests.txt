@@ -1,0 +1,1310 @@
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createSrgToMcp UP-TO-DATE
+> Task :downloadMCMeta UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :extractNatives UP-TO-DATE
+> Task :makeSrcDirs
+> Task :prepareRuns
+> Task :prepareRunClient
+> Task :compileReforgedCheckJava
+> Task :processReforgedCheckResources NO-SOURCE
+> Task :reforgedCheckClasses
+> Task :prepareRunClientCompile
+
+> Task :runClient
+2026-10-31 02:02:46,181 main WARN Advanced terminal features are not available in this environment
+[02:02:46] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, /workspace/gradle-cache/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin, sunlit_reforged.mixins.json, --width, 1280, --height, 900, --quickPlaySingleplayer, SunlitReforgedTest]
+[02:02:46] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.57
+[02:02:46] [main/WARN] [ne.mi.fm.lo.FMLConfig/CORE]: Configuration file /workspace/sunlit/addons/reforged/run/config/fml.toml is not correct. Correcting
+[02:02:46] [main/INFO] [ne.mi.fm.lo.FMLConfig/CORE]: Incorrect key [earlyWindowLogHelpMessage] was corrected from null to true
+[02:02:46] [main/INFO] [ne.mi.fm.lo.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[02:02:46] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[02:02:46] [main/INFO] [EARLYDISPLAY/]: If this message is the only thing at the bottom of your log before a crash, you probably have a driver issue.
+
+Possible solutions:
+A) Make sure Minecraft is set to prefer high performance graphics in the OS and/or driver control panel
+B) Check for driver updates on the graphics brand's website
+C) Try reinstalling your graphics drivers
+D) If still not working after trying all of the above, ask for further help on the Forge forums or Discord
+
+You can safely ignore this message if the game starts up successfully.
+[02:02:46] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.5
+[02:02:46] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.5 got version 4.5
+[02:02:46] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/workspace/gradle-cache/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
+[02:02:47] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: llvmpipe (LLVM 19.1.7, 256 bits) GL version 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1, Mesa
+[02:02:47] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.4.0/f0c0b352173d0a378cbdcec9cfc4ba65899a721/javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[02:02:47] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.4.0/e862740d8c84d08dbfedea412bef88fe42e727c5/lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[02:02:47] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.4.0/5719b3a297a33f877ed5dde4cb4bd75c859096af/mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[02:02:47] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.4.0/235975dafa4309945b59c56b53f31dc5b65a6051/fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[02:02:48] [main/INFO] [ne.mi.fm.lo.mo.JarInJarDependencyLocator/]: Found 6 dependencies adding them to mods collection
+[02:02:51] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[02:02:51] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /workspace/gradle-cache/caches/forge_gradle/assets, --assetIndex, 5, --width, 1280, --height, 900, --quickPlaySingleplayer, SunlitReforgedTest]
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap mixins.stardew_fishing.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap puffish_skills-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap glitchcore.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap glitchcore.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap sereneseasons.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap sereneseasons.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap CreateNumismatics-common-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap CreateNumismatics-forge-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap backend-flywheel.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:51] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[02:02:52] [main/WARN] [mixin/]: Error loading class: com/scouter/netherdepthsupgrade/entity/entities/LavaFishingBobberEntity (java.lang.ClassNotFoundException: com.scouter.netherdepthsupgrade.entity.entities.LavaFishingBobberEntity)
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.compat.carryon.MixinPickupHandler is not being applied because the mod(s) [CARRYON] are not loaded
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.AccessorMinecraft is being applied because we are in a development environment
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.AccessorPonderUI is being applied because we are in a development environment
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinEmiScreenManager is being applied because we are in a development environment
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinMinecraft is being applied because we are in a development environment
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinPonderIndex is being applied because we are in a development environment
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinPonderLocalization is being applied because we are in a development environment
+[02:02:52] [main/WARN] [mixin/]: Error loading class: dev/emi/emi/screen/EmiScreenManager (java.lang.ClassNotFoundException: dev.emi.emi.screen.EmiScreenManager)
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableEnergyInterfaceBlockEntityMixin is not being applied because the mod(s) [CREATEADDITION] are not loaded
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableEnergyInterfaceBlockEntityMixin$InterfaceEnergyHandlerAccessor is not being applied because the mod(s) [CREATEADDITION] are not loaded
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableFuelInterfaceBlockEntityMixin is not being applied because the mod(s) [RAILWAYS] are not loaded
+[02:02:52] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.self.ComputerBehaviourCapabilities is not being applied because the mod(s) [COMPUTERCRAFT] are not loaded
+[02:02:52] [main/WARN] [mixin/]: Error loading class: com/railwayteam/railways/content/fuel/psi/PortableFuelInterfaceBlockEntity$InterfaceFluidHandler (java.lang.ClassNotFoundException: com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler)
+[02:02:52] [main/WARN] [mixin/]: @Mixin target com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler was not found numismatics.mixins.json:compat.PortableFuelInterfaceBlockEntityMixin$InterfaceFluidHandlerAccessor
+[02:02:52] [main/WARN] [mixin/]: Error loading class: com/railwayteam/railways/content/fuel/psi/PortableFuelInterfaceBlockEntity$InterfaceFluidHandler (java.lang.ClassNotFoundException: com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler)
+[02:02:52] [main/WARN] [mixin/]: @Mixin target com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler was not found numismatics.mixins.json:compat.PortableFuelInterfaceBlockEntityMixin$InterfaceFluidHandlerMixin
+[02:02:52] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[02:02:52] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapAccessor
+[02:02:52] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[02:02:52] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapMixin
+[02:02:52] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.4).
+[02:02:56] [Datafixer Bootstrap/INFO] [mojang/DataFixerBuilder]: 188 Datafixer optimizations took 221 milliseconds
+[02:02:57] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/gradle-cache/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[02:02:57] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/gradle-cache/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[02:02:57] [Render thread/INFO] [mojang/YggdrasilAuthenticationService]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[02:02:57] [Render thread/INFO] [minecraft/Minecraft]: Setting user: Dev
+[02:02:57] [Render thread/INFO] [minecraft/Minecraft]: Backend library: LWJGL version 3.3.1 build 7
+[02:02:57] [Render thread/INFO] [mojang/GlDebug]: OpenGL debug message: id=1, source=SHADER COMPILER, type=ERROR, severity=HIGH, message='0:1(10): error: GLSL 4.60 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.50, 3.30, 4.00, 4.10, 4.20, 4.30, 4.40, 4.50, 1.00 ES, 3.00 ES, 3.10 ES, and 3.20 ES'
+[02:02:58] [modloading-worker-0/INFO] [Create: Numismatics/]: Create: Numismatics v1.1.0 initializing! Commit hash: 56a5907fd34255c8cfd9a37c116800f7a5d92d3a Create version: 6.0.8 on platform: Forge
+[02:02:58] [modloading-worker-0/INFO] [ne.mi.co.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[02:02:58] [modloading-worker-0/INFO] [ne.mi.co.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[02:02:58] [modloading-worker-0/INFO] [Create: Numismatics/]: Registering items for Create: Numismatics
+[02:02:58] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.8 initializing! Commit hash: 1a1a9a2819b4f89f78caec41b55ed8cb222fa24b
+[02:02:58] [modloading-worker-0/INFO] [Create: Numismatics/]: Registering blocks for Create: Numismatics
+[ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1)
+[02:03:01] [Render thread/INFO] [ne.mi.ga.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
+[02:03:01] [Render thread/INFO] [minecraft/ReloadableResourceManager]: Reloading ResourceManager: vanilla, mod_resources
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file /workspace/sunlit/addons/reforged/run/config/stardew_fishing-client.toml is not correct. Correcting
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key isolateAudioCues was corrected from null to its default, false. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key pauseDuringMinigame was corrected from null to its default, true. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file /workspace/sunlit/addons/reforged/run/config/forge-client.toml is not correct. Correcting
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key client.allowMipmapLowering was corrected from null to its default, false. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file /workspace/sunlit/addons/reforged/run/config/aquaculture-common.toml is not correct. Correcting
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options was corrected from null to its default, SimpleCommentedConfig:{}. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Enable weight for fish? Useful for fishing competitions was corrected from null to its default, false. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Should fish be added as compostables for the composter/worm farm? (Based on fish, or weight if enabled) was corrected from null to its default, true. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Should Aquaculture fish be able to be used to breed cats & ocelots? was corrected from null to its default, true. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Amount of Message In A Bottle messages was corrected from null to its default, SimpleCommentedConfig:{}. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Amount of Message In A Bottle messages. Used to add additional custom messages was corrected from null to its default, 29. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Enable debug mode? (Enables additional logging) was corrected from null to its default, false. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.Show Fillet recipes in JEI? was corrected from null to its default, true. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key basic options.How many blocks below sea level Aquaculture fish can spawn was corrected from null to its default, 13. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key neptunium options was corrected from null to its default, SimpleCommentedConfig:{}. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key neptunium options.Enable recipes for Neptunium items? was corrected from null to its default, true. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key neptunium options.Enable recipes for Neptunium armor? was corrected from null to its default, true. 
+[02:03:01] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key neptunium options.Add Neptune's Bounty as loot? was corrected from null to its default, true. 
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList$SubList.get(ArrayList.java:1149)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:282)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:01] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: action
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '+math.sin(query.anim_time*360-90)*5' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:01] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: Walk
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 3
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse 'math.clamp(math.sin(query.anim_time*180-60)*0,0,20)2' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:02] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: flop
+java.lang.Exception: Function '0math.sin' couldn't be found!
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.createFunction(MathBuilder.java:423)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:266)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:308)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '0math.sin(query.anim_time*720+60)*-10' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:02] [Worker-Main-2/INFO] [minecraft/UnihexProvider]: Found unifont_all_no_pua-15.0.06.hex, loading
+[02:03:02] [Yggdrasil Key Fetcher/ERROR] [mojang/YggdrasilServicesKeyInfo]: Failed to request yggdrasil public key
+com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:119) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:91) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.fetch(YggdrasilServicesKeyInfo.java:94) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.lambda$get$1(YggdrasilServicesKeyInfo.java:81) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[?:?] {}
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[?:?] {}
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?] {}
+	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?] {}
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.net.Socket.connect(Socket.java:633) ~[?:?] {}
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:533) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:638) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1307) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1148) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1717) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1641) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:224) ~[?:?] {}
+	at com.mojang.authlib.HttpAuthenticationService.performGetRequest(HttpAuthenticationService.java:140) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:96) ~[authlib-4.0.43.jar%23121!/:?] {}
+	... 9 more
+[02:03:03] [Worker-Main-2/WARN] [minecraft/SpriteLoader]: Texture stardew_fishing:item/cyclops_mahimahi with size 17x16 limits mip level from 4 to 0
+[02:03:04] [Forge Version Check/INFO] [ne.mi.fm.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[02:03:06] [Worker-Main-2/INFO] [PonderIndex/]: Registering Ponder Scenes took 180.1 ms
+[02:03:06] [Worker-Main-2/INFO] [PonderIndex/]: Registering Ponder Tags took 3.027 ms
+[02:03:08] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:item.goat_horn.play
+[02:03:08] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+[02:03:08] [Render thread/ERROR] [minecraft/SoundEngine]: Error starting SoundSystem. Turning off sounds & music
+java.lang.IllegalStateException: Failed to open OpenAL device
+	at com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:283) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.audio.Library.init(Library.java:153) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:104) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:96) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:125) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:40) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:13) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?] {}
+	at net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$new$3(SimpleReloadInstance.java:69) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:156) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,re:computing_frames,re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:130) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:115) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1106) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[02:03:08] [Render thread/WARN] [minecraft/ShaderInstance]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[02:03:08] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[02:03:08] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:overworld
+[02:03:08] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:the_nether
+[02:03:08] [Render thread/INFO] [flywheel/backend/shaders/]: Loaded 77 shader sources in 17.545 ms
+[02:03:08] [Render thread/INFO] [co.si.cr.Create/]: Loaded 56 train hat configurations.
+[02:03:08] [Render thread/INFO] [co.si.cr.Create/]: Created 157 recipes which will be injected into the game
+[02:03:08] [Render thread/INFO] [co.si.cr.Create/]: Created 0 tags which will be injected into the game
+[02:03:08] [Render thread/WARN] [ne.mi.co.ForgeHooks/WP]: The following mods have version differences that were not resolved:
+forge (version 47.3.0 -> 47.4.0)
+Things may not work well.
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: stardew_fishing:fish_display Expected: 1003 Got: 1660
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:volt_detector Expected: 1004 Got: 1661
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:nautical_lamp Expected: 1005 Got: 1662
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:sea_boom Expected: 1006 Got: 1663
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_eggs Expected: 1007 Got: 1664
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_eggs Expected: 1008 Got: 1665
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:copper_antenna Expected: 1009 Got: 1666
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:chiseled_crimson_bricks Expected: 1010 Got: 1667
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_bricks Expected: 1011 Got: 1668
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_brick_stairs Expected: 1012 Got: 1669
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_brick_slab Expected: 1013 Got: 1670
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_brick_wall Expected: 1014 Got: 1671
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_tiles Expected: 1015 Got: 1672
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_tile_stairs Expected: 1016 Got: 1673
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_tile_slab Expected: 1017 Got: 1674
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:crimson_tile_wall Expected: 1018 Got: 1675
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:chiseled_relucent_bricks Expected: 1019 Got: 1676
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_bricks Expected: 1020 Got: 1677
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_brick_stairs Expected: 1021 Got: 1678
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_brick_slab Expected: 1022 Got: 1679
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_brick_wall Expected: 1023 Got: 1680
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_tiles Expected: 1024 Got: 1681
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_tile_stairs Expected: 1025 Got: 1682
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_tile_slab Expected: 1026 Got: 1683
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: unusualfishmod:relucent_tile_wall Expected: 1027 Got: 1684
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: sereneseasons:season_sensor Expected: 1028 Got: 1685
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: geckolib:gecko_habitat Expected: 1036 Got: 1686
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: geckolib:fertilizer Expected: 1037 Got: 1687
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: aquaculture:farmland Expected: 1045 Got: 1688
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: aquaculture:neptunium_block Expected: 1046 Got: 1689
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: aquaculture:neptunes_bounty Expected: 1047 Got: 1690
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: aquaculture:tackle_box Expected: 1048 Got: 1691
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:block: Object did not get ID it asked for. Name: aquaculture:worm_farm Expected: 1049 Got: 1692
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:treasure_bobber Expected: 1258 Got: 2025
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:quality_bobber Expected: 1259 Got: 2026
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:goliath_grouper Expected: 1260 Got: 2027
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:vampire_payara Expected: 1261 Got: 2028
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:golden_snook Expected: 1262 Got: 2029
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:sabretoothed_tigerfish Expected: 1263 Got: 2030
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:chromatic_arapaima Expected: 1264 Got: 2031
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:cyclops_mahimahi Expected: 1265 Got: 2032
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:storm_tarpon Expected: 1266 Got: 2033
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:blazing_oarfish Expected: 1267 Got: 2034
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:crystalline_snakehead Expected: 1268 Got: 2035
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:demon_gar Expected: 1269 Got: 2036
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: stardew_fishing:fish_display Expected: 1270 Got: 2037
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_eyelash Expected: 1271 Got: 2038
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_spindlefish Expected: 1272 Got: 2039
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_snowflake Expected: 1273 Got: 2040
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_aero_mono Expected: 1274 Got: 2041
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_picklefish Expected: 1275 Got: 2042
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_amber_goby Expected: 1276 Got: 2043
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_beaked_herring Expected: 1277 Got: 2044
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_blind_sailfin Expected: 1278 Got: 2045
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_circus_fish Expected: 1279 Got: 2046
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_copperflame_anthias Expected: 1280 Got: 2047
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_demon_herring Expected: 1281 Got: 2048
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_drooping_gourami Expected: 1282 Got: 2049
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_duality_damselfish Expected: 1283 Got: 2050
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_forkfish Expected: 1284 Got: 2051
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_hatchetfish Expected: 1285 Got: 2052
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_sneep_snorp Expected: 1286 Got: 2053
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_triple_twirl_pleco Expected: 1287 Got: 2054
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_aero_mono_stick Expected: 1288 Got: 2055
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:cooked_aero_mono_stick Expected: 1289 Got: 2056
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_sailor_barb Expected: 1290 Got: 2057
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_bark_angelfish Expected: 1291 Got: 2058
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_blizzard_tuna Expected: 1292 Got: 2059
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:cooked_blizzard_tuna Expected: 1293 Got: 2060
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_shockcat Expected: 1294 Got: 2061
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:cooked_shockcat Expected: 1295 Got: 2062
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_lobster Expected: 1296 Got: 2063
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:cooked_lobster Expected: 1297 Got: 2064
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:raw_mossthorn Expected: 1298 Got: 2065
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:cooked_mossthorn Expected: 1299 Got: 2066
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:cooked_unusual_fillet Expected: 1300 Got: 2067
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:lobster_roll Expected: 1301 Got: 2068
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:odd_fishsticks Expected: 1302 Got: 2069
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:pickledish Expected: 1303 Got: 2070
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:strange_broth Expected: 1304 Got: 2071
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:unusual_sandwich Expected: 1305 Got: 2072
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:weird_goldfish Expected: 1306 Got: 2073
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:tendril Expected: 1307 Got: 2074
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:ripper_tooth Expected: 1308 Got: 2075
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:lobster_spike Expected: 1309 Got: 2076
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_shard Expected: 1310 Got: 2077
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_shard Expected: 1311 Got: 2078
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:depth_claw Expected: 1312 Got: 2079
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:depth_scythe Expected: 1313 Got: 2080
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:ripsaw Expected: 1314 Got: 2081
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:fluvial_shell Expected: 1315 Got: 2082
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:clement_shell Expected: 1316 Got: 2083
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:thunderous_shell Expected: 1317 Got: 2084
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:prismarine_spear Expected: 1318 Got: 2085
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:weapon_parts Expected: 1319 Got: 2086
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:ancient_weapon_smithing_template Expected: 1320 Got: 2087
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:music_disc_seafoam Expected: 1321 Got: 2088
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:aero_mono_bucket Expected: 1322 Got: 2089
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:duality_damselfish_bucket Expected: 1323 Got: 2090
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:drooping_gourami_bucket Expected: 1324 Got: 2091
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:mossthorn_bucket Expected: 1325 Got: 2092
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sailor_barb_bucket Expected: 1326 Got: 2093
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:triple_twirl_pleco_bucket Expected: 1327 Got: 2094
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:spindlefish_bucket Expected: 1328 Got: 2095
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:ripper_bucket Expected: 1329 Got: 2096
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sea_spider_bucket Expected: 1330 Got: 2097
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:clownthorn_shark_bucket Expected: 1331 Got: 2098
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sneepsnorp_bucket Expected: 1332 Got: 2099
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:blackcap_snail_bucket Expected: 1333 Got: 2100
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:brick_snail_bucket Expected: 1334 Got: 2101
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:deep_crawler_bucket Expected: 1335 Got: 2102
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:wizard_jelly_bucket Expected: 1336 Got: 2103
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:porcupine_lobsta_bucket Expected: 1337 Got: 2104
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:freshwater_mantis_bucket Expected: 1338 Got: 2105
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:bark_angelfish_bucket Expected: 1339 Got: 2106
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:lobed_skipper_bucket Expected: 1340 Got: 2107
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:beaked_herring_bucket Expected: 1341 Got: 2108
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:picklefish_bucket Expected: 1342 Got: 2109
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:blind_sailfin_bucket Expected: 1343 Got: 2110
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:demon_herring_bucket Expected: 1344 Got: 2111
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:amber_goby_bucket Expected: 1345 Got: 2112
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:hatchet_fish_bucket Expected: 1346 Got: 2113
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:copperflame_bucket Expected: 1347 Got: 2114
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:squoddle_bucket Expected: 1348 Got: 2115
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sea_mosquito_bucket Expected: 1349 Got: 2116
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:forkfish_bucket Expected: 1350 Got: 2117
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:spoon_shark_bucket Expected: 1351 Got: 2118
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:coral_skrimp_bucket Expected: 1352 Got: 2119
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:circus_fish_bucket Expected: 1353 Got: 2120
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:eyelash_fish_bucket Expected: 1354 Got: 2121
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:snowflake_tail_fish_bucket Expected: 1355 Got: 2122
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimsonshell_squid_bucket Expected: 1356 Got: 2123
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:volt_angler_bucket Expected: 1357 Got: 2124
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:blizzardfin_bucket Expected: 1358 Got: 2125
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:muddytop_snail_bucket Expected: 1359 Got: 2126
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:shockcat_bucket Expected: 1360 Got: 2127
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:pinkfin_idol_bucket Expected: 1361 Got: 2128
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:tiger_puffer_bucket Expected: 1362 Got: 2129
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:stout_bichir_bucket Expected: 1363 Got: 2130
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:tribble_bucket Expected: 1364 Got: 2131
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:trumpet_squid_bucket Expected: 1365 Got: 2132
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:aero_mono_spawn_egg Expected: 1366 Got: 2133
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:pinkfin_spawn_egg Expected: 1367 Got: 2134
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:roughback_guitarfish_spawn_egg Expected: 1368 Got: 2135
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:clownthorn_shark_spawn_egg Expected: 1369 Got: 2136
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:duality_damselfish_spawn_egg Expected: 1370 Got: 2137
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:drooping_gourami_spawn_egg Expected: 1371 Got: 2138
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:mossthorn_spawn_egg Expected: 1372 Got: 2139
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:rhino_tetra_spawn_egg Expected: 1373 Got: 2140
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:ripper_spawn_egg Expected: 1374 Got: 2141
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sailor_barb_spawn_egg Expected: 1375 Got: 2142
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sea_pancake_spawn_egg Expected: 1376 Got: 2143
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sea_spider_spawn_egg Expected: 1377 Got: 2144
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:spindlefish_spawn_egg Expected: 1378 Got: 2145
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:triple_twirl_pleco_spawn_egg Expected: 1379 Got: 2146
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:brick_snail_spawn_egg Expected: 1380 Got: 2147
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:zebra_cornetfish_spawn_egg Expected: 1381 Got: 2148
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:tiger_puffer_spawn_egg Expected: 1382 Got: 2149
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:blackcap_snail_spawn_egg Expected: 1383 Got: 2150
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sneepsnorp_spawn_egg Expected: 1384 Got: 2151
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:deep_crawler_spawn_egg Expected: 1385 Got: 2152
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:wizard_jelly_spawn_egg Expected: 1386 Got: 2153
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:porcupine_lobsta_spawn_egg Expected: 1387 Got: 2154
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:trumpet_squid_spawn_egg Expected: 1388 Got: 2155
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:freshwater_mantis_spawn_egg Expected: 1389 Got: 2156
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:bark_angelfish_spawn_egg Expected: 1390 Got: 2157
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:shockcat_spawn_egg Expected: 1391 Got: 2158
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:muddytop_snail_spawn_egg Expected: 1392 Got: 2159
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:kalappa_spawn_egg Expected: 1393 Got: 2160
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:lobed_skipper_spawn_egg Expected: 1394 Got: 2161
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:stout_bichir_spawn_egg Expected: 1395 Got: 2162
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:beaked_herring_spawn_egg Expected: 1396 Got: 2163
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:picklefish_spawn_egg Expected: 1397 Got: 2164
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:blind_sailfin_spawn_egg Expected: 1398 Got: 2165
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:demon_herring_spawn_egg Expected: 1399 Got: 2166
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:amber_goby_spawn_egg Expected: 1400 Got: 2167
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:hatchet_fish_spawn_egg Expected: 1401 Got: 2168
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:copperflame_spawn_egg Expected: 1402 Got: 2169
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:root_spawn_egg Expected: 1403 Got: 2170
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:celestial_fish_spawn_egg Expected: 1404 Got: 2171
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:gnasher_spawn_egg Expected: 1405 Got: 2172
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:prawn_spawn_egg Expected: 1406 Got: 2173
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:squoddle_spawn_egg Expected: 1407 Got: 2174
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sea_mosquito_spawn_egg Expected: 1408 Got: 2175
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:forkfish_spawn_egg Expected: 1409 Got: 2176
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:spoon_shark_spawn_egg Expected: 1410 Got: 2177
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:coral_skrimp_spawn_egg Expected: 1411 Got: 2178
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:circus_fish_spawn_egg Expected: 1412 Got: 2179
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:blizzardfin_spawn_egg Expected: 1413 Got: 2180
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:eyelash_fish_spawn_egg Expected: 1414 Got: 2181
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:snowflake_tail_fish_spawn_egg Expected: 1415 Got: 2182
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:tiger_jungle_shark_spawn_egg Expected: 1416 Got: 2183
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimsonshell_squid_spawn_egg Expected: 1417 Got: 2184
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:volt_angler_spawn_egg Expected: 1418 Got: 2185
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:tribble_spawn_egg Expected: 1419 Got: 2186
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:volt_detector Expected: 1420 Got: 2187
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:nautical_lamp Expected: 1421 Got: 2188
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:sea_boom Expected: 1422 Got: 2189
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_eggs Expected: 1423 Got: 2190
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_eggs Expected: 1424 Got: 2191
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:copper_antenna Expected: 1425 Got: 2192
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:chiseled_crimson_bricks Expected: 1426 Got: 2193
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_bricks Expected: 1427 Got: 2194
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_brick_stairs Expected: 1428 Got: 2195
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_brick_slab Expected: 1429 Got: 2196
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_brick_wall Expected: 1430 Got: 2197
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_tiles Expected: 1431 Got: 2198
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_tile_stairs Expected: 1432 Got: 2199
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_tile_slab Expected: 1433 Got: 2200
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:crimson_tile_wall Expected: 1434 Got: 2201
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:chiseled_relucent_bricks Expected: 1435 Got: 2202
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_bricks Expected: 1436 Got: 2203
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_brick_stairs Expected: 1437 Got: 2204
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_brick_slab Expected: 1438 Got: 2205
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_brick_wall Expected: 1439 Got: 2206
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_tiles Expected: 1440 Got: 2207
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_tile_stairs Expected: 1441 Got: 2208
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_tile_slab Expected: 1442 Got: 2209
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: unusualfishmod:relucent_tile_wall Expected: 1443 Got: 2210
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: sereneseasons:ss_icon Expected: 1444 Got: 2211
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: sereneseasons:calendar Expected: 1445 Got: 2212
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: sereneseasons:season_sensor Expected: 1446 Got: 2213
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:gecko_habitat Expected: 1512 Got: 2214
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:fertilizer Expected: 1513 Got: 2215
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:jack_in_the_box Expected: 1514 Got: 2216
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:wolf_armor_helmet Expected: 1515 Got: 2217
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:wolf_armor_chestplate Expected: 1516 Got: 2218
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:wolf_armor_leggings Expected: 1517 Got: 2219
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:wolf_armor_boots Expected: 1518 Got: 2220
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:gecko_armor_helmet Expected: 1519 Got: 2221
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:gecko_armor_chestplate Expected: 1520 Got: 2222
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:gecko_armor_leggings Expected: 1521 Got: 2223
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:gecko_armor_boots Expected: 1522 Got: 2224
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:bat_spawn_egg Expected: 1523 Got: 2225
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:bike_spawn_egg Expected: 1524 Got: 2226
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:race_car_spawn_egg Expected: 1525 Got: 2227
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:parasite_spawn_egg Expected: 1526 Got: 2228
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:mutant_zombie_spawn_egg Expected: 1527 Got: 2229
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:fake_glass_spawn_egg Expected: 1528 Got: 2230
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:cool_kid_spawn_egg Expected: 1529 Got: 2231
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: geckolib:gremlin_spawn_egg Expected: 1530 Got: 2232
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:iron_fishing_rod Expected: 1534 Got: 2233
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:gold_fishing_rod Expected: 1535 Got: 2234
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:diamond_fishing_rod Expected: 1536 Got: 2235
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_fishing_rod Expected: 1537 Got: 2236
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:worm Expected: 1538 Got: 2237
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:fishing_line Expected: 1539 Got: 2238
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:bobber Expected: 1540 Got: 2239
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_nugget Expected: 1541 Got: 2240
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_ingot Expected: 1542 Got: 2241
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_pickaxe Expected: 1543 Got: 2242
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_shovel Expected: 1544 Got: 2243
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_axe Expected: 1545 Got: 2244
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_hoe Expected: 1546 Got: 2245
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_sword Expected: 1547 Got: 2246
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_bow Expected: 1548 Got: 2247
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_helmet Expected: 1549 Got: 2248
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_chestplate Expected: 1550 Got: 2249
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_leggings Expected: 1551 Got: 2250
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_boots Expected: 1552 Got: 2251
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:wooden_fillet_knife Expected: 1553 Got: 2252
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:stone_fillet_knife Expected: 1554 Got: 2253
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:iron_fillet_knife Expected: 1555 Got: 2254
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:gold_fillet_knife Expected: 1556 Got: 2255
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:diamond_fillet_knife Expected: 1557 Got: 2256
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_fillet_knife Expected: 1558 Got: 2257
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:driftwood Expected: 1559 Got: 2258
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:tin_can Expected: 1560 Got: 2259
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:message_in_a_bottle Expected: 1561 Got: 2260
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:box Expected: 1562 Got: 2261
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:lockbox Expected: 1563 Got: 2262
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:treasure_chest Expected: 1564 Got: 2263
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:algae Expected: 1565 Got: 2264
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:fish_bones Expected: 1566 Got: 2265
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:fish_fillet_raw Expected: 1567 Got: 2266
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:fish_fillet_cooked Expected: 1568 Got: 2267
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:turtle_soup Expected: 1569 Got: 2268
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:sushi Expected: 1570 Got: 2269
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:box_turtle_spawn_egg Expected: 1571 Got: 2270
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:arrau_turtle_spawn_egg Expected: 1572 Got: 2271
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:starshell_turtle_spawn_egg Expected: 1573 Got: 2272
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:atlantic_cod_bucket Expected: 1574 Got: 2273
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:atlantic_cod Expected: 1575 Got: 2274
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:blackfish_bucket Expected: 1576 Got: 2275
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:blackfish Expected: 1577 Got: 2276
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:pacific_halibut_bucket Expected: 1578 Got: 2277
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:pacific_halibut Expected: 1579 Got: 2278
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:atlantic_halibut_bucket Expected: 1580 Got: 2279
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:atlantic_halibut Expected: 1581 Got: 2280
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:atlantic_herring_bucket Expected: 1582 Got: 2281
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:atlantic_herring Expected: 1583 Got: 2282
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:pink_salmon_bucket Expected: 1584 Got: 2283
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:pink_salmon Expected: 1585 Got: 2284
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:pollock_bucket Expected: 1586 Got: 2285
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:pollock Expected: 1587 Got: 2286
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:rainbow_trout_bucket Expected: 1588 Got: 2287
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:rainbow_trout Expected: 1589 Got: 2288
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:bayad_bucket Expected: 1590 Got: 2289
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:bayad Expected: 1591 Got: 2290
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:boulti_bucket Expected: 1592 Got: 2291
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:boulti Expected: 1593 Got: 2292
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:capitaine_bucket Expected: 1594 Got: 2293
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:capitaine Expected: 1595 Got: 2294
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:synodontis_bucket Expected: 1596 Got: 2295
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:synodontis Expected: 1597 Got: 2296
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:smallmouth_bass_bucket Expected: 1598 Got: 2297
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:smallmouth_bass Expected: 1599 Got: 2298
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:bluegill_bucket Expected: 1600 Got: 2299
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:bluegill Expected: 1601 Got: 2300
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:brown_trout_bucket Expected: 1602 Got: 2301
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:brown_trout Expected: 1603 Got: 2302
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:carp_bucket Expected: 1604 Got: 2303
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:carp Expected: 1605 Got: 2304
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:catfish_bucket Expected: 1606 Got: 2305
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:catfish Expected: 1607 Got: 2306
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:gar_bucket Expected: 1608 Got: 2307
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:gar Expected: 1609 Got: 2308
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:minnow_bucket Expected: 1610 Got: 2309
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:minnow Expected: 1611 Got: 2310
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:muskellunge_bucket Expected: 1612 Got: 2311
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:muskellunge Expected: 1613 Got: 2312
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:perch_bucket Expected: 1614 Got: 2313
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:perch Expected: 1615 Got: 2314
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:arapaima_bucket Expected: 1616 Got: 2315
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:arapaima Expected: 1617 Got: 2316
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:piranha_bucket Expected: 1618 Got: 2317
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:piranha Expected: 1619 Got: 2318
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:tambaqui_bucket Expected: 1620 Got: 2319
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:tambaqui Expected: 1621 Got: 2320
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:brown_shrooma_bucket Expected: 1622 Got: 2321
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:brown_shrooma Expected: 1623 Got: 2322
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:red_shrooma_bucket Expected: 1624 Got: 2323
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:red_shrooma Expected: 1625 Got: 2324
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:jellyfish_bucket Expected: 1626 Got: 2325
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:jellyfish Expected: 1627 Got: 2326
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:red_grouper_bucket Expected: 1628 Got: 2327
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:red_grouper Expected: 1629 Got: 2328
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:tuna_bucket Expected: 1630 Got: 2329
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:tuna Expected: 1631 Got: 2330
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:leech Expected: 1632 Got: 2331
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:goldfish Expected: 1633 Got: 2332
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:box_turtle Expected: 1634 Got: 2333
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:arrau_turtle Expected: 1635 Got: 2334
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:starshell_turtle Expected: 1636 Got: 2335
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:oak_fish_mount Expected: 1637 Got: 2336
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:spruce_fish_mount Expected: 1638 Got: 2337
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:birch_fish_mount Expected: 1639 Got: 2338
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:jungle_fish_mount Expected: 1640 Got: 2339
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:acacia_fish_mount Expected: 1641 Got: 2340
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:dark_oak_fish_mount Expected: 1642 Got: 2341
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:farmland Expected: 1643 Got: 2342
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunium_block Expected: 1644 Got: 2343
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:neptunes_bounty Expected: 1645 Got: 2344
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:tackle_box Expected: 1646 Got: 2345
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:worm_farm Expected: 1647 Got: 2346
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:iron_hook Expected: 1648 Got: 2347
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:gold_hook Expected: 1649 Got: 2348
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:diamond_hook Expected: 1650 Got: 2349
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:light_hook Expected: 1651 Got: 2350
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:heavy_hook Expected: 1652 Got: 2351
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:double_hook Expected: 1653 Got: 2352
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:redstone_hook Expected: 1654 Got: 2353
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:note_hook Expected: 1655 Got: 2354
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: aquaculture:nether_star_hook Expected: 1656 Got: 2355
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:dwop Expected: 1476 Got: 1557
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:dwop_reverse Expected: 1477 Got: 1558
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:dwop_loud Expected: 1478 Got: 1559
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:dwop_reverse_loud Expected: 1479 Got: 1560
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:equip Expected: 1480 Got: 1561
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:unequip Expected: 1481 Got: 1562
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:fish_escape Expected: 1482 Got: 1563
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:fish_bite Expected: 1483 Got: 1564
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:fish_hit Expected: 1484 Got: 1565
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:pull_item Expected: 1485 Got: 1566
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:reel_creak Expected: 1486 Got: 1567
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:reel_fast Expected: 1487 Got: 1568
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:reel_slow Expected: 1488 Got: 1569
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:open_chest Expected: 1489 Got: 1570
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:open_chest_golden Expected: 1490 Got: 1571
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: stardew_fishing:chest_get Expected: 1491 Got: 1572
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:crab_chatter Expected: 1492 Got: 1573
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:crab_scuttling Expected: 1493 Got: 1574
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:deep_water Expected: 1494 Got: 1575
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:gnasher_idle Expected: 1495 Got: 1576
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:evil_chattering Expected: 1496 Got: 1577
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:small_enemy Expected: 1497 Got: 1578
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:sawing Expected: 1498 Got: 1579
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: unusualfishmod:seafoam Expected: 1499 Got: 1580
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: geckolib:jack_in_the_box_music Expected: 1500 Got: 1581
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:tackle_box_open Expected: 1503 Got: 1582
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:tackle_box_close Expected: 1504 Got: 1583
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:worm_farm_empty Expected: 1505 Got: 1584
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_mount_removed Expected: 1506 Got: 1585
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_mount_broken Expected: 1507 Got: 1586
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_mount_placed Expected: 1508 Got: 1587
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_mount_add_item Expected: 1509 Got: 1588
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:bobber_bait Expected: 1510 Got: 1589
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:bobber_land_lava Expected: 1511 Got: 1590
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:jellyfish_flop Expected: 1512 Got: 1591
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_flop Expected: 1513 Got: 1592
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_ambient Expected: 1514 Got: 1593
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_death Expected: 1515 Got: 1594
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:fish_hurt Expected: 1516 Got: 1595
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:jellyfish_collide Expected: 1517 Got: 1596
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:bottle_open Expected: 1518 Got: 1597
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:sound_event: Object did not get ID it asked for. Name: aquaculture:bobber_note_catch Expected: 1519 Got: 1598
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:enchantment: Object did not get ID it asked for. Name: unusualfishmod:unusual_catch Expected: 39 Got: 41
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:duality_damselfish Expected: 124 Got: 134
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:mossthorn Expected: 125 Got: 135
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:ripper Expected: 126 Got: 136
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:spindlefish Expected: 127 Got: 137
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:rhino_tetra Expected: 128 Got: 138
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:drooping_gourami Expected: 129 Got: 139
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:sailor_barb Expected: 130 Got: 140
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:sea_spider Expected: 131 Got: 141
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:triple_twirl_pleco Expected: 132 Got: 142
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:aero_mono Expected: 133 Got: 143
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:clownthorn_shark Expected: 134 Got: 144
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:roughback_guitarfish Expected: 135 Got: 145
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:sea_pancake Expected: 136 Got: 146
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:pinkfin Expected: 137 Got: 147
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:brick_snail Expected: 138 Got: 148
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:zebra_cornetfish Expected: 139 Got: 149
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:tiger_puffer Expected: 140 Got: 150
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:blackcap_snail Expected: 141 Got: 151
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:sneep_snorp Expected: 142 Got: 152
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:deep_crawler Expected: 143 Got: 153
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:wizard_jelly Expected: 144 Got: 154
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:porcupine_lobsta Expected: 145 Got: 155
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:trumpet_squid Expected: 146 Got: 156
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:freshwater_mantis Expected: 147 Got: 157
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:bark_angelfish Expected: 148 Got: 158
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:shockcat Expected: 149 Got: 159
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:muddytop Expected: 150 Got: 160
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:kalappa Expected: 151 Got: 161
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:skipper Expected: 152 Got: 162
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:stout_bichir Expected: 153 Got: 163
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:beaked_herring Expected: 154 Got: 164
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:picklefish Expected: 155 Got: 165
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:blindsailfin Expected: 156 Got: 166
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:demon_herring Expected: 157 Got: 167
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:amber_goby Expected: 158 Got: 168
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:hatchet_fish Expected: 159 Got: 169
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:copperflame Expected: 160 Got: 170
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:rootball Expected: 161 Got: 171
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:celestial Expected: 162 Got: 172
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:gnasher Expected: 163 Got: 173
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:prawn Expected: 164 Got: 174
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:squoddle Expected: 165 Got: 175
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:sea_mosquito Expected: 166 Got: 176
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:forkfish Expected: 167 Got: 177
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:spoon_shark Expected: 168 Got: 178
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:coral_skrimp Expected: 169 Got: 179
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:circus Expected: 170 Got: 180
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:blizzardfin Expected: 171 Got: 181
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:snowflaketail Expected: 172 Got: 182
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:eyelash Expected: 173 Got: 183
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:jungleshark Expected: 174 Got: 184
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:crimsonshell Expected: 175 Got: 185
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:volt_angler Expected: 176 Got: 186
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:tribble Expected: 177 Got: 187
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:abyssal_blast Expected: 178 Got: 188
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:prismarine_spear Expected: 179 Got: 189
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:sea_spike Expected: 180 Got: 190
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: unusualfishmod:falling_tree Expected: 181 Got: 191
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:bat Expected: 182 Got: 192
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:bike Expected: 183 Got: 193
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:race_car Expected: 184 Got: 194
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:parasite Expected: 185 Got: 195
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:mutant_zombie Expected: 186 Got: 196
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:fake_glass Expected: 187 Got: 197
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:cool_kid Expected: 188 Got: 198
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: geckolib:gremlin Expected: 189 Got: 199
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:bobber Expected: 191 Got: 200
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:water_arrow Expected: 192 Got: 201
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:spectral_water_arrow Expected: 193 Got: 202
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:box_turtle Expected: 194 Got: 203
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:arrau_turtle Expected: 195 Got: 204
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:starshell_turtle Expected: 196 Got: 205
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:atlantic_cod Expected: 197 Got: 206
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:blackfish Expected: 198 Got: 207
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:pacific_halibut Expected: 199 Got: 208
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:atlantic_halibut Expected: 200 Got: 209
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:atlantic_herring Expected: 201 Got: 210
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:pink_salmon Expected: 202 Got: 211
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:pollock Expected: 203 Got: 212
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:rainbow_trout Expected: 204 Got: 213
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:bayad Expected: 205 Got: 214
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:boulti Expected: 206 Got: 215
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:capitaine Expected: 207 Got: 216
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:synodontis Expected: 208 Got: 217
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:smallmouth_bass Expected: 209 Got: 218
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:bluegill Expected: 210 Got: 219
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:brown_trout Expected: 211 Got: 220
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:carp Expected: 212 Got: 221
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:catfish Expected: 213 Got: 222
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:gar Expected: 214 Got: 223
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:minnow Expected: 215 Got: 224
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:muskellunge Expected: 216 Got: 225
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:perch Expected: 217 Got: 226
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:arapaima Expected: 218 Got: 227
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:piranha Expected: 219 Got: 228
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:tambaqui Expected: 220 Got: 229
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:brown_shrooma Expected: 221 Got: 230
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:red_shrooma Expected: 222 Got: 231
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:jellyfish Expected: 223 Got: 232
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:red_grouper Expected: 224 Got: 233
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:tuna Expected: 225 Got: 234
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:oak_fish_mount Expected: 226 Got: 235
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:spruce_fish_mount Expected: 227 Got: 236
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:birch_fish_mount Expected: 228 Got: 237
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:jungle_fish_mount Expected: 229 Got: 238
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:acacia_fish_mount Expected: 230 Got: 239
+[02:03:08] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: aquaculture:dark_oak_fish_mount Expected: 231 Got: 240
+[02:03:09] [Forge Version Check/WARN] [ne.mi.fm.VersionChecker/]: Failed to process update information
+java.net.ConnectException: null
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:900) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.openUrlString(VersionChecker.java:142) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.process(VersionChecker.java:180) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+	at java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {re:mixin}
+	at net.minecraftforge.fml.VersionChecker$1.run(VersionChecker.java:117) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1107) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:203) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:238) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:214) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:195) ~[?:?] {}
+	at sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:760) ~[?:?] {}
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:848) ~[?:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$0(PlainHttpConnection.java:187) ~[java.net.http:?] {}
+	at java.security.AccessController.doPrivileged(AccessController.java:569) ~[?:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:189) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:238) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:214) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+[02:03:10] [Render thread/WARN] [minecraft/LootDataManager]: Found loot table element validation problem in {loot_tables:netherdepthsupgrade:gameplay/nether_fishing}.pools[0].entries[1]: Unknown loot table called netherdepthsupgrade:gameplay/nether_fishing/fish
+[02:03:10] [Render thread/WARN] [minecraft/LootDataManager]: Found loot table element validation problem in {loot_tables:netherdepthsupgrade:gameplay/nether_fishing}.pools[0].entries[0]: Unknown loot table called netherdepthsupgrade:gameplay/nether_fishing/junk
+[02:03:10] [Render thread/INFO] [minecraft/RecipeManager]: Loaded 22 recipes
+[02:03:10] [Render thread/INFO] [minecraft/AdvancementList]: Loaded 2510 advancements
+[02:03:10] [Render thread/INFO] [de.su.re.SunlitReforged/]: Loaded Sunlit potential rules: 19 options
+[02:03:11] [Server thread/INFO] [minecraft/IntegratedServer]: Starting integrated minecraft server version 1.20.1
+[02:03:11] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file ./saves/SunlitReforgedTest/serverconfig/stardew_fishing-server.toml is not correct. Correcting
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key quality1Threshold was corrected from null to its default, 0.75. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key quality2Threshold was corrected from null to its default, 0.9. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key quality3Threshold was corrected from null to its default, 1.0. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key quality1Multiplier was corrected from null to its default, 1.5. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key quality2Multiplier was corrected from null to its default, 2.5. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key quality3Multiplier was corrected from null to its default, 4.0. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key biteTimeMultiplier was corrected from null to its default, 0.8. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key treasureChestChance was corrected from null to its default, 0.15. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key goldenChestChance was corrected from null to its default, 0.1. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key inventoryBobberEquipping was corrected from null to its default, true. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key legendaryFishFlashing was corrected from null to its default, true. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key legendaryFishChance was corrected from null to its default, 0.01. 
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file ./saves/SunlitReforgedTest/serverconfig/forge-server.toml is not correct. Correcting
+[02:03:11] [Server thread/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key server.useItemWithDurationZero was corrected from null to its default, false. 
+[02:03:14] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:17] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:18] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[02:03:18] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 44%
+[02:03:19] [Server thread/INFO] [ne.mi.se.pe.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[02:03:19] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 4927 ms
+[02:03:19] [Server thread/INFO] [puffish_skills/]: [puffish_skills] Mod configuration loaded successfully!
+[02:03:19] [Server thread/INFO] [minecraft/IntegratedServer]: Changing view distance to 12, from 10
+[02:03:19] [Server thread/INFO] [minecraft/IntegratedServer]: Changing simulation distance to 12, from 0
+[02:03:19] [Render thread/WARN] [io.ne.ut.in.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[02:03:20] [Netty Local Client IO #0/INFO] [ne.mi.ne.NetworkHooks/]: Connected to a modded server.
+[02:03:20] [Server thread/INFO] [minecraft/PlayerList]: Dev[local:E:a201dc26] logged in with entity id 207 at (0.5, 81.0, -14.5)
+[02:03:20] [Server thread/INFO] [minecraft/MinecraftServer]: Dev joined the game
+[02:03:20] [Render thread/INFO] [flywheel/]: Started 1 worker threads
+[02:03:20] [Render thread/WARN] [minecraft/ClientPacketListener]: Unknown custom packet identifier: stardew_fishing:packets
+[02:03:21] [Render thread/WARN] [minecraft/ClientPacketListener]: Ignoring chat session from Dev due to missing Services public key
+[02:03:21] [Render thread/INFO] [minecraft/AdvancementList]: Loaded 37 advancements
+[02:03:23] [Render thread/INFO] [minecraft/ReloadableResourceManager]: Reloading ResourceManager: vanilla, mod_resources
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList$SubList.get(ArrayList.java:1149)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:282)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '+math.sin(query.anim_time*360-90)*5' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:23] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: action
+[02:03:23] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: Walk
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 3
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse 'math.clamp(math.sin(query.anim_time*180-60)*0,0,20)2' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:23] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: flop
+java.lang.Exception: Function '0math.sin' couldn't be found!
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.createFunction(MathBuilder.java:423)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:266)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:308)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '0math.sin(query.anim_time*720+60)*-10' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[02:03:23] [Server thread/INFO] [minecraft/IntegratedServer]: Saving and pausing game...
+[02:03:23] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[02:03:23] [Worker-Main-1/INFO] [minecraft/UnihexProvider]: Found unifont_all_no_pua-15.0.06.hex, loading
+[02:03:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden_grand
+[02:03:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_citadel
+[02:03:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden
+[02:03:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[02:03:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[02:03:26] [Worker-Main-2/WARN] [mojang/YggdrasilMinecraftSessionService]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@258378a4[id=380df991-f603-344c-a090-369bad2a924a,name=Dev,properties={},legacy=false]
+com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:119) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:91) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:175) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:51) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:48) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3533) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2282) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2159) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2049) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3966) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3989) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4950) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:4956) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:149) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at net.minecraft.client.Minecraft.getProfileProperties(Minecraft.java:2438) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.resources.SkinManager.lambda$registerSkins$4(SkinManager.java:107) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1395) ~[?:?] {}
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?] {}
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?] {}
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?] {}
+	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?] {}
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.net.Socket.connect(Socket.java:633) ~[?:?] {}
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:533) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:638) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1307) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1148) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1717) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1641) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:224) ~[?:?] {}
+	at com.mojang.authlib.HttpAuthenticationService.performGetRequest(HttpAuthenticationService.java:140) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:96) ~[authlib-4.0.43.jar%23121!/:?] {}
+	... 21 more
+[02:03:26] [Worker-Main-2/WARN] [minecraft/SpriteLoader]: Texture stardew_fishing:item/cyclops_mahimahi with size 17x16 limits mip level from 4 to 0
+[02:03:28] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:item.goat_horn.play
+[02:03:28] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+[02:03:28] [Render thread/ERROR] [minecraft/SoundEngine]: Error starting SoundSystem. Turning off sounds & music
+java.lang.IllegalStateException: Failed to open OpenAL device
+	at com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:283) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.audio.Library.init(Library.java:153) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:104) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:96) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:125) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:40) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:13) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?] {}
+	at net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$new$3(SimpleReloadInstance.java:69) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:156) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,re:computing_frames,re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:130) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:115) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1106) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[02:03:28] [Render thread/WARN] [minecraft/ShaderInstance]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[02:03:28] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[02:03:28] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:overworld
+[02:03:28] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:the_nether
+[02:03:28] [Render thread/INFO] [flywheel/backend/shaders/]: Loaded 77 shader sources in 4.129 ms
+[02:03:28] [Render thread/INFO] [co.si.cr.Create/]: Loaded 56 train hat configurations.
+[02:03:51] [Server thread/INFO] [minecraft/MinecraftServer]: ✿ Dev님이 아이템을 자랑합니다!
+✦ [햇살의 검]
+[02:03:51] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] ✿ Dev님이 아이템을 자랑합니다!\n✦ [햇살의 검]
+REFORGED_CLIENT_PASSED: real menu/slot/roll/choice packets, promoted old lines, locked equipment, reopen recovery, real Numismatics purchase/replay, Journal SHOW_ITEM hover and small GUI.
+[02:04:03] [Render thread/INFO] [minecraft/Minecraft]: Stopping!
+[02:04:04] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: Dev lost connection: 연결 끊김
+[02:04:04] [Server thread/INFO] [minecraft/MinecraftServer]: Dev이(가) 게임을 떠났습니다
+[02:04:04] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: Stopping singleplayer server as player logged out
+[02:04:04] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[02:04:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[02:04:04] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[02:04:05] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden_grand
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_citadel
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (SunlitReforgedTest): All chunks are saved
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_garden_grand): All chunks are saved
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_citadel): All chunks are saved
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_garden): All chunks are saved
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[02:04:06] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+
+[Incubating] Problems report is available at: file:///workspace/sunlit/addons/reforged/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 42s
+11 actionable tasks: 4 executed, 7 up-to-date

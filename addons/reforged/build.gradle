@@ -1,0 +1,55 @@
+plugins { id 'net.minecraftforge.gradle' version '6.0.54' }
+version = '1.0.0-dev.1'
+group = 'dev.sunlit.reforged'
+base { archivesName = 'sunlit-reforged' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+ mappings channel: 'official', version: '1.20.1'
+ runs {
+  client { workingDirectory project.file('run'); args '--mixin','sunlit_reforged.mixins.json'; mods { sunlit_reforged { source sourceSets.main } } }
+  gameTestServer { workingDirectory project.file('run-gametest'); args '--mixin','sunlit_reforged.mixins.json'; property 'forge.enabledGameTestNamespaces','sunlit_reforged'; mods { sunlit_reforged { source sourceSets.main; source sourceSets.test } } }
+ }
+}
+repositories { maven { url = 'https://maven.minecraftforge.net' } }
+dependencies { minecraft ('net.minecraftforge:forge:1.20.1-'+providers.gradleProperty('forgeVersion').getOrElse('47.4.0')) }
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.compilerArgs += ['-proc:none'] }
+jar { manifest.attributes('MixinConfigs':'sunlit_reforged.mixins.json'); finalizedBy 'reobfJar' }
+if (providers.gradleProperty('integrationMods').getOrElse('false').toBoolean()) {
+ def modDirectory=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+ repositories { flatDir { dirs modDirectory } }
+ dependencies { runtimeOnly fg.deobf('sunlit.local:puffish_skills:0.16.1-1.20-forge') }
+ minecraft.runs.all {
+  property 'mixin.env.remapRefMap','true'
+  property 'mixin.env.refMapRemappingFile',new File(buildDir,'createSrgToMcp/output.srg').absolutePath
+  property 'sunlit.integrationTests','true'
+ }
+ tasks.matching { it.name in ['runGameTestServer','runClient'] }.configureEach { dependsOn 'createSrgToMcp' }
+}
+if (providers.gradleProperty('economyIntegration').getOrElse('false').toBoolean()) {
+ def modDirectory=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+ repositories { flatDir { dirs modDirectory } }
+ dependencies {
+  runtimeOnly fg.deobf('sunlit.local:create:1.20.1-6.0.8')
+  runtimeOnly fg.deobf('sunlit.local:CreateNumismatics:1.1.0+forge-mc1.20.1')
+ }
+ minecraft.runs.all { property 'sunlit.economyTests','true' }
+}
+if (providers.gradleProperty('journalIntegration').getOrElse('false').toBoolean()) {
+ def modDirectory=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+ repositories { flatDir { dirs modDirectory } }
+ dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-journal-core:0.8.11-reforged-bridge') }
+ minecraft.runs.all { property 'sunlit.journalTests','true' }
+}
+if (providers.gradleProperty('fishingIntegration').getOrElse('false').toBoolean()) {
+ def modDirectory=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+ repositories { flatDir { dirs modDirectory } }
+ dependencies {
+  runtimeOnly fg.deobf('sunlit.local:stardew_fishing:3.7-1.20.1')
+  runtimeOnly fg.deobf('sunlit.local:Aquaculture:1.20.1-2.5.7')
+  runtimeOnly fg.deobf('sunlit.local:SereneSeasons-forge-1.20.1:9.1.0.2')
+  runtimeOnly fg.deobf('sunlit.local:GlitchCore-forge-1.20.1:0.0.1.1')
+  runtimeOnly fg.deobf('sunlit.local:unusualfishmod:1.1.10')
+  runtimeOnly fg.deobf('sunlit.local:geckolib-forge-1.20.1:4.8')
+ }
+ minecraft.runs.all { property 'sunlit.fishingTests','true' }
+}

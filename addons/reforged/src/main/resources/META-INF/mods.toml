@@ -1,0 +1,20 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="sunlit_reforged"
+version="1.0.0-dev.1"
+displayName="Sunlit Reforged"
+description='''Server-authoritative three-line equipment potentials. Development build; third-party reforge/fishing integration requires verified pack files.'''
+[[dependencies.sunlit_reforged]]
+modId="forge"
+mandatory=true
+versionRange="[47.3.0,48)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.sunlit_reforged]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.20.2)"
+ordering="NONE"
+side="BOTH"
