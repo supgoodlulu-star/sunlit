@@ -3,7 +3,7 @@ loaderVersion="[47,)"
 license="All Rights Reserved"
 [[mods]]
 modId="sunlit_reforged"
-version="1.0.0-dev.1"
+version="1.0.0-dev.2"
 displayName="Sunlit Reforged"
 description='''Server-authoritative three-line equipment potentials. Development build; third-party reforge/fishing integration requires verified pack files.'''
 [[dependencies.sunlit_reforged]]

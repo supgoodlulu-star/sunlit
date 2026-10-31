@@ -22,12 +22,12 @@ public final class ReforgedClientCheck{
     interface Work{void run(net.minecraft.server.level.ServerPlayer p)throws Exception;}
     static void require(boolean ok,String why){if(!ok)throw new IllegalStateException("REFORGED_CLIENT: "+why);}
     static void server(Minecraft mc,Work work){pending=new CompletableFuture<>();var id=mc.player.getUUID();mc.getSingleplayerServer().execute(()->{try{work.run(mc.getSingleplayerServer().getPlayerList().getPlayer(id));pending.complete(null);}catch(Throwable t){pending.completeExceptionally(t);}});}
-    static void click(Minecraft mc,String name){for(var child:mc.screen.children())if(child instanceof Button b&&(b.getMessage().getString().equals(name)||(name.equals("수상한 큐브")&&b.getMessage().getString().startsWith("수상한 ")))){require(b.active,"Inactive button "+name);b.onPress();return;}throw new IllegalStateException("No button "+name);}
+    static void click(Minecraft mc,String name){for(var child:mc.screen.children())if(child instanceof Button b&&(b.getMessage().getString().equals(name)||(name.equals("수상한 큐브")&&(b.getMessage().getString().startsWith("수상한 ")||b.getMessage().getString().equals("구매"))))){require(b.active,"Inactive button "+name);b.onPress();return;}throw new IllegalStateException("No button "+name);}
     static void shot(Minecraft mc,String name){mc.getToasts().clear();Screenshot.grab(new java.io.File(System.getProperty("sunlit.previewOutput")),name+".png",mc.getMainRenderTarget(),c->{});}
     static StationMenu menu(Minecraft mc){require(mc.player.containerMenu instanceof StationMenu,"Not a station menu phase "+phase);return (StationMenu)mc.player.containerMenu;}
     static List<Potential.Line> original(){return List.of(new Potential.Line(Potential.Option.ATTACK_PERCENT,Potential.Tier.UNIQUE,6),new Potential.Line(Potential.Option.ATTACK_PERCENT,Potential.Tier.UNIQUE,6),new Potential.Line(Potential.Option.LIFESTEAL,Potential.Tier.UNIQUE,3));}
     @SubscribeEvent public static void message(ClientChatReceivedEvent e){if(Boolean.getBoolean("sunlit.reforgedCheck"))messages.add(e.getMessage().copy());}
-    static void pin(Minecraft mc){if(hoverX<0||!(mc.screen instanceof ChatScreen))return;try{for(String n:new String[]{"xpos","ypos"}){var f=MouseHandler.class.getDeclaredField(n);f.setAccessible(true);f.setDouble(mc.mouseHandler,n.equals("xpos")?hoverX:hoverY);}}catch(ReflectiveOperationException e){throw new RuntimeException(e);}}
+    static void pin(Minecraft mc){if(mc.screen instanceof StationScreen){try{for(String n:new String[]{"xpos","ypos"}){var f=MouseHandler.class.getDeclaredField(n);f.setAccessible(true);f.setDouble(mc.mouseHandler,2);}}catch(ReflectiveOperationException e){throw new RuntimeException(e);}return;}if(hoverX<0||!(mc.screen instanceof ChatScreen))return;try{for(String n:new String[]{"xpos","ypos"}){var f=MouseHandler.class.getDeclaredField(n);f.setAccessible(true);f.setDouble(mc.mouseHandler,n.equals("xpos")?hoverX:hoverY);}}catch(ReflectiveOperationException e){throw new RuntimeException(e);}}
     static void hover(Minecraft mc){for(int y=mc.getWindow().getGuiScaledHeight()-43;y>20;y--)for(int x=1;x<Math.min(430,mc.getWindow().getGuiScaledWidth());x++){var style=mc.gui.getChat().getClickedComponentStyleAt(x,y);if(style!=null&&style.getHoverEvent()!=null&&style.getHoverEvent().getAction()==HoverEvent.Action.SHOW_ITEM){hoverX=x*(double)mc.getWindow().getWidth()/mc.getWindow().getGuiScaledWidth();hoverY=y*(double)mc.getWindow().getHeight()/mc.getWindow().getGuiScaledHeight();pin(mc);return;}}throw new IllegalStateException("No chat hover target");}
     @SubscribeEvent public static void tick(TickEvent.ClientTickEvent e)throws Exception{
         if(e.phase!=TickEvent.Phase.END||!Boolean.getBoolean("sunlit.reforgedCheck"))return;var mc=Minecraft.getInstance();require(System.currentTimeMillis()-start<360000,"Timeout phase "+phase);
@@ -44,7 +44,7 @@ public final class ReforgedClientCheck{
             });}
             case 1->mc.player.connection.sendCommand("재련");
             case 2->{var m=menu(mc);mc.gameMode.handleInventoryMouseClick(m.containerId,29,0,ClickType.QUICK_MOVE,mc.player);mc.gameMode.handleInventoryMouseClick(m.containerId,30,0,ClickType.QUICK_MOVE,mc.player);}
-            case 3->{require(Potential.get(menu(mc).work.getItem(0)).orElseThrow().tier()==Potential.Tier.UNIQUE,"Equipment not moved by click packets");shot(mc,"potential-current-unique");click(mc,"큐브 사용");}
+            case 3->{require(Potential.get(menu(mc).work.getItem(0)).orElseThrow().tier()==Potential.Tier.UNIQUE,"Equipment not moved by click packets");shot(mc,"potential-current-unique");click(mc,"큐브 사용하기");}
             case 4->{var m=menu(mc);require(m.pending(),"Master did not enter comparison");require(Potential.get(m.work.getItem(0)).orElseThrow().tier()==Potential.Tier.LEGENDARY,"Promotion not committed");shot(mc,"master-comparison");mc.gameMode.handleInventoryMouseClick(m.containerId,0,0,ClickType.SWAP,mc.player);}
             case 5->{require(menu(mc).pending()&&!menu(mc).work.getItem(0).isEmpty(),"Locked equipment moved");mc.screen.onClose();}
             case 6->mc.player.connection.sendCommand("재련");
@@ -57,7 +57,9 @@ public final class ReforgedClientCheck{
             case 13->{require(menu(mc).work.getItem(0).isEmpty(),"Previous gear not returned");click(mc,"수상한 큐브");click(mc,"수상한 큐브");}
             case 14->{server(mc,p->{require(Economy.view(p).getLong("spurs")==19500L*4096,"Duplicate UI purchase debit");require(p.getInventory().countItem(SunlitReforged.SUSPICIOUS.get())==4,"UI cube delivery wrong");});}
             case 15->{shot(mc,"shop-after-one-purchase");mc.options.guiScale().set(4);mc.resizeDisplay();}
-            case 16->{shot(mc,"small-gui-station");mc.screen.onClose();mc.options.guiScale().set(2);mc.resizeDisplay();System.out.println("REFORGED_CLIENT_PASSED: real menu/slot/roll/choice packets, promoted old lines, locked equipment, reopen recovery, real Numismatics purchase/replay, Journal SHOW_ITEM hover and small GUI.");mc.stop();}
+            case 16->{double fit=Math.min(1,Math.min(mc.getWindow().getGuiScaledWidth()/448d,mc.getWindow().getGuiScaledHeight()/308d));var b=mc.screen.children().stream().filter(c->c instanceof Button bb&&bb.getMessage().getString().equals("구매")).map(c->(Button)c).findFirst().orElseThrow();require(mc.screen.mouseClicked((b.getX()+b.getWidth()/2d)*fit,(b.getY()+b.getHeight()/2d)*fit,0),"Scaled button missed");}
+            case 17->{server(mc,p->{require(Economy.view(p).getLong("spurs")==19000L*4096,"Scaled mouse purchase missed");});}
+            case 18->{shot(mc,"small-gui-station");mc.screen.onClose();mc.options.guiScale().set(2);mc.resizeDisplay();System.out.println("REFORGED_CLIENT_PASSED: real menu/slot/roll/choice packets, promoted old lines, locked equipment, reopen recovery, real Numismatics purchase/replay, Journal SHOW_ITEM hover and small GUI.");mc.stop();}
         }
     }
 }

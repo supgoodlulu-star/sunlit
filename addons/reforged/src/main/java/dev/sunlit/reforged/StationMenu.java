@@ -16,10 +16,10 @@ public final class StationMenu extends AbstractContainerMenu{
     public StationMenu(int id,Inventory inv,ServerPlayer serverPlayer){super(SunlitReforged.STATION.get(),id);owner=serverPlayer;ledger=owner==null?null:Ledger.get(owner.getServer());saved=ledger==null?new CompoundTag():ledger.station(owner.getUUID());
         work=new SimpleContainer(2){@Override public void setChanged(){super.setChanged();if(ready&&owner!=null)persist();}};
         if(owner!=null){work.setItem(0,ItemStack.of(saved.getCompound("equipment")));work.setItem(1,ItemStack.of(saved.getCompound("cubes")));}ready=true;
-        addSlot(new Slot(work,0,30,44){@Override public boolean mayPlace(ItemStack s){return !pending()&&Potential.gear(s).isPresent()&&s.getCount()==1;}@Override public boolean mayPickup(Player p){return !pending();}@Override public int getMaxStackSize(){return 1;}});
-        addSlot(new Slot(work,1,76,44){@Override public boolean mayPlace(ItemStack s){return !pending()&&s.getItem() instanceof SunlitReforged.CubeItem;}@Override public boolean mayPickup(Player p){return !pending();}});
-        for(int row=0;row<3;row++)for(int col=0;col<9;col++)addSlot(new Slot(inv,col+row*9+9,18+col*18,146+row*18));
-        for(int col=0;col<9;col++)addSlot(new Slot(inv,col,18+col*18,204));
+        addSlot(new Slot(work,0,85,77){@Override public boolean mayPlace(ItemStack s){return !pending()&&Potential.gear(s).isPresent()&&s.getCount()==1;}@Override public boolean mayPickup(Player p){return !pending();}@Override public int getMaxStackSize(){return 1;}});
+        addSlot(new Slot(work,1,85,151){@Override public boolean mayPlace(ItemStack s){return !pending()&&s.getItem() instanceof SunlitReforged.CubeItem;}@Override public boolean mayPickup(Player p){return !pending();}});
+        for(int row=0;row<3;row++)for(int col=0;col<9;col++)addSlot(new Slot(inv,col+row*9+9,139+col*18,216+row*18));
+        for(int col=0;col<9;col++)addSlot(new Slot(inv,col,139+col*18,274));
     }
     public static void open(ServerPlayer p){if(p.containerMenu instanceof StationMenu){Network.send(p);return;}NetworkHooks.openScreen(p,new SimpleMenuProvider((id,inv,pl)->new StationMenu(id,inv,p),Component.literal("선릿 재련 공방")));Network.send(p);}
     public boolean pending(){return owner==null?clientState.contains("pending",10):saved.contains("pending",10);}
