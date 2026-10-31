@@ -87,8 +87,12 @@ public final class ReforgedGameTests{
         var p=player(h);var bank=Class.forName("dev.ithundxr.createnumismatics.Numismatics").getField("BANK").get(null);var type=Class.forName("dev.ithundxr.createnumismatics.content.backend.BankAccount$Type");
         Object account=bank.getClass().getMethod("getOrCreateAccount",UUID.class,type).invoke(bank,p.getUUID(),type.getField("PLAYER").get(null));account.getClass().getMethod("setBalance",int.class).invoke(account,4096*20000);
         long initial=Economy.view(p).getLong("spurs");h.assertTrue(!Economy.buy(p,3,1)&&Economy.view(p).getLong("spurs")==initial,"Removed product accepted or charged");var menu=new StationMenu(1,p.getInventory(),p);int nonce=menu.revision();long before=Economy.view(p).getLong("spurs");h.assertTrue(menu.act(nonce,"buy",0,1,""),"Real bank purchase failed");h.assertTrue(!menu.act(nonce,"buy",0,1,""),"Purchase request replay accepted");
-        h.assertTrue(before-Economy.view(p).getLong("spurs")==500L*4096,"Wrong debit");h.assertTrue(p.getInventory().countItem(SunlitReforged.SUSPICIOUS.get())==1,"Cube not delivered exactly once");
+        h.assertTrue(before-Economy.view(p).getLong("spurs")==500L,"Wrong debit");h.assertTrue(p.getInventory().countItem(SunlitReforged.SUSPICIOUS.get())==1,"Cube not delivered exactly once");
         for(int i=0;i<36;i++)p.getInventory().setItem(i,new ItemStack(Items.STONE,64));long full=Economy.view(p).getLong("spurs");h.assertTrue(!Economy.buy(p,0,1)&&Economy.view(p).getLong("spurs")==full,"Full inventory charged account");
+        p.getInventory().clearContent();account.getClass().getMethod("setBalance",int.class).invoke(account,4096);
+        h.assertTrue(Economy.view(p).getLong("unit")==1&&Economy.buy(p,0,1)&&Economy.view(p).getLong("spurs")==3596,"One iridium must buy a 500 SUN dreamdrop and leave 3596 SUN");
+        h.assertTrue(Economy.buy(p,1,1)&&Economy.view(p).getLong("spurs")==1096&&!Economy.buy(p,2,1)&&Economy.view(p).getLong("spurs")==1096,"2500/10000 total-value SUN pricing wrong");
+        if(Boolean.getBoolean("sunlit.journalTests")){var result=(Optional<?>)Class.forName("dev.sunlit.journal.Integrations").getMethod("balance",UUID.class).invoke(null,p.getUUID());var v=result.orElseThrow();h.assertTrue(((Number)v.getClass().getMethod("perSun").invoke(v)).longValue()==1&&((Number)v.getClass().getMethod("spurs").invoke(v)).longValue()==1096,"Journal and shop SUN units differ");}
         p.getInventory().clearContent();account.getClass().getMethod("setBalance",int.class).invoke(account,1);h.assertTrue(!Economy.buy(p,0,1)&&Economy.view(p).getLong("spurs")==1,"Insufficient balance was wiped");h.succeed();
     }
 

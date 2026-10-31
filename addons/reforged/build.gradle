@@ -1,5 +1,5 @@
 plugins { id 'net.minecraftforge.gradle' version '6.0.54' }
-version = '1.0.0-dev.5'
+version = '1.0.0-dev.6'
 group = 'dev.sunlit.reforged'
 base { archivesName = 'sunlit-reforged' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -37,7 +37,7 @@ if (providers.gradleProperty('economyIntegration').getOrElse('false').toBoolean(
 if (providers.gradleProperty('journalIntegration').getOrElse('false').toBoolean()) {
  def modDirectory=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
  repositories { flatDir { dirs modDirectory } }
- dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-journal-core:0.8.11-reforged-bridge') }
+ dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-journal-core:'+providers.gradleProperty('journalVersion').getOrElse('0.8.13-nickname-text')) }
  minecraft.runs.all { property 'sunlit.journalTests','true' }
 }
 if (providers.gradleProperty('fishingIntegration').getOrElse('false').toBoolean()) {

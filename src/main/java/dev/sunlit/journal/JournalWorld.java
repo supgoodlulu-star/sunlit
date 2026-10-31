@@ -13,7 +13,8 @@ public final class JournalWorld extends SavedData {
     public static final String[] ACTIVITIES={"farming","fishing","mining","cooking","ranching"};
     public static final String[] NAMES={"농사","낚시","채광","요리","목축"};
     public static final long[] MILESTONES={10,100,1000,10000};
-    public static final long[] SUN_TARGETS={1000,100000,10000000,100000000};
+    // Converted from legacy iridium-denominated Sun; actual required savings stay unchanged.
+    public static final long[] SUN_TARGETS={4_096_000L,409_600_000L,40_960_000_000L,409_600_000_000L};
     private final CompoundTag root;
     public JournalWorld(){root=new CompoundTag();}
     public JournalWorld(CompoundTag tag){root=tag.copy();}

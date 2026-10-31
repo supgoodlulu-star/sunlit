@@ -257,8 +257,8 @@ public final class JournalScreen extends Screen {
         if(achievementFilter==-1||achievementFilter==5){
             boolean hasBalance=data.getBoolean("balanceAvailable");long unit=data.getLong("perSun");
             for(int i=0;i<4;i++){
-                String name=SunlitJournal.TITLES[20+i];String body="개인 계좌에 "+JournalWorld.SUN_TARGETS[i]+" Sun 이상 모아 보세요. 현금과 공동 계좌는 포함하지 않아요.";
-                if(hasBalance&&unit>0)body+="\n현재 저금액 · "+BigDecimal.valueOf(data.getLong("spurs")).divide(BigDecimal.valueOf(unit),4,RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" Sun";
+                String name=SunlitJournal.TITLES[20+i];String body="개인 계좌에 "+JournalWorld.SUN_TARGETS[i]+" SUN 이상 모아 보세요. 현금과 공동 계좌는 포함하지 않아요.";
+                if(hasBalance&&unit>0)body+="\n현재 저금액 · "+BigDecimal.valueOf(data.getLong("spurs")).divide(BigDecimal.valueOf(unit),4,RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" SUN";
                 card(name,body,5,owned.contains(name)?"획득":"도전 중",hasBalance&&unit>0?data.getLong("spurs")/unit:0,hasBalance&&unit>0?JournalWorld.SUN_TARGETS[i]:0);
             }
         }
@@ -283,7 +283,7 @@ public final class JournalScreen extends Screen {
             if(titleFilter==1&&!has||titleFilter==2&&has)continue;
             long value=0,goal=1;String condition;
             if(i<20){int kind=i/4;goal=JournalWorld.MILESTONES[i%4];value=data.getCompound("counts").getLong(JournalWorld.ACTIVITIES[kind]);condition=ACTIVITY_HELP[kind]+"\n누적 목표 · "+goal+(kind==1||kind==4?"마리":"개");}
-            else if(i<24){goal=JournalWorld.SUN_TARGETS[i-20];long unit=data.getLong("perSun");value=unit>0?data.getLong("spurs")/unit:0;condition="개인 계좌에 "+goal+" Sun 저축. 현금·공동 계좌는 제외됩니다."+(data.getBoolean("balanceAvailable")?"":"\n계좌 연동을 확인할 수 없습니다.");}
+            else if(i<24){goal=JournalWorld.SUN_TARGETS[i-20];long unit=data.getLong("perSun");value=unit>0?data.getLong("spurs")/unit:0;condition="개인 계좌에 "+goal+" SUN 저축. 현금·공동 계좌는 제외됩니다."+(data.getBoolean("balanceAvailable")?"":"\n계좌 연동을 확인할 수 없습니다.");}
             else if(name.equals("사계요정")){goal=4;for(String season:List.of("SPRING","SUMMER","AUTUMN","WINTER"))if(data.getCompound("seasons").getBoolean(season))value++;condition="네 계절 축제에 각각 기여하고 공동 목표를 달성하세요.";}
             else {String season=switch(name){case "벚꽃요정"->"SPRING";case "별빛요정"->"SUMMER";case "풍요요정"->"AUTUMN";default->"WINTER";};value=data.getCompound("seasons").getBoolean(season)?1:0;condition=JournalWorld.festivalName(season)+"에 1회 이상 기여하고 공동 목표를 달성하세요.";}
             if(has)value=goal;
@@ -414,8 +414,20 @@ public final class JournalScreen extends Screen {
         @Override public void renderWidget(GuiGraphics g,int mx,int my,float delta){
             rounded(g,getX(),getY(),getWidth(),getHeight(),1,isFocused()?0xFF77924B:0xFFB68A48);
             rounded(g,getX()+1,getY()+1,getWidth()-2,getHeight()-2,1,0xFFFFF4D9);
-            g.pose().pushPose();g.pose().translate(4,(getHeight()-9)/2,0);super.renderWidget(g,mx-4,my-5,delta);g.pose().popPose();
+            g.pose().pushPose();g.pose().translate(4,(getHeight()-9)/2,0);super.renderWidget(new ShadowlessTextGraphics(g),mx-4,my-5,delta);g.pose().popPose();
         }
+    }
+    /** Vanilla EditBox draws with shadow by default. Keep native editing; suppress only its text shadow. */
+    private static final class ShadowlessTextGraphics extends GuiGraphics {
+        // EditBox subtracts the default shadow advance when joining text around the caret.
+        // Keep that return value even though only the foreground glyph is painted.
+        private final GuiGraphics target;
+        ShadowlessTextGraphics(GuiGraphics target){super(net.minecraft.client.Minecraft.getInstance(),target.bufferSource());this.target=target;}
+        @Override public int drawString(net.minecraft.client.gui.Font font,FormattedCharSequence text,int x,int y,int color){return target.drawString(font,text,x,y,color,false)+1;}
+        @Override public int drawString(net.minecraft.client.gui.Font font,Component text,int x,int y,int color){return target.drawString(font,text,x,y,color,false)+1;}
+        @Override public int drawString(net.minecraft.client.gui.Font font,String text,int x,int y,int color){return target.drawString(font,text,x,y,color,false)+1;}
+        @Override public void fill(int x1,int y1,int x2,int y2,int color){target.fill(x1,y1,x2,y2,color);}
+        @Override public void fill(net.minecraft.client.renderer.RenderType type,int x1,int y1,int x2,int y2,int color){target.fill(type,x1,y1,x2,y2,color);}
     }
     private static void paperCard(GuiGraphics g,int x,int y,int w,int h){
         rounded(g,x+1,y+2,w,h-1,2,0x665A3E26);

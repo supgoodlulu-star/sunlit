@@ -1,0 +1,17 @@
+allprojects {
+ afterEvaluate {
+  sourceSets { nicknameCheck {
+   java.srcDir new File(rootDir,'tools/visual-preview')
+   java.include 'NicknameShadowCheck.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  def checkMods=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+  repositories { flatDir { dirs checkMods } }
+  dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-font-bold-fix:1.0.0') }
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.nicknameCheck
+  minecraft.runs.client.property 'sunlit.nicknameShadowCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/nickname-text-0.8.13').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitNotebookTest'
+ }
+}

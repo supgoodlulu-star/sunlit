@@ -22,8 +22,8 @@ public final class StationScreen extends AbstractContainerScreen<StationMenu>{
         roll=button("꿈방울 사용하기",151,178,126,23,()->action("roll",0),true);
         oldChoice=button("기존 줄 유지",151,181,61,18,()->action("old",0),false);
         newChoice=button("새 줄 선택",216,181,62,18,()->action("new",0),true);
-        button("−",300,37,16,16,()->quantity=Math.max(1,quantity-1),false);
-        button("+",410,37,16,16,()->quantity=Math.min(64,quantity+1),false);
+        button("−",300,45,16,12,()->quantity=Math.max(1,quantity-1),false);
+        button("+",410,45,16,12,()->quantity=Math.min(64,quantity+1),false);
         for(int i=0;i<3;i++){final int product=i;purchases.add(button("구매",391,63+i*34,34,22,()->action("buy",product),false));}
         update();
     }
@@ -41,6 +41,7 @@ public final class StationScreen extends AbstractContainerScreen<StationMenu>{
     }
     private void text(GuiGraphics g,String s,int x,int y,int color,int max){g.drawString(font,font.plainSubstrByWidth(s,max),x,y,color,false);}
     private void centered(GuiGraphics g,String s,int x,int y,int color,int max){String a=font.plainSubstrByWidth(s,max);g.drawString(font,a,x-font.width(a)/2,y,color,false);}
+    private void fittedCentered(GuiGraphics g,String value,int cx,int y,int color,int max){float scale=Math.min(1f,max/(float)Math.max(1,font.width(value)));g.pose().pushPose();g.pose().translate(cx,y,0);g.pose().scale(scale,scale,1);g.drawString(font,value,-font.width(value)/2,0,color,false);g.pose().popPose();}
     private static int tierColor(Potential.Tier tier){return switch(tier){case RARE->0xff2e5e8c;case EPIC->0xff66388c;case UNIQUE->0xff84621b;case LEGENDARY->0xff2e794a;};}
     private void lines(GuiGraphics g,Potential p,int y,boolean compact){for(int i=0;i<3;i++){int yy=y+i*(compact?15:24);frame(g,151,yy,126,compact?14:22,0xffead0a2);text(g,p.lines().get(i).label(),155,yy+3,0xff493020,118);if(!compact)text(g,"["+p.lines().get(i).tier().label+"]",155,yy+12,tierColor(p.lines().get(i).tier()),118);}}
     @Override protected void renderLabels(GuiGraphics g,int mx,int my){
@@ -57,15 +58,15 @@ public final class StationScreen extends AbstractContainerScreen<StationMenu>{
         }else if(value.isPresent()){
             var p=value.get();frame(g,151,69,126,24,0xff855024);centered(g,p.tier().label,214,77,0xffffe3a0,140);lines(g,p,100,false);
         }else{centered(g,"첫 꿈방울 사용 시",214,91,0xff674022,148);centered(g,"레어 잠재능력 3줄",214,108,0xff674022,148);}
-        var balance=state.getCompound("balance");String money=balance.getBoolean("available")?java.math.BigDecimal.valueOf(balance.getLong("spurs")).divide(java.math.BigDecimal.valueOf(balance.getLong("unit")),2,java.math.RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" Sun":"은행 계좌 필요";
-        text(g,"꿈방울 구매",295,27,0xffffe6a6,75);text(g,money,354,27,0xffffe6a6,74);centered(g,"수량 "+quantity,362,41,0xfff8deb1,86);
+        var balance=state.getCompound("balance");String money=balance.getBoolean("available")?java.math.BigDecimal.valueOf(balance.getLong("spurs")).divide(java.math.BigDecimal.valueOf(balance.getLong("unit")),2,java.math.RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" SUN":"은행 계좌 필요";
+        text(g,"꿈방울 구매",295,24,0xffffe6a6,132);fittedCentered(g,money,361,36,0xffffe6a6,130);centered(g,"수량 "+quantity,362,47,0xfff8deb1,86);
         String[] names={"작은 꿈방울","영롱한 꿈방울","찬란한 꿈방울"};var prices=state.getList("prices",Tag.TAG_INT);
-        for(int i=0;i<3;i++){text(g,names[i],321,64+i*34,0xffffe6c2,68);text(g,(prices.size()==3?String.format(java.util.Locale.ROOT,"%,d",prices.getInt(i)):"?")+" Sun",321,77+i*34,0xffffd889,68);}
+        for(int i=0;i<3;i++){text(g,names[i],321,64+i*34,0xffffe6c2,68);text(g,(prices.size()==3?String.format(java.util.Locale.ROOT,"%,d",prices.getInt(i)):"?")+" SUN",321,77+i*34,0xffffd889,68);}
         frame(g,294,164,134,34,0xffead0a2);text(g,"사용 가능한 장비",299,168,0xff674022,123);text(g,"다이아 · 네더라이트",299,179,0xff493020,123);text(g,"일반 낚싯대",299,189,0xff493020,123);
         centered(g,"인벤토리",220,204,0xffffe6a6,165);
     }
     @Override public void render(GuiGraphics g,int mx,int my,float partial){renderBackground(g);int x=(int)(mx/fit),y=(int)(my/fit);g.pose().pushPose();g.pose().scale((float)fit,(float)fit,1);super.render(g,x,y,partial);renderTooltip(g,x,y);
-        for(int i=0;i<3;i++)if(purchases.get(i).isHoveredOrFocused()||(x>=leftPos+298&&x<leftPos+318&&y>=topPos+65+i*34&&y<topPos+85+i*34)){var prices=menu.clientState.getList("prices",Tag.TAG_INT);var tips=new ArrayList<Component>(new ItemStack(SunlitReforged.cube(Potential.Cube.values()[i])).getTooltipLines(minecraft.player,TooltipFlag.Default.NORMAL));tips.add(Component.literal((prices.size()==3?prices.getInt(i):0)+" Sun × "+quantity));tips.add(Component.literal("실제 은행 계좌에서 차감합니다"));g.renderTooltip(font,tips,Optional.empty(),x,y);}
+        for(int i=0;i<3;i++)if(purchases.get(i).isHoveredOrFocused()||(x>=leftPos+298&&x<leftPos+318&&y>=topPos+65+i*34&&y<topPos+85+i*34)){var prices=menu.clientState.getList("prices",Tag.TAG_INT);var tips=new ArrayList<Component>(new ItemStack(SunlitReforged.cube(Potential.Cube.values()[i])).getTooltipLines(minecraft.player,TooltipFlag.Default.NORMAL));tips.add(Component.literal("총가격 "+String.format(java.util.Locale.ROOT,"%,d",(prices.size()==3?(long)prices.getInt(i):0)*quantity)+" SUN ("+quantity+"개)"));tips.add(Component.literal("실제 은행 계좌에서 차감합니다"));g.renderTooltip(font,tips,Optional.empty(),x,y);}
         if(x>=leftPos+151&&x<leftPos+280&&y>=topPos+69&&y<topPos+178){var p=menu.pending()?Potential.load(menu.clientState.getCompound("pending").getCompound(y<topPos+126?"old":"next")):Potential.get(menu.work.getItem(0));p.ifPresent(v->{var rows=new ArrayList<Component>();rows.add(Component.literal(v.tier().label));for(var l:v.lines())rows.add(Component.literal(l.label()+" ["+l.tier().label+"]"));if(menu.pending())rows.add(Component.literal("승급된 최종 등급은 어느 선택에도 유지"));g.renderTooltip(font,rows,Optional.empty(),x,y);});}
         g.pose().popPose();
     }

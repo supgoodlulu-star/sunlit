@@ -86,7 +86,7 @@ public class HallGameTests {
         var w=world(time());w.balance(id(1),Optional.empty());h.assertTrue(w.rows(w.season(),"assets").isEmpty(),"Missing integration fabricated a balance");
         w.balance(id(1),Optional.of(new Integrations.Balance(2049,4096)));w.balance(id(1),Optional.empty());w.balance(id(1),Optional.of(new Integrations.Balance(-1,4096)));
         h.assertTrue(w.rows(w.season(),"assets").get(0).score()==2049,"Missing/invalid reading overwrote balance");
-        var row=w.snapshot("","assets",0).getList("rows",10).getCompound(0);h.assertTrue(row.getString("displayScore").equals("0.500244140625 Sun"),"Fractional assets truncated or raw spurs displayed");
+        var row=w.snapshot("","assets",0).getList("rows",10).getCompound(0);h.assertTrue(row.getString("displayScore").equals("2,049 SUN"),"Legacy asset record did not use total-value SUN");
         h.assertTrue(HallContent.resolve(w,"자산").equals("assets"),"Korean wealth alias missing");h.succeed();
     }
 

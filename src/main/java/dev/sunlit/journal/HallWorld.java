@@ -51,7 +51,7 @@ public final class HallWorld extends SavedData {
         for(String key:root.getCompound("people").getAllKeys())try{UUID id=UUID.fromString(key);if(!online.contains(id))balance(id,Integrations.balance(id));}catch(IllegalArgumentException ignored){}
     }
     public static String score(String category,long value,long unit){
-        if(category.equals("assets")&&unit>0)return java.math.BigDecimal.valueOf(value).divide(java.math.BigDecimal.valueOf(unit),12,java.math.RoundingMode.DOWN).stripTrailingZeros().toPlainString()+" Sun";
+        if(category.equals("assets")&&unit>0)return String.format(java.util.Locale.ROOT,"%,d SUN",value);
         return String.format(java.util.Locale.ROOT,"%,d",value);
     }
     public void observe(ServerPlayer p){

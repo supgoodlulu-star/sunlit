@@ -1,7 +1,7 @@
 plugins {
     id 'net.minecraftforge.gradle' version '6.0.54'
 }
-version = '0.8.12-warm-notebook'
+version = '0.8.13-nickname-text'
 group = 'dev.sunlit.journal'
 base { archivesName = 'sunlit-journal-core' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)

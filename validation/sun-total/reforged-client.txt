@@ -1,0 +1,771 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createSrgToMcp UP-TO-DATE
+> Task :downloadMCMeta UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :extractNatives UP-TO-DATE
+> Task :makeSrcDirs
+> Task :prepareRuns
+> Task :prepareRunClient
+
+> Task :compileReforgedCheckJava
+Note: /workspace/sunlit/addons/reforged/qa/ReforgedClientCheck.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processReforgedCheckResources NO-SOURCE
+> Task :reforgedCheckClasses
+> Task :prepareRunClientCompile
+
+> Task :runClient
+2026-10-31 07:16:58,193 main WARN Advanced terminal features are not available in this environment
+[07:16:58] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 5, --assetsDir, /workspace/gradle-cache/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.4.0, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mixin, sunlit_reforged.mixins.json, --width, 1280, --height, 900, --quickPlaySingleplayer, SunlitReforgedTest]
+[07:16:58] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.17 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.57
+[07:16:58] [main/INFO] [ne.mi.fm.lo.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[07:16:58] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[07:16:58] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.5
+[07:16:58] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.5 got version 4.5
+[07:16:58] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/workspace/gradle-cache/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
+[07:16:58] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: llvmpipe (LLVM 19.1.7, 256 bits) GL version 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1, Mesa
+[07:16:58] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.4.0/f0c0b352173d0a378cbdcec9cfc4ba65899a721/javafmllanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[07:16:58] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.4.0/e862740d8c84d08dbfedea412bef88fe42e727c5/lowcodelanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[07:16:58] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.4.0/5719b3a297a33f877ed5dde4cb4bd75c859096af/mclanguage-1.20.1-47.4.0.jar is missing mods.toml file
+[07:16:58] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file /workspace/gradle-cache/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.4.0/235975dafa4309945b59c56b53f31dc5b65a6051/fmlcore-1.20.1-47.4.0.jar is missing mods.toml file
+[07:16:59] [main/INFO] [ne.mi.fm.lo.mo.JarInJarDependencyLocator/]: Found 6 dependencies adding them to mods collection
+[07:17:00] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[07:17:00] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /workspace/gradle-cache/caches/forge_gradle/assets, --assetIndex, 5, --width, 1280, --height, 900, --quickPlaySingleplayer, SunlitReforgedTest]
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap mixins.stardew_fishing.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap puffish_skills-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap glitchcore.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap glitchcore.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap sereneseasons.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap sereneseasons.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap CreateNumismatics-common-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap CreateNumismatics-forge-refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap backend-flywheel.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap flywheel.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap ponder.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:00] [main/INFO] [mixin/]: Remapping refMap create.refmap.json using /workspace/sunlit/addons/reforged/build/createSrgToMcp/output.srg
+[07:17:01] [main/WARN] [mixin/]: Error loading class: com/scouter/netherdepthsupgrade/entity/entities/LavaFishingBobberEntity (java.lang.ClassNotFoundException: com.scouter.netherdepthsupgrade.entity.entities.LavaFishingBobberEntity)
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.compat.carryon.MixinPickupHandler is not being applied because the mod(s) [CARRYON] are not loaded
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.AccessorMinecraft is being applied because we are in a development environment
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.AccessorPonderUI is being applied because we are in a development environment
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinEmiScreenManager is being applied because we are in a development environment
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinMinecraft is being applied because we are in a development environment
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinPonderIndex is being applied because we are in a development environment
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.mixin.client.dev_export.MixinPonderLocalization is being applied because we are in a development environment
+[07:17:01] [main/WARN] [mixin/]: Error loading class: dev/emi/emi/screen/EmiScreenManager (java.lang.ClassNotFoundException: dev.emi.emi.screen.EmiScreenManager)
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableEnergyInterfaceBlockEntityMixin is not being applied because the mod(s) [CREATEADDITION] are not loaded
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableEnergyInterfaceBlockEntityMixin$InterfaceEnergyHandlerAccessor is not being applied because the mod(s) [CREATEADDITION] are not loaded
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.compat.PortableFuelInterfaceBlockEntityMixin is not being applied because the mod(s) [RAILWAYS] are not loaded
+[07:17:01] [main/INFO] [Numismatics/MixinPlugin/]: dev.ithundxr.createnumismatics.forge.mixin.self.ComputerBehaviourCapabilities is not being applied because the mod(s) [COMPUTERCRAFT] are not loaded
+[07:17:01] [main/WARN] [mixin/]: Error loading class: com/railwayteam/railways/content/fuel/psi/PortableFuelInterfaceBlockEntity$InterfaceFluidHandler (java.lang.ClassNotFoundException: com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler)
+[07:17:01] [main/WARN] [mixin/]: @Mixin target com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler was not found numismatics.mixins.json:compat.PortableFuelInterfaceBlockEntityMixin$InterfaceFluidHandlerAccessor
+[07:17:01] [main/WARN] [mixin/]: Error loading class: com/railwayteam/railways/content/fuel/psi/PortableFuelInterfaceBlockEntity$InterfaceFluidHandler (java.lang.ClassNotFoundException: com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler)
+[07:17:01] [main/WARN] [mixin/]: @Mixin target com.railwayteam.railways.content.fuel.psi.PortableFuelInterfaceBlockEntity$InterfaceFluidHandler was not found numismatics.mixins.json:compat.PortableFuelInterfaceBlockEntityMixin$InterfaceFluidHandlerMixin
+[07:17:01] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[07:17:01] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapAccessor
+[07:17:01] [main/WARN] [mixin/]: Error loading class: xaero/map/gui/GuiMap (java.lang.ClassNotFoundException: xaero.map.gui.GuiMap)
+[07:17:01] [main/WARN] [mixin/]: @Mixin target xaero.map.gui.GuiMap was not found create.mixins.json:compat.xaeros.XaeroFullscreenMapMixin
+[07:17:01] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.4).
+[07:17:04] [Datafixer Bootstrap/INFO] [mojang/DataFixerBuilder]: 188 Datafixer optimizations took 276 milliseconds
+[07:17:05] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/gradle-cache/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[07:17:05] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/gradle-cache/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.0_mapped_official_1.20.1/forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[07:17:05] [Render thread/INFO] [mojang/YggdrasilAuthenticationService]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[07:17:05] [Render thread/INFO] [minecraft/Minecraft]: Setting user: Dev
+[07:17:05] [Render thread/INFO] [minecraft/Minecraft]: Backend library: LWJGL version 3.3.1 build 7
+[07:17:06] [Render thread/INFO] [mojang/GlDebug]: OpenGL debug message: id=1, source=SHADER COMPILER, type=ERROR, severity=HIGH, message='0:1(10): error: GLSL 4.60 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.50, 3.30, 4.00, 4.10, 4.20, 4.30, 4.40, 4.50, 1.00 ES, 3.00 ES, 3.10 ES, and 3.20 ES'
+[07:17:06] [modloading-worker-0/INFO] [Create: Numismatics/]: Create: Numismatics v1.1.0 initializing! Commit hash: 56a5907fd34255c8cfd9a37c116800f7a5d92d3a Create version: 6.0.8 on platform: Forge
+[07:17:06] [modloading-worker-0/INFO] [Create: Numismatics/]: Registering items for Create: Numismatics
+[07:17:06] [modloading-worker-0/INFO] [ne.mi.co.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.0, for MC 1.20.1 with MCP 20230612.114412
+[07:17:06] [modloading-worker-0/INFO] [ne.mi.co.MinecraftForge/FORGE]: MinecraftForge v47.4.0 Initialized
+[07:17:07] [modloading-worker-0/INFO] [Create: Numismatics/]: Registering blocks for Create: Numismatics
+[07:17:07] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.8 initializing! Commit hash: 1a1a9a2819b4f89f78caec41b55ed8cb222fa24b
+[ALSOFT] (EE) Failed to set real-time priority for thread: Operation not permitted (1)
+[07:17:09] [Render thread/INFO] [ne.mi.ga.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
+[07:17:09] [Render thread/INFO] [minecraft/ReloadableResourceManager]: Reloading ResourceManager: vanilla, mod_resources
+[07:17:09] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Configuration file /workspace/sunlit/addons/reforged/run/config/sunlit_font_bold_fix-client.toml is not correct. Correcting
+[07:17:09] [modloading-worker-0/WARN] [ne.mi.co.ForgeConfigSpec/CORE]: Incorrect key boldOffset was corrected from null to its default, 0.25.
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList$SubList.get(ArrayList.java:1149)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:282)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:10] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: action
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '+math.sin(query.anim_time*360-90)*5' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:10] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: Walk
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 3
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse 'math.clamp(math.sin(query.anim_time*180-60)*0,0,20)2' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:10] [Worker-Main-2/INFO] [minecraft/UnihexProvider]: Found unifont_all_no_pua-15.0.06.hex, loading
+java.lang.Exception: Function '0math.sin' couldn't be found!
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.createFunction(MathBuilder.java:423)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:266)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:308)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:10] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: flop
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '0math.sin(query.anim_time*720+60)*-10' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:11] [Yggdrasil Key Fetcher/ERROR] [mojang/YggdrasilServicesKeyInfo]: Failed to request yggdrasil public key
+com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:119) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:91) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.fetch(YggdrasilServicesKeyInfo.java:94) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.lambda$get$1(YggdrasilServicesKeyInfo.java:81) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539) ~[?:?] {}
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305) ~[?:?] {}
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?] {}
+	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?] {}
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.net.Socket.connect(Socket.java:633) ~[?:?] {}
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:533) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:638) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1307) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1148) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1717) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1641) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:224) ~[?:?] {}
+	at com.mojang.authlib.HttpAuthenticationService.performGetRequest(HttpAuthenticationService.java:140) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:96) ~[authlib-4.0.43.jar%23121!/:?] {}
+	... 9 more
+[07:17:11] [Forge Version Check/INFO] [ne.mi.fm.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[07:17:11] [Worker-Main-2/WARN] [minecraft/SpriteLoader]: Texture stardew_fishing:item/cyclops_mahimahi with size 17x16 limits mip level from 4 to 0
+[07:17:14] [Worker-Main-2/INFO] [PonderIndex/]: Registering Ponder Scenes took 161.7 ms
+[07:17:14] [Worker-Main-2/INFO] [PonderIndex/]: Registering Ponder Tags took 4.322 ms
+[07:17:16] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:item.goat_horn.play
+[07:17:16] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+[07:17:16] [Render thread/ERROR] [minecraft/SoundEngine]: Error starting SoundSystem. Turning off sounds & music
+java.lang.IllegalStateException: Failed to open OpenAL device
+	at com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:283) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.audio.Library.init(Library.java:153) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:104) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:96) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:125) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:40) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:13) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?] {}
+	at net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$new$3(SimpleReloadInstance.java:69) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:156) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,re:computing_frames,re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:130) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:115) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1106) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[07:17:16] [Forge Version Check/WARN] [ne.mi.fm.VersionChecker/]: Failed to process update information
+java.net.ConnectException: null
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:900) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.openUrlString(VersionChecker.java:142) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.process(VersionChecker.java:180) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+	at java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {re:mixin}
+	at net.minecraftforge.fml.VersionChecker$1.run(VersionChecker.java:117) ~[fmlcore-1.20.1-47.4.0.jar%23185!/:?] {}
+Caused by: java.net.ConnectException
+	at jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1107) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:203) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:238) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:214) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+Caused by: java.nio.channels.ClosedChannelException
+	at sun.nio.ch.SocketChannelImpl.ensureOpen(SocketChannelImpl.java:195) ~[?:?] {}
+	at sun.nio.ch.SocketChannelImpl.beginConnect(SocketChannelImpl.java:760) ~[?:?] {}
+	at sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:848) ~[?:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$0(PlainHttpConnection.java:187) ~[java.net.http:?] {}
+	at java.security.AccessController.doPrivileged(AccessController.java:569) ~[?:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:189) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.checkRetryConnect(PlainHttpConnection.java:238) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:214) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[?:?] {}
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[?:?] {}
+	at java.lang.Thread.run(Thread.java:840) ~[?:?] {}
+[07:17:16] [Render thread/WARN] [minecraft/ShaderInstance]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[07:17:16] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[07:17:16] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:overworld
+[07:17:16] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:the_nether
+[07:17:16] [Render thread/INFO] [flywheel/backend/shaders/]: Loaded 77 shader sources in 37.013 ms
+[07:17:16] [Render thread/INFO] [co.si.cr.Create/]: Loaded 56 train hat configurations.
+[07:17:17] [Render thread/INFO] [co.si.cr.Create/]: Created 157 recipes which will be injected into the game
+[07:17:17] [Render thread/INFO] [co.si.cr.Create/]: Created 0 tags which will be injected into the game
+[07:17:17] [Render thread/WARN] [ne.mi.co.ForgeHooks/WP]: The following mods have version differences that were not resolved:
+sunlit_journal_core (version 0.8.11-reforged-bridge -> 0.8.13-nickname-text)
+sunlit_reforged (version 1.0.0-dev.4 -> 1.0.0-dev.6)
+Things may not work well.
+[07:17:18] [Render thread/WARN] [minecraft/LootDataManager]: Found loot table element validation problem in {loot_tables:netherdepthsupgrade:gameplay/nether_fishing}.pools[0].entries[1]: Unknown loot table called netherdepthsupgrade:gameplay/nether_fishing/fish
+[07:17:18] [Render thread/WARN] [minecraft/LootDataManager]: Found loot table element validation problem in {loot_tables:netherdepthsupgrade:gameplay/nether_fishing}.pools[0].entries[0]: Unknown loot table called netherdepthsupgrade:gameplay/nether_fishing/junk
+[07:17:18] [Render thread/INFO] [minecraft/RecipeManager]: Loaded 22 recipes
+[07:17:18] [Render thread/INFO] [minecraft/AdvancementList]: Loaded 2510 advancements
+[07:17:18] [Render thread/INFO] [de.su.re.SunlitReforged/]: Loaded Sunlit potential rules: 19 options
+[07:17:19] [Server thread/INFO] [minecraft/IntegratedServer]: Starting integrated minecraft server version 1.20.1
+[07:17:19] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
+[07:17:22] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:26] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[07:17:27] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 20%
+[07:17:27] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 84%
+[07:17:27] [Server thread/INFO] [ne.mi.se.pe.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[07:17:27] [Server thread/INFO] [puffish_skills/]: [puffish_skills] Mod configuration loaded successfully!
+[07:17:27] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 5417 ms
+[07:17:28] [Server thread/INFO] [minecraft/IntegratedServer]: Changing view distance to 12, from 10
+[07:17:28] [Server thread/INFO] [minecraft/IntegratedServer]: Changing simulation distance to 12, from 0
+[07:17:28] [Render thread/WARN] [io.ne.ut.in.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[07:17:28] [Netty Local Client IO #0/INFO] [ne.mi.ne.NetworkHooks/]: Connected to a modded server.
+[07:17:29] [Server thread/INFO] [minecraft/PlayerList]: Dev[local:E:b6c174c7] logged in with entity id 197 at (0.5, 81.0, -14.5)
+[07:17:29] [Server thread/INFO] [minecraft/MinecraftServer]: Dev joined the game
+[07:17:29] [Render thread/INFO] [flywheel/]: Started 1 worker threads
+[07:17:29] [Render thread/WARN] [minecraft/ClientPacketListener]: Unknown custom packet identifier: stardew_fishing:packets
+[07:17:29] [Render thread/WARN] [minecraft/ClientPacketListener]: Ignoring chat session from Dev due to missing Services public key
+[07:17:30] [Render thread/INFO] [minecraft/AdvancementList]: Loaded 37 advancements
+[07:17:32] [Render thread/INFO] [minecraft/ReloadableResourceManager]: Reloading ResourceManager: vanilla, mod_resources
+[07:17:32] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: action
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 0
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList$SubList.get(ArrayList.java:1149)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:282)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '+math.sin(query.anim_time*360-90)*5' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:70)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:32] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: Walk
+java.lang.IndexOutOfBoundsException: Index -1 out of bounds for length 3
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:266)
+	at java.base/java.util.Objects.checkIndex(Objects.java:361)
+	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:306)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse 'math.clamp(math.sin(query.anim_time*180-60)*0,0,20)2' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:199)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+java.lang.Exception: Function '0math.sin' couldn't be found!
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.createFunction(MathBuilder.java:423)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:266)
+	at TRANSFORMER/mclib@20/com.eliotlash.mclib.math.MathBuilder.parseSymbols(MathBuilder.java:308)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseSymbolsMolang(MolangParser.java:255)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:243)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:32] [Worker-Main-1/ERROR] [so.be.ge.GeckoLib/]: Unable to parse animation: flop
+software.bernie.geckolib.core.molang.MolangException: Couldn't parse '0math.sin(query.anim_time*720+60)*-10' expression!
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseOneLine(MolangParser.java:246)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseExpression(MolangParser.java:198)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.core.molang.MolangParser.parseJson(MolangParser.java:180)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.buildKeyframeStack(BakedAnimationsAdapter.java:197)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeBoneAnimations(BakedAnimationsAdapter.java:72)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.bakeAnimation(BakedAnimationsAdapter.java:53)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:39)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.json.typeadapter.BakedAnimationsAdapter.deserialize(BakedAnimationsAdapter.java:31)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.internal.bind.TreeTypeAdapter.read(TreeTypeAdapter.java:76)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1214)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1319)
+	at MC-BOOTSTRAP/com.google.gson@2.10/com.google.gson.Gson.fromJson(Gson.java:1261)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.loading.FileLoader.loadAnimationsFile(FileLoader.java:28)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadAnimations$1(GeckoLibCache.java:90)
+	at TRANSFORMER/geckolib@4.8/software.bernie.geckolib.cache.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:132)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+[07:17:32] [Server thread/INFO] [minecraft/IntegratedServer]: Saving and pausing game...
+[07:17:32] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07:17:33] [Worker-Main-1/INFO] [minecraft/UnihexProvider]: Found unifont_all_no_pua-15.0.06.hex, loading
+[07:17:34] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden_grand
+[07:17:34] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden
+[07:17:34] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_citadel
+[07:17:34] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[07:17:34] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[07:17:35] [Worker-Main-2/WARN] [mojang/YggdrasilMinecraftSessionService]: Couldn't look up profile properties for com.mojang.authlib.GameProfile@66b89c3b[id=380df991-f603-344c-a090-369bad2a924a,name=Dev,properties={},legacy=false]
+com.mojang.authlib.exceptions.AuthenticationUnavailableException: Cannot contact authentication server
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:119) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:91) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillGameProfile(YggdrasilMinecraftSessionService.java:175) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:51) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService$1.load(YggdrasilMinecraftSessionService.java:48) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3533) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2282) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2159) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2049) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache.get(LocalCache.java:3966) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache.getOrLoad(LocalCache.java:3989) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$LocalLoadingCache.get(LocalCache.java:4950) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.google.common.cache.LocalCache$LocalLoadingCache.getUnchecked(LocalCache.java:4956) ~[guava-31.1-jre.jar%2394!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fillProfileProperties(YggdrasilMinecraftSessionService.java:149) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at net.minecraft.client.Minecraft.getProfileProperties(Minecraft.java:2438) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.resources.SkinManager.lambda$registerSkins$4(SkinManager.java:107) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar%23181!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1395) ~[?:?] {}
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?] {}
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?] {}
+Caused by: java.net.ConnectException: Connection refused
+	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?] {}
+	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554) ~[?:?] {}
+	at sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[?:?] {}
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.net.Socket.connect(Socket.java:633) ~[?:?] {}
+	at sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:533) ~[?:?] {}
+	at sun.net.www.http.HttpClient.openServer(HttpClient.java:638) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1307) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1148) ~[?:?] {}
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1717) ~[?:?] {}
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1641) ~[?:?] {}
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:224) ~[?:?] {}
+	at com.mojang.authlib.HttpAuthenticationService.performGetRequest(HttpAuthenticationService.java:140) ~[authlib-4.0.43.jar%23121!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.makeRequest(YggdrasilAuthenticationService.java:96) ~[authlib-4.0.43.jar%23121!/:?] {}
+	... 21 more
+[07:17:35] [Worker-Main-1/WARN] [minecraft/SpriteLoader]: Texture stardew_fishing:item/cyclops_mahimahi with size 17x16 limits mip level from 4 to 0
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+ALSA lib confmisc.c:855:(parse_card) cannot find card '0'
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_card_inum returned error: No such file or directory
+ALSA lib confmisc.c:422:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1342:(snd_func_refer) error evaluating name
+ALSA lib conf.c:5205:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5728:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2722:(snd_pcm_open_noupdate) Unknown PCM default
+[07:17:37] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:item.goat_horn.play
+[07:17:37] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[07:17:37] [Render thread/ERROR] [minecraft/SoundEngine]: Error starting SoundSystem. Turning off sounds & music
+java.lang.IllegalStateException: Failed to open OpenAL device
+	at com.mojang.blaze3d.audio.Library.openDeviceOrFallback(Library.java:283) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.mojang.blaze3d.audio.Library.init(Library.java:153) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.loadLibrary(SoundEngine.java:104) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundEngine.reload(SoundEngine.java:96) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:125) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.sounds.SoundManager.apply(SoundManager.java:40) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.server.packs.resources.SimplePreparableReloadListener.lambda$reload$1(SimplePreparableReloadListener.java:13) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:718) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:482) ~[?:?] {}
+	at net.minecraft.server.packs.resources.SimpleReloadInstance.lambda$new$3(SimpleReloadInstance.java:69) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:156) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:23) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,re:computing_frames,re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:130) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.BlockableEventLoop.runAllTasks(BlockableEventLoop.java:115) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1106) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:718) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:puffish_skills.mixins.json:MinecraftClientMixin,pl:mixin:APP:glitchcore.mixins.json:client.MixinMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.AccessorMinecraft,pl:mixin:APP:numismatics-common.mixins.json:client.dev_export.MixinMinecraft,pl:mixin:APP:flywheel.impl.mixins.json:MinecraftMixin,pl:mixin:APP:ponder-common.mixins.json:client.WindowResizeMixin,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.4.0_mapped_official_1.20.1.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[07:17:37] [Render thread/WARN] [minecraft/ShaderInstance]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[07:17:37] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[07:17:37] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:overworld
+[07:17:37] [Render thread/INFO] [co.bo.st.StardewFishing/]: Found minigame texture for dimension: minecraft:the_nether
+[07:17:37] [Render thread/INFO] [flywheel/backend/shaders/]: Loaded 77 shader sources in 31.987 ms
+[07:17:37] [Render thread/INFO] [co.si.cr.Create/]: Loaded 56 train hat configurations.
+[07:18:00] [Server thread/INFO] [minecraft/MinecraftServer]: ✿ Dev님이 아이템을 자랑합니다!
+✦ [햇살의 검]
+[07:18:00] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] ✿ Dev님이 아이템을 자랑합니다!\n✦ [햇살의 검]
+REFORGED_CLIENT_PASSED: Dreamdrop legacy IDs, three shop items, models and textures, held geometry, UI, master choice/recovery, bank replay, item hover, scaled mouse purchase.
+[07:18:24] [Render thread/INFO] [minecraft/Minecraft]: Stopping!
+[07:18:24] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: Dev lost connection: 연결 끊김
+[07:18:24] [Server thread/INFO] [minecraft/MinecraftServer]: Dev이(가) 게임을 떠났습니다
+[07:18:24] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: Stopping singleplayer server as player logged out
+[07:18:24] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[07:18:24] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[07:18:24] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden_grand
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_garden
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/sunlit_journal_core:sky_citadel
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (SunlitReforgedTest): All chunks are saved
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_garden_grand): All chunks are saved
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_garden): All chunks are saved
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (sky_citadel): All chunks are saved
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[07:18:25] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+
+> Task :jar
+> Task :createMcpToSrg UP-TO-DATE
+> Task :reobfJar
+> Task :jarJar SKIPPED
+> Task :reobfJarJar SKIPPED
+> Task :assemble
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses UP-TO-DATE
+> Task :test
+> Task :check
+> Task :build
+
+[Incubating] Problems report is available at: file:///workspace/sunlit/addons/reforged/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 35s
+17 actionable tasks: 7 executed, 10 up-to-date

@@ -52,6 +52,7 @@ public final class Integrations {
         String name=p.getGameProfile().getName();
         call(store,"setNick",new Class<?>[]{MinecraftServer.class,UUID.class,String.class,String.class,String.class},p.getServer(),p.getUUID(),clean,name,name);
     }
+    /** SUN follows the coin tooltip total value: one base unit, not one iridium coin. */
     public record Balance(long spurs, long perSun) {}
     public static Optional<Balance> balance(ServerPlayer p) {return balance(p.getUUID());}
     public static Optional<Balance> balance(UUID id) {
@@ -77,7 +78,7 @@ public final class Integrations {
                 return Optional.empty();
             }
             Class<?> coin=Class.forName("dev.ithundxr.createnumismatics.content.backend.Coin");
-            Object sun=coin.getField("SUN").get(null);
+            Object sun=coin.getField("SPUR").get(null);
             long unit=((Number)coin.getField("value").get(sun)).longValue();
             if (amount<0 || unit<=0) return Optional.empty();
             return Optional.of(new Balance(amount,unit));

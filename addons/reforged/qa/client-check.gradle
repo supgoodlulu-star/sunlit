@@ -1,5 +1,9 @@
 allprojects {
  afterEvaluate {
+  if(providers.gradleProperty('fontIntegration').getOrElse('false').toBoolean()){
+   repositories { flatDir { dirs providers.gradleProperty('integrationModDir').getOrElse('provided-mods') } }
+   dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-font-bold-fix:1.0.0') }
+  }
   sourceSets { reforgedCheck {
    java.srcDir new File(rootDir,'qa')
    java.include 'ReforgedClientCheck.java', 'DreamdropPreviewScreen.java'
@@ -8,7 +12,7 @@ allprojects {
   }}
   minecraft.runs.client.mods.sunlit_reforged.source sourceSets.reforgedCheck
   minecraft.runs.client.property 'sunlit.reforgedCheck','true'
-  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'../../validation/reforged-dreamdrops').absolutePath
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'../../validation/sun-total-reforged').absolutePath
   minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitReforgedTest'
  }
 }
