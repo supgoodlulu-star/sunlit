@@ -1,0 +1,32 @@
+// Actual 4.1.5A equipment mods and its original custom-weapon registration script.
+allprojects {
+ afterEvaluate {
+  def modDirectory=providers.gradleProperty('integrationModDir').getOrElse('provided-mods')
+  repositories { flatDir { dirs modDirectory } }
+  dependencies {
+   runtimeOnly fg.deobf('sunlit.local:Botania:1.20.1-454-FORGE')
+   runtimeOnly fg.deobf('sunlit.local:Patchouli:1.20.1-85-FORGE')
+   runtimeOnly fg.deobf('sunlit.local:curios-forge:5.14.1+1.20.1')
+   runtimeOnly fg.deobf('sunlit.local:FarmersDelight:1.20.1-1.3.2')
+   runtimeOnly fg.deobf('sunlit.local:Oreganized:4.3.2')
+   runtimeOnly fg.deobf('sunlit.local:blueprint:1.20.1-7.1.3')
+   runtimeOnly fg.deobf('sunlit.local:justhammers-forge:2.0.3+mc1.20.1')
+   runtimeOnly fg.deobf('sunlit.local:netherdepthsupgrade:3.1.5-1.20')
+   runtimeOnly fg.deobf('sunlit.local:architectury:9.2.14-forge')
+   runtimeOnly fg.deobf('sunlit.local:kubejs-forge:2001.6.5-build.16')
+   runtimeOnly fg.deobf('sunlit.local:rhino-forge:2001.2.3-build.10')
+  }
+  minecraft.runs.all { property 'sunlit.modpackEquipmentTests','true' }
+  tasks.matching { it.name in ['runGameTestServer','runClient'] }.configureEach {
+   doFirst {
+    copy { from new File(rootDir,'qa/modpack-kubejs'); into new File(rootDir,name=='runClient'?'run/kubejs':'run-gametest/kubejs') }
+    // Use the original weapon textures without loading Society's unrelated plushie dependencies.
+    if(name=='runClient')copy {
+     from zipTree(new File(modDirectory,'society-1.22.jar'))
+     include 'assets/society/textures/item/galaxy_sword.png*','assets/society/textures/item/dragontooth_axe.png','assets/society/textures/item/meowmageddon.png'
+     into new File(rootDir,'run/kubejs')
+    }
+   }
+  }
+ }
+}

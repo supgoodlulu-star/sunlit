@@ -1,0 +1,60 @@
+# 실제 모드 장비 검증 목록
+
+선릿밸리 4.1.5A의 실제 모드 JAR 및 원본 KubeJS 등록 코드에서 생성된 추가 장비 54종입니다. 각 ID의 등록 여부, 분류, 공방 슬롯, 서버 재련, 저장·복원과 외부 데이터 보존을 검사했습니다. 기존 바닐라 지원 장비는 유지합니다.
+
+| 아이템 ID | 잠재옵션 분류 |
+| --- | --- |
+| aquaculture:neptunium_sword | 무기 |
+| aquaculture:neptunium_axe | 무기 |
+| aquaculture:neptunium_pickaxe | 곡괭이 |
+| aquaculture:neptunium_shovel | 삽 |
+| aquaculture:neptunium_hoe | 괭이 |
+| botania:manasteel_sword | 무기 |
+| botania:manasteel_axe | 무기 |
+| botania:manasteel_pick | 곡괭이 |
+| botania:manasteel_shovel | 삽 |
+| botania:manasteel_hoe | 괭이 |
+| botania:elementium_sword | 무기 |
+| botania:elementium_axe | 무기 |
+| botania:elementium_pickaxe | 곡괭이 |
+| botania:elementium_shovel | 삽 |
+| botania:elementium_hoe | 괭이 |
+| oreganized:electrum_sword | 무기 |
+| oreganized:electrum_axe | 무기 |
+| oreganized:electrum_pickaxe | 곡괭이 |
+| oreganized:electrum_shovel | 삽 |
+| oreganized:electrum_hoe | 괭이 |
+| oreganized:electrum_knife | 무기 |
+| botania:terra_sword | 무기 |
+| botania:star_sword | 무기 |
+| botania:thunder_sword | 무기 |
+| botania:terra_axe | 무기 |
+| botania:terra_pick | 곡괭이 |
+| society:galaxy_sword | 무기 |
+| society:meowmageddon | 무기 |
+| society:dragontooth_axe | 무기 |
+| farmersdelight:diamond_knife | 무기 |
+| justhammers:diamond_hammer | 곡괭이 |
+| justhammers:diamond_reinforced_hammer | 곡괭이 |
+| justhammers:diamond_impact_hammer | 곡괭이 |
+| justhammers:diamond_reinforced_impact_hammer | 곡괭이 |
+| justhammers:diamond_destructor_hammer | 곡괭이 |
+| farmersdelight:netherite_knife | 무기 |
+| justhammers:netherite_hammer | 곡괭이 |
+| justhammers:netherite_reinforced_hammer | 곡괭이 |
+| justhammers:netherite_impact_hammer | 곡괭이 |
+| justhammers:netherite_reinforced_impact_hammer | 곡괭이 |
+| justhammers:netherite_destructor_hammer | 곡괭이 |
+| aquaculture:iron_fishing_rod | 낚싯대 |
+| aquaculture:gold_fishing_rod | 낚싯대 |
+| aquaculture:diamond_fishing_rod | 낚싯대 |
+| aquaculture:neptunium_fishing_rod | 낚싯대 |
+| netherdepthsupgrade:lava_fishing_rod | 낚싯대 |
+| aquaculture:neptunium_helmet | 방어구 |
+| aquaculture:neptunium_chestplate | 방어구 |
+| aquaculture:neptunium_leggings | 방어구 |
+| aquaculture:neptunium_boots | 방어구 |
+| botania:terrasteel_helmet | 방어구 |
+| botania:terrasteel_chestplate | 방어구 |
+| botania:terrasteel_leggings | 방어구 |
+| botania:terrasteel_boots | 방어구 |

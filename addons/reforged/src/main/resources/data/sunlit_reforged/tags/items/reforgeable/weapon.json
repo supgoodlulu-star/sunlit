@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "society:galaxy_sword",
+      "required": false
+    },
+    {
+      "id": "society:meowmageddon",
+      "required": false
+    },
+    {
+      "id": "society:dragontooth_axe",
+      "required": false
+    }
+  ]
+}

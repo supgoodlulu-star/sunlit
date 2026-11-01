@@ -28,12 +28,7 @@ public record Potential(Tier tier,List<Line> lines) {
     public static Optional<Potential> get(ItemStack stack){return stack.hasTag()?load(stack.getTag().getCompound(KEY)):Optional.empty();}
     public void apply(ItemStack stack){stack.getOrCreateTag().put(KEY,save());}
     public Potential withTier(Tier tier){return new Potential(tier,lines);}
-    public static Optional<Gear> gear(ItemStack s){
-        Item i=s.getItem();String id=net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(i).toString();
-        if(i==Items.FISHING_ROD)return Optional.of(Gear.ROD);
-        if(!id.startsWith("minecraft:diamond_")&&!id.startsWith("minecraft:netherite_"))return Optional.empty();
-        if(i instanceof SwordItem||i instanceof AxeItem)return Optional.of(Gear.WEAPON);if(i instanceof ArmorItem)return Optional.of(Gear.ARMOR);if(i instanceof PickaxeItem)return Optional.of(Gear.PICKAXE);if(i instanceof HoeItem)return Optional.of(Gear.HOE);if(i instanceof ShovelItem)return Optional.of(Gear.SHOVEL);return Optional.empty();
-    }
+    public static Optional<Gear> gear(ItemStack s){return EquipmentEligibility.gear(s);}
     public static Potential roll(Optional<Potential> old,Gear gear,Cube cube,RandomSource rng,Rules rules){
         Tier tier=old.map(Potential::tier).orElse(Tier.RARE);
         if(old.isPresent()&&tier!=Tier.LEGENDARY&&rng.nextDouble()<rules.upgrades[cube.ordinal()][tier.ordinal()]/100)tier=Tier.values()[tier.ordinal()+1];

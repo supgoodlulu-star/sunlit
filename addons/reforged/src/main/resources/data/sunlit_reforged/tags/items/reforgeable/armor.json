@@ -1,0 +1,37 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "aquaculture:neptunium_helmet",
+      "required": false
+    },
+    {
+      "id": "aquaculture:neptunium_chestplate",
+      "required": false
+    },
+    {
+      "id": "aquaculture:neptunium_leggings",
+      "required": false
+    },
+    {
+      "id": "aquaculture:neptunium_boots",
+      "required": false
+    },
+    {
+      "id": "botania:terrasteel_helmet",
+      "required": false
+    },
+    {
+      "id": "botania:terrasteel_chestplate",
+      "required": false
+    },
+    {
+      "id": "botania:terrasteel_leggings",
+      "required": false
+    },
+    {
+      "id": "botania:terrasteel_boots",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "aquaculture:iron_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "aquaculture:gold_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "aquaculture:diamond_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "aquaculture:neptunium_fishing_rod",
+      "required": false
+    },
+    {
+      "id": "netherdepthsupgrade:lava_fishing_rod",
+      "required": false
+    }
+  ]
+}

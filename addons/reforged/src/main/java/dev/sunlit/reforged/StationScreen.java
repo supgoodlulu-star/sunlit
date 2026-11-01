@@ -62,7 +62,7 @@ public final class StationScreen extends AbstractContainerScreen<StationMenu>{
         text(g,"꿈방울 구매",295,24,0xffffe6a6,132);fittedCentered(g,money,361,36,0xffffe6a6,130);centered(g,"수량 "+quantity,362,47,0xfff8deb1,86);
         String[] names={"작은 꿈방울","영롱한 꿈방울","찬란한 꿈방울"};var prices=state.getList("prices",Tag.TAG_INT);
         for(int i=0;i<3;i++){text(g,names[i],321,64+i*34,0xffffe6c2,68);text(g,(prices.size()==3?String.format(java.util.Locale.ROOT,"%,d",prices.getInt(i)):"?")+" SUN",321,77+i*34,0xffffd889,68);}
-        frame(g,294,164,134,34,0xffead0a2);text(g,"사용 가능한 장비",299,168,0xff674022,123);text(g,"다이아 · 네더라이트",299,179,0xff493020,123);text(g,"일반 낚싯대",299,189,0xff493020,123);
+        frame(g,294,164,134,34,0xffead0a2);text(g,"사용 가능한 장비",299,168,0xff674022,123);text(g,"다이아급 이상 · 모드 장비",299,179,0xff493020,123);text(g,"모드팩 낚싯대 포함",299,189,0xff493020,123);
         centered(g,"인벤토리",220,204,0xffffe6a6,165);
     }
     @Override public void render(GuiGraphics g,int mx,int my,float partial){renderBackground(g);int x=(int)(mx/fit),y=(int)(my/fit);g.pose().pushPose();g.pose().scale((float)fit,(float)fit,1);super.render(g,x,y,partial);renderTooltip(g,x,y);
