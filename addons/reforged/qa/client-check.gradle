@@ -12,7 +12,7 @@ allprojects {
   }}
   minecraft.runs.client.mods.sunlit_reforged.source sourceSets.reforgedCheck
   minecraft.runs.client.property 'sunlit.reforgedCheck','true'
-  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'../../validation/sun-total-reforged').absolutePath
+  minecraft.runs.client.property 'sunlit.previewOutput',providers.gradleProperty('previewOutput').getOrElse(new File(rootDir,'../../validation/sun-total-reforged').absolutePath)
   minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitReforgedTest'
  }
 }

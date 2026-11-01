@@ -189,6 +189,26 @@
         30,
         50
       ]
+    },
+    {
+      "id": "treasure_chance",
+      "weight": 1,
+      "values": [
+        10,
+        20,
+        30,
+        50
+      ]
+    },
+    {
+      "id": "fishing_bar",
+      "weight": 1,
+      "values": [
+        30,
+        50,
+        75,
+        100
+      ]
     }
   ],
   "upgrades": [

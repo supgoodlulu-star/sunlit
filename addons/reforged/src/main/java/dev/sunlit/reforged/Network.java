@@ -10,7 +10,7 @@ import net.minecraftforge.network.*;
 import net.minecraftforge.network.simple.SimpleChannel;
 import java.util.*;
 public final class Network{
-    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation(SunlitReforged.ID,"station"),()->"1","1"::equals,"1"::equals);
+    public static final SimpleChannel CHANNEL=NetworkRegistry.newSimpleChannel(new ResourceLocation(SunlitReforged.ID,"station"),()->"2","2"::equals,"2"::equals);
     public record Action(int menu,int revision,String action,int product,int quantity,String rollId){}
     public record View(CompoundTag state){}
     public static void register(){

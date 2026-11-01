@@ -8,7 +8,9 @@ allprojects {
   }}
   minecraft.runs.client.mods.sunlit_reforged.source sourceSets.barPreview
   minecraft.runs.client.property 'sunlit.barPreview','true'
-  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'../../validation/fishing-bar-40').absolutePath
+  minecraft.runs.client.property 'sunlit.barPreviewBoost',providers.gradleProperty('barBoost').getOrElse('40')
+  minecraft.runs.client.property 'sunlit.barPreviewPotential',providers.gradleProperty('potentialPreview').getOrElse('false')
+  minecraft.runs.client.property 'sunlit.previewOutput',providers.gradleProperty('previewOutput').getOrElse(new File(rootDir,'../../validation/fishing-bar-40').absolutePath)
   minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitReforgedTest'
  }
 }

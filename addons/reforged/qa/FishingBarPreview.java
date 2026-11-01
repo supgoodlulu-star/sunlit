@@ -13,6 +13,7 @@ import java.util.concurrent.CompletableFuture;
 @Mod.EventBusSubscriber(modid=SunlitReforged.ID,value=Dist.CLIENT)
 public final class FishingBarPreview {
     static int stage,ticks;static boolean boosted,oldHud;static volatile int baseSize,actualSize;static CompletableFuture<Void> pending;static long start=System.currentTimeMillis();
+    static double boost(){return Double.parseDouble(System.getProperty("sunlit.barPreviewBoost","40"));}
     static void require(boolean ok,String text){if(!ok)throw new IllegalStateException("FISHING_BAR_PREVIEW: "+text);}
     static Object get(Object o,String name)throws Exception{var f=o.getClass().getDeclaredField(name);f.setAccessible(true);return f.get(o);}
     static void set(Object o,String name,Object value)throws Exception{var f=o.getClass().getDeclaredField(name);f.setAccessible(true);f.set(o,value);}
@@ -23,11 +24,12 @@ public final class FishingBarPreview {
             p.serverLevel().setDayTime(6000);p.serverLevel().setWeatherParameters(60000,0,false,false);
             if(p.fishing!=null)p.fishing.discard();var hook=new FishingHook(p,p.serverLevel(),0,0);hook.setPos(p.getX()+1,p.getY(),p.getZ()+1);p.serverLevel().addFreshEntity(hook);
             var behavior=Class.forName("com.bonker.stardewfishing.common.FishBehavior");var fish=behavior.getConstructor(int.class,float.class,float.class,float.class,int.class,int.class).newInstance(10,1.5f,.7f,.7f,55,10);
+            if(plus&&Boolean.getBoolean("sunlit.barPreviewPotential")){new Potential(Potential.Tier.LEGENDARY,java.util.List.of(new Potential.Line(Potential.Option.RARE_FISH,Potential.Tier.LEGENDARY,40),new Potential.Line(Potential.Option.TREASURE_CHANCE,Potential.Tier.LEGENDARY,50),new Potential.Line(Potential.Option.FISHING_BAR,Potential.Tier.LEGENDARY,boost()))).apply(p.getMainHandItem());}
             var type=Class.forName("com.bonker.stardewfishing.server.event.StardewMinigameStartedEvent");var event=type.getConstructor(ServerPlayer.class,FishingHook.class,ItemStack.class,ItemStack.class,behavior,boolean.class).newInstance(p,hook,p.getMainHandItem(),new ItemStack(Items.COD),fish,false);
-            baseSize=((Number)type.getMethod("getBarSize").invoke(event)).intValue();if(plus)type.getMethod("setBarSize",int.class).invoke(event,(int)Math.round(baseSize*1.4));actualSize=((Number)type.getMethod("getBarSize").invoke(event)).intValue();
+            baseSize=((Number)type.getMethod("getBarSize").invoke(event)).intValue();if(Boolean.getBoolean("sunlit.barPreviewPotential")){net.minecraftforge.common.MinecraftForge.EVENT_BUS.post((net.minecraftforge.eventbus.api.Event)event);}else if(plus)type.getMethod("setBarSize",int.class).invoke(event,(int)Math.round(baseSize*(1+boost()/100)));actualSize=((Number)type.getMethod("getBarSize").invoke(event)).intValue();
             var packet=Class.forName("com.bonker.stardewfishing.common.networking.S2CStartMinigamePacket").getConstructor(type,boolean.class,boolean.class).newInstance(event,false,false);
             Class.forName("com.bonker.stardewfishing.common.networking.SFNetworking").getMethod("sendToPlayer",ServerPlayer.class,Object.class).invoke(null,p,packet);
-            boosted=plus;System.out.println("FISHING_BAR_SERVER base="+baseSize+" actual="+actualSize+" requested="+(plus?40:0)+"%");pending.complete(null);
+            boosted=plus;System.out.println("FISHING_BAR_SERVER base="+baseSize+" actual="+actualSize+" requested="+(plus?boost():0)+"%");pending.complete(null);
         }catch(Throwable t){pending.completeExceptionally(t);}});
     }
     static void fixedPose()throws Exception{
@@ -39,7 +41,7 @@ public final class FishingBarPreview {
     @SubscribeEvent public static void pre(net.minecraftforge.client.event.ScreenEvent.Render.Pre e)throws Exception{if(Boolean.getBoolean("sunlit.barPreview")){Minecraft.getInstance().getToasts().clear();fixedPose();}}
     @SubscribeEvent public static void caption(net.minecraftforge.client.event.ScreenEvent.Render.Post e){
         if(!Boolean.getBoolean("sunlit.barPreview")||!nativeScreen())return;var mc=Minecraft.getInstance();var g=e.getGuiGraphics();
-        String label=boosted?"막대 크기 +40% · "+baseSize+" → "+actualSize+" px":"기본 막대 · "+actualSize+" px";
+        String label=boosted?"막대 크기 +"+(int)boost()+"% · "+baseSize+" → "+actualSize+" px":"기본 막대 · "+actualSize+" px";
         g.fill(mc.screen.width/2-150,10,mc.screen.width/2+150,43,0xdd39291e);g.drawCenteredString(mc.font,label,mc.screen.width/2,17,0xffffe2ab);
         g.drawCenteredString(mc.font,"실제 Stardew Fishing 3.7 · 비교용 위치 고정",mc.screen.width/2,30,0xffffefcd);
     }
@@ -50,7 +52,7 @@ public final class FishingBarPreview {
         switch(stage++){
             case 0->{oldHud=mc.options.hideGui;mc.options.hideGui=true;mc.options.guiScale().set(3);mc.resizeDisplay();mc.setScreen(null);open(false);}
             case 1->{require(nativeScreen(),"Native minigame was not received");int value=((Number)get(mc.screen,"minigame").getClass().getMethod("getBarSize").invoke(get(mc.screen,"minigame"))).intValue();require(value==baseSize,"Baseline packet/client differs");shot("fishing-bar-default");open(true);}
-            case 2->{require(nativeScreen(),"Native boosted minigame missing");int value=((Number)get(mc.screen,"minigame").getClass().getMethod("getBarSize").invoke(get(mc.screen,"minigame"))).intValue();require(value==actualSize&&actualSize==Math.round(baseSize*1.4),"Boosted packet/client size differs");shot("fishing-bar-plus40");}
+            case 2->{require(nativeScreen(),"Native boosted minigame missing");int value=((Number)get(mc.screen,"minigame").getClass().getMethod("getBarSize").invoke(get(mc.screen,"minigame"))).intValue();require(value==actualSize&&actualSize==Math.round(baseSize*(1+boost()/100)),"Boosted packet/client size differs");shot("fishing-bar-plus"+(int)boost());}
             case 3->{mc.options.hideGui=oldHud;System.out.println("FISHING_BAR_PREVIEW_PASSED base="+baseSize+" boosted="+actualSize+" native server event -> packet -> FishingScreen; positions fixed for comparison only");mc.stop();}
         }
     }

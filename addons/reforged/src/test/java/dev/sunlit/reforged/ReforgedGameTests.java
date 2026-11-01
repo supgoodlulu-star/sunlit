@@ -19,7 +19,7 @@ public final class ReforgedGameTests{
         for(var cube:Cube.values()){var result=Potential.roll(Optional.empty(),Gear.WEAPON,cube,RandomSource.create(1),Rules.defaults());h.assertTrue(result.tier()==Tier.RARE&&result.lines().size()==3&&result.lines().stream().allMatch(l->l.tier()==Tier.RARE),"Initial use promoted or wrong line tier");}h.succeed();
     }
     @GameTest(template="empty") public static void gearWhitelistAndExactNineteenOptions(GameTestHelper h){
-        h.assertTrue(Option.values().length==19,"Wrong option count");for(var item:List.of(Items.IRON_SWORD,Items.GOLDEN_PICKAXE,Items.WOODEN_HOE,Items.SHIELD,Items.BOW,Items.STONE_AXE))h.assertTrue(Potential.gear(new ItemStack(item)).isEmpty(),"Unapproved item allowed");
+        h.assertTrue(Arrays.stream(Option.values()).filter(Option::rollable).count()==21,"Wrong option count");for(var item:List.of(Items.IRON_SWORD,Items.GOLDEN_PICKAXE,Items.WOODEN_HOE,Items.SHIELD,Items.BOW,Items.STONE_AXE))h.assertTrue(Potential.gear(new ItemStack(item)).isEmpty(),"Unapproved item allowed");
         h.assertTrue(Potential.gear(new ItemStack(Items.DIAMOND_AXE)).orElseThrow()==Gear.WEAPON,"Axe is not a weapon");h.assertTrue(Potential.gear(new ItemStack(Items.FISHING_ROD)).orElseThrow()==Gear.ROD,"Rod not supported");h.succeed();
     }
     @GameTest(template="empty") public static void duplicateLinesAndGearPools(GameTestHelper h){

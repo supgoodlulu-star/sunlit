@@ -25,10 +25,16 @@ public final class StardewBridge{
     public static ItemStack activeRod(ServerPlayer p){
         try{var hand=(InteractionHand)Class.forName("com.bonker.stardewfishing.proxy.ItemUtils").getMethod("getRodHand",Player.class).invoke(null,p);return hand==null?ItemStack.EMPTY:p.getItemInHand(hand);}catch(ReflectiveOperationException|RuntimeException e){return p.getMainHandItem();}
     }
+    public static double rareBonus(ItemStack rod){return Effects.sum(rod,Potential.Option.RARE_FISH)+Effects.sum(rod,Potential.Option.LEGACY_FISHING);}
+    public static double treasureBonus(ItemStack rod){return Effects.sum(rod,Potential.Option.TREASURE_CHANCE)+Effects.sum(rod,Potential.Option.LEGACY_FISHING);}
+    public static int enlargedBar(int current,double percent){double scaled=current*(1+percent/100);return (int)Math.min(Integer.MAX_VALUE,Math.max(0,Math.round(scaled)));}
     static void start(Event event){
-        try{var c=event.getClass();var p=(ServerPlayer)c.getMethod("getPlayer").invoke(event);if(!Activity.eligible(p))return;var rod=(ItemStack)c.getMethod("getFishingRod").invoke(event);double bonus=Effects.sum(rod,Potential.Option.RARE_FISH)/100;if(bonus<=0)return;
-            double base=((Number)Class.forName("com.bonker.stardewfishing.SFConfig").getMethod("getTreasureChestChance").invoke(null)).doubleValue();double existing=((Number)c.getMethod("getTreasureChanceBonus").invoke(event)).doubleValue();double total=Math.max(0,Math.min(1,base+existing+bonus));c.getMethod("setTreasureChanceBonus",double.class).invoke(event,total-base);
-        }catch(ReflectiveOperationException|RuntimeException e){SunlitReforged.LOG.warn("Stardew treasure bonus unavailable",e);}
+        try{var c=event.getClass();var p=(ServerPlayer)c.getMethod("getPlayer").invoke(event);if(!Activity.eligible(p))return;var rod=(ItemStack)c.getMethod("getFishingRod").invoke(event);
+            double bonus=treasureBonus(rod)/100;
+            if(bonus>0){double base=((Number)Class.forName("com.bonker.stardewfishing.SFConfig").getMethod("getTreasureChestChance").invoke(null)).doubleValue();double existing=((Number)c.getMethod("getTreasureChanceBonus").invoke(event)).doubleValue();double total=Math.max(0,Math.min(1,base+existing+bonus));c.getMethod("setTreasureChanceBonus",double.class).invoke(event,total-base);}
+            double bar=Effects.sum(rod,Potential.Option.FISHING_BAR);
+            if(bar>0){int current=((Number)c.getMethod("getBarSize").invoke(event)).intValue();c.getMethod("setBarSize",int.class).invoke(event,enlargedBar(current,bar));}
+        }catch(ReflectiveOperationException|RuntimeException e){SunlitReforged.LOG.warn("Stardew fishing potential bonus unavailable",e);}
     }
     static void end(Event event){
         try{var c=event.getClass();var p=(ServerPlayer)c.getMethod("getPlayer").invoke(event);if(!Activity.eligible(p)||!(Boolean)c.getMethod("wasSuccessful").invoke(event)||!(Boolean)c.getMethod("gotChest").invoke(event))return;
@@ -38,7 +44,7 @@ public final class StardewBridge{
     }
     @SuppressWarnings("unchecked") public static void reroll(ServerPlayer p){
         if(!installed||p.fishing==null||!Activity.eligible(p)||!FishingPools.ready()||!Rules.get().rareFishingTable.isBlank())return;
-        double bonus=Effects.sum(activeRod(p),Potential.Option.RARE_FISH);if(bonus<=0)return;
+        double bonus=rareBonus(activeRod(p));if(bonus<=0)return;
         try{
             var hook=p.fishing;
             var cap=(net.minecraftforge.common.capabilities.Capability<Object>)Class.forName("com.bonker.stardewfishing.common.FishingHookLogic$CapProvider").getField("CAP").get(null);

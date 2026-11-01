@@ -16,6 +16,8 @@ public final class Client{
         @SubscribeEvent public static void tooltip(net.minecraftforge.event.entity.player.ItemTooltipEvent e){Potential.get(e.getItemStack()).ifPresent(p->{
             e.getToolTip().add(Component.literal("잠재능력 · "+p.tier().label).withStyle(s->s.withColor(p.tier().color)));
             for(var l:p.lines())e.getToolTip().add(Component.literal("  "+l.label()+" ["+l.tier().label+"]").withStyle(s->s.withColor(l.tier().color)));
+            if(p.lines().stream().anyMatch(l->l.option()==Potential.Option.LEGACY_FISHING))e.getToolTip().add(Component.literal("이전 어획 보너스는 희귀 물고기와 보물에 함께 적용됩니다.").withStyle(ChatFormatting.GRAY));
+            if(p.lines().stream().anyMatch(l->l.option()==Potential.Option.FISHING_BAR))e.getToolTip().add(Component.literal("현재 판정 막대 길이에 비례해 증가합니다. 픽셀 단위 반올림.").withStyle(ChatFormatting.GRAY));
         });}
     }
 }

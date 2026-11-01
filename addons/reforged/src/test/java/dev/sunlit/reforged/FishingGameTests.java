@@ -12,7 +12,8 @@ import java.util.*;
 @GameTestHolder("sunlit_reforged") @PrefixGameTestTemplate(false)
 public final class FishingGameTests{
     static ServerPlayer player(GameTestHelper h){return new ServerPlayer(h.getLevel().getServer(),h.getLevel(),new GameProfile(UUID.randomUUID(),"FishLive"));}
-    static ItemStack rod(){var s=new ItemStack(Items.FISHING_ROD);var line=new Potential.Line(Potential.Option.RARE_FISH,Potential.Tier.LEGENDARY,100);new Potential(Potential.Tier.LEGENDARY,List.of(line,line,line)).apply(s);return s;}
+    static ItemStack rod(){return rod(Potential.Option.RARE_FISH);}
+    static ItemStack rod(Potential.Option option){var s=new ItemStack(Items.FISHING_ROD);var line=new Potential.Line(option,Potential.Tier.LEGENDARY,100);new Potential(Potential.Tier.LEGENDARY,List.of(line,line,line)).apply(s);return s;}
     @GameTest(template="empty") public static void verifiedPoolThresholdAndWeatherConditions(GameTestHelper h){
         h.assertTrue(FishingPools.rareMaxWeight()==3,"Rare threshold not user-approved 3");var night=FishingPools.eligible("spring","Ocean",true,false,false);
         h.assertTrue(night.stream().anyMatch(f->f.id().equals("unusualfishmod:raw_spindlefish")&&f.weight()==3),"Verified rare fish missing");
@@ -22,7 +23,7 @@ public final class FishingGameTests{
         h.assertTrue(night.stream().noneMatch(f->f.id().equals("society:neptuna")),"Skill-locked special fish injected");h.succeed();
     }
     @GameTest(template="empty") public static void actualStardewTreasureChanceAndRewardDeduplicate(GameTestHelper h)throws Exception{
-        if(!Boolean.getBoolean("sunlit.fishingTests")){h.succeed();return;}var p=player(h);var rod=rod();p.setItemInHand(InteractionHand.MAIN_HAND,rod);var hook=new FishingHook(p,h.getLevel(),0,0);
+        if(!Boolean.getBoolean("sunlit.fishingTests")){h.succeed();return;}var p=player(h);var rod=rod(Potential.Option.TREASURE_CHANCE);p.setItemInHand(InteractionHand.MAIN_HAND,rod);var hook=new FishingHook(p,h.getLevel(),0,0);
         Class<?> behavior=Class.forName("com.bonker.stardewfishing.common.FishBehavior");Object fish=behavior.getConstructor(int.class,float.class,float.class,float.class,int.class,int.class).newInstance(10,1.5f,.7f,.7f,55,10);
         Class<?> start=Class.forName("com.bonker.stardewfishing.server.event.StardewMinigameStartedEvent");var event=start.getConstructor(ServerPlayer.class,FishingHook.class,ItemStack.class,ItemStack.class,behavior,boolean.class).newInstance(p,hook,rod,new ItemStack(Items.COD),fish,false);
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.post((net.minecraftforge.eventbus.api.Event)event);double base=((Number)Class.forName("com.bonker.stardewfishing.SFConfig").getMethod("getTreasureChestChance").invoke(null)).doubleValue();double bonus=((Number)start.getMethod("getTreasureChanceBonus").invoke(event)).doubleValue();h.assertTrue(Math.abs(base+bonus-1)<.000001,"Treasure chance did not clamp safely at 100 percent");

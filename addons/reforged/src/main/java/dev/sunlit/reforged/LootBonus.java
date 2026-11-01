@@ -36,7 +36,7 @@ public final class LootBonus extends LootModifier{
         if(state==null&&entity instanceof net.minecraft.world.entity.projectile.FishingHook hook&&hook.getPlayerOwner() instanceof ServerPlayer p&&Activity.eligible(p)){
             boolean treasure=FishingTrace.consume(context);
             if(!Rules.get().rareFishingTable.isBlank()){
-                double chance=Effects.sum(p,Potential.Option.RARE_FISH);ResourceLocation id=ResourceLocation.tryParse(Rules.get().rareFishingTable);
+                double chance=StardewBridge.rareBonus(StardewBridge.activeRod(p));ResourceLocation id=ResourceLocation.tryParse(Rules.get().rareFishingTable);
                 if(id!=null&&context.getRandom().nextDouble()<Effects.chance(chance)){
                     var table=p.getServer().getLootData().getLootTable(id);if(table!=LootTable.EMPTY){var rare=new ObjectArrayList<ItemStack>();table.getRandomItemsRaw(context,rare::add);if(!rare.isEmpty()){loot.clear();loot.addAll(rare);treasure|=FishingTrace.consume(context);}}
                 }
