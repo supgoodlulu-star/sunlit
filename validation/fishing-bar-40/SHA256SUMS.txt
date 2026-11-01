@@ -1,0 +1,2 @@
+f0d5fede0fa3965fe25245a6a71127948af6dcb019b571f445d07ce84cc693ed  screenshots/fishing-bar-default.png
+46e6aecbf5122a38e2a007885e1fc72d731a563400c45f147d4199e4d5a80f99  screenshots/fishing-bar-plus40.png
