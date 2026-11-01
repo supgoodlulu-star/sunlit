@@ -1,7 +1,7 @@
 plugins {
     id 'net.minecraftforge.gradle' version '6.0.54'
 }
-version = '0.8.14-item-showcase'
+version = '0.8.15-fish-sizes'
 group = 'dev.sunlit.journal'
 base { archivesName = 'sunlit-journal-core' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -13,7 +13,7 @@ minecraft {
     }
 }
 repositories { maven { url = 'https://maven.minecraftforge.net' } }
-dependencies { minecraft 'net.minecraftforge:forge:1.20.1-47.3.0' }
+dependencies { minecraft ('net.minecraftforge:forge:1.20.1-'+providers.gradleProperty('forgeVersion').getOrElse('47.3.0')) }
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 
 jar.finalizedBy('reobfJar')

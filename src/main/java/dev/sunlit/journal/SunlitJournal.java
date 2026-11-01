@@ -37,6 +37,8 @@ public class SunlitJournal {
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(new JournalEvents());
         MinecraftForge.EVENT_BUS.register(new JournalChat());
+        FishSizeLoot.REGISTER.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());
+        FishSizes.register();
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, JournalConfig.SPEC);
         net.minecraftforge.fml.ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.CLIENT, JournalClientConfig.SPEC);
         SkyContent.register(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext.get().getModEventBus());

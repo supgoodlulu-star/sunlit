@@ -1,0 +1,14 @@
+allprojects {
+ afterEvaluate {
+  sourceSets { fishSizeCheck {
+   java.srcDir new File(rootDir,'tools/fish-sizes')
+   java.include 'FishSizeClientCheck.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.fishSizeCheck
+  minecraft.runs.client.property 'sunlit.fishSizeClientCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/fish-sizes-0.8.15').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitShowcaseTest'
+ }
+}

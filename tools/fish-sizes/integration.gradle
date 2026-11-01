@@ -1,0 +1,25 @@
+allprojects {
+ afterEvaluate {
+  repositories { flatDir { dirs providers.gradleProperty('integrationModDir').getOrElse('provided-mods') } }
+  dependencies {
+   runtimeOnly fg.deobf('sunlit.local:stardew_fishing:3.7-1.20.1')
+   runtimeOnly fg.deobf('sunlit.local:Aquaculture:1.20.1-2.5.7')
+   runtimeOnly fg.deobf('sunlit.local:SereneSeasons-forge-1.20.1:9.1.0.2')
+   runtimeOnly fg.deobf('sunlit.local:GlitchCore-forge-1.20.1:0.0.1.1')
+   runtimeOnly fg.deobf('sunlit.local:unusualfishmod:1.1.10')
+   runtimeOnly fg.deobf('sunlit.local:geckolib-forge:1.20.1-4.8')
+   runtimeOnly fg.deobf('sunlit.local:kubejs-forge:2001.6.5-build.16')
+   runtimeOnly fg.deobf('sunlit.local:rhino-forge:2001.2.3-build.10')
+   runtimeOnly fg.deobf('sunlit.local:architectury:9.2.14-forge')
+   runtimeOnly fg.deobf('sunlit.local:quality_food:1.20.1-2.4.3-all')
+  }
+  minecraft.runs.all { property 'sunlit.fishSizeIntegration','true' }
+  tasks.matching { it.name in ['runGameTestServer','runClient'] }.configureEach {
+   doFirst {
+    def dest=new File(rootDir,name=='runClient'?'run/kubejs':'run-gametest/kubejs')
+    copy { from new File(rootDir,'tools/fish-sizes/fixtures/kubejs'); into dest }
+    copy { from new File(rootDir,'integrations/fish-sizes/kubejs'); into dest }
+   }
+  }
+ }
+}
