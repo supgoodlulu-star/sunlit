@@ -1,5 +1,7 @@
 allprojects {
  afterEvaluate { project ->
+  repositories { flatDir { dirs providers.gradleProperty('integrationModDir').getOrElse('provided-mods') } }
+  dependencies { runtimeOnly fg.deobf('sunlit.local:sunlit-reforged:1.0.0-dev.8') }
   sourceSets { showcaseCheck {
    java.srcDir new File(rootDir,'tools/visual-preview')
    java.include 'ShowcaseClientCheck.java'
@@ -8,7 +10,7 @@ allprojects {
   }}
   minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.showcaseCheck
   minecraft.runs.client.property 'sunlit.showcaseCheck','true'
-  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/journal-0.8.7').absolutePath
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/grade-showcase-0.8.14').absolutePath
   minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitShowcaseTest'
  }
 }

@@ -1,3 +1,7 @@
+# 등급 색상 아이템 자랑 0.8.14
+
+`/자랑하기`와 채팅 `[아이템]`을 꽃·별 장식과 잠재등급 색상으로 표시합니다. 실제 아이템과 마우스 호버 정보는 보존합니다. [JAR·소스·설치 안내](downloads/journal-0.8.14-item-showcase/)
+
 # 레디오 볼펜체 볼드 겹침 수정
 
 클라이언트 전용 보정 JAR와 수정 리소스팩을 함께 제공합니다. [설치 파일 묶음과 사용법](downloads/font-bold-fix-1.0.0/README.md) · [보정 모드 소스](tools/font-bold-fix/README.md) · [실제 게임 검증 화면](validation/font-bold-fix-1.0.0/)
