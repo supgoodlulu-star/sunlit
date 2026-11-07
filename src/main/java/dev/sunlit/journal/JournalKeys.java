@@ -14,5 +14,7 @@ public final class JournalKeys {
     // Unbound by default: the supplied pack already uses J for JourneyMap and has many hotkeys.
     public static final KeyMapping OPEN_PROFILE=new KeyMapping("key.sunlit_journal_core.open_profile",KeyConflictContext.IN_GAME,
         InputConstants.Type.KEYSYM,GLFW.GLFW_KEY_UNKNOWN,"key.categories.sunlit_journal_core");
-    @SubscribeEvent public static void register(RegisterKeyMappingsEvent event){event.register(OPEN_PROFILE);}
+    public static final KeyMapping AUTO_FISHING=new KeyMapping("key.sunlit_journal_core.auto_fishing",KeyConflictContext.UNIVERSAL,
+        InputConstants.Type.KEYSYM,GLFW.GLFW_KEY_F8,"key.categories.sunlit_journal_core");
+    @SubscribeEvent public static void register(RegisterKeyMappingsEvent event){event.register(OPEN_PROFILE);event.register(AUTO_FISHING);}
 }

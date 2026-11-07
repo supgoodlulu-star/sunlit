@@ -1,0 +1,19 @@
+allprojects {
+ afterEvaluate {
+  repositories { flatDir { dirs providers.gradleProperty('integrationModDir').getOrElse('provided-mods') } }
+  dependencies {
+   runtimeOnly fg.deobf('sunlit.local:sunlit-reforged:1.0.0-dev.8')
+   runtimeOnly fg.deobf('sunlit.local:netherdepthsupgrade:3.1.5-1.20')
+  }
+  sourceSets { autoFishingCheck {
+   java.srcDir new File(rootDir,'tools/auto-fishing')
+   java.include 'AutoFishingClientCheck.java'
+   compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+   runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+  }}
+  minecraft.runs.client.mods.sunlit_journal_core.source sourceSets.autoFishingCheck
+  minecraft.runs.client.property 'sunlit.autoFishingCheck','true'
+  minecraft.runs.client.property 'sunlit.previewOutput',new File(rootDir,'validation/auto-fishing-0.8.16').absolutePath
+  minecraft.runs.client.args '--width','1280','--height','900','--quickPlaySingleplayer','SunlitAutoFishingTest'
+ }
+}
